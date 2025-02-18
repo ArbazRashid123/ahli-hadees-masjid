@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e2e2e2, #ffffff);
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 20px;
+      color: #444;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 2em;
+      margin: 40px 0 20px;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .photo-gallery, .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    /* Photo Gallery Styling */
+    .photo-gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Video Gallery Styling */
+    .video-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+video {
+  pointer-events: none;
+}
+
+.video-container:hover video {
+  pointer-events: auto;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Masjid Gallery</h1>
+  <div class="gallery-container">
+    <h2 class="section-title">Photos</h2>
+    <div class="photo-gallery">
+      <img src="/image1.jpg" alt="Masjid Photo 1">
+      <img src="/image2.jpg" alt="Masjid Photo 2">
+      <img src="/image3.jpg" alt="Masjid Photo 3">
+      <img src="/image4.jpg" alt="Masjid Photo 4">
+      <img src="/image5.jpg" alt="Masjid Photo 1">
+      <img src="/image6.jpg" alt="Masjid Photo 2">
+      <img src="/image7.jpg" alt="Masjid Photo 3">
+      <img src="/image8.jpg" alt="Masjid Photo 4">
+      <img src="/image9.jpg" alt="Masjid Photo 1">
+      <img src="/image10.jpg" alt="Masjid Photo 2">
+      <img src="/image11.jpg" alt="Masjid Photo 3">
+      <img src="/image13.jpg" alt="Masjid Photo 4">
+      <img src="/image14.jpg" alt="Masjid Photo 1">
+      <img src="/image15.jpg" alt="Masjid Photo 2">
+      <img src="image16.jpg" alt="Masjid Photo 3">
+      <img src="/image17.jpg" alt="Masjid Photo 4">
+      <img src="/image18.jpg" alt="Masjid Photo 1">
+      <img src="/image19.jpg" alt="Masjid Photo 2">
+      <img src="/image20.jpg" alt="Masjid Photo 3">
+      <img src="/image21.jpg" alt="Masjid Photo 4">
+      <img src="image22.jpg" alt="Masjid Photo 1">
+      <img src="/image23.jpg" alt="Masjid Photo 2">
+      <img src="/image24.jpg" alt="Masjid Photo 3">
+      <img src="/image25.jpg" alt="Masjid Photo 4">
+      <img src="/image26.jpg" alt="Masjid Photo 4">
+      <img src="/image27.jpg" alt="Masjid Photo 1">
+      <img src="/image29.jpg" alt="Masjid Photo 2">
+      <img src="/image30.jpg" alt="Masjid Photo 3">
+      <img src="/image31.jpg" alt="Masjid Photo 4">
+      <img src="/image32.jpg" alt="Masjid Photo 4">
+      <img src="/image34.jpg" alt="Masjid Photo 1">
+      <img src="/image35.jpg" alt="Masjid Photo 2">
+      <img src="/image36.jpg" alt="Masjid Photo 3">
+      <img src="/image37.jpg" alt="Masjid Photo 4">
+      <img src="/image38.jpg" alt="Masjid Photo 1">
+      <img src="/image39.jpg" alt="Masjid Photo 2">
+      <img src="/image40.jpg" alt="Masjid Photo 3">
+      <img src="/image41.jpg" alt="Masjid Photo 4">
+      <img src="/image42.jpg" alt="Masjid Photo 4">
+      <img src="/image43.jpg" alt="Masjid Photo 1">
+      <img src="/image44.jpg" alt="Masjid Photo 2">
+      <img src="/image45.jpg" alt="Masjid Photo 3">
+      <img src="/image46.jpg" alt="Masjid Photo 4">
+      <img src="/image47.jpg" alt="Masjid Photo 1">
+      <img src="/image48.jpg" alt="Masjid Photo 2">
+      <img src="/image49.jpg" alt="Masjid Photo 3">
+      <img src="/image50.jpg" alt="Masjid Photo 4">
+      <img src="/image51.jpg" alt="Masjid Photo 4">
+      <img src="/image52.jpg" alt="Masjid Photo 1">
+      <img src="/image53.jpg" alt="Masjid Photo 2">
+      <img src="/image54.jpg" alt="Masjid Photo 3">
+      <img src="/image55.jpg" alt="Masjid Photo 4">
+      <img src="/image56.jpg" alt="Masjid Photo 4">
+      <img src="/image57.jpg" alt="Masjid Photo 4">
+      <img src="/image58.jpg" alt="Masjid Photo 1">
+      <img src="/image59.jpg" alt="Masjid Photo 2">
+      <img src="/image60.jpg" alt="Masjid Photo 3">
+      <img src="/image61.jpg" alt="Masjid Photo 4">
+      <img src="/image62.jpg" alt="Masjid Photo 4">
+      <img src="/image63.jpg" alt="Masjid Photo 4">
+      <img src="/image64.jpg" alt="Masjid Photo 1">
+      <img src="/image66.jpg" alt="Masjid Photo 3">
+      <img src="/image.jpg" alt="Masjid Photo 4">
+    </div>
+
+    <h2 class="section-title">Videos</h2>
+    <div class="video-gallery">
+      <div class="video-container">
+        <video src="/video1.mp4" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src="/video2.mp4" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src="video3.mp4" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src="video4.mp4" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src="/image33.mp4" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video3.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video1.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video2.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video3.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video1.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video2.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video3.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video1.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video2.mp4\" loop muted></video>
+      </div>
+      <div class="video-container">
+        <video src=\"video3.mp4\" loop muted></video>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('mouseenter', () => {
+        // Unmute video on hover so that sound plays
+        video.muted = false;
+        video.play();
+      });
+      video.addEventListener('mouseleave', () => {
+        video.pause();
+      });
+    });
+  </script>
+</body>
+</html>

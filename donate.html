@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donate to Masjid , Dar‑ul‑Mawasaat and Darasgah</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('https://via.placeholder.com/1600x400?text=Donate+Now') no-repeat center center/cover;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      animation: fadeIn 1s ease-out;
+    }
+    header h1 {
+      font-size: 3em;
+      letter-spacing: 1px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      animation: slideInUp 1s ease-out;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.8em;
+      color: #006600;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffcc00, #ff9900);
+      display: block;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+    /* Donation Card Styles */
+    .donation-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-bottom: 50px;
+      padding: 30px;
+      background: linear-gradient(135deg, #ffffff, #f9f9f9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .donation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+    .donation-details, .scanner-placeholder {
+      flex: 1 1 300px;
+      padding: 20px;
+    }
+    .donation-details {
+      border-right: 2px dashed rgba(0,0,0,0.1);
+      transition: border-color 0.3s ease;
+    }
+    .donation-card:hover .donation-details {
+      border-color: #ffcc00;
+    }
+    /* Remove right border on small screens */
+    @media (max-width: 768px) {
+      .donation-details {
+        border-right: none;
+        border-bottom: 2px dashed rgba(0,0,0,0.1);
+      }
+    }
+    .donation-details h2 {
+      font-size: 1.8em;
+      color: #006600;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .donation-details h2::after {
+      content: "";
+      width: 40px;
+      height: 3px;
+      background: #ffcc00;
+      display: block;
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+    .donation-details p {
+      font-size: 1em;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    .scanner-placeholder1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef9f1;
+      border-radius: 8px;
+      min-height: 220px;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      font-size: 1.1em;
+      background-image: url('/masjidscanner.jpg');
+      background-size: 100% 100%;
+    }
+    .scanner-placeholder2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef9f1;
+      border-radius: 8px;
+      min-height: 220px;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      font-size: 1.1em;
+      background-image: url('/dmsscanner.jpg');
+      background-size: 100% 100%;
+    }
+    .scanner-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef9f1;
+      border-radius: 8px;
+      min-height: 220px;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      font-size: 1.1em;
+    }
+
+
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Donation Header -->
+  <header>
+    <h1>Donate to Our Causes</h1>
+  </header>
+  
+  <div class="container">
+    <!-- Donate to Masjid Al-Noor Section -->
+    <div class="donation-card" id="donate-masjid">
+      <div class="donation-details">
+        <h2>Jamia Ahli Hadees Mohammadia Masjid</h2>
+        <p><strong>Account Number:</strong> 0071010250000021</p>
+        <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
+        <p><strong>IFSC Code:</strong> JAKA0KANGAN</p>
+        <p><strong>Details:</strong> General funds for mosque operations and maintenance.</p>
+      </div>
+      <div class="scanner-placeholder1">
+        ------------------------------------
+      </div>
+    </div>
+    
+    <!-- Donate to Dar‑ul‑Mawasaat Welfare Foundation Section -->
+    <div class="donation-card" id="donate-welfare">
+      <div class="donation-details">
+        <h2>Dar‑ul‑Mawasaat Welfare Foundation</h2>
+        <p><strong>Account Number:</strong> 0071010250000022</p>
+        <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
+        <p><strong>IFSC Code:</strong> JAKA0KANGAN</p>
+        <p><strong>Details:</strong> Welfare and social initiatives to support the community.</p>
+      </div>
+      <div class="scanner-placeholder2">
+        ------------------------------------
+      </div>
+    </div>
+    
+    <!-- Donate to Darasgah Section -->
+    <div class="donation-card" id="donate-darasgah">
+      <div class="donation-details">
+        <h2>Salafia Darasgah</h2>
+        <p><strong>Account Number:</strong> 0071010250000135</p>
+        <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
+        <p><strong>IFSC Code:</strong> JAKA0KANGAN</p>
+        <p><strong>Details:</strong> Support for educational programs and community development.</p>
+      </div>
+      <div class="scanner-placeholder">
+        --------------------
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Masjid Al-Noor. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
