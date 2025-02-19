@@ -626,4 +626,15 @@ p, h3, td, li {
   }
 }
 
+/* Mobile: hide inline nav and show hamburger */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+  nav .menu-icon {
+    display: block;
+  }
+}
+
+
 
