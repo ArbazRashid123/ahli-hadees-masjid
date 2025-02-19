@@ -216,6 +216,22 @@
     window.location.href="#help-donation"; // Replace with your actual link
   });
 
+    
+  // Select the hamburger icon and the nav links
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('nav ul');
+
+  // When the hamburger is clicked, toggle the nav links' display
+  menuToggle.addEventListener('click', () => {
+    // Check if the nav is currently shown
+    if (navLinks.style.display === 'block') {
+      navLinks.style.display = 'none';
+    } else {
+      navLinks.style.display = 'block';
+    }
+  });
+
+
   </script>
 </body>
 </html>
