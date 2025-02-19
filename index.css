@@ -626,15 +626,22 @@ p, h3, td, li {
   }
 }
 
-/* Mobile: hide inline nav and show hamburger */
+/* Mobile styles: when viewport is 768px or less */
 @media (max-width: 768px) {
+  /* Hide the navigation links by default */
   nav ul {
     display: none;
+    flex-direction: column; /* Stack links vertically */
+    width: 100%;
   }
-  nav .menu-icon {
+  /* Show the hamburger icon */
+  .menu-toggle {
     display: block;
+    cursor: pointer;
+    font-size: 2em; /* Adjust size as needed */
   }
 }
+
 
 
 
