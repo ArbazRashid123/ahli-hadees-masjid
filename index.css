@@ -628,19 +628,25 @@ p, h3, td, li {
 
 /* Mobile styles: when viewport is 768px or less */
 @media (max-width: 768px) {
-  /* Hide the navigation links by default */
+  /* Hide menu by default */
   nav ul {
     display: none;
-    flex-direction: column; /* Stack links vertically */
-    width: 100%;
+    /* Remove the vertical stacking */
+    flex-direction: row;
   }
-  /* Show the hamburger icon */
+  /* When the menu is active, display as a flex container arranged in a row */
+  nav ul.active {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* optional: space between links */
+  }
   .menu-toggle {
     display: block;
     cursor: pointer;
-    font-size: 2em; /* Adjust size as needed */
+    font-size: 2em;
   }
 }
+
 
 
 
