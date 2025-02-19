@@ -631,15 +631,20 @@ p, h3, td, li {
   /* Hide menu by default */
   nav ul {
     display: none;
-    /* Remove the vertical stacking */
     flex-direction: row;
+    justify-content: center; /* Centers links horizontally */
+    align-items: center;
   }
-  /* When the menu is active, display as a flex container arranged in a row */
+
+  /* When active, show as a row */
   nav ul.active {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
-    gap: 10px; /* optional: space between links */
+    flex-wrap: wrap; /* Prevents overflow */
+    gap: 15px; /* Adds spacing between items */
   }
+
+  /* Show the hamburger menu icon */
   .menu-toggle {
     display: block;
     cursor: pointer;
@@ -647,7 +652,14 @@ p, h3, td, li {
   }
 }
 
-
-
+/* For desktop, show the menu normally */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  nav ul {
+    display: flex;
+  }
+}
 
 
