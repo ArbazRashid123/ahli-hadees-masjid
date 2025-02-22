@@ -11,11 +11,23 @@ body {
   background-color: #f4f4f4;
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Notification Dot */
+.notification-dot {
+  display: none;
+  width: 8px;
+  height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 /* Navigation (Mobile-First) */
@@ -42,7 +54,8 @@ nav .menu-toggle {
   font-size: 1.5em;
   color: #fff;
   cursor: pointer;
-  margin-right: 10px; /* Ensure visibility */
+  margin-right: 10px;
+  position: relative;
 }
 nav ul {
   display: none;
@@ -67,10 +80,15 @@ nav ul li a {
   font-weight: 500;
   padding: 5px 10px;
   transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
 }
 nav ul li a:hover {
   color: #ffcc00;
   transform: scale(1.1);
+}
+.announcement-link .notification-dot {
+  top: 0;
+  right: 0;
 }
 
 /* Hero Section (Mobile-First) */
@@ -84,6 +102,11 @@ header {
   text-align: center;
   padding: 50px 15px 0;
   position: relative;
+  animation: subtleFade 5s infinite alternate;
+}
+@keyframes subtleFade {
+  0% { background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor'); }
+  100% { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor'); }
 }
 .hero-content {
   color: #fff;
@@ -144,6 +167,78 @@ header .btn:hover {
 /* Sections (Mobile-First) */
 section {
   padding: 40px 15px;
+}
+
+/* Announcements Section (Mobile-First) */
+#announcements {
+  background: #ffffff;
+}
+.announcement-carousel {
+  max-width: 100%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial {
+  display: none;
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.testimonial.active {
+  display: block;
+}
+.marquee-text {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 10s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.testimonial p {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 15px;
+}
+.testimonial h4 {
+  margin-top: 10px;
+  color: #006600;
+  font-size: 1em;
+}
+.btn-announcement {
+  background: #006600;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+.btn-announcement:hover {
+  background: #004d00;
+}
+.carousel-controls {
+  text-align: center;
+  margin-top: 15px;
+}
+.carousel-btn {
+  background: #006600;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 0 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.carousel-btn:hover {
+  background: #004d00;
+  transform: scale(1.1);
 }
 
 /* Ramadan Section (Mobile-First) */
@@ -295,7 +390,7 @@ section {
   margin: 0;
   padding: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  overflow-x: auto;
 }
 #prayer-times table {
   width: 100%;
@@ -307,7 +402,7 @@ section {
   text-align: center;
   font-size: 0.9em;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 #prayer-times th {
   background: linear-gradient(90deg, #006600, #008000);
@@ -453,70 +548,6 @@ section {
   transform: translateY(-5px);
 }
 
-/* Announcements Section (Mobile-First) */
-#announcements {
-  background: #ffffff;
-}
-.announcement-carousel {
-  max-width: 100%;
-  margin: auto;
-  position: relative;
-  overflow: hidden;
-}
-.testimonial {
-  display: none;
-  background: #f1f1f1;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.testimonial.active {
-  display: block;
-}
-.testimonial p {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 15px;
-}
-.testimonial h4 {
-  margin-top: 10px;
-  color: #006600;
-  font-size: 1em;
-}
-.btn-announcement {
-  background: #006600;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transition: background 0.3s ease;
-  display: inline-block;
-}
-.btn-announcement:hover {
-  background: #004d00;
-}
-.carousel-controls {
-  text-align: center;
-  margin-top: 15px;
-}
-.carousel-btn {
-  background: #006600;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  font-size: 1em;
-  cursor: pointer;
-  margin: 0 10px;
-  border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.carousel-btn:hover {
-  background: #004d00;
-  transform: scale(1.1);
-}
-
 /* Donation Section (Mobile-First) */
 #donate {
   background: linear-gradient(135deg, #e0ffe0, #ccffcc);
@@ -538,7 +569,6 @@ section {
   background: #006600;
   padding: 10px 20px;
   border-radius: 25px;
-  color: #fff;
   font-size: 1em;
   font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -599,7 +629,7 @@ section {
 
 /* Help Section (Mobile-First) */
 #help-donation {
-  background: #f0f4f8;
+  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
 }
 .help-container {
   max-width: 100%;
@@ -639,34 +669,34 @@ section {
 footer {
   background: linear-gradient(135deg, #333, #1a1a1a);
   color: #fff;
-  padding: 15px 15px; /* Reduced padding */
+  padding: 15px 15px;
 }
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Reduced gap */
+  gap: 10px;
   max-width: 100%;
   text-align: center;
 }
 .footer-about, .footer-contact, .footer-social {
-  padding: 8px; /* Reduced padding */
+  padding: 8px;
 }
 .footer-content h3 {
   color: #ffcc00;
-  margin-bottom: 8px; /* Reduced margin */
-  font-size: 1em; /* Smaller font */
+  margin-bottom: 8px;
+  font-size: 1em;
 }
 .footer-content p {
-  font-size: 0.8em; /* Smaller font */
+  font-size: 0.8em;
 }
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Reduced gap */
+  gap: 10px;
   align-items: center;
 }
 .social-icons a {
-  font-size: 1.2em; /* Smaller icons */
+  font-size: 1.2em;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 .social-icons a:hover {
@@ -675,11 +705,11 @@ footer {
 }
 .footer-bottom {
   background: #111;
-  padding: 8px; /* Reduced padding */
-  margin-top: 8px; /* Reduced margin */
+  padding: 8px;
+  margin-top: 8px;
 }
 .footer-bottom p {
-  font-size: 0.7em; /* Smaller font */
+  font-size: 0.7em;
   margin: 0;
 }
 
@@ -700,6 +730,38 @@ footer {
   transform: translateY(-5px);
 }
 
+/* Back-to-Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #006600;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.back-to-top:hover {
+  background: #004d00;
+  transform: scale(1.1);
+}
+
+/* Pulse Animation for Buttons */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
 /* Desktop Adjustments (min-width: 768px) */
 @media (min-width: 768px) {
   nav {
@@ -718,14 +780,14 @@ footer {
     background: none;
     padding: 0;
     width: auto;
-    flex-wrap: wrap; /* Allow wrapping if needed */
+    flex-wrap: wrap;
     justify-content: flex-end;
   }
   nav ul li {
-    margin: 0 10px; /* Reduced margin for better fit */
+    margin: 0 10px;
   }
   nav ul li a {
-    font-size: 0.9em; /* Slightly smaller to fit */
+    font-size: 0.9em;
     padding: 5px 8px;
   }
 
@@ -753,6 +815,16 @@ footer {
   .section-title {
     font-size: 2.8em;
     margin-bottom: 60px;
+  }
+
+  .announcement-carousel {
+    max-width: 800px;
+  }
+  .testimonial p {
+    font-size: 1.1em;
+  }
+  .testimonial h4 {
+    font-size: 1.1em;
   }
 
   .ramadan-container {
@@ -795,12 +867,12 @@ footer {
   }
 
   #prayer-times {
-    max-width: 700px; /* Reduced max-width */
+    max-width: 700px;
     padding: 30px;
   }
   #prayer-times th, #prayer-times td {
-    font-size: 1em; /* Slightly smaller */
-    padding: 12px; /* Reduced padding */
+    font-size: 1em;
+    padding: 12px;
   }
 
   .gallery-grid {
@@ -810,16 +882,6 @@ footer {
   .gallery-grid img {
     height: 200px;
     max-width: calc(33.33% - 13.33px);
-  }
-
-  .announcement-carousel {
-    max-width: 800px;
-  }
-  .testimonial p {
-    font-size: 1.1em;
-  }
-  .testimonial h4 {
-    font-size: 1.1em;
   }
 
   .donate-content, .help-container {
@@ -834,7 +896,7 @@ footer {
   }
 
   footer {
-    padding: 15px 30px; /* Adjusted for desktop */
+    padding: 15px 30px;
   }
   .footer-content {
     flex-direction: row;
@@ -859,6 +921,3 @@ footer {
     max-width: calc(25% - 22.5px);
   }
 }
-
-
-
