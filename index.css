@@ -11,23 +11,10 @@ body {
   background-color: #f4f4f4;
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
 }
 a {
   text-decoration: none;
   color: inherit;
-}
-
-/* Notification Dot */
-.notification-dot {
-  display: none;
-  width: 8px;
-  height: 8px;
-  background: #ff0000;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  right: 5px;
 }
 
 /* Navigation (Mobile-First) */
@@ -54,8 +41,6 @@ nav .menu-toggle {
   font-size: 1.5em;
   color: #fff;
   cursor: pointer;
-  margin-right: 10px;
-  position: relative;
 }
 nav ul {
   display: none;
@@ -64,9 +49,8 @@ nav ul {
   position: absolute;
   top: 50px;
   left: 0;
-  width: 100%;
+  right: 0;
   padding: 15px;
-  box-sizing: border-box;
 }
 nav ul.active {
   display: flex;
@@ -80,15 +64,10 @@ nav ul li a {
   font-weight: 500;
   padding: 5px 10px;
   transition: color 0.3s ease, transform 0.3s ease;
-  position: relative;
 }
 nav ul li a:hover {
   color: #ffcc00;
   transform: scale(1.1);
-}
-.announcement-link .notification-dot {
-  top: 0;
-  right: 0;
 }
 
 /* Hero Section (Mobile-First) */
@@ -102,11 +81,6 @@ header {
   text-align: center;
   padding: 50px 15px 0;
   position: relative;
-  animation: subtleFade 5s infinite alternate;
-}
-@keyframes subtleFade {
-  0% { background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor'); }
-  100% { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor'); }
 }
 .hero-content {
   color: #fff;
@@ -130,6 +104,7 @@ header .hero-subheading {
 }
 header .btn {
   background: #006600;
+  color: #fff;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 1em;
@@ -169,76 +144,47 @@ section {
   padding: 40px 15px;
 }
 
-/* Announcements Section (Mobile-First) */
+/* Announcements Section (Mobile-First, Slow Traveling Text) */
 #announcements {
   background: #ffffff;
+  padding: 20px 15px;
 }
-.announcement-carousel {
+.announcement-marquee {
   max-width: 100%;
-  margin: auto;
-  position: relative;
   overflow: hidden;
-}
-.testimonial {
-  display: none;
-  background: #f1f1f1;
-  padding: 20px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, #f1f1f1, #e8e8e8);
+  padding: 15px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  border-left: 5px solid #006600;
 }
-.testimonial.active {
-  display: block;
-}
-.marquee-text {
+.marquee-content {
+  display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
-  animation: marquee 10s linear infinite;
+  animation: marquee 40s linear infinite; /* Slower speed: 40s */
+}
+.marquee-content span {
+  font-size: 0.9em;
+  color: #333;
+  margin-right: 40px; /* Increased spacing for readability */
+  font-weight: 500;
+}
+.marquee-link {
+  color: #006600;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.marquee-link:hover {
+  background: #006600;
+  color: #fff;
 }
 @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
-}
-.testimonial p {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 15px;
-}
-.testimonial h4 {
-  margin-top: 10px;
-  color: #006600;
-  font-size: 1em;
-}
-.btn-announcement {
-  background: #006600;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transition: background 0.3s ease;
-  display: inline-block;
-}
-.btn-announcement:hover {
-  background: #004d00;
-}
-.carousel-controls {
-  text-align: center;
-  margin-top: 15px;
-}
-.carousel-btn {
-  background: #006600;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  font-size: 1em;
-  cursor: pointer;
-  margin: 0 10px;
-  border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.carousel-btn:hover {
-  background: #004d00;
-  transform: scale(1.1);
 }
 
 /* Ramadan Section (Mobile-First) */
@@ -390,7 +336,6 @@ section {
   margin: 0;
   padding: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
 }
 #prayer-times table {
   width: 100%;
@@ -402,7 +347,6 @@ section {
   text-align: center;
   font-size: 0.9em;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap;
 }
 #prayer-times th {
   background: linear-gradient(90deg, #006600, #008000);
@@ -569,6 +513,7 @@ section {
   background: #006600;
   padding: 10px 20px;
   border-radius: 25px;
+  color: #fff;
   font-size: 1em;
   font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -629,7 +574,7 @@ section {
 
 /* Help Section (Mobile-First) */
 #help-donation {
-  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+  background: #f0f4f8;
 }
 .help-container {
   max-width: 100%;
@@ -669,34 +614,34 @@ section {
 footer {
   background: linear-gradient(135deg, #333, #1a1a1a);
   color: #fff;
-  padding: 15px 15px;
+  padding: 20px 15px;
 }
 .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   max-width: 100%;
   text-align: center;
 }
 .footer-about, .footer-contact, .footer-social {
-  padding: 8px;
+  padding: 10px;
 }
 .footer-content h3 {
   color: #ffcc00;
-  margin-bottom: 8px;
-  font-size: 1em;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 .footer-content p {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
 }
 .social-icons a {
-  font-size: 1.2em;
+  font-size: 1.5em;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 .social-icons a:hover {
@@ -705,11 +650,11 @@ footer {
 }
 .footer-bottom {
   background: #111;
-  padding: 8px;
-  margin-top: 8px;
+  padding: 10px;
+  margin-top: 10px;
 }
 .footer-bottom p {
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: 0;
 }
 
@@ -730,38 +675,6 @@ footer {
   transform: translateY(-5px);
 }
 
-/* Back-to-Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #006600;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2em;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.back-to-top:hover {
-  background: #004d00;
-  transform: scale(1.1);
-}
-
-/* Pulse Animation for Buttons */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-.pulse {
-  animation: pulse 0.5s ease-in-out;
-}
-
 /* Desktop Adjustments (min-width: 768px) */
 @media (min-width: 768px) {
   nav {
@@ -779,16 +692,13 @@ footer {
     position: static;
     background: none;
     padding: 0;
-    width: auto;
-    flex-wrap: wrap;
-    justify-content: flex-end;
   }
   nav ul li {
-    margin: 0 10px;
+    margin: 0 15px;
   }
   nav ul li a {
-    font-size: 0.9em;
-    padding: 5px 8px;
+    font-size: 1em;
+    padding: 5px 10px;
   }
 
   header {
@@ -817,14 +727,18 @@ footer {
     margin-bottom: 60px;
   }
 
-  .announcement-carousel {
+  #announcements {
+    padding: 40px 30px;
+  }
+  .announcement-marquee {
     max-width: 800px;
+    padding: 20px;
   }
-  .testimonial p {
+  .marquee-content span {
     font-size: 1.1em;
   }
-  .testimonial h4 {
-    font-size: 1.1em;
+  .marquee-link {
+    padding: 6px 12px;
   }
 
   .ramadan-container {
@@ -867,12 +781,12 @@ footer {
   }
 
   #prayer-times {
-    max-width: 700px;
+    max-width: 800px;
     padding: 30px;
   }
   #prayer-times th, #prayer-times td {
-    font-size: 1em;
-    padding: 12px;
+    font-size: 1.1em;
+    padding: 15px;
   }
 
   .gallery-grid {
@@ -895,22 +809,12 @@ footer {
     font-size: 2.5em;
   }
 
-  footer {
-    padding: 15px 30px;
-  }
   .footer-content {
     flex-direction: row;
-    gap: 20px;
     text-align: left;
   }
-  .footer-content h3 {
-    font-size: 1.1em;
-  }
-  .footer-content p {
-    font-size: 0.9em;
-  }
   .social-icons a {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
 }
 
