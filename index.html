@@ -48,7 +48,12 @@
     <div class="announcement-marquee">
       <div class="marquee-content">
         <span>We are accepting applications for immediate marriage and food assistance. Please contact the masjid office or <a href="#help-donation" class="marquee-link">Request Help</a>. -Chairman, Mohammadia Masjid</span>
-        <span>All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Sheer Gojri</span>
+        <span>All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Mir</span>
+      </div>
+      <!-- Duplicate content for seamless looping -->
+      <div class="marquee-content">
+        <span>We are accepting applications for immediate marriage and food assistance. Please contact the masjid office or <a href="#help-donation" class="marquee-link">Request Help</a>. -Chairman, Mohammadia Masjid</span>
+        <span>All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Mir</span>
       </div>
     </div>
   </section>
@@ -158,17 +163,17 @@
       <div class="knowledge-item" data-aos="fade-up" data-aos-delay="100">
         <h3>Quranic Studies</h3>
         <p>Access resources and videos for deepening your understanding of the Quran.</p>
-        <a href="https://quran.com" class="btn-knowledge" target="_blank">Learn More</a>
+        <a href="https://quran.com" class="btn-knowledge">Learn More</a>
       </div>
       <div class="knowledge-item" data-aos="fade-up" data-aos-delay="200">
         <h3>Hadith Library</h3>
         <p>Explore authentic Hadith collections and their explanations.</p>
-        <a href="https://sunnah.com" class="btn-knowledge" target="_blank">Explore</a>
+        <a href="https://sunnah.com" class="btn-knowledge">Explore</a>
       </div>
       <div class="knowledge-item" data-aos="fade-up" data-aos-delay="300">
         <h3>Islamic Lectures</h3>
         <p>Watch recorded lectures by renowned Ahl al-Hadith scholars.</p>
-        <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv" class="btn-knowledge" target="_blank">Watch Now</a>
+        <a href="https://www.youtube.com/@SalafiPublications" class="btn-knowledge">Watch Now</a>
       </div>
     </div>
   </section>
@@ -196,7 +201,7 @@
       <div class="event" data-aos="fade-up" data-aos-delay="500">
         <h3>Iftar Party</h3>
         <p dir="rtl">"قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ـ مَنْ فَطَّرَ صَائِمًا كَانَ لَهُ مِثْلُ أَجْرِهِمْ مِنْ غَيْرِ أَنْ يَنْقُصَ مِنْ أُجُورِهِمْ شَيْئًا "</p>
-        <a href="/image1.jpg" class="iftar-button" target="_blank">Get List</a>
+        <a href="/image1.jpg" class="iftar-button">Get List</a>
       </div>
     </div>
   </section>
@@ -211,7 +216,7 @@
         <img src="https://via.placeholder.com/250x200?text=Image+2" alt="Gallery Image 2">
         <img src="https://via.placeholder.com/250x200?text=Image+3" alt="Gallery Image 3">
       </div>
-      <a href="gallery.html" class="btn-gallery" target="_blank">Go To Masjid Gallery</a>
+      <a href="gallery.html" class="btn-gallery">Go To Masjid Gallery</a>
     </div>
   </section>
 
@@ -220,7 +225,7 @@
     <h2 class="section-title">Support Our Community</h2>
     <div class="donate-content">
       <p>Your generous donations help us continue our programs and outreach initiatives. Every contribution makes a difference.</p>
-      <a href="donate.html" class="btn" target="_blank">Donate Now</a>
+      <a href="donate.html" class="btn">Donate Now</a>
     </div>
   </section>
 
@@ -246,7 +251,7 @@
     <div class="help-container">
       <h2>Need Assistance</h2>
       <p>If you or someone you know requires help, please reach out to us by filling out the form.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="help-button">Request Help</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" class="help-button">Request Help</a>
     </div>
   </section>
 
@@ -264,8 +269,8 @@
       <div class="footer-social">
         <h3>Follow Us</h3>
         <div class="social-icons">
-          <a href="https://www.facebook.com/share/19ofrYye8Y/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
@@ -281,9 +286,20 @@
 
     const menuToggle = document.querySelector('.menu-toggle');
     const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Toggle menu on hamburger click
     menuToggle.addEventListener('click', () => {
       navUl.classList.toggle('active');
       navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    // Close menu on link click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+        navUl.style.display = 'none';
+      });
     });
 
     // Daily Quote or Scientific Fact for Ramadan
