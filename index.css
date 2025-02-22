@@ -161,7 +161,7 @@ section {
 .marquee-content {
   display: flex; /* Changed to flex for better mobile support */
   white-space: nowrap;
-  animation: marquee 40s linear infinite;
+  animation: marquee 30s linear infinite;
   will-change: transform; /* Improve performance */
 }
 .marquee-content span {
