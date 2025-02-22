@@ -17,7 +17,7 @@
   <!-- Navigation -->
   <nav data-aos="fade-down">
     <div class="logo">Masjid Mohammadia Cherwan</div>
-    <div class="menu-toggle"><span class="notification-dot"></span>☰</div>
+    <div class="menu-toggle">☰</div>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -25,7 +25,7 @@
       <li><a href="#knowledge">Knowledge Center</a></li>
       <li><a href="#ramadan">Ramadan</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#announcements" class="announcement-link"><span class="notification-dot"></span>Announcements</a></li>
+      <li><a href="#announcements">Announcements</a></li>
       <li><a href="#donate">Donate</a></li>
       <li><a href="#community">Community</a></li>
       <li><a href="#footer">Contact</a></li>
@@ -42,25 +42,14 @@
     </div>
   </header>
 
-  <!-- Announcement Section -->
+  <!-- Announcement Section (Below Hero) -->
   <section id="announcements" data-aos="fade-up">
     <h2 class="section-title">Important Announcements</h2>
-    <div class="announcement-carousel">
-      <div class="testimonial active" data-announcement-id="0">
-        <p class="marquee-text">
-          We are accepting applications for immediate marriage and food assistance.
-        </p>
-        <a href="#help-donation" class="btn-announcement">Request Help</a>
-        <h4>-Chairman, Mohammadia Masjid</h4>
+    <div class="announcement-marquee">
+      <div class="marquee-content">
+        <span>We are accepting applications for immediate marriage and food assistance. Please contact the masjid office or <a href="#help-donation" class="marquee-link">Request Help</a>. -Chairman, Mohammadia Masjid</span>
+        <span>All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Mir</span>
       </div>
-      <div class="testimonial" data-announcement-id="1">
-        <p class="marquee-text">"All members are requested to attend the meeting scheduled tomorrow."</p>
-        <h4>-Tariq Mushtaq Sheer Gojri</h4>
-      </div>
-    </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn prev" onclick="changeAnnouncement(-1)">❮</button>
-      <button class="carousel-btn next" onclick="changeAnnouncement(1)">❯</button>
     </div>
   </section>
 
@@ -295,67 +284,6 @@
     menuToggle.addEventListener('click', () => {
       navUl.classList.toggle('active');
       navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
-    });
-
-    // Carousel for Announcements with Notification Dot Logic
-    let currentIndex = 0;
-    const announcements = document.querySelectorAll('.announcement-carousel .testimonial');
-    const totalAnnouncements = announcements.length;
-    const hamburgerDot = document.querySelector('.menu-toggle .notification-dot');
-    const navDot = document.querySelector('.announcement-link .notification-dot');
-    const announcementLink = document.querySelector('.announcement-link');
-
-    // Track viewed announcements using localStorage
-    const viewedAnnouncements = JSON.parse(localStorage.getItem('viewedAnnouncements')) || [];
-
-    function changeAnnouncement(direction) {
-      announcements[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + direction + totalAnnouncements) % totalAnnouncements;
-      announcements[currentIndex].classList.add('active');
-      
-      // Mark announcement as viewed
-      const announcementId = announcements[currentIndex].getAttribute('data-announcement-id');
-      if (!viewedAnnouncements.includes(announcementId)) {
-        viewedAnnouncements.push(announcementId);
-        localStorage.setItem('viewedAnnouncements', JSON.stringify(viewedAnnouncements));
-      }
-      updateNotificationDot();
-    }
-
-    function updateNotificationDot() {
-      // Show dot only for unseen announcements (e.g., index 1 as "new" for demo)
-      const newAnnouncementId = '1'; // Simulate new announcement at index 1
-      const hasUnseen = !viewedAnnouncements.includes(newAnnouncementId);
-      hamburgerDot.style.display = hasUnseen && currentIndex !== 1 ? 'inline-block' : 'none';
-      navDot.style.display = hasUnseen && currentIndex !== 1 ? 'inline-block' : 'none';
-    }
-
-    // Initial check for notification dot
-    updateNotificationDot();
-
-    // Dynamic Features
-
-    // 1. Floating Back-to-Top Button
-    const backToTop = document.createElement('button');
-    backToTop.innerHTML = '↑';
-    backToTop.className = 'back-to-top';
-    document.body.appendChild(backToTop);
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 2. Pulse Animation on Buttons
-    const buttons = document.querySelectorAll('.btn, .btn-knowledge, .btn-community, .btn-announcement, .iftar-button, .btn-gallery, .help-button, .btn-about');
-    buttons.forEach(btn => {
-      btn.addEventListener('mouseover', () => {
-        btn.classList.add('pulse');
-      });
-      btn.addEventListener('animationend', () => {
-        btn.classList.remove('pulse');
-      });
     });
 
     // Daily Quote or Scientific Fact for Ramadan
