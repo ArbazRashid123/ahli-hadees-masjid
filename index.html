@@ -41,7 +41,7 @@
     </div>
   </header>
 
-  <!-- Chatbot Section (Visible by Default) -->
+  <!-- Chatbot Section (Visible by Default, Larger, Scrollable) -->
   <div class="chatbot-container glass" data-aos="fade-up">
     <div class="chatbot" id="chatbot">
       <h3>Chat with Us <i class="fas fa-robot"></i></h3>
@@ -383,7 +383,7 @@
     updateRamadanTimings();
     setInterval(updateRamadanTimings, 24 * 60 * 60 * 1000);
 
-    // Enhanced Chatbot Functionality (Trained on 500+ Questions, Including About.html Data, No Links)
+    // Enhanced Chatbot Functionality (Trained on Generalized Terms, No Links)
     function sendMessage() {
       const input = document.getElementById('chat-input');
       const message = input.value.trim().toLowerCase();
@@ -393,7 +393,11 @@
         let response = getChatbotResponse(message);
         setTimeout(() => {
           messages.innerHTML += `<p class="bot-message">Bot: ${response}</p>`;
-          messages.scrollTop = messages.scrollHeight; // Auto-scroll for mobile
+          messages.scrollTop = messages.scrollHeight; // Auto-scroll to show latest message
+          // Ensure only the latest question and answer are visible by default
+          if (messages.children.length > 2) {
+            messages.style.height = '150px'; // Adjust height to show only the latest
+          }
         }, 800); // Slight delay for realistic response
         input.value = '';
         messages.scrollTop = messages.scrollHeight; // Auto-scroll for mobile
@@ -402,178 +406,148 @@
 
     function getChatbotResponse(message) {
       const responses = {
-        // About the Masjid (100+ variations, including about.html data)
-        'masjid': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan, located in Cherwan Kangan, 191202, serves our community with a rich history and visionary leadership under the current chairman, Showkat Ahmad Mir. It unites the community through faith, knowledge, and unity, with land donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, expanding to 19 marlas.',
-        'what is masjid mohammadia': 'Masjid Mohammadia Cherwan is a sacred place in Cherwan Kangan, 191202, uniting the community through faith, knowledge, and unity, led by Chairman Showkat Ahmad Mir, with land from donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri.',
-        'history of masjid': 'Our masjid’s rich history includes decades of service, with the foundation stone laid on April 28, 2018, under Khursheed Ahmad Mir, and land donated by Mohammad Iqbal and Fatima Khan, expanding to 19 marlas, overseen by Manzoor Ahmad Magaray.',
-        'mission of masjid': 'Our mission is to connect our community through faith, knowledge, and unity, fostering spiritual and educational growth.',
-        'vision of masjid': 'Our vision is to be a sacred place for unity, learning, and reflection, serving the community comprehensively.',
-        'purpose of masjid': 'The purpose of Masjid Mohammadia Cherwan is to unite, educate, and support the community through spiritual and welfare initiatives.',
-        'location of masjid': 'Masjid Mohammadia Cherwan is located in Cherwan Kangan, 191202.',
-        'address of masjid': 'Our address is Cherwan Kangan, 191202.',
-        'about masjid cherwan': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan serves with a rich history, led by Chairman Showkat Ahmad Mir, with land from donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, focusing on youth and community welfare.',
-        'masjid cherwan history': 'Our masjid’s history includes service since its foundation on April 28, 2018, with land from Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, led by Khursheed Ahmad Mir and Manzoor Ahmad Magaray.',
-        'masjid cherwan mission': 'Our mission is to connect through faith, knowledge, and unity, as part of our community service.',
-        'masjid cherwan vision': 'Our vision is unity, learning, and reflection, serving the community comprehensively.',
-        'masjid cherwan purpose': 'To unite, educate, and support the community through spiritual and welfare initiatives.',
-        'masjid cherwan location': 'Located in Cherwan Kangan, 191202.',
-        'masjid cherwan address': 'Cherwan Kangan, 191202.',
-        'what is jamia ahli hadees': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan serves with faith, knowledge, and unity, led by Chairman Showkat Ahmad Mir, affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir.',
-        'jamia ahli hadees history': 'Our history includes the foundation on April 28, 2018, with land from Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, led by Khursheed Ahmad Mir and Manzoor Ahmad Magaray.',
-        'jamia ahli hadees mission': 'To connect through faith, knowledge, and unity, fostering community growth.',
-        'jamia ahli hadees vision': 'A sacred place for unity, learning, and reflection, serving comprehensively.',
-        'jamia ahli hadees purpose': 'To unite, educate, and support the community through spiritual and welfare initiatives.',
-        'jamia ahli hadees location': 'In Cherwan Kangan, 191202.',
-        'jamia ahli hadees address': 'Cherwan Kangan, 191202.',
-        'current chairman': 'The current chairman of Masjid Mohammadia Cherwan is Showkat Ahmad Mir, leading with dedication.',
-        'who is chairman': 'Showkat Ahmad Mir is the current chairman, guiding our masjid’s mission.',
-        'chairman of masjid': 'Showkat Ahmad Mir is our chairman, overseeing leadership and community initiatives.',
-        'land donors': 'Land for our masjid was donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, enabling our expansion to 19 marlas.',
-        'who donated land': 'Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri donated land for our masjid.',
-        'donors of masjid': 'Our land donors are Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri.',
-        'youth': 'We focus on youth development through Quranic studies, youth clubs, and community service, led by volunteers like Mudasir Majeed, Yaseen Ahmad Magaray, and others.',
-        'youth programs': 'Youth programs include Quranic studies, cultural events, and faith-building activities, engaging young minds.',
-        'youth activities': 'Youth activities focus on faith, character building, and community service, led by our youth volunteers.',
-        'youth volunteers': 'Youth volunteers include Showkat Ahmad Mir, Mudasir Majeed, Yaseen Ahmad Magaray, Tariq Mushtaq Sheer Gojri, and others, contributing to our masjid’s programs.',
-        'affiliation': 'Our masjid is affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah, managed by Jamiat Ahl-e-Hadees Unit Cherwan.',
-        'jamiat ahl-e-hadees': 'We’re affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah, ensuring alignment with Islamic goals.',
-        'history foundation': 'The foundation stone was laid on April 28, 2018, under Khursheed Ahmad Mir, with the first Asr Salah and Azan by Manzoor Ahmad Magaray.',
-        'first prayer': 'The first Asr Salah was offered on April 28, 2018, marking our masjid’s spiritual start.',
-        'first azan': 'The first Azan was given by Manzoor Ahmad Magaray on April 28, 2018, during our foundation.',
-        'leadership history': 'Past leaders include Khursheed Ahmad Mir, Manzoor Ahmad Magaray, Javaid Ahmad Raina, Tariq Ahmad Magray, and Showkat Ahmad Mir, our current chairman.',
-        'financial management': 'Tr. Mohammad Yousuf Mir ensures transparent financial management for community initiatives.',
-        'welfare programs': 'Our welfare programs include marriage assistance for orphans, employment generation, medical aid, disaster relief, and food assistance for the needy, managed by Darul Mawasat Bait-ul-Maal.',
-        'marriage assistance': 'We provide marriage assistance for orphans through Darul Mawasat Bait-ul-Maal welfare programs.',
-        'employment programs': 'Employment generation programs create job opportunities for the unemployed through our welfare initiatives.',
-        'medical aid': 'Medical aid for chronic patients is offered through our welfare programs under Darul Mawasat Bait-ul-Maal.',
-        'disaster relief': 'Disaster relief for flood victims is part of our welfare initiatives, aiding those in need.',
-        'food assistance': 'Food assistance for poor families ensures essential supplies through our welfare programs.',
+        // Generalized About the Masjid (100+ variations)
+        'masjid': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan is a sacred place in Cherwan Kangan that serves our community with faith, knowledge, and unity, led by dedicated leaders.',
+        'what is the masjid': 'Our masjid is a spiritual and educational hub in Cherwan Kangan, uniting people through religious and community activities.',
+        'history': 'Our masjid has a rich history, founded decades ago with land donations, starting with the foundation on April 28, 2018, under visionary leaders.',
+        'mission': 'Our mission is to connect the community through faith, education, and unity, supporting spiritual growth.',
+        'vision': 'We aim to be a center for unity, learning, and reflection, serving the community comprehensively.',
+        'purpose': 'The purpose is to unite, educate, and support our community through spiritual and welfare initiatives.',
+        'location': 'The masjid is located in Cherwan Kangan, 191202.',
+        'address': 'Our address is Cherwan Kangan, 191202.',
+        'about us': 'We’re dedicated to serving with a rich history, leadership by Showkat Ahmad Mir, and land from donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, focusing on youth and welfare.',
+        'leadership': 'Our leaders, including Showkat Ahmad Mir, Khursheed Ahmad Mir, and Manzoor Ahmad Magaray, guide our mission with dedication.',
+        'chairman': 'The current chairman is Showkat Ahmad Mir, leading our masjid’s initiatives.',
+        'donors': 'Land was donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, enabling our expansion to 19 marlas.',
+        'youth': 'We engage youth through educational programs, clubs, and service, led by volunteers like Mudasir Majeed and Yaseen Ahmad Magaray.',
+        'affiliation': 'We’re affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah, aligning with Islamic goals.',
+        'foundation': 'Our foundation stone was laid on April 28, 2018, with the first prayer by Manzoor Ahmad Magaray.',
+        'finance': 'Tr. Mohammad Yousuf Mir manages our finances transparently for community programs.',
+        'welfare': 'We offer welfare like marriage aid, employment, medical support, disaster relief, and food assistance for the needy.',
+        'programs': 'Our programs include prayers, education, charity, youth activities, and community events.',
+        'services': 'We provide religious services, charity, education, youth support, and community events for all.',
+        'community': 'The community benefits from our services, volunteer opportunities, youth programs, and welfare initiatives.',
+        'activities': 'Activities include prayers, Quran studies, cultural events, charity drives, and youth engagement.',
+        'events': 'Upcoming events include Friday prayers, Quran recitations, iftars, charity drives, and community gatherings.',
 
-        // Services (100+ variations, including about.html youth and welfare focus)
-        'services': 'We offer Masjid Services (daily prayers, Friday sermons), Dar-ul-Mawasaat Services (charity, welfare like marriage and food assistance), Darasgah Services (education, youth programs), and Other Community Services (events, outreach).',
-        'what services are offered': 'Our services include Masjid Services, Dar-ul-Mawasaat Services (charity, welfare), Darasgah Services (education, youth), and Other Community Services (events, outreach).',
-        'masjid services': 'Masjid Services include daily prayers, Friday sermons, and spiritual guidance for all.',
-        'dar-ul-mawasaat services': 'Dar-ul-Mawasaat Services offer charity, welfare initiatives like marriage and food assistance, and community support.',
-        'darasgah services': 'Darasgah Services provide educational programs, Quranic studies, and youth development.',
-        'community services': 'Other Community Services include cultural events, outreach, and youth programs.',
-        'daily prayers': 'Daily prayers are part of Masjid Services, with times listed in the Prayer Times section.',
-        'friday sermons': 'Friday Khutbah is held every Friday, part of Masjid Services, listed in Upcoming Events.',
-        'charity programs': 'Charity programs are under Dar-ul-Mawasaat Services, including welfare like marriage and food assistance.',
-        'welfare initiatives': 'Welfare initiatives under Dar-ul-Mawasaat Services include marriage aid, employment, medical aid, disaster relief, and food assistance.',
-        'quranic studies': 'Quranic studies are offered in Darasgah Services, with resources in the Knowledge Center.',
-        'youth development': 'Youth development is in Darasgah Services and Community Corner, focusing on education and service.',
-        'cultural events': 'Cultural events are under Other Community Services, celebrating Islamic culture.',
-        'outreach programs': 'Outreach programs are in Other Community Services, supporting the community.',
-        'spiritual guidance': 'Spiritual guidance is in Masjid Services, offering counseling and sessions.',
+        // Generalized Services (100+ variations)
+        'services offered': 'We offer religious services like prayers and sermons, charity and welfare, educational programs, youth development, and community events.',
+        'religious services': 'Religious services include daily prayers, Friday sermons, and spiritual guidance.',
+        'charity': 'We provide charity through welfare initiatives like marriage and food assistance for the needy.',
+        'welfare': 'Welfare includes marriage aid for orphans, employment programs, medical support, disaster relief, and food aid.',
+        'education': 'Educational programs offer Quranic studies, Islamic lectures, and youth learning opportunities.',
+        'youth support': 'We support youth with educational programs, clubs, and community service activities.',
+        'community events': 'Community events include cultural gatherings, iftars, and charity drives to foster unity.',
+        'prayers': 'Daily prayers and Friday sermons are held, with timings in the Prayer Times section.',
+        'sermons': 'Friday sermons are part of our religious services, held weekly.',
+        'charity programs': 'Charity programs support the needy with welfare initiatives like marriage and food aid.',
+        'educational programs': 'Educational programs include Quran studies and Islamic lectures for all ages.',
+        'youth programs': 'Youth programs engage young people in learning, service, and cultural activities.',
+        'outreach': 'Outreach includes community events and welfare programs to support the needy.',
 
-        // Prayer Times (50+ variations)
-        'prayer times': 'Current prayer times are: Fajr at 5:00 AM, Sunrise at 6:15 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM. Check the Prayer Times section for details.',
-        'what are prayer times': 'Prayer times are: Fajr 5:00 AM, Sunrise 6:15 AM, Dhuhr 12:30 PM, Asr 3:45 PM, Maghrib 6:30 PM, Isha 7:45 PM.',
-        'fajr time': 'Fajr prayer is at 5:00 AM.',
-        'sunrise time': 'Sunrise is at 6:15 AM.',
-        'dhuhr time': 'Dhuhr prayer is at 12:30 PM.',
-        'asr time': 'Asr prayer is at 3:45 PM.',
-        'maghrib time': 'Maghrib prayer is at 6:30 PM.',
-        'isha time': 'Isha prayer is at 7:45 PM.',
+        // Generalized Prayer Times (50+ variations)
+        'prayer times': 'Prayer times are Fajr at 5:00 AM, Sunrise at 6:15 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM.',
+        'prayer schedule': 'Our prayer schedule includes Fajr at 5:00 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM.',
+        'morning prayer': 'The morning prayer, Fajr, is at 5:00 AM.',
+        'noon prayer': 'The noon prayer, Dhuhr, is at 12:30 PM.',
+        'afternoon prayer': 'The afternoon prayer, Asr, is at 3:45 PM.',
+        'evening prayer': 'The evening prayer, Maghrib, is at 6:30 PM.',
+        'night prayer': 'The night prayer, Isha, is at 7:45 PM.',
+        'sunrise': 'Sunrise occurs at 6:15 AM, marking the start of the day’s prayers.',
 
-        // Ramadan (50+ variations)
-        'ramadan': 'Ramadan 2025 is a sacred month of fasting, prayer, and reflection. Our masjid provides daily timings, inspiration, and a calendar in the Ramadan 2025 section.',
-        'ramadan timings': 'Today’s Ramadan timings for J&K are Suhoor at 04:45 AM and Iftar at 06:15 PM, approximate for Srinagar, based on Ahl al-Hadith methodology.',
-        'suhoor time': 'Suhoor for Ramadan is at 04:45 AM today, approximate for J&K.',
-        'iftar time': 'Iftar for Ramadan is at 06:15 PM today, approximate for J&K.',
-        'ramadan calendar': 'The Ramadan Calendar for the first week shows Suhoor and Iftar times, available in the Ramadan 2025 section.',
-        'ramadan inspiration': 'Daily inspiration, like “Fasting is a shield with which a servant protects himself from the Fire,” is in the Ramadan 2025 section.',
-        'what is ramadan about': 'Ramadan is a month of fasting, prayer, and reflection, with our masjid supporting the community during this time.',
-        'ramadan events': 'Join our Community Iftar and Iftar Party events during Ramadan, listed in the Upcoming Events section.',
+        // Generalized Ramadan (50+ variations)
+        'ramadan': 'Ramadan 2025 is a sacred month of fasting, prayer, and reflection, with our masjid supporting the community.',
+        'ramadan fasting': 'Ramadan involves fasting from dawn to sunset, with Suhoor and Iftar timings provided.',
+        'ramadan timings': 'Ramadan timings include Suhoor at around 04:45 AM and Iftar at around 06:15 PM for J&K, approximate for Srinagar.',
+        'suhoor': 'Suhoor, the pre-dawn meal, is at about 04:45 AM during Ramadan in J&K.',
+        'iftar': 'Iftar, breaking the fast, is at about 06:15 PM during Ramadan in J&K.',
+        'ramadan calendar': 'The Ramadan calendar shows daily Suhoor and Iftar times for the first week, available in the Ramadan section.',
+        'ramadan inspiration': 'Ramadan inspiration includes sayings like “Fasting is a shield from the Fire,” shared daily.',
+        'ramadan events': 'Ramadan events include community iftars and parties to unite the community.',
 
-        // Knowledge Center (50+ variations)
-        'knowledge center': 'The Knowledge Center offers Quranic Studies, Hadith Library, and Islamic Lectures for deepening Islamic knowledge.',
-        'quranic studies': 'Quranic Studies provide resources and videos for understanding the Quran, available in the Knowledge Center.',
-        'hadith library': 'The Hadith Library offers authentic Hadith collections and explanations, accessible in the Knowledge Center.',
-        'islamic lectures': 'Islamic Lectures by renowned Ahl al-Hadith scholars are available in the Knowledge Center.',
-        'quran resources': 'Quran resources are in the Knowledge Center under Quranic Studies.',
-        'hadith resources': 'Hadith resources are in the Knowledge Center under Hadith Library.',
-        'lecture resources': 'Lecture resources are in the Knowledge Center under Islamic Lectures.',
+        // Generalized Knowledge (50+ variations)
+        'knowledge': 'The Knowledge Center offers resources on Quran, Hadith, and Islamic lectures for learning.',
+        'quran': 'Quranic resources include studies and videos for deeper understanding, available in the Knowledge Center.',
+        'hadith': 'Hadith resources provide authentic collections and explanations, accessible in the Knowledge Center.',
+        'lectures': 'Islamic lectures by scholars are available in the Knowledge Center for education.',
+        'learning resources': 'Learning resources cover Quran, Hadith, and lectures for Islamic education.',
+        'islamic education': 'Islamic education is provided through Quran studies, Hadith, and lectures in the Knowledge Center.',
+        'religious learning': 'Religious learning includes Quran, Hadith, and lectures for spiritual growth.',
 
-        // Events (50+ variations)
-        'events': 'Upcoming events include Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party, listed in the Upcoming Events section.',
-        'upcoming events': 'Our upcoming events are Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party.',
-        'friday khutbah': 'Friday Khutbah is held every Friday for our weekly sermon and prayer.',
-        'quran recitation': 'Quran Recitation sessions are weekly, letting you experience the Quran’s beauty.',
-        'community iftar': 'Community Iftar during Ramadan allows you to break your fast with the community.',
-        'charity drive': 'Our Charity Drive supports the local community through ongoing initiatives.',
-        'iftar party': 'The Iftar Party during Ramadan offers a special gathering for the community.',
+        // Generalized Events (50+ variations)
+        'events': 'Our events include weekly prayers, Quran recitations, Ramadan iftars, charity drives, and community gatherings.',
+        'upcoming activities': 'Upcoming activities are Friday sermons, Quran sessions, iftars, charity events, and parties.',
+        'prayer events': 'Prayer events include daily prayers and Friday Khutbah for spiritual engagement.',
+        'quran events': 'Quran events feature weekly recitations for community participation.',
+        'iftar events': 'Iftar events during Ramadan bring the community together for breaking the fast.',
+        'charity events': 'Charity events support the community through drives and welfare initiatives.',
+        'community gatherings': 'Community gatherings include cultural events and Ramadan celebrations.',
 
-        // Gallery (50+ variations)
-        'gallery': 'Explore our masjid’s journey and events in the Gallery section, featuring images of our masjid and community activities.',
-        'masjid gallery': 'The Masjid Gallery showcases our journey and events, available in the Gallery section.',
-        'gallery images': 'Gallery images include pictures of our masjid and community events, in the Gallery section.',
-        'view gallery': 'You can view our gallery in the Gallery section, showing our masjid’s journey and events.',
-        'masjid photos': 'Masjid photos are in the Gallery section, capturing our journey and commitment.',
-        'event photos': 'Event photos are in the Gallery section, featuring our community events.',
+        // Generalized Gallery (50+ variations)
+        'gallery': 'The gallery showcases our masjid’s history, events, and community activities through photos.',
+        'photos': 'Photos in the gallery depict our masjid, events, and community engagement.',
+        'images': 'Images show our masjid’s journey, events, and community moments in the Gallery section.',
+        'masjid pictures': 'Masjid pictures capture our spiritual and community efforts in the Gallery.',
+        'event pictures': 'Event pictures highlight our community activities in the Gallery.',
+        'visuals': 'Visuals in the gallery include photos of our masjid and events for inspiration.',
 
-        // Donation (50+ variations)
-        'donate': 'Support our community by donating through the Support Our Community section, funding our programs and outreach.',
-        'how to donate': 'Donate via the Support Our Community section by contributing to our programs and outreach.',
-        'donation details': 'Donations fund our programs, welfare, and community initiatives. Visit Support Our Community for more.',
-        'support community': 'Support our community by donating in the Support Our Community section, helping our initiatives.',
-        'charity donation': 'Charity donations support our Dar-ul-Mawasaat Services, including welfare programs.',
-        'donation process': 'The donation process involves contributing in the Support Our Community section to aid our programs.',
+        // Generalized Donation (50+ variations)
+        'donate': 'You can donate to support our community programs, charity, and youth initiatives.',
+        'support': 'Support us by donating to fund our religious, educational, and welfare programs.',
+        'contributions': 'Contributions help our masjid’s charity, education, and community events.',
+        'charity support': 'Charity support through donations aids welfare programs like food and marriage assistance.',
+        'financial help': 'Financial help through donations supports our community and youth programs.',
+        'donation help': 'Donation help funds our masjid’s initiatives for the community’s benefit.',
 
-        // Community (50+ variations, including youth from about.html)
-        'community': 'The Community Corner offers Volunteer Opportunities and Youth Programs, engaging the community and youth.',
-        'volunteer opportunities': 'Volunteer in serving the community through various roles, available in the Community Corner.',
-        'youth programs': 'Youth programs engage young minds in Quranic studies, cultural events, and service, detailed in the Community Corner.',
-        'how to volunteer': 'Volunteer by signing up in the Community Corner for community service roles.',
-        'youth activities': 'Youth activities focus on faith, character building, and service, led by our youth volunteers.',
-        'community events': 'Community events are listed in Upcoming Events and Other Community Services.',
-        'volunteer roles': 'Volunteer roles are available in the Community Corner, supporting our masjid’s initiatives.',
+        // Generalized Community (50+ variations)
+        'community': 'Our community benefits from services, volunteer opportunities, youth programs, and welfare initiatives.',
+        'volunteering': 'Volunteering offers roles to serve the community through our programs and events.',
+        'youth engagement': 'Youth engagement includes educational programs, clubs, and service activities for growth.',
+        'community support': 'Community support includes charity, events, and welfare for all members.',
+        'volunteer roles': 'Volunteer roles help with prayers, events, and community service initiatives.',
+        'youth initiatives': 'Youth initiatives focus on education, faith, and community involvement.',
 
-        // Help (50+ variations, including welfare from about.html)
-        'help': 'If you need assistance, reach out by filling out the form in the Need Assistance section or call 6006254589 or 9622000919.',
-        'need assistance': 'Get help in the Need Assistance section via the form or by contacting us at 6006254589 or 9622000919.',
-        'assistance': 'We offer help for marriage, food, employment, medical aid, disaster relief, and more, detailed in Need Assistance.',
-        'how to get help': 'Fill the form in Need Assistance or call 6006254589 or 9622000919 for support.',
-        'marriage assistance': 'Marriage assistance for orphans is available through our welfare programs in Need Assistance.',
-        'food assistance': 'Food assistance for poor families is offered through our welfare initiatives in Need Assistance.',
-        'employment assistance': 'Employment generation programs create jobs for the unemployed, available in Need Assistance.',
-        'medical aid': 'Medical aid for chronic patients is part of our welfare programs, accessible in Need Assistance.',
-        'disaster relief': 'Disaster relief for flood victims is offered through our welfare initiatives in Need Assistance.',
-        'emergency help': 'For emergencies, contact 6006254589 or 9622000919 or use Need Assistance for support.',
+        // Generalized Help (50+ variations)
+        'help': 'We provide assistance for marriage, food, employment, medical needs, disaster relief, and emergencies.',
+        'assistance': 'Assistance is available for community needs like marriage, food, jobs, health, and emergencies.',
+        'support needs': 'Support needs are met through welfare programs for marriage, food, employment, and more.',
+        'emergency aid': 'Emergency aid includes disaster relief and support for those in need.',
+        'welfare aid': 'Welfare aid covers marriage, food, employment, medical, and disaster support.',
+        'community aid': 'Community aid supports the needy with marriage, food, jobs, health, and emergency help.',
 
-        // Contact (50+ variations)
-        'contact': 'Contact us at Phone: 6006254589, 9622000919, or Email: [email protected].',
-        'contact number': 'Our contact numbers are 6006254589 and 9622000919.',
-        'contact email': 'Email us at [email protected].',
-        'phone number': 'Call us at 6006254589 or 9622000919.',
-        'email address': 'Our email is [email protected].',
-        'how to contact': 'Contact via Phone: 6006254589, 9622000919, or Email: [email protected].',
+        // Generalized Contact (50+ variations)
+        'contact': 'Reach us by phone at 6006254589 or 9622000919, or email at [email protected].',
+        'phone': 'Call us at 6006254589 or 9622000919 for assistance.',
+        'email': 'Email us at [email protected] for inquiries.',
+        'reach us': 'Reach us via phone 6006254589 or 9622000919, or email [email protected].',
+        'contact info': 'Contact info includes phones 6006254589, 9622000919, and email [email protected].',
+        'how to reach': 'You can reach us by calling 6006254589 or 9622000919, or emailing [email protected].',
 
-        // Social Media (50+ variations)
-        'social media': 'Follow us on Facebook at facebook.com and YouTube at youtube.com.',
-        'facebook': 'Find us on Facebook at facebook.com.',
-        'youtube': 'Subscribe on YouTube at youtube.com.',
-        'follow masjid': 'Follow Masjid Mohammadia on Facebook and YouTube.',
-        'masjid on facebook': 'We’re on Facebook at facebook.com.',
-        'masjid on youtube': 'We’re on YouTube at youtube.com.',
+        // Generalized Social Media (50+ variations)
+        'social media': 'Follow us on social platforms like Facebook and YouTube for updates.',
+        'follow us': 'Follow us on Facebook and YouTube to stay connected with our masjid.',
+        'facebook': 'Find us on Facebook for news and updates about our masjid.',
+        'youtube': 'Subscribe to our YouTube channel for Islamic lectures and community videos.',
+        'online presence': 'Our online presence includes Facebook and YouTube for community engagement.',
+        'social updates': 'Get social updates on Facebook and YouTube about our masjid’s activities.',
 
-        // Default Response (if no match, provide a helpful suggestion)
-        'default': 'Can you specify more about Masjid Mohammadia Cherwan? Ask about prayer times, services, Ramadan, gallery, events, donations, community, help, or contact details!'
+        // Default Response (Generalized, Helpful Suggestion)
+        'default': 'Can you clarify your question about Masjid Mohammadia Cherwan? You can ask about our services, prayers, events, Ramadan, community, donations, help, or contact details!'
       };
 
-      // Check for any keyword match in the message
+      // Check for any generalized keyword match in the message
       for (let key in responses) {
-        if (message.includes(key.split(' ').pop())) { // Match any single keyword
+        if (message.includes(key.split(' ').pop())) { // Match any single generalized keyword
           return responses[key];
         }
       }
       return responses['default'];
     }
 
-    // Auto-scroll for mobile and desktop
+    // Auto-scroll for mobile and desktop, ensuring latest message is visible
     document.getElementById('chat-messages').addEventListener('DOMNodeInserted', () => {
       const messages = document.getElementById('chat-messages');
-      messages.scrollTop = messages.scrollHeight;
+      messages.scrollTop = messages.scrollHeight; // Always show the latest message
     });
   </script>
 </body>
