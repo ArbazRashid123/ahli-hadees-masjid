@@ -216,6 +216,24 @@
     }
     .donation-details strong { color: #1a3c34; flex-shrink: 0; }
 
+    /* Show Scanner Button */
+    .show-scanner {
+      display: inline-block;
+      background: linear-gradient(90deg, #ffd700, #ffaa00);
+      color: #1a3c34;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .show-scanner:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255,215,0,0.5);
+    }
+
     /* Copy Button & Tooltip */
     .copyable {
       position: relative;
@@ -266,13 +284,20 @@
       justify-content: center;
       background: #eef9f1;
       border-radius: 10px;
-      min-height: 200px;
+      min-height: 0;
       text-align: center;
       color: #888;
       font-style: italic;
       font-size: 1rem;
-      transition: transform 0.3s ease;
       overflow: hidden;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .scanner-placeholder.visible {
+      opacity: 1;
+      transform: translateX(0);
+      min-height: 200px;
     }
     .scanner-placeholder img {
       max-width: 100%;
@@ -280,6 +305,10 @@
       display: block;
     }
     .scanner-placeholder:hover { transform: scale(1.05); }
+    @media (max-width: 768px) {
+      .scanner-placeholder { transform: translateY(100%); }
+      .scanner-placeholder.visible { transform: translateY(0); }
+    }
 
     /* Back-to-Top Button */
     .back-to-top {
@@ -321,8 +350,9 @@
       .section-title { font-size: 1.8rem; }
       .donation-details h2 { font-size: 1.3rem; }
       .donation-details p { font-size: 0.85rem; }
-      .scanner-placeholder { min-height: 180px; }
+      .scanner-placeholder.visible { min-height: 180px; }
       .copy-btn { font-size: 0.7rem; padding: 0.15rem 0.4rem; }
+      .show-scanner { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
     }
   </style>
 </head>
@@ -357,6 +387,7 @@
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> General funds for mosque operations and maintenance.</p>
+        <button class="show-scanner">Show Scanner</button>
       </div>
       <div class="scanner-placeholder"><img src="masjidscanner.jpg" alt="Masjid QR Code" /></div>
     </div>
@@ -369,6 +400,7 @@
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Welfare and social initiatives to support the community.</p>
+        <button class="show-scanner">Show Scanner</button>
       </div>
       <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Dar-ul-Mawasaat QR Code" /></div>
     </div>
@@ -381,6 +413,7 @@
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Support for educational programs and community development.</p>
+        <button class="show-scanner">Show Scanner</button>
       </div>
       <div class="scanner-placeholder">QR Code Coming Soon</div>
     </div>
@@ -416,6 +449,14 @@
           copyable.classList.add('copied');
           setTimeout(() => copyable.classList.remove('copied'), 1000);
         });
+      });
+    });
+
+    // Show Scanner Toggle
+    document.querySelectorAll('.show-scanner').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const scanner = btn.parentElement.nextElementSibling;
+        scanner.classList.toggle('visible');
       });
     });
 
