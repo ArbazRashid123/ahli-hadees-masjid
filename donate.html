@@ -191,8 +191,8 @@
       border-bottom: 2px dashed #ddd;
     }
     @media (min-width: 768px) {
-      .donation-details, .scanner-placeholder { flex: 1 1 45%; }
       .donation-details { border-bottom: none; border-right: 2px dashed #ddd; }
+      .scanner-placeholder.visible { flex: 1 1 45%; }
     }
     .donation-details h2 {
       font-size: 1.5rem;
@@ -219,19 +219,27 @@
     /* Show Scanner Button */
     .show-scanner {
       display: inline-block;
-      background: linear-gradient(90deg, #ffd700, #ffaa00);
+      background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700);
+      background-size: 200% 200%;
       color: #1a3c34;
       padding: 0.5rem 1rem;
-      border-radius: 5px;
+      border-radius: 25px;
+      border: 2px solid #ffaa00;
       cursor: pointer;
       font-size: 0.9rem;
+      font-weight: 600;
       margin-top: 0.5rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: buttonGlow 3s ease infinite;
     }
     .show-scanner:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(255,215,0,0.5);
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255,215,0,0.6);
+    }
+    @keyframes buttonGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     /* Copy Button & Tooltip */
@@ -279,12 +287,11 @@
 
     /* Scanner Placeholder */
     .scanner-placeholder {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       background: #eef9f1;
       border-radius: 10px;
-      min-height: 0;
       text-align: center;
       color: #888;
       font-style: italic;
@@ -295,6 +302,7 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .scanner-placeholder.visible {
+      display: flex;
       opacity: 1;
       transform: translateX(0);
       min-height: 200px;
