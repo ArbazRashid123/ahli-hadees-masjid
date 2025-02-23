@@ -347,13 +347,17 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1s ease-out;
+      overflow-x: auto; /* Enable horizontal scrolling on mobile */
+      display: block; /* Ensure table is block-level for scrolling */
     }
     #prayer-times th,
     #prayer-times td {
-      padding: 12px;
+      padding: 10px; /* Reduced padding for mobile */
       text-align: center;
       border-bottom: 1px solid #ddd;
       transition: background 0.3s ease, transform 0.3s ease;
+      min-width: 80px; /* Minimum width for each cell to prevent excessive shrinking */
+      font-size: 0.9em; /* Reduced font size for mobile */
     }
     #prayer-times th {
       background: linear-gradient(90deg, #006600, #008000);
@@ -644,11 +648,14 @@
       }
 
       #prayer-times table {
-        font-size: 1.1em;
+        overflow-x: visible; /* Remove scrolling on desktop */
+        display: table; /* Reset to default table display on desktop */
       }
       #prayer-times th,
       #prayer-times td {
-        padding: 15px;
+        padding: 15px; /* Increased padding for desktop */
+        font-size: 1.1em; /* Increased font size for desktop */
+        min-width: 100px; /* Slightly wider cells for desktop */
       }
 
       .contact-form {
