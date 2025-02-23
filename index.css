@@ -81,7 +81,7 @@ nav ul li a:hover {
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor') no-repeat center center/cover;
-  height: 100vh;
+  height: 60vh; /* Reduced height for mobile to prevent it from being too large in desktop site emulation */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,18 +96,18 @@ header {
   padding: 0 10px;
 }
 header h1 {
-  font-size: 2em;
+  font-size: 1.8em; /* Slightly reduced for mobile to fit better with reduced height */
   font-weight: 700;
   margin-bottom: 10px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 header h2 {
-  font-size: 1.5em;
+  font-size: 1.3em; /* Slightly reduced for mobile to fit better */
   font-weight: 500;
   margin-bottom: 15px;
 }
 header .hero-subheading {
-  font-size: 1em;
+  font-size: 0.9em; /* Slightly reduced for mobile to fit better */
   margin-bottom: 20px;
 }
 header .btn {
