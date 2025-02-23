@@ -60,6 +60,7 @@
       gap: 0.5rem;
       font-size: 0.9rem;
       color: #333;
+      margin-bottom: 1rem;
     }
     .modal-content button {
       background: linear-gradient(90deg, #ffd700, #ffaa00);
@@ -85,6 +86,78 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+    @keyframes slideInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Video Modal */
+    .video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .video-modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .video-modal-content video {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      display: block;
+    }
+    .video-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    .video-controls button {
+      background: none;
+      border: none;
+      color: #ffd700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .video-controls button:hover { transform: scale(1.2); }
+    .video-controls input[type="range"] {
+      width: 100px;
+      accent-color: #ffd700;
+    }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffaa00;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .close-modal:hover { transform: scale(1.1); }
 
     /* Header */
     h1 {
@@ -101,7 +174,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 1.5rem;
-      display: none; /* Hidden until privacy agreed */
+      display: none;
       position: relative;
     }
     .gallery-container.visible { display: block; }
@@ -119,14 +192,20 @@
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin: 2rem 0 1rem;
-      background: linear-gradient(90deg, #2d8652, #3ca372, #2d8652);
+      background: linear-gradient(90deg, #2d8652, #ffd700, #2d8652);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: flowColors 6s ease infinite;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      animation: flowColors 4s ease infinite, glowText 2s ease infinite;
+    }
+    @keyframes glowText {
+      0%, 100% { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+      50% { text-shadow: 0 4px 12px rgba(255, 215, 0, 0.5); }
     }
 
     .photo-gallery, .video-gallery {
@@ -157,41 +236,18 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
     }
     .video-container video {
       width: 100%;
       height: 200px;
       object-fit: cover;
       display: block;
-      pointer-events: none;
     }
     .video-container:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-    .video-controls {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      display: none;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 50%;
-      padding: 0.5rem;
-    }
-    .video-container:hover .video-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mute-btn {
-      background: none;
-      border: none;
-      color: #ffd700;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .mute-btn:hover { transform: scale(1.2); }
 
     /* Responsive Adjustments */
     @media (min-width: 768px) {
@@ -206,7 +262,10 @@
       .modal-content { padding: 1.5rem; }
       .modal-content h2 { font-size: 1.5rem; }
       .modal-content p { font-size: 0.9rem; }
+      .modal-content label { font-size: 0.85rem; }
       .modal-content button { font-size: 0.9rem; padding: 0.5rem 1.2rem; }
+      .video-controls { gap: 0.5rem; }
+      .video-controls input[type="range"] { width: 80px; }
     }
   </style>
 </head>
@@ -217,10 +276,27 @@
       <h2>Welcome to the Masjid Gallery</h2>
       <p>The photos and videos in this gallery are for personal viewing only. Sharing or using them for any harmful purpose is strictly prohibited and may result in legal action.</p>
       <label>
+        <input type="checkbox" id="read-details">
+        I ensure I have read the above details
+      </label>
+      <label>
         <input type="checkbox" id="privacy-agree">
         I agree to the terms and conditions
       </label>
       <button id="enter-gallery" disabled>Enter Gallery</button>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal">
+    <div class="video-modal-content">
+      <video controls></video>
+      <div class="video-controls">
+        <button class="play-pause-btn">▶️</button>
+        <button class="mute-btn">🔊</button>
+        <input type="range" min="0" max="1" step="0.1" value="1" class="volume-slider">
+        <button class="close-modal">✖</button>
+      </div>
     </div>
   </div>
 
@@ -297,93 +373,48 @@
     <div class="video-gallery">
       <div class="video-container">
         <video src="video1.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video2.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video3.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video4.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video5.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="videoex.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="videoex2.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="image33.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video6.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video7.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video8.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video9.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video10.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video11.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
       <div class="video-container">
         <video src="video12.mp4" loop muted></video>
-        <div class="video-controls">
-          <button class="mute-btn">🔊</button>
-        </div>
       </div>
     </div>
   </div>
@@ -391,49 +422,93 @@
   <script>
     // Privacy Modal Logic
     const modal = document.querySelector('.privacy-modal');
-    const checkbox = document.getElementById('privacy-agree');
+    const readCheckbox = document.getElementById('read-details');
+    const agreeCheckbox = document.getElementById('privacy-agree');
     const enterBtn = document.getElementById('enter-gallery');
     const gallery = document.querySelector('.gallery-container');
 
-    checkbox.addEventListener('change', () => {
-      enterBtn.disabled = !checkbox.checked;
-    });
+    function checkCheckboxes() {
+      enterBtn.disabled = !(readCheckbox.checked && agreeCheckbox.checked);
+    }
+
+    readCheckbox.addEventListener('change', checkCheckboxes);
+    agreeCheckbox.addEventListener('change', checkCheckboxes);
 
     enterBtn.addEventListener('click', () => {
-      if (checkbox.checked) {
+      if (readCheckbox.checked && agreeCheckbox.checked) {
         modal.style.display = 'none';
         gallery.classList.add('visible');
       }
     });
 
-    // Video Hover and Mute Logic
+    // Video Modal Logic
+    const videoModal = document.querySelector('.video-modal');
+    const videoModalContent = document.querySelector('.video-modal-content');
+    const modalVideo = videoModalContent.querySelector('video');
+    const playPauseBtn = document.querySelector('.play-pause-btn');
+    const muteBtn = document.querySelector('.mute-btn');
+    const volumeSlider = document.querySelector('.volume-slider');
+    const closeModalBtn = document.querySelector('.close-modal');
+
     document.querySelectorAll('.video-container').forEach(container => {
-      const video = container.querySelector('video');
-      const muteBtn = container.querySelector('.mute-btn');
-
-      container.addEventListener('mouseenter', () => {
-        video.play();
-      });
-      container.addEventListener('mouseleave', () => {
-        video.pause();
-        video.currentTime = 0; // Reset to start
-      });
-
-      muteBtn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        muteBtn.textContent = video.muted ? '🔇' : '🔊';
-      });
-
-      // Touch support for mobile
-      container.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        video.play();
-      });
-      container.addEventListener('touchend', () => {
-        video.pause();
-        video.currentTime = 0;
+      container.addEventListener('click', () => {
+        const videoSrc = container.querySelector('video').src;
+        modalVideo.src = videoSrc;
+        modalVideo.muted = true; // Start muted
+        muteBtn.textContent = '🔇';
+        volumeSlider.value = 1;
+        playPauseBtn.textContent = '▶️';
+        videoModal.style.display = 'flex';
+        modalVideo.play();
       });
     });
+
+    playPauseBtn.addEventListener('click', () => {
+      if (modalVideo.paused) {
+        modalVideo.play();
+        playPauseBtn.textContent = '⏸️';
+      } else {
+        modalVideo.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    });
+
+    muteBtn.addEventListener('click', () => {
+      modalVideo.muted = !modalVideo.muted;
+      muteBtn.textContent = modalVideo.muted ? '🔇' : '🔊';
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      modalVideo.volume = volumeSlider.value;
+      modalVideo.muted = volumeSlider.value == 0;
+      muteBtn.textContent = modalVideo.muted ? '🔇' : '🔊';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modalVideo.pause();
+      videoModal.style.display = 'none';
+    });
+
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        modalVideo.pause();
+        videoModal.style.display = 'none';
+      }
+    });
+
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.photo-gallery img, .video-container').forEach(el => observer.observe(el));
+    document.querySelector('.gallery-container').classList.add('visible');
   </script>
 </body>
 </html>
