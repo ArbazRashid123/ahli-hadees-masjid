@@ -272,12 +272,14 @@
       font-style: italic;
       font-size: 1rem;
       transition: transform 0.3s ease;
-      background-size: cover;
-      background-position: center;
+      overflow: hidden;
+    }
+    .scanner-placeholder img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
     .scanner-placeholder:hover { transform: scale(1.05); }
-    .scanner-placeholder1 { background-image: url('masjidscanner.jpg'); }
-    .scanner-placeholder2 { background-image: url('dmsscanner.jpg'); }
 
     /* Back-to-Top Button */
     .back-to-top {
@@ -356,7 +358,7 @@
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> General funds for mosque operations and maintenance.</p>
       </div>
-      <div class="scanner-placeholder scanner-placeholder1"></div>
+      <div class="scanner-placeholder"><img src="masjidscanner.jpg" alt="Masjid QR Code" /></div>
     </div>
 
     <!-- Donate to Dar-ul-Mawasaat Welfare Foundation Section -->
@@ -368,7 +370,7 @@
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Welfare and social initiatives to support the community.</p>
       </div>
-      <div class="scanner-placeholder scanner-placeholder2"></div>
+      <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Dar-ul-Mawasaat QR Code" /></div>
     </div>
 
     <!-- Donate to Darasgah Section -->
