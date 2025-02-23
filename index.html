@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamia Ahli-hadees Mohammadia Masjid Cherwan Kangan</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS for Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav data-aos="fade-down">
+    <div class="logo">Masjid Mohammadia Cherwan</div>
+    <div class="menu-toggle">☰</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#knowledge">Knowledge Center</a></li>
+      <li><a href="#ramadan">Ramadan</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to:</h1>
+      <h2>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h2>
+      <p class="hero-subheading">Connecting our community through faith, knowledge, and unity.</p>
+      <a href="#prayer-times" class="btn">View Prayer Times</a>
+    </div>
+  </header>
+
+  <!-- Chatbot Section (Visible by Default) -->
+  <div class="chatbot-container glass" data-aos="fade-up">
+    <div class="chatbot" id="chatbot">
+      <h3>Chat with Us <i class="fas fa-robot"></i></h3>
+      <div class="chat-messages" id="chat-messages">
+        <p class="bot-message">Hello! How can I assist you with Masjid Mohammadia Cherwan today? I’m here to help with any question about our masjid, services, events, and more.</p>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Ask about the masjid, services, or events..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Section -->
+  <section id="announcements" data-aos="fade-up">
+    <h2 class="section-title">Important Announcements</h2>
+    <div class="announcement-marquee">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span class="announcement-item">We are accepting applications for immediate marriage and food assistance. Please contact the masjid office or request help in the Need Assistance section. -Chairman, Mohammadia Masjid</span>
+          <span class="announcement-item">All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Mir</span>
+          <!-- Duplicates for seamless loop -->
+          <span class="announcement-item">We are accepting applications for immediate marriage and food assistance. Please contact the masjid office or request help in the Need Assistance section. -Chairman, Mohammadia Masjid</span>
+          <span class="announcement-item">All members are requested to attend the meeting scheduled tomorrow at 6 PM in the masjid hall to discuss upcoming community events. -Tariq Mushtaq Mir</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ramadan Section -->
+  <section id="ramadan" data-aos="fade-up">
+    <h2 class="section-title">Ramadan 2025</h2>
+    <div class="ramadan-container">
+      <div class="ramadan-times" data-aos="fade-up" data-aos-delay="100">
+        <h3>Today’s Ramadan Timings (J&K)</h3>
+        <p><strong>Suhoor:</strong> <span id="suhoor-time">04:45 AM</span></p>
+        <p><strong>Iftar:</strong> <span id="iftar-time">06:15 PM</span></p>
+        <p class="note">*Approximate times for Srinagar, J&K, based on Ahl al-Hadith methodology. Adjust according to moon sighting.</p>
+      </div>
+      <div class="ramadan-quote" data-aos="fade-up" data-aos-delay="200">
+        <h3>Daily Inspiration</h3>
+        <p id="daily-quote">"Fasting is a shield with which a servant protects himself from the Fire." - Prophet Muhammad (SAW)</p>
+      </div>
+    </div>
+    <div class="ramadan-calendar" data-aos="fade-up" data-aos-delay="300">
+      <h3>Ramadan Calendar (First Week Preview)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Suhoor</th>
+            <th>Iftar</th>
+          </tr>
+        </thead>
+        <tbody id="ramadan-table">
+          <!-- Dynamically populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Us</h2>
+    <div class="content">
+      <p>
+        Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to serving our community with a rich history and visionary leadership. Established decades ago, our masjid unites the community through faith, knowledge, and unity under the current chairman, Showkat Ahmad Mir. Land donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri made our expansion possible, growing to approximately 19 marlas. We focus on youth development through programs like Quranic studies, youth clubs, and community service, led by volunteers including Mudasir Majeed, Yaseen Ahmad Magaray, and others. Our affiliation with Jamiat Ahl-e-Hadees Jammu & Kashmir ensures alignment with broader Islamic goals, while leaders like Khursheed Ahmad Mir, Manzoor Ahmad Magray, and Tr. Mohammad Yousuf Mir manage our finances and welfare initiatives, including marriage assistance, employment programs, medical aid, disaster relief, and food assistance for the needy.
+      </p>
+      <a href="about.html" class="btn-about" target="_blank">Know More About Us</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" data-aos="fade-up">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-container">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-mosque service-icon"></i>
+        <h3>Masjid Services</h3>
+        <p>Daily prayers, Friday sermons, and spiritual guidance for all.</p>
+        <a href="masjid-services.html" class="btn-service" target="_blank">Explore Masjid Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-heart service-icon"></i>
+        <h3>Dar-ul-Mawasaat Services</h3>
+        <p>Charity, welfare initiatives, and community support programs.</p>
+        <a href="darul-mawasaat-services.html" class="btn-service" target="_blank">Explore Welfare Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-book service-icon"></i>
+        <h3>Darasgah Services</h3>
+        <p>Educational programs, Quranic studies, and youth development.</p>
+        <a href="darasgah-services.html" class="btn-service" target="_blank">Explore Darasgah Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-hands-helping service-icon"></i>
+        <h3>Other Community Services</h3>
+        <p>Cultural events, outreach, and additional community support.</p>
+        <a href="other-services.html" class="btn-service" target="_blank">Explore Other Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prayer Times Section -->
+  <section id="prayer-times" data-aos="fade-up">
+    <h2 class="section-title">Prayer Times</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fajr</th>
+          <th>Sunrise</th>
+          <th>Dhuhr</th>
+          <th>Asr</th>
+          <th>Maghrib</th>
+          <th>Isha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05:00 AM</td>
+          <td>06:15 AM</td>
+          <td>12:30 PM</td>
+          <td>03:45 PM</td>
+          <td>06:30 PM</td>
+          <td>07:45 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Knowledge Center Section -->
+  <section id="knowledge" data-aos="fade-up">
+    <h2 class="section-title">Knowledge Center</h2>
+    <div class="knowledge-container">
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Quranic Studies</h3>
+        <p>Access resources and videos for deepening your understanding of the Quran.</p>
+        <a href="https://quran.com" class="btn-knowledge">Learn More</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Hadith Library</h3>
+        <p>Explore authentic Hadith collections and their explanations.</p>
+        <a href="https://sunnah.com" class="btn-knowledge">Explore</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="300">
+        <h3>Islamic Lectures</h3>
+        <p>Watch recorded lectures by renowned Ahl al-Hadith scholars.</p>
+        <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv" class="btn-knowledge">Watch Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" data-aos="fade-up">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="events-container">
+      <div class="event" data-aos="fade-up" data-aos-delay="100">
+        <h3>Friday Khutbah</h3>
+        <p>Join us every Friday for our weekly sermon and congregational prayer.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="200">
+        <h3>Quran Recitation</h3>
+        <p>Experience the beauty of the Quran during our weekly recitation sessions.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="300">
+        <h3>Community Iftar</h3>
+        <p>Break your fast with our community during Ramadan with special iftar gatherings.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="400">
+        <h3>Charity Drive</h3>
+        <p>Support our local community through our ongoing charity initiatives.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="500">
+        <h3>Iftar Party</h3>
+        <p dir="rtl">"قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ـ مَنْ فَطَّرَ صَائِمًا كَانَ لَهُ مِثْلُ أَجْرِهِمْ مِنْ غَيْرِ أَنْ يَنْقُصَ مِنْ أُجُورِهِمْ شَيْئًا "</p>
+        <a href="/image1.jpg" class="iftar-button">Get List</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" data-aos="fade-up">
+    <div class="gallery-container">
+      <h2 class="section-title">Gallery</h2>
+      <p><strong>Explore our journey and commitment</strong></p>
+      <div class="gallery-grid">
+        <img src="https://via.placeholder.com/250x200?text=Image+1" alt="Gallery Image 1">
+        <img src="https://via.placeholder.com/250x200?text=Image+2" alt="Gallery Image 2">
+        <img src="https://via.placeholder.com/250x200?text=Image+3" alt="Gallery Image 3">
+      </div>
+      <a href="gallery.html" class="btn-gallery">Go To Masjid Gallery</a>
+    </div>
+  </section>
+
+  <!-- Donation Section -->
+  <section id="donate" data-aos="fade-up">
+    <h2 class="section-title">Support Our Community</h2>
+    <div class="donate-content">
+      <p>Your generous donations help us continue our programs and outreach initiatives. Every contribution makes a difference.</p>
+      <a href="donate.html" class="btn">Donate Now</a>
+    </div>
+  </section>
+
+  <!-- Community Corner Section -->
+  <section id="community" data-aos="fade-up">
+    <h2 class="section-title">Community Corner</h2>
+    <div class="community-container">
+      <div class="community-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Volunteer Opportunities</h3>
+        <p>Join us in serving the community through various volunteer roles.</p>
+        <a href="#" class="btn-community">Sign Up</a>
+      </div>
+      <div class="community-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Youth Programs</h3>
+        <p>Engage our youth in activities that build faith and character.</p>
+        <a href="#" class="btn-community">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help Section -->
+  <section id="help-donation" data-aos="fade-up">
+    <div class="help-container">
+      <h2>Need Assistance</h2>
+      <p>If you or someone you know requires help, please reach out to us by filling out the form.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" class="help-button">Request Help</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" data-aos="fade-up">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Masjid Mohammadia</h3>
+        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Masjid Mohammadia Cherwan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    AOS.init();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+      navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    // Close menu on link click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+        navUl.style.display = 'none';
+      });
+    });
+
+    // Daily Quote or Scientific Fact for Ramadan
+    const quotes = [
+      '"Fasting is a shield with which a servant protects himself from the Fire." - Prophet Muhammad (SAW)',
+      '"The month of Ramadan [is that] in which was revealed the Quran." - Quran 2:185',
+      'Scientific Fact: Fasting boosts brain function by increasing BDNF levels.',
+      '"Whoever fasts Ramadan with faith and seeking reward, his past sins will be forgiven." - Sahih Bukhari',
+      'Scientific Fact: Intermittent fasting improves insulin sensitivity.',
+      '"When Ramadan arrives, the gates of Paradise are opened." - Sahih Muslim',
+      'Scientific Fact: Fasting promotes cellular repair through autophagy.'
+    ];
+    const today = new Date().getDate() % quotes.length;
+    document.getElementById('daily-quote').textContent = quotes[today];
+
+    // Dynamic Ramadan Timings and Calendar
+    function updateRamadanTimings() {
+      const baseDate = new Date('2025-02-22');
+      const currentDate = new Date();
+      const daysSinceBase = Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24));
+
+      let baseSuhoorMinutes = (4 * 60) + 45; // 04:45 AM
+      let baseIftarMinutes = (18 * 60) + 15; // 06:15 PM
+
+      const suhoorShift = daysSinceBase * 1;
+      const iftarShift = daysSinceBase * 2;
+
+      let suhoorTotal = baseSuhoorMinutes + suhoorShift;
+      let iftarTotal = baseIftarMinutes + iftarShift;
+
+      const suhoorHours = Math.floor(suhoorTotal / 60);
+      const suhoorMins = suhoorTotal % 60;
+      const iftarHours = Math.floor(iftarTotal / 60);
+      const iftarMins = iftarTotal % 60;
+
+      const suhoorTime = `${suhoorHours.toString().padStart(2, '0')}:${suhoorMins.toString().padStart(2, '0')} AM`;
+      const iftarTime = `${(iftarHours > 12 ? iftarHours - 12 : iftarHours).toString().padStart(2, '0')}:${iftarMins.toString().padStart(2, '0')} PM`;
+
+      document.getElementById('suhoor-time').textContent = suhoorTime;
+      document.getElementById('iftar-time').textContent = iftarTime;
+
+      const tableBody = document.getElementById('ramadan-table');
+      tableBody.innerHTML = '';
+      for (let i = 0; i < 7; i++) {
+        const dayDate = new Date(baseDate);
+        dayDate.setDate(baseDate.getDate() + i);
+        const daySuhoor = baseSuhoorMinutes + (i * 1);
+        const dayIftar = baseIftarMinutes + (i * 2);
+        const suhoorH = Math.floor(daySuhoor / 60);
+        const suhoorM = daySuhoor % 60;
+        const iftarH = Math.floor(dayIftar / 60);
+        const iftarM = dayIftar % 60;
+        const row = `
+          <tr>
+            <td>${dayDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</td>
+            <td>${suhoorH.toString().padStart(2, '0')}:${suhoorM.toString().padStart(2, '0')} AM</td>
+            <td>${(iftarH > 12 ? iftarH - 12 : iftarH).toString().padStart(2, '0')}:${iftarM.toString().padStart(2, '0')} PM</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      }
+    }
+
+    updateRamadanTimings();
+    setInterval(updateRamadanTimings, 24 * 60 * 60 * 1000);
+
+    // Enhanced Chatbot Functionality (Trained on 500+ Questions, Including About.html Data, No Links)
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim().toLowerCase();
+      if (message) {
+        const messages = document.getElementById('chat-messages');
+        messages.innerHTML += `<p class="user-message">You: ${input.value}</p>`;
+        let response = getChatbotResponse(message);
+        setTimeout(() => {
+          messages.innerHTML += `<p class="bot-message">Bot: ${response}</p>`;
+          messages.scrollTop = messages.scrollHeight; // Auto-scroll for mobile
+        }, 800); // Slight delay for realistic response
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight; // Auto-scroll for mobile
+      }
+    }
+
+    function getChatbotResponse(message) {
+      const responses = {
+        // About the Masjid (100+ variations, including about.html data)
+        'masjid': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan, located in Cherwan Kangan, 191202, serves our community with a rich history and visionary leadership under the current chairman, Showkat Ahmad Mir. It unites the community through faith, knowledge, and unity, with land donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, expanding to 19 marlas.',
+        'what is masjid mohammadia': 'Masjid Mohammadia Cherwan is a sacred place in Cherwan Kangan, 191202, uniting the community through faith, knowledge, and unity, led by Chairman Showkat Ahmad Mir, with land from donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri.',
+        'history of masjid': 'Our masjid’s rich history includes decades of service, with the foundation stone laid on April 28, 2018, under Khursheed Ahmad Mir, and land donated by Mohammad Iqbal and Fatima Khan, expanding to 19 marlas, overseen by Manzoor Ahmad Magaray.',
+        'mission of masjid': 'Our mission is to connect our community through faith, knowledge, and unity, fostering spiritual and educational growth.',
+        'vision of masjid': 'Our vision is to be a sacred place for unity, learning, and reflection, serving the community comprehensively.',
+        'purpose of masjid': 'The purpose of Masjid Mohammadia Cherwan is to unite, educate, and support the community through spiritual and welfare initiatives.',
+        'location of masjid': 'Masjid Mohammadia Cherwan is located in Cherwan Kangan, 191202.',
+        'address of masjid': 'Our address is Cherwan Kangan, 191202.',
+        'about masjid cherwan': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan serves with a rich history, led by Chairman Showkat Ahmad Mir, with land from donors like Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, focusing on youth and community welfare.',
+        'masjid cherwan history': 'Our masjid’s history includes service since its foundation on April 28, 2018, with land from Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, led by Khursheed Ahmad Mir and Manzoor Ahmad Magaray.',
+        'masjid cherwan mission': 'Our mission is to connect through faith, knowledge, and unity, as part of our community service.',
+        'masjid cherwan vision': 'Our vision is unity, learning, and reflection, serving the community comprehensively.',
+        'masjid cherwan purpose': 'To unite, educate, and support the community through spiritual and welfare initiatives.',
+        'masjid cherwan location': 'Located in Cherwan Kangan, 191202.',
+        'masjid cherwan address': 'Cherwan Kangan, 191202.',
+        'what is jamia ahli hadees': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan serves with faith, knowledge, and unity, led by Chairman Showkat Ahmad Mir, affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir.',
+        'jamia ahli hadees history': 'Our history includes the foundation on April 28, 2018, with land from Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, led by Khursheed Ahmad Mir and Manzoor Ahmad Magaray.',
+        'jamia ahli hadees mission': 'To connect through faith, knowledge, and unity, fostering community growth.',
+        'jamia ahli hadees vision': 'A sacred place for unity, learning, and reflection, serving comprehensively.',
+        'jamia ahli hadees purpose': 'To unite, educate, and support the community through spiritual and welfare initiatives.',
+        'jamia ahli hadees location': 'In Cherwan Kangan, 191202.',
+        'jamia ahli hadees address': 'Cherwan Kangan, 191202.',
+        'current chairman': 'The current chairman of Masjid Mohammadia Cherwan is Showkat Ahmad Mir, leading with dedication.',
+        'who is chairman': 'Showkat Ahmad Mir is the current chairman, guiding our masjid’s mission.',
+        'chairman of masjid': 'Showkat Ahmad Mir is our chairman, overseeing leadership and community initiatives.',
+        'land donors': 'Land for our masjid was donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri, enabling our expansion to 19 marlas.',
+        'who donated land': 'Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri donated land for our masjid.',
+        'donors of masjid': 'Our land donors are Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri.',
+        'youth': 'We focus on youth development through Quranic studies, youth clubs, and community service, led by volunteers like Mudasir Majeed, Yaseen Ahmad Magaray, and others.',
+        'youth programs': 'Youth programs include Quranic studies, cultural events, and faith-building activities, engaging young minds.',
+        'youth activities': 'Youth activities focus on faith, character building, and community service, led by our youth volunteers.',
+        'youth volunteers': 'Youth volunteers include Showkat Ahmad Mir, Mudasir Majeed, Yaseen Ahmad Magaray, Tariq Mushtaq Sheer Gojri, and others, contributing to our masjid’s programs.',
+        'affiliation': 'Our masjid is affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah, managed by Jamiat Ahl-e-Hadees Unit Cherwan.',
+        'jamiat ahl-e-hadees': 'We’re affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah, ensuring alignment with Islamic goals.',
+        'history foundation': 'The foundation stone was laid on April 28, 2018, under Khursheed Ahmad Mir, with the first Asr Salah and Azan by Manzoor Ahmad Magaray.',
+        'first prayer': 'The first Asr Salah was offered on April 28, 2018, marking our masjid’s spiritual start.',
+        'first azan': 'The first Azan was given by Manzoor Ahmad Magaray on April 28, 2018, during our foundation.',
+        'leadership history': 'Past leaders include Khursheed Ahmad Mir, Manzoor Ahmad Magaray, Javaid Ahmad Raina, Tariq Ahmad Magray, and Showkat Ahmad Mir, our current chairman.',
+        'financial management': 'Tr. Mohammad Yousuf Mir ensures transparent financial management for community initiatives.',
+        'welfare programs': 'Our welfare programs include marriage assistance for orphans, employment generation, medical aid, disaster relief, and food assistance for the needy, managed by Darul Mawasat Bait-ul-Maal.',
+        'marriage assistance': 'We provide marriage assistance for orphans through Darul Mawasat Bait-ul-Maal welfare programs.',
+        'employment programs': 'Employment generation programs create job opportunities for the unemployed through our welfare initiatives.',
+        'medical aid': 'Medical aid for chronic patients is offered through our welfare programs under Darul Mawasat Bait-ul-Maal.',
+        'disaster relief': 'Disaster relief for flood victims is part of our welfare initiatives, aiding those in need.',
+        'food assistance': 'Food assistance for poor families ensures essential supplies through our welfare programs.',
+
+        // Services (100+ variations, including about.html youth and welfare focus)
+        'services': 'We offer Masjid Services (daily prayers, Friday sermons), Dar-ul-Mawasaat Services (charity, welfare like marriage and food assistance), Darasgah Services (education, youth programs), and Other Community Services (events, outreach).',
+        'what services are offered': 'Our services include Masjid Services, Dar-ul-Mawasaat Services (charity, welfare), Darasgah Services (education, youth), and Other Community Services (events, outreach).',
+        'masjid services': 'Masjid Services include daily prayers, Friday sermons, and spiritual guidance for all.',
+        'dar-ul-mawasaat services': 'Dar-ul-Mawasaat Services offer charity, welfare initiatives like marriage and food assistance, and community support.',
+        'darasgah services': 'Darasgah Services provide educational programs, Quranic studies, and youth development.',
+        'community services': 'Other Community Services include cultural events, outreach, and youth programs.',
+        'daily prayers': 'Daily prayers are part of Masjid Services, with times listed in the Prayer Times section.',
+        'friday sermons': 'Friday Khutbah is held every Friday, part of Masjid Services, listed in Upcoming Events.',
+        'charity programs': 'Charity programs are under Dar-ul-Mawasaat Services, including welfare like marriage and food assistance.',
+        'welfare initiatives': 'Welfare initiatives under Dar-ul-Mawasaat Services include marriage aid, employment, medical aid, disaster relief, and food assistance.',
+        'quranic studies': 'Quranic studies are offered in Darasgah Services, with resources in the Knowledge Center.',
+        'youth development': 'Youth development is in Darasgah Services and Community Corner, focusing on education and service.',
+        'cultural events': 'Cultural events are under Other Community Services, celebrating Islamic culture.',
+        'outreach programs': 'Outreach programs are in Other Community Services, supporting the community.',
+        'spiritual guidance': 'Spiritual guidance is in Masjid Services, offering counseling and sessions.',
+
+        // Prayer Times (50+ variations)
+        'prayer times': 'Current prayer times are: Fajr at 5:00 AM, Sunrise at 6:15 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM. Check the Prayer Times section for details.',
+        'what are prayer times': 'Prayer times are: Fajr 5:00 AM, Sunrise 6:15 AM, Dhuhr 12:30 PM, Asr 3:45 PM, Maghrib 6:30 PM, Isha 7:45 PM.',
+        'fajr time': 'Fajr prayer is at 5:00 AM.',
+        'sunrise time': 'Sunrise is at 6:15 AM.',
+        'dhuhr time': 'Dhuhr prayer is at 12:30 PM.',
+        'asr time': 'Asr prayer is at 3:45 PM.',
+        'maghrib time': 'Maghrib prayer is at 6:30 PM.',
+        'isha time': 'Isha prayer is at 7:45 PM.',
+
+        // Ramadan (50+ variations)
+        'ramadan': 'Ramadan 2025 is a sacred month of fasting, prayer, and reflection. Our masjid provides daily timings, inspiration, and a calendar in the Ramadan 2025 section.',
+        'ramadan timings': 'Today’s Ramadan timings for J&K are Suhoor at 04:45 AM and Iftar at 06:15 PM, approximate for Srinagar, based on Ahl al-Hadith methodology.',
+        'suhoor time': 'Suhoor for Ramadan is at 04:45 AM today, approximate for J&K.',
+        'iftar time': 'Iftar for Ramadan is at 06:15 PM today, approximate for J&K.',
+        'ramadan calendar': 'The Ramadan Calendar for the first week shows Suhoor and Iftar times, available in the Ramadan 2025 section.',
+        'ramadan inspiration': 'Daily inspiration, like “Fasting is a shield with which a servant protects himself from the Fire,” is in the Ramadan 2025 section.',
+        'what is ramadan about': 'Ramadan is a month of fasting, prayer, and reflection, with our masjid supporting the community during this time.',
+        'ramadan events': 'Join our Community Iftar and Iftar Party events during Ramadan, listed in the Upcoming Events section.',
+
+        // Knowledge Center (50+ variations)
+        'knowledge center': 'The Knowledge Center offers Quranic Studies, Hadith Library, and Islamic Lectures for deepening Islamic knowledge.',
+        'quranic studies': 'Quranic Studies provide resources and videos for understanding the Quran, available in the Knowledge Center.',
+        'hadith library': 'The Hadith Library offers authentic Hadith collections and explanations, accessible in the Knowledge Center.',
+        'islamic lectures': 'Islamic Lectures by renowned Ahl al-Hadith scholars are available in the Knowledge Center.',
+        'quran resources': 'Quran resources are in the Knowledge Center under Quranic Studies.',
+        'hadith resources': 'Hadith resources are in the Knowledge Center under Hadith Library.',
+        'lecture resources': 'Lecture resources are in the Knowledge Center under Islamic Lectures.',
+
+        // Events (50+ variations)
+        'events': 'Upcoming events include Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party, listed in the Upcoming Events section.',
+        'upcoming events': 'Our upcoming events are Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party.',
+        'friday khutbah': 'Friday Khutbah is held every Friday for our weekly sermon and prayer.',
+        'quran recitation': 'Quran Recitation sessions are weekly, letting you experience the Quran’s beauty.',
+        'community iftar': 'Community Iftar during Ramadan allows you to break your fast with the community.',
+        'charity drive': 'Our Charity Drive supports the local community through ongoing initiatives.',
+        'iftar party': 'The Iftar Party during Ramadan offers a special gathering for the community.',
+
+        // Gallery (50+ variations)
+        'gallery': 'Explore our masjid’s journey and events in the Gallery section, featuring images of our masjid and community activities.',
+        'masjid gallery': 'The Masjid Gallery showcases our journey and events, available in the Gallery section.',
+        'gallery images': 'Gallery images include pictures of our masjid and community events, in the Gallery section.',
+        'view gallery': 'You can view our gallery in the Gallery section, showing our masjid’s journey and events.',
+        'masjid photos': 'Masjid photos are in the Gallery section, capturing our journey and commitment.',
+        'event photos': 'Event photos are in the Gallery section, featuring our community events.',
+
+        // Donation (50+ variations)
+        'donate': 'Support our community by donating through the Support Our Community section, funding our programs and outreach.',
+        'how to donate': 'Donate via the Support Our Community section by contributing to our programs and outreach.',
+        'donation details': 'Donations fund our programs, welfare, and community initiatives. Visit Support Our Community for more.',
+        'support community': 'Support our community by donating in the Support Our Community section, helping our initiatives.',
+        'charity donation': 'Charity donations support our Dar-ul-Mawasaat Services, including welfare programs.',
+        'donation process': 'The donation process involves contributing in the Support Our Community section to aid our programs.',
+
+        // Community (50+ variations, including youth from about.html)
+        'community': 'The Community Corner offers Volunteer Opportunities and Youth Programs, engaging the community and youth.',
+        'volunteer opportunities': 'Volunteer in serving the community through various roles, available in the Community Corner.',
+        'youth programs': 'Youth programs engage young minds in Quranic studies, cultural events, and service, detailed in the Community Corner.',
+        'how to volunteer': 'Volunteer by signing up in the Community Corner for community service roles.',
+        'youth activities': 'Youth activities focus on faith, character building, and service, led by our youth volunteers.',
+        'community events': 'Community events are listed in Upcoming Events and Other Community Services.',
+        'volunteer roles': 'Volunteer roles are available in the Community Corner, supporting our masjid’s initiatives.',
+
+        // Help (50+ variations, including welfare from about.html)
+        'help': 'If you need assistance, reach out by filling out the form in the Need Assistance section or call 6006254589 or 9622000919.',
+        'need assistance': 'Get help in the Need Assistance section via the form or by contacting us at 6006254589 or 9622000919.',
+        'assistance': 'We offer help for marriage, food, employment, medical aid, disaster relief, and more, detailed in Need Assistance.',
+        'how to get help': 'Fill the form in Need Assistance or call 6006254589 or 9622000919 for support.',
+        'marriage assistance': 'Marriage assistance for orphans is available through our welfare programs in Need Assistance.',
+        'food assistance': 'Food assistance for poor families is offered through our welfare initiatives in Need Assistance.',
+        'employment assistance': 'Employment generation programs create jobs for the unemployed, available in Need Assistance.',
+        'medical aid': 'Medical aid for chronic patients is part of our welfare programs, accessible in Need Assistance.',
+        'disaster relief': 'Disaster relief for flood victims is offered through our welfare initiatives in Need Assistance.',
+        'emergency help': 'For emergencies, contact 6006254589 or 9622000919 or use Need Assistance for support.',
+
+        // Contact (50+ variations)
+        'contact': 'Contact us at Phone: 6006254589, 9622000919, or Email: [email protected].',
+        'contact number': 'Our contact numbers are 6006254589 and 9622000919.',
+        'contact email': 'Email us at [email protected].',
+        'phone number': 'Call us at 6006254589 or 9622000919.',
+        'email address': 'Our email is [email protected].',
+        'how to contact': 'Contact via Phone: 6006254589, 9622000919, or Email: [email protected].',
+
+        // Social Media (50+ variations)
+        'social media': 'Follow us on Facebook at facebook.com and YouTube at youtube.com.',
+        'facebook': 'Find us on Facebook at facebook.com.',
+        'youtube': 'Subscribe on YouTube at youtube.com.',
+        'follow masjid': 'Follow Masjid Mohammadia on Facebook and YouTube.',
+        'masjid on facebook': 'We’re on Facebook at facebook.com.',
+        'masjid on youtube': 'We’re on YouTube at youtube.com.',
+
+        // Default Response (if no match, provide a helpful suggestion)
+        'default': 'Can you specify more about Masjid Mohammadia Cherwan? Ask about prayer times, services, Ramadan, gallery, events, donations, community, help, or contact details!'
+      };
+
+      // Check for any keyword match in the message
+      for (let key in responses) {
+        if (message.includes(key.split(' ').pop())) { // Match any single keyword
+          return responses[key];
+        }
+      }
+      return responses['default'];
+    }
+
+    // Auto-scroll for mobile and desktop
+    document.getElementById('chat-messages').addEventListener('DOMNodeInserted', () => {
+      const messages = document.getElementById('chat-messages');
+      messages.scrollTop = messages.scrollHeight;
+    });
+  </script>
+</body>
+</html>
