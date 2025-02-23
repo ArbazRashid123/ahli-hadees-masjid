@@ -89,7 +89,7 @@ nav ul li a:hover {
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('https://via.placeholder.com/1600x900?text=Masjid+Al-Noor') no-repeat center center/cover;
-  height: 60vh; /* Reduced height for mobile to prevent it from being too large in desktop site emulation */
+  height: 60vh; /* Reduced height for mobile to prevent it from being too large */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,20 +106,20 @@ header {
 }
 
 header h1 {
-  font-size: 1.8em; /* Slightly reduced for mobile to fit better with reduced height */
+  font-size: 1.8em; /* Slightly reduced for mobile */
   font-weight: 700;
   margin-bottom: 10px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 header h2 {
-  font-size: 1.3em; /* Slightly reduced for mobile to fit better */
+  font-size: 1.3em; /* Slightly reduced for mobile */
   font-weight: 500;
   margin-bottom: 15px;
 }
 
 header .hero-subheading {
-  font-size: 0.9em; /* Slightly reduced for mobile to fit better */
+  font-size: 0.9em; /* Slightly reduced for mobile */
   margin-bottom: 20px;
 }
 
@@ -140,7 +140,7 @@ header .btn:hover {
   transform: scale(1.05);
 }
 
-/* Chatbot Container (Mobile-First, Visible by Default, Enhanced Design) */
+/* Chatbot Container (Mobile-First, Larger, Scrollable, Smaller Font) */
 .chatbot-container {
   display: flex;
   flex-direction: column;
@@ -181,28 +181,28 @@ header .btn:hover {
   flex: 1;
   display: block; /* Visible by default */
   max-width: 100%;
-  min-height: 300px;
+  min-height: 400px; /* Larger height for mobile */
   position: relative;
 }
 
 .chatbot h3 {
-  font-size: 1.2em;
+  font-size: 1.1em; /* Slightly smaller for mobile */
   color: #006600;
   margin-bottom: 15px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   animation: fadeIn 0.8s ease-out;
 }
 
 .chatbot h3 i {
-  font-size: 1.1em;
+  font-size: 1em; /* Slightly smaller icon */
   color: #ffcc00;
 }
 
 .chat-messages {
-  height: 200px;
+  height: 300px; /* Larger height to show only latest question/answer, scrollable for previous */
   overflow-y: auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 15px;
@@ -210,15 +210,16 @@ header .btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-size: 0.8em; /* Smaller font for better fit */
 }
 
 .chat-messages .user-message {
   color: #333;
-  margin: 8px 0;
+  margin: 6px 0; /* Reduced margin for compactness */
   text-align: right;
   background: rgba(255, 215, 0, 0.1);
-  padding: 8px 12px;
-  border-radius: 8px 0 0 8px;
+  padding: 6px 10px; /* Reduced padding for smaller size */
+  border-radius: 6px 0 0 6px;
   max-width: 80%;
   display: inline-block;
   word-wrap: break-word;
@@ -226,11 +227,11 @@ header .btn:hover {
 
 .chat-messages .bot-message {
   color: #006600;
-  margin: 8px 0;
+  margin: 6px 0; /* Reduced margin for compactness */
   text-align: left;
   background: rgba(0, 102, 0, 0.1);
-  padding: 8px 12px;
-  border-radius: 0 8px 8px 0;
+  padding: 6px 10px; /* Reduced padding for smaller size */
+  border-radius: 0 6px 6px 0;
   max-width: 80%;
   display: inline-block;
   word-wrap: break-word;
@@ -244,10 +245,10 @@ header .btn:hover {
 
 #chat-input {
   width: 70%;
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  font-size: 0.9em;
+  font-size: 0.8em; /* Smaller font for input */
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -261,13 +262,13 @@ header .btn:hover {
 }
 
 button {
-  padding: 10px 18px;
+  padding: 8px 14px; /* Reduced padding for mobile */
   border: none;
   border-radius: 8px;
   background: linear-gradient(90deg, #006600, #008000);
   color: #fff;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 0.8em; /* Smaller font for button */
   font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.3);
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -286,7 +287,7 @@ button:hover {
   }
 
   .chatbot {
-    min-height: 250px;
+    min-height: 400px; /* Consistent larger height for mobile */
     padding: 15px;
   }
 
@@ -295,46 +296,44 @@ button:hover {
   }
 
   .chat-messages {
-    height: 150px;
+    height: 300px; /* Larger, scrollable area for latest message */
     padding: 10px;
   }
 
   #chat-input {
     width: 60%;
-    padding: 8px;
-    font-size: 0.8em;
+    padding: 6px;
   }
 
   button {
-    padding: 8px 14px;
-    font-size: 0.8em;
+    padding: 6px 12px;
   }
 }
 
 @media (min-width: 768px) {
   .chatbot {
-    max-width: 400px;
-    min-height: 350px;
+    max-width: 450px; /* Slightly larger for desktop */
+    min-height: 450px;
   }
 
   .chatbot h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
 
   .chat-messages {
-    height: 250px;
+    height: 350px; /* Larger for desktop, still scrollable */
     padding: 15px;
   }
 
   #chat-input {
     width: 70%;
-    padding: 12px;
-    font-size: 1em;
+    padding: 10px;
+    font-size: 0.9em;
   }
 
   button {
-    padding: 12px 20px;
-    font-size: 1em;
+    padding: 10px 18px;
+    font-size: 0.9em;
   }
 }
 
@@ -979,6 +978,7 @@ footer {
   background: linear-gradient(90deg, #218838, #1e7e34);
   transform: translateY(-5px);
 }
+
 /* Desktop Adjustments (All Devices, Hamburger Only) */
 @media (min-width: 768px) {
   nav {
