@@ -21,7 +21,7 @@
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
       color: #333;
-      background-color: #f4f4f4;
+      background: linear-gradient(135deg, #e2e2e2, #f0f4f2);
       scroll-behavior: smooth;
       font-size: 16px;
       overflow-x: hidden;
@@ -40,26 +40,35 @@
       justify-content: space-between;
       align-items: center;
       padding: 8px 15px;
-      background: linear-gradient(135deg, #1a1a1a, #333);
+      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
+      background-size: 300% 300%;
       position: fixed;
       width: 100%;
       max-width: 100vw;
       top: 0;
       z-index: 1001;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+      animation: flowColors 6s ease infinite;
+    }
+    @keyframes flowColors {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     nav .logo {
       font-size: 1.2em;
-      color: #fff;
+      color: #ffd700;
       font-weight: 700;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
     nav .menu-toggle {
       display: block;
       font-size: 1.5em;
-      color: #fff;
+      color: #ffd700;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
+    nav .menu-toggle:hover { transform: scale(1.1); }
     nav ul {
       display: none;
       flex-direction: column;
@@ -71,6 +80,12 @@
       padding: 15px;
       width: 100%;
       z-index: 1001;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      animation: slideDown 0.5s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     nav ul.active {
       display: flex;
@@ -79,15 +94,17 @@
       margin: 10px 0;
     }
     nav ul li a {
-      color: #fff;
+      color: #ffd700;
       font-size: 1em;
       font-weight: 500;
-      padding: 5px 10px;
-      transition: color 0.3s ease, transform 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
     }
     nav ul li a:hover {
-      color: #ffcc00;
-      transform: scale(1.1);
+      color: #fff;
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.05);
     }
 
     /* Hero Section */
@@ -102,155 +119,461 @@
       padding: 50px 15px 0;
       position: relative;
       max-width: 100vw;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: particleFlow 20s linear infinite;
+    }
+    @keyframes particleFlow {
+      0% { background-position: 0 0; }
+      100% { background-position: 30px 30px; }
     }
     .hero-content {
       color: #fff;
       max-width: 100%;
       padding: 0 10px;
+      position: relative;
+      z-index: 2;
     }
     header h1 {
-      font-size: 1.8em;
+      font-size: 2em;
       font-weight: 700;
       margin-bottom: 10px;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 1s ease-out;
     }
     header h2 {
-      font-size: 1.3em;
+      font-size: 1.5em;
       font-weight: 500;
       margin-bottom: 15px;
+      animation: fadeInUp 1s ease-out 0.3s;
     }
     header .hero-subheading {
-      font-size: 0.9em;
+      font-size: 1em;
       margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out 0.6s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Section Titles */
     .section-title {
       text-align: center;
       margin-bottom: 40px;
-      font-size: 1.8em;
+      font-size: 2.2em;
       color: #006600;
       font-weight: 700;
       position: relative;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(90deg, #2d8652, #ffd700, #2d8652);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: flowColors 4s ease infinite, glowText 2s ease infinite;
+    }
+    @keyframes glowText {
+      0%, 100% { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+      50% { text-shadow: 0 4px 12px rgba(255, 215, 0, 0.5); }
     }
     .section-title::after {
       content: "";
-      width: 60px;
-      height: 4px;
+      width: 80px;
+      height: 5px;
       background: linear-gradient(90deg, #ffcc00, #ff9900);
       display: block;
-      margin: 10px auto 0;
-      border-radius: 2px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 15px auto 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 15px;
+      max-width: 100vw;
+      position: relative;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: particleFlow 20s linear infinite;
+      z-index: -1;
     }
 
     /* Masjid Services Section */
     #masjid-services {
-      background: #ffffff;
+      background: linear-gradient(135deg, #f9f9f9, #ffffff);
       padding: 40px 15px;
-      max-width: 100vw;
     }
     .services-container {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      max-width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .service-card {
-      background: linear-gradient(135deg, #fff, #f9f9f9);
-      padding: 20px;
+      background: linear-gradient(135deg, #fff, #f0f4f8);
+      padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255,215,0,0.1);
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, opacity 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 10%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .service-card:hover::before {
+      opacity: 1;
     }
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255,215,0,0.3);
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255,215,0,0.4);
+      opacity: 1;
     }
     .service-icon {
-      font-size: 2em;
+      font-size: 2.5em;
       color: #006600;
-      margin-bottom: 15px;
-      transition: color 0.3s ease;
+      margin-bottom: 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     .service-card:hover .service-icon {
-      color: #ffcc00;
-    }
-    .service-card h3 {
-      margin-bottom: 10px;
-      color: #006600;
-      font-size: 1.2em;
-    }
-    .service-card p {
-      font-size: 0.9em;
-      color: #555;
-      margin-bottom: 15px;
-    }
-    .btn-service {
-      background: linear-gradient(90deg, #006600, #008000);
-      padding: 10px 20px;
-      border-radius: 25px;
-      color: #fff;
-      font-size: 1em;
-      font-weight: 600;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, transform 0.3s ease;
-      display: inline-block;
-    }
-    .btn-service:hover {
-      background: linear-gradient(90deg, #004d00, #006600);
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, #333, #1a1a1a);
-      color: #fff;
-      padding: 20px 15px;
-      max-width: 100vw;
-    }
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 100%;
-      text-align: center;
-    }
-    .footer-about, .footer-contact, .footer-social {
-      padding: 10px;
-    }
-    .footer-content h3 {
-      color: #ffcc00;
-      margin-bottom: 10px;
-      font-size: 1.2em;
-    }
-    .footer-content p {
-      font-size: 0.9em;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      align-items: center;
-    }
-    .social-icons a {
-      font-size: 1.5em;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #ffcc00;
+      color: #ffd700;
       transform: scale(1.1);
     }
-    .footer-bottom {
-      background: #111;
-      padding: 10px;
-      margin-top: 10px;
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: #006600;
+      font-size: 1.5em;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
     }
-    .footer-bottom p {
-      font-size: 0.8em;
-      margin: 0;
+    .service-card p {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      animation: fadeIn 1s ease-out 0.3s;
+    }
+    .btn-service {
+      background: linear-gradient(90deg, #006600, #008000, #004d00);
+      padding: 12px 25px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255,215,0,0.3);
+      transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-service::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .btn-service:hover::before {
+      opacity: 1;
+    }
+    .btn-service:hover {
+      background: linear-gradient(90deg, #004d00, #006600, #008000);
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255,215,0,0.5);
+    }
+
+    /* Prayer Times Section */
+    #prayer-times {
+      background: linear-gradient(135deg, #e6f7ff, #d9eaff);
+      padding: 40px 15px;
+      border-radius: 15px;
+      margin: 40px auto;
+      max-width: 1200px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    #prayer-times table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+    #prayer-times th,
+    #prayer-times td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    #prayer-times th {
+      background: linear-gradient(90deg, #006600, #008000);
+      color: #fff;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    #prayer-times tr:hover {
+      background: #f1f1f1;
+      transform: scale(1.02);
+    }
+
+    /* Community Events Section */
+    #community-events {
+      background: linear-gradient(135deg, #e6f5e6, #d9f0d9);
+      padding: 40px 15px;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: slideLeft 1s ease-out;
+    }
+    @keyframes slideLeft {
+      from { transform: translateX(20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .events-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 100%;
+    }
+    .event-card {
+      background: linear-gradient(135deg, #fff, #f0f4f8);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0,102,0,0.1);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+      position: relative;
+    }
+    .event-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,102,0,0.1) 10%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .event-card:hover::before {
+      opacity: 1;
+    }
+    .event-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 25px rgba(0,102,0,0.3);
+      opacity: 1;
+    }
+    .event-icon {
+      font-size: 2.5em;
+      color: #006600;
+      margin-bottom: 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      animation: rotate 3s infinite linear;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .event-card:hover .event-icon {
+      color: #ffd700;
+      transform: scale(1.1);
+    }
+    .event-card h3 {
+      margin-bottom: 15px;
+      color: #006600;
+      font-size: 1.5em;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+    .event-card p {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      animation: fadeIn 1s ease-out 0.3s;
+    }
+    .btn-event {
+      background: linear-gradient(90deg, #006600, #008000, #004d00);
+      padding: 12px 25px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255,215,0,0.3);
+      transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      display: inline-block;
+      position: relative;
+    }
+    .btn-event::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .btn-event:hover::before {
+      opacity: 1;
+    }
+    .btn-event:hover {
+      background: linear-gradient(90deg, #004d00, #006600, #008000);
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255,215,0,0.5);
+    }
+
+    /* Contact Us Section */
+    #contact-us {
+      background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+      padding: 40px 15px;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: slideRight 1s ease-out;
+    }
+    @keyframes slideRight {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .contact-form {
+      max-width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .contact-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .contact-form h3 {
+      color: #006600;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out 0.3s;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #006600;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+      color: #333;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #006600;
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(0,102,0,0.3);
+      outline: none;
+    }
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    .btn-submit {
+      background: linear-gradient(90deg, #006600, #008000, #004d00);
+      padding: 14px 30px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: 600;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255,215,0,0.4);
+      transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      display: block;
+      margin: 20px auto 0;
+      cursor: pointer;
+    }
+    .btn-submit::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .btn-submit:hover::before {
+      opacity: 1;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(90deg, #004d00, #006600, #008000);
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 35px rgba(255,215,0,0.6);
     }
 
     /* Responsive Adjustments */
@@ -299,25 +622,42 @@
         font-size: 1.4em;
       }
 
-      #masjid-services {
+      #masjid-services, #prayer-times, #community-events, #contact-us {
         padding: 80px 30px;
       }
-      .services-container {
+      .services-container, .events-container {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
       }
-      .service-card {
+      .service-card, .event-card {
         flex: 1 1 calc(50% - 15px);
         max-width: calc(50% - 15px);
         padding: 30px;
       }
-      .service-card h3 {
-        font-size: 1.5em;
+      .service-card h3, .event-card h3 {
+        font-size: 1.8em;
       }
-      .service-card p {
-        font-size: 1em;
+      .service-card p, .event-card p {
+        font-size: 1.1em;
+      }
+
+      #prayer-times table {
+        font-size: 1.1em;
+      }
+      #prayer-times th,
+      #prayer-times td {
+        padding: 15px;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        padding: 35px;
+      }
+      .form-group input,
+      .form-group textarea {
+        padding: 15px;
       }
 
       .footer-content {
@@ -327,10 +667,13 @@
       .social-icons a {
         font-size: 1.5em;
       }
+      footer {
+        padding: 40px 30px;
+      }
     }
 
     @media (min-width: 1024px) {
-      .service-card {
+      .service-card, .event-card {
         flex: 1 1 calc(25% - 22.5px);
         max-width: calc(25% - 22.5px);
       }
@@ -396,6 +739,81 @@
     </div>
   </section>
 
+  <!-- Prayer Times Section -->
+  <section id="prayer-times" data-aos="fade-up">
+    <h2 class="section-title">Prayer Times</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fajr</th>
+          <th>Sunrise</th>
+          <th>Dhuhr</th>
+          <th>Asr</th>
+          <th>Maghrib</th>
+          <th>Isha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05:00 AM</td>
+          <td>06:15 AM</td>
+          <td>12:30 PM</td>
+          <td>03:45 PM</td>
+          <td>06:30 PM</td>
+          <td>07:45 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Community Events Section -->
+  <section id="community-events" data-aos="fade-up">
+    <h2 class="section-title">Community Events</h2>
+    <div class="events-container">
+      <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-calendar-day event-icon"></i>
+        <h3>Friday Khutbah</h3>
+        <p>Join us every Friday at 1:00 PM for our weekly sermon and congregational prayer.</p>
+        <a href="#" class="btn-event">Register Now</a>
+      </div>
+      <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-praying-hands event-icon"></i>
+        <h3>Taraweeh Prayers</h3>
+        <p>Special Ramadan prayers starting at 9:00 PM, every night during the holy month.</p>
+        <a href="#" class="btn-event">Learn More</a>
+      </div>
+      <div class="event-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-gift event-icon"></i>
+        <h3>Eid Celebration</h3>
+        <p>Celebrate Eid-ul-Fitr with our community on March 31, 2025, at 8:00 AM.</p>
+        <a href="#" class="btn-event">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact-us" data-aos="fade-up">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-form">
+      <h3>Get in Touch</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer id="footer" data-aos="fade-up">
     <div class="footer-content">
@@ -403,7 +821,7 @@
         <h3>Masjid Mohammadia</h3>
         <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
       </div>
-      <div class="footer-contact" id="contact">
+      <div class="footer-contact">
         <h3>Contact Us</h3>
         <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
       </div>
@@ -424,7 +842,10 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
 
     const menuToggle = document.querySelector('.menu-toggle');
     const navUl = document.querySelector('nav ul');
