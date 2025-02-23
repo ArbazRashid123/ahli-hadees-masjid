@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
   <style>
-    /* Base & Reset */
+    /* Reset & Base */
     * {
       margin: 0;
       padding: 0;
@@ -15,99 +15,254 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f4f4f4;
+      background: #f0f4f2;
       color: #333;
       line-height: 1.6;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
+    a { text-decoration: none; color: inherit; }
+
+    /* Scroll Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ffd700, #ffaa00);
+      z-index: 1000;
+      transition: width 0.1s ease;
     }
+
+    /* Navigation */
+    nav {
+      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
+      background-size: 200% 200%;
+      color: #ffd700;
+      padding: 0.8rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: flowColors 8s ease infinite;
+    }
+    @keyframes flowColors {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    nav h2 { font-size: 1.2rem; }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-links a {
+      color: #ffd700;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: #fff; transform: translateY(-2px); }
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #ffd700;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1a3c34;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+      .nav-links.active { display: flex; }
+    }
+
     /* Header */
     header {
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-                  url('https://via.placeholder.com/1600x600?text=About+Masjid+Al-Noor') no-repeat center center/cover;
-      height: 400px;
+      height: 40vh;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+                  url('https://via.placeholder.com/1600x600?text=Masjid+Cherwan') no-repeat center center/cover;
+      background-attachment: fixed;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       text-align: center;
-      margin-bottom: 40px;
-      animation: fadeIn 1s ease-out;
+      animation: fadeIn 2s ease-out;
     }
-    header h1 {
-      font-size: 3.5em;
-      letter-spacing: 1px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    /* Container for Each Section */
+    header h1 { font-size: 1.5rem; padding: 0 1rem; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Container */
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto 40px;
+      width: 95%;
+      margin: 1rem auto;
       background: #fff;
-      padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
     }
-    /* Section Title */
-    .section-title {
+    .container.visible { opacity: 1; transform: translateY(0); }
+    .container .section-title {
+      padding: 1rem;
+      color: #ffd700;
+      font-size: 1.4rem;
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 2.8em;
-      color: #006600;
-      position: relative;
+      background-size: 200% 200%;
+      animation: flowColors 6s ease infinite;
     }
-    .section-title::after {
-      content: "";
-      width: 70px;
-      height: 4px;
-      background: linear-gradient(90deg, #ffcc00, #ff9900);
-      display: block;
-      margin: 15px auto 0;
-      border-radius: 2px;
-    }
-    /* Section Content */
     .content {
-      max-width: 1000px;
-      margin: auto;
-      font-size: 1.15em;
-      color: #555;
-      text-align: justify;
-      line-height: 1.8;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #444;
     }
-    /* Section Backgrounds & Borders */
-    #affiliation { background: #e6ffe6; border-left: 5px solid #28a745; }
-    #history { background: #fff7e6; border-left: 5px solid #ff9900; }
-    #leadership { background: #e6f7ff; border-left: 5px solid #007acc; }
-    #youth { background: #f0e6ff; border-left: 5px solid #8a2be2; }
-    #investments { background: #ffe6f2; border-left: 5px solid #d63384; }
-    #community-impact { background: #e6f9e6; border-left: 5px solid #28a745; }
-    /* Padding for All Containers */
-    .container section {
-      padding: 20px 0;
+
+    /* Dynamic Section Colors */
+    #affiliation { 
+      background: linear-gradient(135deg, #e6f5e6, #d9f0d9, #e6f5e6); 
+      background-size: 200% 200%;
+      border-top: 5px solid #2d8652; 
+      animation: subtleFlow 10s ease infinite;
     }
-    /* Responsive Adjustments */
-    @media(max-width:768px) {
-      header h1 { font-size: 2.8em; }
-      .section-title { font-size: 2.2em; }
+    #affiliation .section-title { background: linear-gradient(90deg, #2d8652, #3ca372, #2d8652); }
+
+    #history { 
+      background: linear-gradient(135deg, #fff5e6, #ffeed9, #fff5e6); 
+      background-size: 200% 200%;
+      border-top: 5px solid #e68a00; 
+      animation: subtleFlow 10s ease infinite;
     }
+    #history .section-title { background: linear-gradient(90deg, #e68a00, #ffaa00, #e68a00); }
+
+    #leadership { 
+      background: linear-gradient(135deg, #e6f0ff, #d9eaff, #e6f0ff); 
+      background-size: 200% 200%;
+      border-top: 5px solid #0066cc; 
+      animation: subtleFlow 10s ease infinite;
+    }
+    #leadership .section-title { background: linear-gradient(90deg, #0066cc, #3385ff, #0066cc); }
+
+    #youth { 
+      background: linear-gradient(135deg, #f0e6ff, #e6d9ff, #f0e6ff); 
+      background-size: 200% 200%;
+      border-top: 5px solid #6b2be6; 
+      animation: subtleFlow 10s ease infinite;
+    }
+    #youth .section-title { background: linear-gradient(90deg, #6b2be6, #8a4dff, #6b2be6); }
+
+    #investments { 
+      background: linear-gradient(135deg, #ffe6f0, #ffd9e6, #ffe6f0); 
+      background-size: 200% 200%;
+      border-top: 5px solid #cc3366; 
+      animation: subtleFlow 10s ease infinite;
+    }
+    #investments .section-title { background: linear-gradient(90deg, #cc3366, #ff4d88, #cc3366); }
+
+    #leadership-finance { 
+      background: linear-gradient(135deg, #e6f0ff, #d9eaff, #e6f0ff); 
+      background-size: 200% 200%;
+      border-top: 5px solid #0066cc; 
+      animation: subtleFlow 10s ease infinite;
+    }
+    #leadership-finance .section-title { background: linear-gradient(90deg, #0066cc, #3385ff, #0066cc); }
+
+    #community-impact { 
+      background: linear-gradient(135deg, #e6f9e6, #d9f5d9, #e6f9e6); 
+      background-size: 200% 200%;
+      border-top: 5px solid #2d8652; 
+      animation: subtleFlow 10s ease infinite;
+    }
+    #community-impact .section-title { background: linear-gradient(90deg, #2d8652, #3ca372, #2d8652); }
+
+    @keyframes subtleFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Current Chairman Styling */
+    .current-chairman {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #0066cc;
+      font-weight: 600;
+    }
+
+    /* Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #1a3c34;
+      color: #ffd700;
+      padding: 0.5rem 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .back-to-top.visible { opacity: 1; }
+
     /* Footer */
     footer {
+      padding: 1rem;
+      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
+      background-size: 200% 200%;
+      color: #ffd700;
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background: #333;
-      color: #fff;
-      font-size: 0.9em;
+      font-size: 0.9rem;
+      animation: flowColors 8s ease infinite;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      header { height: 50vh; }
+      header h1 { font-size: 2.2rem; }
+      .container { width: 85%; }
+      .container .section-title { font-size: 1.6rem; }
+      .content { font-size: 1rem; }
+      nav h2 { font-size: 1.5rem; }
+    }
+    @media (max-width: 500px) {
+      header { height: 35vh; }
+      header h1 { font-size: 1.3rem; }
+      .container .section-title { font-size: 1.2rem; }
+      .content { font-size: 0.85rem; }
+      .current-chairman { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <h2>Masjid Cherwan</h2>
+    <div class="nav-links">
+      <a href="#affiliation">Affiliation</a>
+      <a href="#history">History</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#youth">Youth</a>
+      <a href="#investments">Assets</a>
+      <a href="#leadership-finance">Finance</a>
+      <a href="#community-impact">Welfare</a>
+    </div>
+    <span class="hamburger">☰</span>
+  </nav>
+
   <!-- Header -->
   <header>
     <h1>About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
@@ -115,150 +270,173 @@
 
   <!-- Affiliation Section -->
   <div class="container" id="affiliation">
-    <section>
-      <h2 class="section-title">Affiliation</h2>
-      <div class="content">
-        <p>
-          Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.
-
-        </p>
-      </div>
-    </section>
+    <h2 class="section-title">Affiliation</h2>
+    <div class="content">
+      <p>
+        Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.
+      </p>
+    </div>
   </div>
 
   <!-- History Section -->
   <div class="container" id="history">
-    <section>
-      <h2 class="section-title">History</h2>
-      <div class="content">
-        <p>
-          The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid.The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
-
-<strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong> <br>
-
-The following individuals were instrumental in the establishment of the masjid:<br>
-
-1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>
-
-2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>
-
-3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>
-
-4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>
-
-5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br>
-<strong>First Prayer and Azan</strong><br> 
-On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong> Mohtaram Manzoor Ahmad Magray</strong> , marking a new spiritual era for the community.
-
-
-        </p>
-      </div>
-    </section>
+    <h2 class="section-title">History</h2>
+    <div class="content">
+      <p>
+        The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
+        <strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>
+        The following individuals were instrumental in the establishment of the masjid:<br>
+        1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>
+        2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>
+        3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>
+        4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>
+        5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br>
+        <strong>First Prayer and Azan</strong><br>
+        On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.
+      </p>
+    </div>
   </div>
 
   <!-- Leadership Section -->
   <div class="container" id="leadership">
-    <section>
-      <h2 class="section-title">Leadership</h2>
-      <div class="content">
-        <p>
-          The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
-1. Khursheed Ahmad Mir<br>
-2. Manzoor Ahmad Magray<br>
-3. Javaid Ahmad Raina<br>
-4. Tariq Ahmad Magray<br>
-5. Showkat Ahmad Mir - Current Chairman.
-
-        </p>
-      </div>
-    </section>
+    <h2 class="section-title">Leadership</h2>
+    <div class="content">
+      <p>
+        The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
+        1. Khursheed Ahmad Mir<br>
+        2. Manzoor Ahmad Magray<br>
+        3. Javaid Ahmad Raina<br>
+        4. Tariq Ahmad Magray<br>
+        5. Showkat Ahmad Mir <span class="current-chairman">- Current Chairman</span>
+      </p>
+    </div>
   </div>
 
   <!-- Youth Involvement Section -->
   <div class="container" id="youth">
-    <section>
-      <h2 class="section-title">Youth Involvement</h2>
-      <div class="content">
-        <p>
-          We recognize that the future lies in the hands of our youth. At Masjid jamia Mohammadia cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
-          volunteers, who actively contribute to its operations and welfare programs.<br>
-<strong>Youth Volunteers:</strong> <br>
-1. Showkat Ahmad Mir<br>
-2. Mudasir Majeed<br>
-3. Yaseen Ahmad Magaray<br>
-4. Tariq Mushtaq Sheer Gojri<br>
-5. Manzoor Ahmad Wani<br>
-6. Reyaz Ahmad Magray<br>
-7. Adil Ahmad Magray<br>
-8. Tariq Hassan Magray<br>
-9. Arbaz Rasheed<br>
-10. Umer Mumtaz<br>
-11. Aijaz Ahmad Magray<br>
-12. Irshad Ahmad Mir<br>
-13. Tariq Rahman Mir<br>
-14. Er. Saleem Ahmad Magray<br>
-15. Mehraj Ahmad Magray<br>
-16. Parvaiz Ahmad Magray<br>
-17. Mohammad Maqbool Magray<br>
-18. Adil Raheem Magray<br>
-19. Mohammad Yousuf Raina<br>
-20. Parvaiz Ahmad Magray<br>
- enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.
-
-        </p>
-      </div>
-    </section>
+    <h2 class="section-title">Youth Involvement</h2>
+    <div class="content">
+      <p>
+        We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
+        Volunteers, who actively contribute to its operations and welfare programs.<br>
+        <strong>Youth Volunteers:</strong><br>
+        1. Showkat Ahmad Mir<br>
+        2. Mudasir Majeed<br>
+        3. Yaseen Ahmad Magaray<br>
+        4. Tariq Mushtaq Sheer Gojri<br>
+        5. Manzoor Ahmad Wani<br>
+        6. Reyaz Ahmad Magray<br>
+        7. Adil Ahmad Magray<br>
+        8. Tariq Hassan Magray<br>
+        9. Arbaz Rasheed<br>
+        10. Umer Mumtaz<br>
+        11. Aijaz Ahmad Magray<br>
+        12. Irshad Ahmad Mir<br>
+        13. Tariq Rahman Mir<br>
+        14. Er. Saleem Ahmad Magray<br>
+        15. Mehraj Ahmad Magray<br>
+        16. Parvaiz Ahmad Magray<br>
+        17. Mohammad Maqbool Magray<br>
+        18. Adil Raheem Magray<br>
+        19. Mohammad Yousuf Raina<br>
+        20. Parvaiz Ahmad Magray<br>
+        Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.
+      </p>
+    </div>
   </div>
 
   <!-- Investments & Assets Section -->
   <div class="container" id="investments">
-    <section>
-      <h2 class="section-title">Investments & Assets</h2>
-      <div class="content">
-        <p>
-          The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br><h3>Primary Land Donors:</h3><br>
-<strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
-<strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
-With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
-
-        </p>
-      </div>
-    </section>
+    <h2 class="section-title">Investments & Assets</h2>
+    <div class="content">
+      <p>
+        The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br>
+        <h3>Primary Land Donors:</h3><br>
+        <strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
+        <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
+        With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
+      </p>
+    </div>
   </div>
 
-  <!-- Financial-overseeing Section -->
-  <div class="container" id="leadership">
-    <section>
-      <h2 class="section-title">Financial Management and Accountability</h2>
-      <div class="content">
-        <p>
-          Transparency and integrity are at the heart of the masjid’s financial operations.<strong> Tr. Mohammad Yousuf Mir </strong>ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
-
-        </p>
-      </div>
-    </section>
+  <!-- Financial Management Section -->
+  <div class="container" id="leadership-finance">
+    <h2 class="section-title">Financial Management and Accountability</h2>
+    <div class="content">
+      <p>
+        Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
+      </p>
+    </div>
   </div>
 
-  <!-- relief and help Section -->
-  <div class="container" id="youth">
-    <section>
-      <h2 class="section-title">Social Welfare and Humanitarian Services</h2>
-      <div class="content">
-        <p>
-          Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
-<strong>Welfare Programs:</strong><br> 
-<u>1. Marriage Assistance for Orphans </u> - Providing financial aid and logistical support for orphan girls' weddings.<br>
-2. <u>Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br>
-3. <u>Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br>
-4. <u>Disaster Relief for Flood Victims </u> - Providing emergency assistance to those affected by floods and other natural calamities.<br>
-5. <u>Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.
-        </p>
-      </div>
-    </section>
+  <!-- Social Welfare Section -->
+  <div class="container" id="community-impact">
+    <h2 class="section-title">Social Welfare and Humanitarian Services</h2>
+    <div class="content">
+      <p>
+        Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
+        <strong>Welfare Programs:</strong><br>
+        <u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br>
+        <u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br>
+        <u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br>
+        <u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br>
+        <u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.
+      </p>
+    </div>
   </div>
 
+  <!-- Back-to-Top Button -->
+  <div class="back-to-top">↑</div>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Masjid Al-Noor. All rights reserved.</p>
+    <p>© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    // Auto-close on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Scroll Progress Bar
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + '%';
+    });
+
+    // Back-to-Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100); // Staggered animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.container').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
