@@ -16,7 +16,53 @@
       background: linear-gradient(135deg, #e2e2e2, #f0f4f2);
       color: #333;
       line-height: 1.6;
-      overflow-x: hidden;
+      overflow: hidden; /* Prevent scrolling until modal is dismissed */
+    }
+
+    /* Navigation */
+    nav {
+      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
+      background-size: 300% 300%;
+      color: #ffd700;
+      padding: 0.8rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: flowColors 6s ease infinite;
+    }
+    @keyframes flowColors {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    nav h2 { font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 1rem; }
+    .nav-links a {
+      color: #ffd700;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      text-decoration: none; /* Remove underline */
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: #fff; transform: translateY(-2px); }
+    .hamburger { font-size: 1.5rem; cursor: pointer; color: #ffd700; display: none; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1a3c34;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+      .nav-links.active { display: flex; }
     }
 
     /* Privacy Modal */
@@ -159,15 +205,6 @@
     }
     .close-modal:hover { transform: scale(1.1); }
 
-    /* Header */
-    h1 {
-      font-size: 2.5rem;
-      margin: 2rem 0 1rem;
-      color: #1a3c34;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      animation: slideInDown 1s ease-out;
-    }
-
     /* Gallery Container */
     .gallery-container {
       width: 95%;
@@ -177,7 +214,6 @@
       display: none;
       position: relative;
     }
-    .gallery-container.visible { display: block; }
     .gallery-container::before {
       content: "";
       position: absolute;
@@ -191,6 +227,16 @@
       z-index: -1;
     }
 
+    /* Header */
+    h1 {
+      font-size: 2.5rem;
+      margin: 2rem 0 1rem;
+      color: #1a3c34;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: slideInDown 1s ease-out;
+    }
+
+    /* Section Titles */
     .section-title {
       font-size: 2.2rem;
       margin: 2rem 0 1rem;
@@ -202,20 +248,25 @@
       font-weight: 700;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       animation: flowColors 4s ease infinite, glowText 2s ease infinite;
+      text-align: center;
     }
     @keyframes glowText {
       0%, 100% { text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
       50% { text-shadow: 0 4px 12px rgba(255, 215, 0, 0.5); }
     }
 
-    .photo-gallery, .video-gallery {
+    /* Photo Section */
+    .photo-section {
+      background: linear-gradient(135deg, #e6f5e6, #d9f0d9);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    .photo-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-bottom: 2rem;
     }
-
-    /* Photo Gallery */
     .photo-gallery img {
       width: 100%;
       height: 200px;
@@ -229,7 +280,17 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
-    /* Video Gallery */
+    /* Video Section */
+    .video-section {
+      background: linear-gradient(135deg, #e6f7ff, #d9eaff);
+      padding: 1.5rem;
+      border-radius: 15px;
+    }
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
     .video-container {
       position: relative;
       overflow: hidden;
@@ -254,6 +315,7 @@
       h1 { font-size: 3rem; }
       .section-title { font-size: 2.5rem; }
       .photo-gallery img, .video-container video { height: 250px; }
+      nav h2 { font-size: 1.5rem; }
     }
     @media (max-width: 500px) {
       h1 { font-size: 2rem; }
@@ -270,6 +332,16 @@
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <h2>Masjid Gallery</h2>
+    <div class="nav-links">
+      <a href="#photos">Photos</a>
+      <a href="#videos">Videos</a>
+    </div>
+    <span class="hamburger">☰</span>
+  </nav>
+
   <!-- Privacy Modal -->
   <div class="privacy-modal">
     <div class="modal-content">
@@ -301,120 +373,124 @@
   </div>
 
   <!-- Gallery Content -->
-  <h1>Masjid Gallery</h1>
   <div class="gallery-container">
-    <h2 class="section-title">Photos</h2>
-    <div class="photo-gallery">
-      <img src="image1.jpg" alt="Masjid Photo 1">
-      <img src="image2.jpg" alt="Masjid Photo 2">
-      <img src="image3.jpg" alt="Masjid Photo 3">
-      <img src="image4.jpg" alt="Masjid Photo 4">
-      <img src="image5.jpg" alt="Masjid Photo 1">
-      <img src="image6.jpg" alt="Masjid Photo 2">
-      <img src="image7.jpg" alt="Masjid Photo 3">
-      <img src="image10.jpg" alt="Masjid Photo 2">
-      <img src="image11.jpg" alt="Masjid Photo 3">
-      <img src="image12.jpg" alt="Masjid Photo 4">
-      <img src="image8.jpg" alt="Masjid Photo 14">
-      <img src="image9.jpg" alt="Masjid Photo 14">
-      <img src="image15.jpg" alt="Masjid Photo 2">
-      <img src="image16.jpg" alt="Masjid Photo 3">
-      <img src="image17.jpg" alt="Masjid Photo 4">
-      <img src="image18.jpg" alt="Masjid Photo 1">
-      <img src="image19.jpg" alt="Masjid Photo 2">
-      <img src="image20.jpg" alt="Masjid Photo 3">
-      <img src="image21.jpg" alt="Masjid Photo 4">
-      <img src="image22.jpg" alt="Masjid Photo 1">
-      <img src="image23.jpg" alt="Masjid Photo 2">
-      <img src="image24.jpg" alt="Masjid Photo 3">
-      <img src="image25.jpg" alt="Masjid Photo 4">
-      <img src="image26.jpg" alt="Masjid Photo 4">
-      <img src="image27.jpg" alt="Masjid Photo 1">
-      <img src="image29.jpg" alt="Masjid Photo 2">
-      <img src="image30.jpg" alt="Masjid Photo 3">
-      <img src="image31.jpg" alt="Masjid Photo 4">
-      <img src="image32.jpg" alt="Masjid Photo 4">
-      <img src="image34.jpg" alt="Masjid Photo 1">
-      <img src="image35.jpg" alt="Masjid Photo 2">
-      <img src="image36.jpg" alt="Masjid Photo 3">
-      <img src="image37.jpg" alt="Masjid Photo 4">
-      <img src="image38.jpg" alt="Masjid Photo 1">
-      <img src="image39.jpg" alt="Masjid Photo 2">
-      <img src="image40.jpg" alt="Masjid Photo 3">
-      <img src="image41.jpg" alt="Masjid Photo 4">
-      <img src="image42.jpg" alt="Masjid Photo 4">
-      <img src="image43.jpg" alt="Masjid Photo 1">
-      <img src="image44.jpg" alt="Masjid Photo 2">
-      <img src="image45.jpg" alt="Masjid Photo 3">
-      <img src="image46.jpg" alt="Masjid Photo 4">
-      <img src="image47.jpg" alt="Masjid Photo 1">
-      <img src="image48.jpg" alt="Masjid Photo 2">
-      <img src="image49.jpg" alt="Masjid Photo 3">
-      <img src="image50.jpg" alt="Masjid Photo 4">
-      <img src="image51.jpg" alt="Masjid Photo 4">
-      <img src="image52.jpg" alt="Masjid Photo 1">
-      <img src="image53.jpg" alt="Masjid Photo 2">
-      <img src="image54.jpg" alt="Masjid Photo 3">
-      <img src="image55.jpg" alt="Masjid Photo 4">
-      <img src="image56.jpg" alt="Masjid Photo 4">
-      <img src="image57.jpg" alt="Masjid Photo 4">
-      <img src="image58.jpg" alt="Masjid Photo 1">
-      <img src="image59.jpg" alt="Masjid Photo 2">
-      <img src="image60.jpg" alt="Masjid Photo 3">
-      <img src="image61.jpg" alt="Masjid Photo 4">
-      <img src="image62.jpg" alt="Masjid Photo 4">
-      <img src="image63.jpg" alt="Masjid Photo 4">
-      <img src="image64.jpg" alt="Masjid Photo 1">
-      <img src="image66.jpg" alt="Masjid Photo 3">
-      <img src="image.jpg" alt="Masjid Photo 4">
+    <h1>Masjid Gallery</h1>
+    <div class="photo-section">
+      <h2 class="section-title" id="photos">Photos</h2>
+      <div class="photo-gallery">
+        <img src="image1.jpg" alt="Masjid Photo 1">
+        <img src="image2.jpg" alt="Masjid Photo 2">
+        <img src="image3.jpg" alt="Masjid Photo 3">
+        <img src="image4.jpg" alt="Masjid Photo 4">
+        <img src="image5.jpg" alt="Masjid Photo 1">
+        <img src="image6.jpg" alt="Masjid Photo 2">
+        <img src="image7.jpg" alt="Masjid Photo 3">
+        <img src="image10.jpg" alt="Masjid Photo 2">
+        <img src="image11.jpg" alt="Masjid Photo 3">
+        <img src="image12.jpg" alt="Masjid Photo 4">
+        <img src="image8.jpg" alt="Masjid Photo 14">
+        <img src="image9.jpg" alt="Masjid Photo 14">
+        <img src="image15.jpg" alt="Masjid Photo 2">
+        <img src="image16.jpg" alt="Masjid Photo 3">
+        <img src="image17.jpg" alt="Masjid Photo 4">
+        <img src="image18.jpg" alt="Masjid Photo 1">
+        <img src="image19.jpg" alt="Masjid Photo 2">
+        <img src="image20.jpg" alt="Masjid Photo 3">
+        <img src="image21.jpg" alt="Masjid Photo 4">
+        <img src="image22.jpg" alt="Masjid Photo 1">
+        <img src="image23.jpg" alt="Masjid Photo 2">
+        <img src="image24.jpg" alt="Masjid Photo 3">
+        <img src="image25.jpg" alt="Masjid Photo 4">
+        <img src="image26.jpg" alt="Masjid Photo 4">
+        <img src="image27.jpg" alt="Masjid Photo 1">
+        <img src="image29.jpg" alt="Masjid Photo 2">
+        <img src="image30.jpg" alt="Masjid Photo 3">
+        <img src="image31.jpg" alt="Masjid Photo 4">
+        <img src="image32.jpg" alt="Masjid Photo 4">
+        <img src="image34.jpg" alt="Masjid Photo 1">
+        <img src="image35.jpg" alt="Masjid Photo 2">
+        <img src="image36.jpg" alt="Masjid Photo 3">
+        <img src="image37.jpg" alt="Masjid Photo 4">
+        <img src="image38.jpg" alt="Masjid Photo 1">
+        <img src="image39.jpg" alt="Masjid Photo 2">
+        <img src="image40.jpg" alt="Masjid Photo 3">
+        <img src="image41.jpg" alt="Masjid Photo 4">
+        <img src="image42.jpg" alt="Masjid Photo 4">
+        <img src="image43.jpg" alt="Masjid Photo 1">
+        <img src="image44.jpg" alt="Masjid Photo 2">
+        <img src="image45.jpg" alt="Masjid Photo 3">
+        <img src="image46.jpg" alt="Masjid Photo 4">
+        <img src="image47.jpg" alt="Masjid Photo 1">
+        <img src="image48.jpg" alt="Masjid Photo 2">
+        <img src="image49.jpg" alt="Masjid Photo 3">
+        <img src="image50.jpg" alt="Masjid Photo 4">
+        <img src="image51.jpg" alt="Masjid Photo 4">
+        <img src="image52.jpg" alt="Masjid Photo 1">
+        <img src="image53.jpg" alt="Masjid Photo 2">
+        <img src="image54.jpg" alt="Masjid Photo 3">
+        <img src="image55.jpg" alt="Masjid Photo 4">
+        <img src="image56.jpg" alt="Masjid Photo 4">
+        <img src="image57.jpg" alt="Masjid Photo 4">
+        <img src="image58.jpg" alt="Masjid Photo 1">
+        <img src="image59.jpg" alt="Masjid Photo 2">
+        <img src="image60.jpg" alt="Masjid Photo 3">
+        <img src="image61.jpg" alt="Masjid Photo 4">
+        <img src="image62.jpg" alt="Masjid Photo 4">
+        <img src="image63.jpg" alt="Masjid Photo 4">
+        <img src="image64.jpg" alt="Masjid Photo 1">
+        <img src="image66.jpg" alt="Masjid Photo 3">
+        <img src="image.jpg" alt="Masjid Photo 4">
+      </div>
     </div>
 
-    <h2 class="section-title">Videos</h2>
-    <div class="video-gallery">
-      <div class="video-container">
-        <video src="video1.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video2.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video3.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video4.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video5.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="videoex.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="videoex2.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="image33.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video6.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video7.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video8.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video9.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video10.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video11.mp4" loop muted></video>
-      </div>
-      <div class="video-container">
-        <video src="video12.mp4" loop muted></video>
+    <div class="video-section">
+      <h2 class="section-title" id="videos">Videos</h2>
+      <div class="video-gallery">
+        <div class="video-container">
+          <video src="video1.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video2.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video3.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video4.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video5.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="videoex.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="videoex2.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="image33.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video6.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video7.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video8.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video9.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video10.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video11.mp4" loop muted></video>
+        </div>
+        <div class="video-container">
+          <video src="video12.mp4" loop muted></video>
+        </div>
       </div>
     </div>
   </div>
@@ -437,8 +513,21 @@
     enterBtn.addEventListener('click', () => {
       if (readCheckbox.checked && agreeCheckbox.checked) {
         modal.style.display = 'none';
-        gallery.classList.add('visible');
+        gallery.style.display = 'block';
+        document.body.style.overflow = 'auto';
       }
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
     });
 
     // Video Modal Logic
@@ -454,7 +543,7 @@
       container.addEventListener('click', () => {
         const videoSrc = container.querySelector('video').src;
         modalVideo.src = videoSrc;
-        modalVideo.muted = true; // Start muted
+        modalVideo.muted = true;
         muteBtn.textContent = '🔇';
         volumeSlider.value = 1;
         playPauseBtn.textContent = '▶️';
@@ -508,7 +597,6 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.photo-gallery img, .video-container').forEach(el => observer.observe(el));
-    document.querySelector('.gallery-container').classList.add('visible');
   </script>
 </body>
 </html>
