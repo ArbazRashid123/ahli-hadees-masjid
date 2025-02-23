@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masjid Services - Jamia Ahli-hadees Mohammadia Masjid Cherwan</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS for Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    /* Remove underlines from all links */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navigation (All Devices) */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 15px;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      position: fixed;
+      width: 100%;
+      max-width: 100vw;
+      top: 0;
+      z-index: 1001;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    nav .logo {
+      font-size: 1.2em;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    nav .menu-toggle {
+      display: block;
+      font-size: 1.5em;
+      color: #fff;
+      cursor: pointer;
+    }
+    nav ul {
+      display: none;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.95);
+      position: fixed;
+      top: 50px;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      width: 100%;
+      z-index: 1001;
+    }
+    nav ul.active {
+      display: flex;
+    }
+    nav ul li {
+      margin: 10px 0;
+    }
+    nav ul li a {
+      color: #fff;
+      font-size: 1em;
+      font-weight: 500;
+      padding: 5px 10px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ffcc00;
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://via.placeholder.com/1600x900?text=Masjid+Services') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 15px 0;
+      position: relative;
+      max-width: 100vw;
+    }
+    .hero-content {
+      color: #fff;
+      max-width: 100%;
+      padding: 0 10px;
+    }
+    header h1 {
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+    header h2 {
+      font-size: 1.3em;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+    header .hero-subheading {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.8em;
+      color: #006600;
+      font-weight: 700;
+      position: relative;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .section-title::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffcc00, #ff9900);
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Masjid Services Section */
+    #masjid-services {
+      background: #ffffff;
+      padding: 40px 15px;
+      max-width: 100vw;
+    }
+    .services-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 100%;
+    }
+    .service-card {
+      background: linear-gradient(135deg, #fff, #f9f9f9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255,215,0,0.3);
+    }
+    .service-icon {
+      font-size: 2em;
+      color: #006600;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      color: #ffcc00;
+    }
+    .service-card h3 {
+      margin-bottom: 10px;
+      color: #006600;
+      font-size: 1.2em;
+    }
+    .service-card p {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .btn-service {
+      background: linear-gradient(90deg, #006600, #008000);
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1em;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+    .btn-service:hover {
+      background: linear-gradient(90deg, #004d00, #006600);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #333, #1a1a1a);
+      color: #fff;
+      padding: 20px 15px;
+      max-width: 100vw;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 100%;
+      text-align: center;
+    }
+    .footer-about, .footer-contact, .footer-social {
+      padding: 10px;
+    }
+    .footer-content h3 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    .footer-content p {
+      font-size: 0.9em;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+    }
+    .social-icons a {
+      font-size: 1.5em;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #ffcc00;
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      background: #111;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .footer-bottom p {
+      font-size: 0.8em;
+      margin: 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      nav {
+        padding: 10px 30px;
+      }
+      nav .logo {
+        font-size: 1.5em;
+      }
+      nav .menu-toggle {
+        display: block; /* Keep hamburger visible on desktop */
+      }
+      nav ul {
+        display: none; /* Hide links by default on desktop until hamburger is clicked */
+        flex-direction: column;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        width: 100%;
+        z-index: 1001;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      nav ul li a {
+        font-size: 1em;
+        padding: 5px 10px;
+      }
+
+      header {
+        height: 80vh;
+      }
+      header h1 {
+        font-size: 3.5em;
+      }
+      header h2 {
+        font-size: 2.2em;
+      }
+      header .hero-subheading {
+        font-size: 1.4em;
+      }
+
+      #masjid-services {
+        padding: 80px 30px;
+      }
+      .services-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      .service-card {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        padding: 30px;
+      }
+      .service-card h3 {
+        font-size: 1.5em;
+      }
+      .service-card p {
+        font-size: 1em;
+      }
+
+      .footer-content {
+        flex-direction: row;
+        text-align: left;
+      }
+      .social-icons a {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .service-card {
+        flex: 1 1 calc(25% - 22.5px);
+        max-width: calc(25% - 22.5px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav data-aos="fade-down">
+    <div class="logo">Masjid Mohammadia Cherwan</div>
+    <div class="menu-toggle">☰</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" target="_blank">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#knowledge">Knowledge Center</a></li>
+      <li><a href="#ramadan">Ramadan</a></li>
+      <li><a href="gallery.html" target="_blank">Gallery</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="donate.html" target="_blank">Donate</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to:</h1>
+      <h2>Masjid Services</h2>
+      <p class="hero-subheading">Discover the spiritual and communal offerings of our Masjid.</p>
+    </div>
+  </header>
+
+  <!-- Masjid Services Section -->
+  <section id="masjid-services" data-aos="fade-up">
+    <h2 class="section-title">Masjid Services</h2>
+    <div class="services-container">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-mosque service-icon"></i>
+        <h3>Daily Prayers</h3>
+        <p>Five daily prayers conducted in a serene environment, fostering spiritual connection for all attendees.</p>
+        <a href="#" class="btn-service">Learn More</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-praying-hands service-icon"></i>
+        <h3>Friday Sermons</h3>
+        <p>Inspiring Khutbahs every Friday, providing guidance and knowledge based on the Quran and Sunnah.</p>
+        <a href="#" class="btn-service">Join Us</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-hands-helping service-icon"></i>
+        <h3>Spiritual Guidance</h3>
+        <p>Personal counseling and group sessions to strengthen your faith and resolve spiritual queries.</p>
+        <a href="#contact" class="btn-service">Contact Us</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-calendar-alt service-icon"></i>
+        <h3>Special Occasions</h3>
+        <p>Celebrating Islamic events like Eid, Taraweeh, and community gatherings with devotion.</p>
+        <a href="#" class="btn-service">View Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" data-aos="fade-up">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Masjid Mohammadia</h3>
+        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+      </div>
+      <div class="footer-contact" id="contact">
+        <h3>Contact Us</h3>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Masjid Mohammadia Cherwan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    AOS.init();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+      navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    // Close menu on link click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+        navUl.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
