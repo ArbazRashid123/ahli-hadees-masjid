@@ -110,6 +110,10 @@
       0% { transform: translateY(-100%); }
       100% { transform: translateY(100%); }
     }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     header h1 { font-size: 1.8rem; padding: 0 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); z-index: 1; }
 
     /* Container */
@@ -207,9 +211,10 @@
       color: #555;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: space-between;
+      max-width: 100%;
     }
-    .donation-details strong { color: #1a3c34; }
+    .donation-details strong { color: #1a3c34; flex-shrink: 0; }
 
     /* Copy Button & Tooltip */
     .copyable {
@@ -219,6 +224,8 @@
       background: #eef9f1;
       border-radius: 4px;
       transition: background 0.3s ease;
+      flex-grow: 1;
+      text-align: right;
     }
     .copyable:hover { background: #d9f0d9; }
     .copy-btn {
@@ -265,10 +272,12 @@
       font-style: italic;
       font-size: 1rem;
       transition: transform 0.3s ease;
+      background-size: cover;
+      background-position: center;
     }
     .scanner-placeholder:hover { transform: scale(1.05); }
-    .scanner-placeholder1 { background: url('masjidscanner.jpg') no-repeat center/cover; }
-    .scanner-placeholder2 { background: url('dmsscanner.jpg') no-repeat center/cover; }
+    .scanner-placeholder1 { background-image: url('masjidscanner.jpg'); }
+    .scanner-placeholder2 { background-image: url('dmsscanner.jpg'); }
 
     /* Back-to-Top Button */
     .back-to-top {
@@ -347,7 +356,7 @@
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> General funds for mosque operations and maintenance.</p>
       </div>
-      <div class="scanner-placeholder1"></div>
+      <div class="scanner-placeholder scanner-placeholder1"></div>
     </div>
 
     <!-- Donate to Dar-ul-Mawasaat Welfare Foundation Section -->
@@ -359,7 +368,7 @@
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Welfare and social initiatives to support the community.</p>
       </div>
-      <div class="scanner-placeholder2"></div>
+      <div class="scanner-placeholder scanner-placeholder2"></div>
     </div>
 
     <!-- Donate to Darasgah Section -->
