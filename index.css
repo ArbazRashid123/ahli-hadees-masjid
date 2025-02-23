@@ -350,6 +350,7 @@ section {
   margin-bottom: 15px;
 }
 .btn-service {
+  display: inline-block; /* Ensure button styles apply on all screens */
   background: linear-gradient(90deg, #006600, #008000);
   padding: 10px 20px;
   border-radius: 25px;
@@ -358,7 +359,6 @@ section {
   font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
 }
 .btn-service:hover {
   background: linear-gradient(90deg, #004d00, #006600);
