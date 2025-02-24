@@ -140,7 +140,7 @@ header .btn:hover {
   transform: scale(1.05);
 }
 
-/* Chatbot Container (Mobile-First, Larger, Scrollable, Smaller Font) */
+/* Chatbot Container (Mobile-First, Full Space, All Messages Visible) */
 .chatbot-container {
   display: flex;
   flex-direction: column;
@@ -181,12 +181,12 @@ header .btn:hover {
   flex: 1;
   display: block; /* Visible by default */
   max-width: 100%;
-  min-height: 400px; /* Larger height for mobile */
+  min-height: 500px; /* Larger height to occupy full space on mobile */
   position: relative;
 }
 
 .chatbot h3 {
-  font-size: 1.1em; /* Slightly smaller for mobile */
+  font-size: 1.1em;
   color: #006600;
   margin-bottom: 15px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -197,29 +197,29 @@ header .btn:hover {
 }
 
 .chatbot h3 i {
-  font-size: 1em; /* Slightly smaller icon */
+  font-size: 1em;
   color: #ffcc00;
 }
 
 .chat-messages {
-  height: 300px; /* Larger height to show only latest question/answer, scrollable for previous */
-  overflow-y: auto;
+  height: 400px; /* Larger height to show all messages, fully visible */
+  overflow-y: auto; /* Scroll only if content exceeds height */
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 15px;
   padding: 15px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
-  font-size: 0.8em; /* Smaller font for better fit */
+  font-size: 0.9em; /* Readable font size */
 }
 
 .chat-messages .user-message {
   color: #333;
-  margin: 6px 0; /* Reduced margin for compactness */
+  margin: 8px 0;
   text-align: right;
   background: rgba(255, 215, 0, 0.1);
-  padding: 6px 10px; /* Reduced padding for smaller size */
-  border-radius: 6px 0 0 6px;
+  padding: 8px 12px;
+  border-radius: 8px 0 0 8px;
   max-width: 80%;
   display: inline-block;
   word-wrap: break-word;
@@ -227,11 +227,11 @@ header .btn:hover {
 
 .chat-messages .bot-message {
   color: #006600;
-  margin: 6px 0; /* Reduced margin for compactness */
+  margin: 8px 0;
   text-align: left;
   background: rgba(0, 102, 0, 0.1);
-  padding: 6px 10px; /* Reduced padding for smaller size */
-  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+  border-radius: 0 8px 8px 0;
   max-width: 80%;
   display: inline-block;
   word-wrap: break-word;
@@ -245,10 +245,10 @@ header .btn:hover {
 
 #chat-input {
   width: 70%;
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  font-size: 0.8em; /* Smaller font for input */
+  font-size: 0.9em;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -262,13 +262,13 @@ header .btn:hover {
 }
 
 button {
-  padding: 8px 14px; /* Reduced padding for mobile */
+  padding: 10px 18px;
   border: none;
   border-radius: 8px;
   background: linear-gradient(90deg, #006600, #008000);
   color: #fff;
   cursor: pointer;
-  font-size: 0.8em; /* Smaller font for button */
+  font-size: 0.9em;
   font-weight: 600;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.3);
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -287,7 +287,7 @@ button:hover {
   }
 
   .chatbot {
-    min-height: 400px; /* Consistent larger height for mobile */
+    min-height: 500px; /* Consistent large height for mobile */
     padding: 15px;
   }
 
@@ -296,24 +296,24 @@ button:hover {
   }
 
   .chat-messages {
-    height: 300px; /* Larger, scrollable area for latest message */
+    height: 400px; /* Full space for all messages on mobile */
     padding: 10px;
   }
 
   #chat-input {
     width: 60%;
-    padding: 6px;
+    padding: 8px;
   }
 
   button {
-    padding: 6px 12px;
+    padding: 8px 14px;
   }
 }
 
 @media (min-width: 768px) {
   .chatbot {
-    max-width: 450px; /* Slightly larger for desktop */
-    min-height: 450px;
+    max-width: 500px; /* Larger for desktop */
+    min-height: 600px; /* Larger height for all messages */
   }
 
   .chatbot h3 {
@@ -321,19 +321,17 @@ button:hover {
   }
 
   .chat-messages {
-    height: 350px; /* Larger for desktop, still scrollable */
+    height: 500px; /* Full space for all messages on desktop */
     padding: 15px;
   }
 
   #chat-input {
     width: 70%;
-    padding: 10px;
-    font-size: 0.9em;
+    padding: 12px;
   }
 
   button {
-    padding: 10px 18px;
-    font-size: 0.9em;
+    padding: 12px 20px;
   }
 }
 
@@ -1004,8 +1002,7 @@ footer {
     width: 100%;
     z-index: 1001; /* Ensure menu stays above other content */
   }
-
-  nav ul.active {
+    nav ul.active {
     display: flex;
   }
 
