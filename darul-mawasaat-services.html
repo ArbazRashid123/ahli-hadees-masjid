@@ -28,6 +28,49 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
+    .container {
+      max-width: 100%;
+      margin: 20px 15px;
+    }
+
+    .content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center; /* Center align the content */
+      margin-left: 5%; /* Slight right shift for mobile, adjustable for larger screens */
+      margin-right: 5%;
+    }
+
+    .content p {
+      font-size: 1em;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #006600;
+      font-weight: 700;
+      position: relative;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #ffcc00, #ff9900);
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .assistance-programs {
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
@@ -124,6 +167,20 @@
         font-size: 1.5em;
       }
 
+      .container {
+        margin: 15px 10px;
+      }
+
+      .content {
+        margin-left: 3%; /* Smaller right shift for mobile */
+        margin-right: 3%;
+        padding: 15px;
+      }
+
+      .content p {
+        font-size: 0.9em;
+      }
+
       .assistance-programs {
         margin: 15px 10px;
         padding: 15px;
@@ -152,6 +209,20 @@
     }
 
     @media (min-width: 768px) {
+      .container {
+        margin: 20px 30px;
+      }
+
+      .content {
+        margin-left: 10%; /* Larger right shift for desktop */
+        margin-right: 10%;
+        padding: 25px;
+      }
+
+      .content p {
+        font-size: 1.1em;
+      }
+
       .assistance-list {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -229,37 +300,37 @@
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="300">
         <h3>Marriage Assistance</h3>
         <p>We provide financial and logistical support for the weddings of orphan girls to ease their marital journey.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="400">
         <h3>Cash Assistance</h3>
         <p>Cash assistance is provided to needy families for financial stability, especially in emergency situations.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="500">
         <h3>Flood Assistance</h3>
         <p>Immediate aid for flood victims, including food, shelter, and basic necessities, is provided to support recovery.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="600">
         <h3>Medical Assistance</h3>
         <p>Financial support and medicines are provided for chronic patients to improve their health and well-being.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="700">
         <h3>Employment Assistance</h3>
         <p>Programs to create job opportunities for the unemployed, promoting economic growth in the community.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="800">
         <h3>Disaster Relief</h3>
         <p>Emergency aid and rehabilitation services for those affected by natural disasters like floods and earthquakes.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="900">
         <h3>Other Assistance</h3>
         <p>Immediate and long-term aid for other community needs, such as education, shelter, and basic necessities.</p>
-        <a href="#" class="assistance-button">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
     </ul>
   </div>
