@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dar-ul-Mawasaat Services - Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS for Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* Additional Styles for Dar-ul-Mawasaat Services */
+    .service-header {
+      background: linear-gradient(135deg, #e0ffe0, #ccffcc);
+      padding: 40px 15px;
+      text-align: center;
+      border-radius: 15px 15px 0 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .service-header h1 {
+      font-size: 2em;
+      color: #006600;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .assistance-programs {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255, 215, 0, 0.2);
+      padding: 20px;
+      margin: 20px 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .assistance-programs:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .assistance-list {
+      list-style: none;
+      display: grid;
+      gap: 15px;
+      padding: 0;
+    }
+
+    .assistance-item {
+      background: linear-gradient(135deg, #fff, #f9f9f9);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assistance-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .assistance-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(0, 102, 0, 0.1));
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .assistance-item h3 {
+      font-size: 1.1em;
+      color: #006600;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .assistance-item p {
+      font-size: 0.9em;
+      color: #444;
+      position: relative;
+      z-index: 1;
+    }
+
+    .assistance-button {
+      background: linear-gradient(90deg, #006600, #008000);
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 0.9em;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .assistance-button:hover {
+      background: linear-gradient(90deg, #004d00, #006600);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 767px) {
+      .service-header {
+        padding: 20px 10px;
+      }
+
+      .service-header h1 {
+        font-size: 1.5em;
+      }
+
+      .assistance-programs {
+        margin: 15px 10px;
+        padding: 15px;
+      }
+
+      .assistance-list {
+        gap: 10px;
+      }
+
+      .assistance-item {
+        padding: 12px;
+      }
+
+      .assistance-item h3 {
+        font-size: 1em;
+      }
+
+      .assistance-item p {
+        font-size: 0.85em;
+      }
+
+      .assistance-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .assistance-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .assistance-programs {
+        margin: 20px 30px;
+        padding: 25px;
+      }
+
+      .assistance-item {
+        padding: 18px;
+      }
+
+      .assistance-item h3 {
+        font-size: 1.2em;
+      }
+
+      .assistance-item p {
+        font-size: 1em;
+      }
+
+      .assistance-button {
+        padding: 10px 18px;
+        font-size: 1em;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .assistance-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav data-aos="fade-down">
+    <div class="logo">Masjid Mohammadia Cherwan</div>
+    <div class="menu-toggle">☰</div>
+    <ul>
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#knowledge">Knowledge Center</a></li>
+      <li><a href="../index.html#ramadan">Ramadan</a></li>
+      <li><a href="../index.html#gallery">Gallery</a></li>
+      <li><a href="../index.html#announcements">Announcements</a></li>
+      <li><a href="../index.html#donate">Donate</a></li>
+      <li><a href="../index.html#community">Community</a></li>
+      <li><a href="../index.html#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header data-aos="fade-up">
+    <div class="service-header">
+      <h1>Dar-ul-Mawasaat Services</h1>
+    </div>
+  </header>
+
+  <!-- Dar-ul-Mawasaat Services Content -->
+  <div class="container" data-aos="fade-up">
+    <div class="content">
+      <h2 class="section-title">Our Welfare Efforts</h2>
+      <p>
+        Dar-ul-Mawasaat Services under Jamia Ahli Hadees Mohammadia Masjid Cherwan are dedicated to supporting the community through charity, welfare, and community support programs. Our efforts provide assistance for the needy, including marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment assistance, and disaster relief.
+      </p>
+    </div>
+  </div>
+
+  <!-- Assistance Programs (Integrated into Dar-ul-Mawasaat Services) -->
+  <div class="assistance-programs" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="section-title">Assistance Programs</h2>
+    <ul class="assistance-list">
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="300">
+        <h3>Marriage Assistance</h3>
+        <p>We provide financial and logistical support for the weddings of orphan girls to ease their marital journey.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="400">
+        <h3>Cash Assistance</h3>
+        <p>Cash assistance is provided to needy families for financial stability, especially in emergency situations.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="500">
+        <h3>Flood Assistance</h3>
+        <p>Immediate aid for flood victims, including food, shelter, and basic necessities, is provided to support recovery.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="600">
+        <h3>Medical Assistance</h3>
+        <p>Financial support and medicines are provided for chronic patients to improve their health and well-being.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="700">
+        <h3>Employment Assistance</h3>
+        <p>Programs to create job opportunities for the unemployed, promoting economic growth in the community.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="800">
+        <h3>Disaster Relief</h3>
+        <p>Emergency aid and rehabilitation services for those affected by natural disasters like floods and earthquakes.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="900">
+        <h3>Other Assistance</h3>
+        <p>Immediate and long-term aid for other community needs, such as education, shelter, and basic necessities.</p>
+        <a href="#" class="assistance-button">Request Assistance</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Masjid Mohammadia</h3>
+        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Masjid Mohammadia Cherwan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    AOS.init();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Toggle menu on hamburger click
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+      navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    // Close menu on link click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+        navUl.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
