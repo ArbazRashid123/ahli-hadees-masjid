@@ -281,57 +281,144 @@ button:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
-@media (max-width: 767px) {
-  .chatbot-container {
-    padding: 15px 10px;
-  }
+/* Iftar Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1002;
+  overflow-y: auto;
+}
 
-  .chatbot {
-    min-height: 500px; /* Consistent large height for mobile */
+.modal-content {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255, 215, 0, 0.2);
+  margin: 2rem auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  position: relative;
+  overflow-y: auto;
+}
+
+.modal-content h3 {
+  font-size: 1.5em;
+  color: #006600;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  color: #ffcc00;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.modal-table-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.iftar-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.iftar-table th,
+.iftar-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9em;
+}
+
+.iftar-table th {
+  background: linear-gradient(90deg, #006600, #008000);
+  color: #fff;
+}
+
+.iftar-table tr:hover {
+  background: #f1f1f1;
+}
+
+.iftar-table p {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .modal-content {
+    margin: 1rem;
+    width: 85%;
     padding: 15px;
   }
 
-  .chatbot h3 {
-    font-size: 1em;
+  .modal-content h3 {
+    font-size: 1.2em;
   }
 
-  .chat-messages {
-    height: 400px; /* Full space for all messages on mobile */
-    padding: 10px;
+  .close-btn {
+    font-size: 1.2em;
+    top: 8px;
+    right: 12px;
   }
 
-  #chat-input {
-    width: 60%;
+  .iftar-table th,
+  .iftar-table td {
+    font-size: 0.8em;
     padding: 8px;
   }
 
-  button {
-    padding: 8px 14px;
+  .iftar-table p {
+    font-size: 0.8em;
   }
 }
 
 @media (min-width: 768px) {
-  .chatbot {
-    max-width: 500px; /* Larger for desktop */
-    min-height: 600px; /* Larger height for all messages */
+  .modal-content {
+    padding: 25px;
   }
 
-  .chatbot h3 {
-    font-size: 1.3em;
+  .modal-content h3 {
+    font-size: 1.8em;
   }
 
-  .chat-messages {
-    height: 500px; /* Full space for all messages on desktop */
-    padding: 15px;
+  .close-btn {
+    font-size: 1.8em;
   }
 
-  #chat-input {
-    width: 70%;
+  .iftar-table th,
+  .iftar-table td {
+    font-size: 1em;
     padding: 12px;
   }
 
-  button {
-    padding: 12px 20px;
+  .iftar-table p {
+    font-size: 1em;
   }
 }
 
@@ -712,6 +799,7 @@ section {
   font-weight: 500;
   transition: background 0.3s ease, transform 0.3s ease;
   display: inline-block;
+  cursor: pointer;
 }
 
 .iftar-button:hover {
@@ -719,449 +807,406 @@ section {
   color: #333;
   transform: scale(1.05);
 }
-
-/* Gallery Section (Mobile-First) */
-#gallery {
-  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
-}
-
-.gallery-container {
-  max-width: 100%;
-  text-align: center;
-}
-
-.gallery-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-.btn-gallery {
-  background: linear-gradient(90deg, #28a745, #218838);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-gallery:hover {
-  background: linear-gradient(90deg, #218838, #1e7e34);
-  transform: translateY(-5px);
-}
-
-/* Donation Section (Mobile-First) */
-#donate {
-  background: linear-gradient(135deg, #e0ffe0, #ccffcc);
-}
-
-.donate-content {
-  max-width: 100%;
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.donate-content p {
-  font-size: 1em;
-  color: #444;
-  margin-bottom: 15px;
-}
-
-.donate-content .btn {
-  background: #006600;
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.donate-content .btn:hover {
-  background: #004d00;
-  transform: scale(1.05);
-}
-
-/* Community Corner Section (Mobile-First) */
-#community {
-  background: #ffffff;
-}
-
-.community-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 100%;
-}
-
-.community-item {
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.community-item:hover {
-  transform: translateY(-8px);
-}
-
-.community-item h3 {
-  color: #006600;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.community-item p {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.btn-community {
-  background: linear-gradient(90deg, #ffcc00, #ff9900);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #333;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-community:hover {
-  background: linear-gradient(90deg, #ffb700, #ffcc00);
-  transform: translateY(-5px);
-}
-
-/* Help Section (Mobile-First) */
-#help-donation {
-  background: #f0f4f8;
-}
-
-.help-container {
-  max-width: 100%;
-  text-align: center;
-  padding: 20px;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.help-container h2 {
-  font-size: 1.8em;
-  color: #006600;
-  margin-bottom: 10px;
-}
-
-.help-container p {
-  font-size: 1em;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.help-button {
-  background: linear-gradient(90deg, #28a745, #218838);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.help-button:hover {
-  background: linear-gradient(90deg, #218838, #1e7e34);
-  transform: translateY(-5px);
-}
-
-/* Footer (Mobile-First) */
-footer {
-  background: linear-gradient(135deg, #1a1a1a, #333);
-  color: #fff;
-  padding: 20px 15px;
-  max-width: 100vw;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 100%;
-  text-align: center;
-}
-
-.footer-about, .footer-contact, .footer-social {
-  padding: 10px;
-}
-
-.footer-content h3 {
-  color: #ffcc00;
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
-
-.footer-content p {
-  font-size: 0.9em;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  align-items: center;
-}
-
-.social-icons a {
-  font-size: 1.5em;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #ffcc00;
-  transform: scale(1.1);
-}
-
-.footer-bottom {
-  background: #111;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.footer-bottom p {
-  font-size: 0.8em;
-  margin: 0;
-}
-
-/* Button Styles (Mobile-First) */
-.btn-about {
-  background: linear-gradient(90deg, #28a745, #218838);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-about:hover {
-  background: linear-gradient(90deg, #218838, #1e7e34);
-  transform: translateY(-5px);
-}
-
-/* Desktop Adjustments (All Devices, Hamburger Only) */
-@media (min-width: 768px) {
-  nav {
-    padding: 10px 30px;
+  /* Gallery Section (Mobile-First) */
+  #gallery {
+    background: linear-gradient(135deg, #f0f4f8, #e6eef3);
   }
 
-  nav .logo {
-    font-size: 1.5em;
-  }
-
-  nav .menu-toggle {
-    display: block; /* Keep hamburger visible on desktop */
-  }
-
-  nav ul {
-    display: none; /* Hide links by default on desktop until hamburger is clicked */
-    flex-direction: column;
-    position: fixed; /* Keep fixed positioning for consistency */
-    top: 50px;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    width: 100%;
-    z-index: 1001; /* Ensure menu stays above other content */
-  }
-    nav ul.active {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-
-  nav ul li a {
-    font-size: 1em;
-    padding: 5px 10px;
-  }
-
-  header {
-    padding: 60px 30px 0;
-    height: 80vh;
-  }
-
-  header h1 {
-    font-size: 3.5em;
-  }
-
-  header h2 {
-    font-size: 2.2em;
-  }
-
-  header .hero-subheading {
-    font-size: 1.4em;
-  }
-
-  header .btn {
-    padding: 14px 28px;
-    font-size: 1.1em;
-  }
-
-  section {
-    padding: 80px 30px;
-  }
-
-  .section-title {
-    font-size: 2.8em;
-    margin-bottom: 60px;
-  }
-
-  #announcements {
-    padding: 40px 30px;
-  }
-
-  .announcement-marquee {
-    max-width: 800px;
-    padding: 20px;
-  }
-
-  .ramadan-container {
-    flex-direction: row;
-    padding: 30px;
-    gap: 40px;
-  }
-
-  .ramadan-times h3, .ramadan-quote h3 {
-    font-size: 1.8em;
-  }
-
-  .ramadan-times p, #daily-quote {
-    font-size: 1.2em;
-  }
-
-  .ramadan-calendar table {
-    font-size: 1.1em;
-  }
-
-  #about .content {
-    max-width: 900px;
-    padding: 30px;
-    font-size: 1.2em;
-  }
-
-  .services-container, .knowledge-container, .events-container, .community-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .service-card, .knowledge-item, .event, .community-item {
-    flex: 1 1 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-    padding: 30px;
-  }
-
-  .service-card h3, .knowledge-item h3, .event h3, .community-item h3 {
-    font-size: 1.5em;
-  }
-
-  .service-card p, .knowledge-item p, .event p, .community-item p {
-    font-size: 1em;
-  }
-
-  #prayer-times {
-    max-width: 800px;
-    padding: 30px;
-  }
-
-  #prayer-times table {
-    font-size: 1em;
-  }
-
-  #prayer-times th,
-  #prayer-times td {
-    padding: 15px;
+  .gallery-container {
+    max-width: 100%;
+    text-align: center;
   }
 
   .gallery-grid {
-    flex-direction: row;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
   }
 
   .gallery-grid img {
-    height: 200px;
-    max-width: calc(33.33% - 13.33px);
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
   }
 
-  .donate-content, .help-container {
-    max-width: 600px;
-    padding: 30px;
+  .gallery-grid img:hover {
+    transform: scale(1.05);
   }
 
-  .donate-content p, .help-container p {
+  .btn-gallery {
+    background: linear-gradient(90deg, #28a745, #218838);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-gallery:hover {
+    background: linear-gradient(90deg, #218838, #1e7e34);
+    transform: translateY(-5px);
+  }
+
+  /* Donation Section (Mobile-First) */
+  #donate {
+    background: linear-gradient(135deg, #e0ffe0, #ccffcc);
+  }
+
+  .donate-content {
+    max-width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .donate-content p {
+    font-size: 1em;
+    color: #444;
+    margin-bottom: 15px;
+  }
+
+  .donate-content .btn {
+    background: #006600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .donate-content .btn:hover {
+    background: #004d00;
+    transform: scale(1.05);
+  }
+
+  /* Community Corner Section (Mobile-First) */
+  #community {
+    background: #ffffff;
+  }
+
+  .community-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .community-item {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .community-item:hover {
+    transform: translateY(-8px);
+  }
+
+  .community-item h3 {
+    color: #006600;
     font-size: 1.2em;
+    margin-bottom: 10px;
   }
 
-  .help-container h2 {
-    font-size: 2.5em;
+  .community-item p {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .btn-community {
+    background: linear-gradient(90deg, #ffcc00, #ff9900);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #333;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-community:hover {
+    background: linear-gradient(90deg, #ffb700, #ffcc00);
+    transform: translateY(-5px);
+  }
+
+  /* Footer (Mobile-First) */
+  footer {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+    padding: 20px 15px;
+    max-width: 100vw;
   }
 
   .footer-content {
-    flex-direction: row;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .footer-about, .footer-contact, .footer-social {
+    padding: 10px;
+  }
+
+  .footer-content h3 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+
+  .footer-content p {
+    font-size: 0.9em;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
   }
 
   .social-icons a {
     font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
   }
-}
 
-/* Larger Desktop Adjustments (min-width: 1024px) */
-@media (min-width: 1024px) {
-  .service-card, .knowledge-item, .event, .community-item {
-    flex: 1 1 calc(25% - 22.5px);
-    max-width: calc(25% - 22.5px);
+  .social-icons a:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
   }
-}
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+  .footer-bottom {
+    background: #111;
+    padding: 10px;
+    margin-top: 10px;
+  }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  .footer-bottom p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+
+  /* Button Styles (Mobile-First) */
+  .btn-about {
+    background: linear-gradient(90deg, #28a745, #218838);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-about:hover {
+    background: linear-gradient(90deg, #218838, #1e7e34);
+    transform: translateY(-5px);
+  }
+
+  /* Desktop Adjustments (All Devices, Hamburger Only) */
+  @media (min-width: 768px) {
+    nav {
+      padding: 10px 30px;
+    }
+
+    nav .logo {
+      font-size: 1.5em;
+    }
+
+    nav .menu-toggle {
+      display: block; /* Keep hamburger visible on desktop */
+    }
+
+    nav ul {
+      display: none; /* Hide links by default on desktop until hamburger is clicked */
+      flex-direction: column;
+      position: fixed; /* Keep fixed positioning for consistency */
+      top: 50px;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      width: 100%;
+      z-index: 1001; /* Ensure menu stays above other content */
+    }
+
+    nav ul.active {
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav ul li a {
+      font-size: 1em;
+      padding: 5px 10px;
+    }
+
+    header {
+      padding: 60px 30px 0;
+      height: 80vh;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+    }
+
+    header h2 {
+      font-size: 2.2em;
+    }
+
+    header .hero-subheading {
+      font-size: 1.4em;
+    }
+
+    header .btn {
+      padding: 14px 28px;
+      font-size: 1.1em;
+    }
+
+    section {
+      padding: 80px 30px;
+    }
+
+    .section-title {
+      font-size: 2.8em;
+      margin-bottom: 60px;
+    }
+
+    #announcements {
+      padding: 40px 30px;
+    }
+
+    .announcement-marquee {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .ramadan-container {
+      flex-direction: row;
+      padding: 30px;
+      gap: 40px;
+    }
+
+    .ramadan-times h3, .ramadan-quote h3 {
+      font-size: 1.8em;
+    }
+
+    .ramadan-times p, #daily-quote {
+      font-size: 1.2em;
+    }
+
+    .ramadan-calendar table {
+      font-size: 1.1em;
+    }
+
+    #about .content {
+      max-width: 900px;
+      padding: 30px;
+      font-size: 1.2em;
+    }
+
+    .services-container, .knowledge-container, .events-container, .community-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .service-card, .knowledge-item, .event, .community-item {
+      flex: 1 1 calc(50% - 15px);
+      max-width: calc(50% - 15px);
+      padding: 30px;
+    }
+
+    .service-card h3, .knowledge-item h3, .event h3, .community-item h3 {
+      font-size: 1.5em;
+    }
+
+    .service-card p, .knowledge-item p, .event p, .community-item p {
+      font-size: 1em;
+    }
+
+    #prayer-times {
+      max-width: 800px;
+      padding: 30px;
+    }
+
+    #prayer-times table {
+      font-size: 1em;
+    }
+
+    #prayer-times th,
+    #prayer-times td {
+      padding: 15px;
+    }
+
+    .gallery-grid {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      height: 200px;
+      max-width: calc(33.33% - 13.33px);
+    }
+
+    .donate-content, .help-container {
+      max-width: 600px;
+      padding: 30px;
+    }
+
+    .donate-content p, .help-container p {
+      font-size: 1.2em;
+    }
+
+    .help-container h2 {
+      font-size: 2.5em;
+    }
+
+    .footer-content {
+      flex-direction: row;
+      text-align: left;
+    }
+
+    .social-icons a {
+      font-size: 1.5em;
+    }
+  }
+
+  /* Larger Desktop Adjustments (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .service-card, .knowledge-item, .event, .community-item {
+      flex: 1 1 calc(25% - 22.5px);
+      max-width: calc(25% - 22.5px);
+    }
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
