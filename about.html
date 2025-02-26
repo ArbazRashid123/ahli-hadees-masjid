@@ -437,6 +437,51 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.container').forEach(el => observer.observe(el));
+
+
+    
+  // Define translations (copy this from the index.html if not already shared across files)
+  const translations = {
+    en: {
+      // Add English translations specific to each page here
+    },
+    ur: {
+      // Add Urdu translations specific to each page here
+    },
+    ar: {
+      // Add Arabic translations specific to each page here
+    }
+  };
+
+  // Function to apply language
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.title = translations[lang].title || document.title; // Fallback to current title if not defined
+    // Add specific DOM updates for each page below
+    // Example for about.html:
+    // document.querySelector('nav h2').textContent = translations[lang].navTitle;
+    // document.querySelector('header h1').textContent = translations[lang].headerTitle;
+    // Add more selectors and translations as needed for each page
+
+    if (lang === 'ur' || lang === 'ar') {
+      document.body.style.direction = 'rtl';
+      document.body.style.textAlign = 'right';
+    } else {
+      document.body.style.direction = 'ltr';
+      document.body.style.textAlign = 'left';
+    }
+  }
+
+  // Apply stored language on page load
+  window.onload = function() {
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang && translations[savedLang]) {
+      applyLanguage(savedLang);
+    } else {
+      applyLanguage('en'); // Default to English if no language is set
+    }
+  };
+
   </script>
 </body>
 </html>
