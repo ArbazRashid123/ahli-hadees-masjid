@@ -176,7 +176,7 @@ header {
 }
 
 .hero-content {
-  color: #fff;
+  color: #000;
   max-width: 100%;
   padding: 0 10px;
   position: relative; /* Ensures content stays above the image */
