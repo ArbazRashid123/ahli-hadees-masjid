@@ -1246,6 +1246,96 @@ footer {
   }
 }
 
+/* Location Section Styles */
+#location {
+  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+  padding: 40px 15px;
+  max-width: 100vw;
+}
+
+.location-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.location-content {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; /* Limits width on larger screens */
+}
+
+.location-content p {
+  font-size: 1em;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.map-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 300px; /* Fixed height for mobile */
+  display: block;
+}
+
+.btn-location {
+  display: inline-block;
+  background: linear-gradient(90deg, #006600, #008000);
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-location:hover {
+  background: linear-gradient(90deg, #004d00, #006600);
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  #location {
+    padding: 80px 30px;
+  }
+
+  .location-content {
+    padding: 30px;
+  }
+
+  .location-content p {
+    font-size: 1.2em;
+  }
+
+  .map-wrapper iframe {
+    height: 400px; /* Larger height for desktop */
+  }
+
+  .btn-location {
+    padding: 12px 25px;
+    font-size: 1.1em;
+  }
+}
+
+
+
+
+
+
+
 @media (min-width: 1024px) {
   .service-card, .knowledge-item, .event, .community-item {
     flex: 1 1 calc(25% - 22.5px);
