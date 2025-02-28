@@ -300,6 +300,28 @@
     </div>
   </section>
 
+  <!-- Location Section -->
+<section id="location" data-aos="fade-up">
+  <h2 class="section-title">Our Location</h2>
+  <div class="location-container">
+    <div class="location-content glass">
+      <p>Visit us at Jamia Ahli Hadees Mohammadia Masjid Cherwan, Cherwan Kangan, 191202.</p>
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.5663918967237!2d74.9064552!3d34.2587258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1f6b6b8e8e8e7%3A0x7b8e8e8e8e8e8e8e!2sJamia%20Ahli%20Hadees%20Mohammadia%20Masjid%20Cherwan!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/GaEAktdQkCu6euRa7" target="_blank" class="btn-location">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
   <!-- Footer -->
   <footer id="footer" data-aos="fade-up">
     <div class="footer-content">
@@ -1096,6 +1118,12 @@
       const messages = document.getElementById('chat-messages');
       messages.scrollTop = messages.scrollHeight; // Always show the latest message, but keep all visible
     });
+
+    // Ensure the location link opens in a new tab (optional enhancement)
+document.querySelector('.btn-location').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.open(this.href, '_blank');
+});
   </script>
 </body>
 </html>
