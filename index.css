@@ -190,7 +190,7 @@ nav ul li a:hover {
 /* Hero Section (Mobile-First) */
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-              url('hero-img.jpg') no-repeat center center/cover;
+              url('background-logo.png') no-repeat center center/cover;
   height: 60vh; /* Keeps the height as is */
   display: flex;
   align-items: center;
