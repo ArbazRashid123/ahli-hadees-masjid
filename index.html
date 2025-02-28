@@ -372,7 +372,7 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+<!-- JavaScript -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
@@ -400,8 +400,8 @@
   const translations = {
     en: {
       title: "Jamia Ahli-hadees Mohammadia Masjid Cherwan Kangan",
-      nav: ["Home", "About", "Services", "Knowledge Center", "Ramadan", "Gallery", "Announcements", "Donate", "Community", "Contact"],
-      masjidName: "Jamia Ahli Hadees Mohammadia Masjid Cherwan", // Added
+      nav: ["Home", "About", "Services", "Knowledge Center", "Ramadan", "Gallery", "Announcements", "Donate", "Community", "Islamic Quiz", "Contact"],
+      masjidName: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
       welcome: "Welcome to:",
       heroTitle: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
       heroSub: "Connecting our community through faith, knowledge, and unity.",
@@ -489,12 +489,18 @@
       footerContactText: "Phone: 6006254589, 9622000919\nEmail: ",
       footerSocialTitle: "Follow Us",
       footerTech: "Technical support : Arbaz Rashid.",
-      footerRights: "© 2025 Masjid Mohammadia Cherwan. All rights reserved."
+      footerRights: "© 2025 Masjid Mohammadia Cherwan. All rights reserved.",
+      zakatTitle: "Zakat Calculator", // Added
+      cashLabel: "Cash (in your currency):",
+      goldLabel: "Gold Value (in your currency):",
+      silverLabel: "Silver Value (in your currency):",
+      calculateButton: "Calculate Zakat",
+      zakatResult: "Zakat Amount:"
     },
     ur: {
       title: "جامعہ اہلی حدیث محمدیہ مسجد چروان کنگن",
-      nav: ["ہوم", "ہمارے بارے میں", "خدمات", "علم کا مرکز", "رمضان", "گیلری", "اعلانات", "عطیہ", "کمیونٹی", "رابطہ"],
-      masjidName: "جامعہ اہل حدیث محمدیہ مسجد چیرون", // Added
+      nav: ["ہوم", "ہمارے بارے میں", "خدمات", "علم کا مرکز", "رمضان", "گیلری", "اعلانات", "عطیہ", "کمیونٹی", "اسلامی کوئز", "رابطہ"],
+      masjidName: "جامعہ اہلی حدیث محمدیہ مسجد چروان",
       welcome: "خوش آمدید:",
       heroTitle: "جامعہ اہلی حدیث محمدیہ مسجد چرون",
       heroSub: "ایمان، علم اور اتحاد کے ذریعے ہماری کمیونٹی کو جوڑنا۔",
@@ -582,12 +588,18 @@
       footerContactText: "فون: 6006254589، 9622000919\nای میل: ",
       footerSocialTitle: "ہمیں فالو کریں",
       footerTech: "تکنیکی معاونت: ارباز رشید۔",
-      footerRights: "© 2025 مسجد محمدیہ چروان۔ جملہ حقوق محفوظ ہیں۔"
+      footerRights: "© 2025 مسجد محمدیہ چروان۔ جملہ حقوق محفوظ ہیں۔",
+      zakatTitle: "زکوٰۃ کیلکولیٹر", // Added
+      cashLabel: "نقد (آپ کی کرنسی میں):",
+      goldLabel: "سونے کی قیمت (آپ کی کرنسی میں):",
+      silverLabel: "چاندی کی قیمت (آپ کی کرنسی میں):",
+      calculateButton: "زکوٰۃ حساب کریں",
+      zakatResult: "زکوٰۃ کی رقم:"
     },
     ar: {
       title: "جامع أهل الحديث المحمدية مسجد تشيروان كانجان",
-      nav: ["الرئيسية", "عنّا", "الخدمات", "مركز المعرفة", "رمضان", "المعرض", "الإعلانات", "التبرع", "المجتمع", "اتصل بنا"],
-      masjidName: "جامع أهل الحديث المحمدية مسجد تشيروان", // Added
+      nav: ["الرئيسية", "عنّا", "الخدمات", "مركز المعرفة", "رمضان", "المعرض", "الإعلانات", "التبرع", "المجتمع", "مسابقة إسلامية", "اتصل بنا"],
+      masjidName: "جامع أهل الحديث المحمدية مسجد تشيروان",
       welcome: "مرحبًا بكم في:",
       heroTitle: "جامع أهل الحديث المحمدية تشيروان",
       heroSub: "ربط مجتمعنا بالإيمان والمعرفة والوحدة.",
@@ -675,7 +687,13 @@
       footerContactText: "الهاتف: 6006254589، 9622000919\nالبريد الإلكتروني: ",
       footerSocialTitle: "تابعنا",
       footerTech: "الدعم الفني: أرباز رشيد.",
-      footerRights: "© 2025 مسجد المحمدية تشيروان. جميع الحقوق محفوظة."
+      footerRights: "© 2025 مسجد المحمدية تشيروان. جميع الحقوق محفوظة.",
+      zakatTitle: "حاسبة الزكاة", // Added
+      cashLabel: "النقد (بعملتك):",
+      goldLabel: "قيمة الذهب (بعملتك):",
+      silverLabel: "قيمة الفضة (بعملتك):",
+      calculateButton: "حساب الزكاة",
+      zakatResult: "مبلغ الزكاة:"
     }
   };
 
@@ -684,7 +702,7 @@
     document.title = translations[lang].title;
     const navItems = document.querySelectorAll('nav ul li a');
     navItems.forEach((item, index) => item.textContent = translations[lang].nav[index]);
-    document.getElementById('masjid-name').textContent = translations[lang].masjidName; // Added to update masjid name
+    document.getElementById('masjid-name').textContent = translations[lang].masjidName;
     document.querySelector('.hero-content h1').textContent = translations[lang].welcome;
     document.querySelector('.hero-content h2').textContent = translations[lang].heroTitle;
     document.querySelector('.hero-subheading').textContent = translations[lang].heroSub;
@@ -777,6 +795,14 @@
     document.querySelector('.footer-social h3').textContent = translations[lang].footerSocialTitle;
     document.querySelectorAll('.footer-bottom p')[0].textContent = translations[lang].footerTech;
     document.querySelectorAll('.footer-bottom p')[1].textContent = translations[lang].footerRights;
+    // Zakat Calculator Translations
+    document.querySelector('#zakat-calculator .section-title').textContent = translations[lang].zakatTitle;
+    document.querySelector('label[for="cash-input"]').textContent = translations[lang].cashLabel;
+    document.querySelector('label[for="gold-input"]').textContent = translations[lang].goldLabel;
+    document.querySelector('label[for="silver-input"]').textContent = translations[lang].silverLabel;
+    document.querySelector('#calculate-zakat').textContent = translations[lang].calculateButton;
+    document.querySelector('#zakat-result p').innerHTML = `${translations[lang].zakatResult} <span id="zakat-amount">0.00</span>`;
+
     document.getElementById('language-modal').style.display = 'none';
     if (lang === 'ur' || lang === 'ar') {
       document.body.style.direction = 'rtl';
@@ -787,10 +813,29 @@
     }
   }
 
+  // Zakat Calculator Logic
+  document.getElementById('calculate-zakat').addEventListener('click', () => {
+    const cash = parseFloat(document.getElementById('cash-input').value) || 0;
+    const gold = parseFloat(document.getElementById('gold-input').value) || 0;
+    const silver = parseFloat(document.getElementById('silver-input').value) || 0;
+
+    const totalWealth = cash + gold + silver;
+    const zakatRate = 0.025; // 2.5%
+    const nisabThreshold = 612.36; // Approx Nisab in USD (87.48g gold @ $70/g, adjust as needed)
+    
+    let zakatAmount = 0;
+    if (totalWealth >= nisabThreshold) {
+      zakatAmount = totalWealth * zakatRate;
+    }
+
+    document.getElementById('zakat-amount').textContent = zakatAmount.toFixed(2);
+  });
+
   window.onload = () => {
-    changeLanguage('en'); // Changed to set English as default and update masjid name
+    changeLanguage('en'); // Sets English as default and updates all translations
     document.getElementById('language-modal').style.display = 'block';
   };
+
 
     // Digital Clock (12-hour format with AM/PM)
 function updateClock() {
