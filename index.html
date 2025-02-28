@@ -500,12 +500,18 @@
       footerSocialTitle: "Follow Us",
       footerTech: "Technical support : Arbaz Rashid.",
       footerRights: "© 2025 Masjid Mohammadia Cherwan. All rights reserved.",
-      zakatTitle: "Zakat Calculator", // Added
-      cashLabel: "Cash (in your currency):",
-      goldLabel: "Gold Value (in your currency):",
-      silverLabel: "Silver Value (in your currency):",
+      zakatTitle: "Zakat Calculator",
+      zakatNote: "Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions.",
+      zakatNoteLink: "Click Here",
+      goldSilverLabel: "Value of Gold & Silver you have (in Rupees):",
+      cashHomeLabel: "Cash at Home (in Rupees):",
+      cashBankLabel: "Cash at Bank Account (in Rupees):",
+      investmentsLabel: "Any Investments & Share Value (in Rupees):",
+      businessLabel: "Value of goods & properties for business (in Rupees):",
+      liabilitiesLabel: "Total repayable Loan/Debts you have (in Rupees):",
       calculateButton: "Calculate Zakat",
-      zakatResult: "Zakat Amount:"
+      netValueLabel: "Your Calculated Net Value:",
+      zakatResultLabel: "Your Zakat:"
     },
     ur: {
       title: "جامعہ اہلی حدیث محمدیہ مسجد چروان کنگن",
@@ -599,12 +605,18 @@
       footerSocialTitle: "ہمیں فالو کریں",
       footerTech: "تکنیکی معاونت: ارباز رشید۔",
       footerRights: "© 2025 مسجد محمدیہ چروان۔ جملہ حقوق محفوظ ہیں۔",
-      zakatTitle: "زکوٰۃ کیلکولیٹر", // Added
-      cashLabel: "نقد (آپ کی کرنسی میں):",
-      goldLabel: "سونے کی قیمت (آپ کی کرنسی میں):",
-      silverLabel: "چاندی کی قیمت (آپ کی کرنسی میں):",
+      zakatTitle: "زکوٰۃ کیلکولیٹر",
+      zakatNote: "ایک سال سے زیادہ عرصے تک آپ کے قبضے میں موجود تمام اثاثوں کو درج کریں۔ اگر آپ کے کوئی سوالات ہیں تو ہمیں واٹس ایپ کریں۔",
+      zakatNoteLink: "یہاں کلک کریں",
+      goldSilverLabel: "آپ کے پاس سونے اور چاندی کی قیمت (روپوں میں):",
+      cashHomeLabel: "گھر میں نقد (روپوں میں):",
+      cashBankLabel: "بینک اکاؤنٹ میں نقد (روپوں میں):",
+      investmentsLabel: "کوئی سرمایہ کاری اور شیئرز کی قیمت (روپوں میں):",
+      businessLabel: "کاروبار کے لیے سامان اور جائیداد کی قیمت (روپوں میں):",
+      liabilitiesLabel: "واپس کرنے کے قابل قرض/قرضوں کی کل رقم (روپوں میں):",
       calculateButton: "زکوٰۃ حساب کریں",
-      zakatResult: "زکوٰۃ کی رقم:"
+      netValueLabel: "آپ کی حساب شدہ خالص قیمت:",
+      zakatResultLabel: "آپ کی زکوٰۃ:"
     },
     ar: {
       title: "جامع أهل الحديث المحمدية مسجد تشيروان كانجان",
@@ -698,12 +710,18 @@
       footerSocialTitle: "تابعنا",
       footerTech: "الدعم الفني: أرباز رشيد.",
       footerRights: "© 2025 مسجد المحمدية تشيروان. جميع الحقوق محفوظة.",
-      zakatTitle: "حاسبة الزكاة", // Added
-      cashLabel: "النقد (بعملتك):",
-      goldLabel: "قيمة الذهب (بعملتك):",
-      silverLabel: "قيمة الفضة (بعملتك):",
+      zakatTitle: "حاسبة الزكاة",
+      zakatNote: "أدخل جميع الأصول التي كانت في حوزتك لأكثر من عام. تواصل معنا عبر واتساب إذا كانت لديك أي أسئلة.",
+      zakatNoteLink: "اضغط هنا",
+      goldSilverLabel: "قيمة الذهب والفضة التي تمتلكها (بالروبية):",
+      cashHomeLabel: "النقد في المنزل (بالروبية):",
+      cashBankLabel: "النقد في الحساب البنكي (بالروبية):",
+      investmentsLabel: "قيمة أي استثمارات وأسهم (بالروبية):",
+      businessLabel: "قيمة البضائع والممتلكات التجارية (بالروبية):",
+      liabilitiesLabel: "إجمالي القروض/الديون القابلة للسداد التي لديك (بالروبية):",
       calculateButton: "حساب الزكاة",
-      zakatResult: "مبلغ الزكاة:"
+      netValueLabel: "القيمة الصافية المحسوبة الخاصة بك:",
+      zakatResultLabel: "زكاتك:"
     }
   };
 
@@ -807,11 +825,16 @@
     document.querySelectorAll('.footer-bottom p')[1].textContent = translations[lang].footerRights;
     // Zakat Calculator Translations
     document.querySelector('#zakat-calculator .section-title').textContent = translations[lang].zakatTitle;
-    document.querySelector('label[for="cash-input"]').textContent = translations[lang].cashLabel;
-    document.querySelector('label[for="gold-input"]').textContent = translations[lang].goldLabel;
-    document.querySelector('label[for="silver-input"]').textContent = translations[lang].silverLabel;
+    document.querySelector('.zakat-note').innerHTML = `${translations[lang].zakatNote} <a href="https://wa.me/6006254589" target="_blank">${translations[lang].zakatNoteLink}</a>`;
+    document.querySelector('label[for="gold-silver-input"]').textContent = translations[lang].goldSilverLabel;
+    document.querySelector('label[for="cash-home-input"]').textContent = translations[lang].cashHomeLabel;
+    document.querySelector('label[for="cash-bank-input"]').textContent = translations[lang].cashBankLabel;
+    document.querySelector('label[for="investments-input"]').textContent = translations[lang].investmentsLabel;
+    document.querySelector('label[for="business-input"]').textContent = translations[lang].businessLabel;
+    document.querySelector('label[for="liabilities-input"]').textContent = translations[lang].liabilitiesLabel;
     document.querySelector('#calculate-zakat').textContent = translations[lang].calculateButton;
-    document.querySelector('#zakat-result p').innerHTML = `${translations[lang].zakatResult} <span id="zakat-amount">0.00</span>`;
+    document.querySelector('#zakat-result p:nth-child(1)').innerHTML = `${translations[lang].netValueLabel} <span id="net-value">Rs.33,000</span>`;
+    document.querySelector('#zakat-result p:nth-child(2)').innerHTML = `${translations[lang].zakatResultLabel} <span id="zakat-amount">No Zakat - Total value is below Nisab</span>`;
 
     document.getElementById('language-modal').style.display = 'none';
     if (lang === 'ur' || lang === 'ar') {
@@ -825,26 +848,34 @@
 
   // Zakat Calculator Logic
   document.getElementById('calculate-zakat').addEventListener('click', () => {
-    const cash = parseFloat(document.getElementById('cash-input').value) || 0;
-    const gold = parseFloat(document.getElementById('gold-input').value) || 0;
-    const silver = parseFloat(document.getElementById('silver-input').value) || 0;
+    const goldSilver = parseFloat(document.getElementById('gold-silver-input').value) || 0;
+    const cashHome = parseFloat(document.getElementById('cash-home-input').value) || 0;
+    const cashBank = parseFloat(document.getElementById('cash-bank-input').value) || 0;
+    const investments = parseFloat(document.getElementById('investments-input').value) || 0;
+    const business = parseFloat(document.getElementById('business-input').value) || 0;
+    const liabilities = parseFloat(document.getElementById('liabilities-input').value) || 0;
 
-    const totalWealth = cash + gold + silver;
+    const totalAssets = goldSilver + cashHome + cashBank + investments + business;
+    const netValue = totalAssets - liabilities;
     const zakatRate = 0.025; // 2.5%
-    const nisabThreshold = 612.36; // Approx Nisab in USD (87.48g gold @ $70/g, adjust as needed)
+    const nisabThreshold = 75000; // Approx Nisab in INR (e.g., 87.48g gold @ ~₹850/g, adjust as needed)
     
     let zakatAmount = 0;
-    if (totalWealth >= nisabThreshold) {
-      zakatAmount = totalWealth * zakatRate;
+    if (netValue >= nisabThreshold) {
+      zakatAmount = netValue * zakatRate;
+      document.getElementById('zakat-amount').textContent = `Rs.${zakatAmount.toFixed(2)}`;
+    } else {
+      document.getElementById('zakat-amount').textContent = "No Zakat - Total value is below Nisab";
     }
 
-    document.getElementById('zakat-amount').textContent = zakatAmount.toFixed(2);
+    document.getElementById('net-value').textContent = `Rs.${netValue.toFixed(2)}`;
   });
 
   window.onload = () => {
     changeLanguage('en'); // Sets English as default and updates all translations
     document.getElementById('language-modal').style.display = 'block';
   };
+
 
 
     // Digital Clock (12-hour format with AM/PM)
