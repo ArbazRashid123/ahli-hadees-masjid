@@ -314,20 +314,30 @@
   <h2 class="section-title">Zakat Calculator</h2>
   <div class="zakat-container">
     <div class="zakat-form glass">
+      <p class="zakat-note">Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions. <a href="https://wa.me/6006254589" target="_blank">Click Here</a></p>
       <div class="zakat-inputs">
-        <label for="cash-input">Cash (in your currency):</label>
-        <input type="number" id="cash-input" placeholder="Enter amount" min="0" step="0.01">
+        <label for="gold-silver-input">Value of Gold & Silver you have (in Rupees):</label>
+        <input type="number" id="gold-silver-input" placeholder="Enter value" min="0" step="0.01" value="2000">
         
-        <label for="gold-input">Gold Value (in your currency):</label>
-        <input type="number" id="gold-input" placeholder="Enter value" min="0" step="0.01">
+        <label for="cash-home-input">Cash at Home (in Rupees):</label>
+        <input type="number" id="cash-home-input" placeholder="Enter amount" min="0" step="0.01" value="30000">
         
-        <label for="silver-input">Silver Value (in your currency):</label>
-        <input type="number" id="silver-input" placeholder="Enter value" min="0" step="0.01">
+        <label for="cash-bank-input">Cash at Bank Account (in Rupees):</label>
+        <input type="number" id="cash-bank-input" placeholder="Enter amount" min="0" step="0.01" value="0">
         
-        <button id="calculate-zakat">Calculate Zakat</button>
+        <label for="investments-input">Any Investments & Share Value (in Rupees):</label>
+        <input type="number" id="investments-input" placeholder="Enter value" min="0" step="0.01" value="1000">
+        
+        <label for="business-input">Value of goods & properties for business (in Rupees):</label>
+        <input type="number" id="business-input" placeholder="Enter value" min="0" step="0.01" value="0">
+        
+        <label for="liabilities-input">Total repayable Loan/Debts you have (in Rupees):</label>
+        <input type="number" id="liabilities-input" placeholder="Enter value" min="0" step="0.01" value="0">
       </div>
+      <button id="calculate-zakat">Calculate Zakat</button>
       <div class="zakat-result" id="zakat-result">
-        <p>Zakat Amount: <span id="zakat-amount">0.00</span></p>
+        <p>Your Calculated Net Value: <span id="net-value">Rs.33,000</span></p>
+        <p>Your Zakat: <span id="zakat-amount">No Zakat - Total value is below Nisab</span></p>
       </div>
     </div>
   </div>
