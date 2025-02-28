@@ -94,7 +94,7 @@ a {
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px; /* Wider than quiz card for inputs */
+  max-width: 500px; /* Same size as before */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -103,10 +103,25 @@ a {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
+.zakat-note {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.zakat-note a {
+  color: #006600;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .zakat-inputs {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height: 300px; /* Fixed height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 10px; /* Space for scrollbar */
 }
 
 .zakat-inputs label {
@@ -130,6 +145,7 @@ a {
 }
 
 #calculate-zakat {
+  margin-top: 15px;
   padding: 10px 20px;
   border: none;
   border-radius: 25px;
@@ -153,7 +169,7 @@ a {
   color: #006600;
 }
 
-#zakat-amount {
+#net-value, #zakat-amount {
   font-weight: 700;
 }
 
