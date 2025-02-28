@@ -74,6 +74,98 @@ a {
     justify-content: center;
   }
 }
+/* Zakat Calculator Section */
+#zakat-calculator {
+  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+  padding: 40px 15px;
+  max-width: 100vw;
+}
+
+.zakat-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.zakat-form {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Wider than quiz card for inputs */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zakat-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.zakat-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.zakat-inputs label {
+  font-size: 1em;
+  color: #006600;
+  font-weight: 500;
+}
+
+.zakat-inputs input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 102, 0, 0.3);
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.3s ease;
+}
+
+.zakat-inputs input:focus {
+  border-color: #006600;
+  outline: none;
+}
+
+#calculate-zakat {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #006600, #008000);
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#calculate-zakat:hover {
+  background: linear-gradient(90deg, #004d00, #006600);
+  transform: scale(1.05);
+}
+
+.zakat-result {
+  margin-top: 20px;
+  font-size: 1.1em;
+  color: #006600;
+}
+
+#zakat-amount {
+  font-weight: 700;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  #zakat-calculator {
+    padding: 80px 30px;
+  }
+  .zakat-form {
+    padding: 30px;
+  }
+}
 
 nav {
   display: flex;
