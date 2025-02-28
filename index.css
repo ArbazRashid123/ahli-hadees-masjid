@@ -106,7 +106,7 @@ nav .menu-toggle {
 
 nav ul {
   display: none;
-  flex-direction: column;
+  flex-direction: row;
   background: rgba(178, 84, 133, 0.8);
   position: fixed;
   top: 50px;
