@@ -6,6 +6,8 @@
   <title>About Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* Reset & Base */
     * {
@@ -31,6 +33,61 @@
       background: linear-gradient(90deg, #ffd700, #ffaa00);
       z-index: 1000;
       transition: width 0.1s ease;
+    }
+
+    /* Language Modal Styles */
+    .language-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1003;
+      overflow-y: auto;
+    }
+    .language-modal .modal-content {
+      margin: 20vh auto;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .language-modal h3 {
+      font-size: 1.5em;
+      color: #006600;
+      margin-bottom: 20px;
+    }
+    .language-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .language-options button {
+      padding: 12px 20px;
+      font-size: 1em;
+      background: linear-gradient(90deg, #006600, #008000);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .language-options button:hover {
+      background: linear-gradient(90deg, #004d00, #006600);
+      transform: scale(1.05);
+    }
+    @media (min-width: 768px) {
+      .language-options {
+        flex-direction: row;
+        justify-content: center;
+      }
     }
 
     /* Navigation */
@@ -245,12 +302,24 @@
   </style>
 </head>
 <body>
+  <!-- Language Selection Modal -->
+  <div id="language-modal" class="language-modal">
+    <div class="modal-content">
+      <h3>Select Language</h3>
+      <div class="language-options">
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ur')">اردو (Urdu)</button>
+        <button onclick="changeLanguage('ar')">العربية (Arabic)</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scroll Progress Bar -->
   <div id="progress-bar"></div>
 
   <!-- Navigation -->
   <nav>
-    <h2>Mohammadia Masjid Cherwan</h2>
+    <h2 id="nav-title">Mohammadia Masjid Cherwan</h2>
     <div class="nav-links">
       <a href="#affiliation">Affiliation</a>
       <a href="#history">History</a>
@@ -265,13 +334,13 @@
 
   <!-- Header -->
   <header>
-    <h1>About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
+    <h1 id="header-title">About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
   </header>
 
   <!-- Affiliation Section -->
   <div class="container" id="affiliation">
-    <h2 class="section-title">Affiliation</h2>
-    <div class="content">
+    <h2 class="section-title" id="affiliation-title">Affiliation</h2>
+    <div class="content" id="affiliation-content">
       <p>
         Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.
       </p>
@@ -280,8 +349,8 @@
 
   <!-- History Section -->
   <div class="container" id="history">
-    <h2 class="section-title">History</h2>
-    <div class="content">
+    <h2 class="section-title" id="history-title">History</h2>
+    <div class="content" id="history-content">
       <p>
         The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
         <strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>
@@ -299,8 +368,8 @@
 
   <!-- Leadership Section -->
   <div class="container" id="leadership">
-    <h2 class="section-title">Leadership</h2>
-    <div class="content">
+    <h2 class="section-title" id="leadership-title">Leadership</h2>
+    <div class="content" id="leadership-content">
       <p>
         The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
         1. Khursheed Ahmad Mir<br>
@@ -314,8 +383,8 @@
 
   <!-- Youth Involvement Section -->
   <div class="container" id="youth">
-    <h2 class="section-title">Youth Involvement</h2>
-    <div class="content">
+    <h2 class="section-title" id="youth-title">Youth Involvement</h2>
+    <div class="content" id="youth-content">
       <p>
         We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
         Volunteers, who actively contribute to its operations and welfare programs.<br>
@@ -347,8 +416,8 @@
 
   <!-- Investments & Assets Section -->
   <div class="container" id="investments">
-    <h2 class="section-title">Investments & Assets</h2>
-    <div class="content">
+    <h2 class="section-title" id="investments-title">Investments & Assets</h2>
+    <div class="content" id="investments-content">
       <p>
         The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br>
         <h3>Primary Land Donors:</h3><br>
@@ -361,8 +430,8 @@
 
   <!-- Financial Management Section -->
   <div class="container" id="leadership-finance">
-    <h2 class="section-title">Financial Management and Accountability</h2>
-    <div class="content">
+    <h2 class="section-title" id="finance-title">Financial Management and Accountability</h2>
+    <div class="content" id="finance-content">
       <p>
         Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
       </p>
@@ -371,8 +440,8 @@
 
   <!-- Social Welfare Section -->
   <div class="container" id="community-impact">
-    <h2 class="section-title">Social Welfare and Humanitarian Services</h2>
-    <div class="content">
+    <h2 class="section-title" id="welfare-title">Social Welfare and Humanitarian Services</h2>
+    <div class="content" id="welfare-content">
       <p>
         Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
         <strong>Welfare Programs:</strong><br>
@@ -390,7 +459,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
+    <p id="footer-text">© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
   </footer>
 
   <script>
@@ -400,7 +469,6 @@
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-    // Auto-close on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -431,12 +499,116 @@
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('visible');
-          }, index * 100); // Staggered animation
+          }, index * 100);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.container').forEach(el => observer.observe(el));
+
+    // Language Selection Logic
+    const translations = {
+      en: {
+        title: "About Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+        navTitle: "Mohammadia Masjid Cherwan",
+        nav: ["Affiliation", "History", "Leadership", "Youth", "Assets", "Finance", "Welfare"],
+        headerTitle: "About Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+        affiliationTitle: "Affiliation",
+        affiliationContent: "Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.",
+        historyTitle: "History",
+        historyContent: "The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br><strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>The following individuals were instrumental in the establishment of the masjid:<br>1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br><strong>First Prayer and Azan</strong><br>On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.",
+        leadershipTitle: "Leadership",
+        leadershipContent: "The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>1. Khursheed Ahmad Mir<br>2. Manzoor Ahmad Magray<br>3. Javaid Ahmad Raina<br>4. Tariq Ahmad Magray<br>5. Showkat Ahmad Mir <span class='current-chairman'>- Current Chairman</span>",
+        youthTitle: "Youth Involvement",
+        youthContent: "We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>Volunteers, who actively contribute to its operations and welfare programs.<br><strong>Youth Volunteers:</strong><br>1. Showkat Ahmad Mir<br>2. Mudasir Majeed<br>3. Yaseen Ahmad Magaray<br>4. Tariq Mushtaq Sheer Gojri<br>5. Manzoor Ahmad Wani<br>6. Reyaz Ahmad Magray<br>7. Adil Ahmad Magray<br>8. Tariq Hassan Magray<br>9. Arbaz Rasheed<br>10. Umer Mumtaz<br>11. Aijaz Ahmad Magray<br>12. Irshad Ahmad Mir<br>13. Tariq Rahman Mir<br>14. Er. Saleem Ahmad Magray<br>15. Mehraj Ahmad Magray<br>16. Parvaiz Ahmad Magray<br>17. Mohammad Maqbool Magray<br>18. Adil Raheem Magray<br>19. Mohammad Yousuf Raina<br>20. Parvaiz Ahmad Magray<br>Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.",
+        investmentsTitle: "Investments & Assets",
+        investmentsContent: "The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br><h3>Primary Land Donors:</h3><br><strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br><strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.",
+        financeTitle: "Financial Management and Accountability",
+        financeContent: "Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.",
+        welfareTitle: "Social Welfare and Humanitarian Services",
+        welfareContent: "Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br><strong>Welfare Programs:</strong><br><u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br><u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br><u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br><u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br><u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.",
+        footerText: "© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved."
+      },
+      ur: {
+        title: "جامعہ اہلی حدیث محمدیہ مسجد چروان کے بارے میں",
+        navTitle: "محمدیہ مسجد چروان",
+        nav: ["الحاق", "تاریخ", "قیادت", "نوجوان", "اثاثہ جات", "مالیات", "فلاح و بہبود"],
+        headerTitle: "جامعہ اہلی حدیث محمدیہ مسجد چروان کے بارے میں",
+        affiliationTitle: "الحاق",
+        affiliationContent: "جامعہ اہل حدیث محمدیہ مسجد شریف فخر سے جمیعت اہل حدیث جموں و کشمیر، باربرشاہ کے ساتھ ملحق ہے۔ یہ مسجد جمیعت اہل حدیث یونٹ چروان کے زیر انتظام ہے، جو اس کے مذہبی، تعلیمی اور فلاح و بہبود کے اقدامات کی نگرانی کرتی ہے۔ یہ الحاق اسلامی علم اور کمیونٹی سروس کو فروغ دینے کے وسیع تر مشن کے ساتھ ہم آہنگی کو یقینی بناتا ہے۔",
+        historyTitle: "تاریخ",
+        historyContent: "چروان میں ایک روحانی اور تعلیمی مرکز قائم کرنے کا خواب ایمان اور کمیونٹی سروس کے لیے وقف افراد کے ایک گروپ نے حقیقت میں بدل دیا۔ خورشید احمد میر کی قیادت میں، جو علی محمد میر کے بیٹے اور اس وقت جمیعت اہل حدیث یونٹ چروان کے صدر تھے، مسجد کا بنیادی پتھر (سنگ بنیاد) رکھا گیا۔ مسجد کی ابتدائی ترقی منزور احمد مگری نے دیکھی، جو اس اہم مرحلے کے دوران چیئرمین کے طور پر خدمات انجام دیتے رہے۔ ان کی لگن نے اس خواب کو حقیقت میں بدلنے میں اہم کردار ادا کیا۔<br><strong>جمیعت اہل حدیث یونٹ چروان کے اراکین</strong><br>مندرجہ ذیل افراد مسجد کے قیام میں اہم کردار ادا کرنے والے تھے:<br>1. محترم اب احد مگری (غلام محمد مگری کے بیٹے)<br>2. نور محمد مگری (محمد سلطان مگری کے بیٹے)<br>3. نذیر احمد وانی (غلام محمد وانی کے بیٹے)<br>4. محمد شفیع مگری (غلام محمد مگری کے بیٹے)<br>5. منزور احمد مگری (محمد سلطان مگری کے بیٹے)<br><strong>پہلی نماز اور اذان</strong><br>28 اپریل 2018 کے تاریخی دن، بنیاد کا پتھر رکھا گیا اور پہلی عصر کی نماز ادا کی گئی۔ پہلی اذان (نماز کی دعوت) <strong>محترم منزور احمد مگری</strong> نے دی، جو کمیونٹی کے لیے ایک نئے روحانی دور کا آغاز تھا۔",
+        leadershipTitle: "قیادت",
+        leadershipContent: "مسجد نے ان سرشار رہنماؤں کی زیر نگرانی ترقی کی جو جذبہ اور بصیرت کے ساتھ اس کے مشن کی رہنمائی کرتے رہے:<br>1. خورشید احمد میر<br>2. منزور احمد مگری<br>3. جاوید احمد رائنا<br>4. طارق احمد مگری<br>5. شوکت احمد میر <span class='current-chairman'>- موجودہ چیئرمین</span>",
+        youthTitle: "نوجوانوں کی شمولیت",
+        youthContent: "ہم تسلیم کرتے ہیں کہ مستقبل ہمارے نوجوانوں کے ہاتھوں میں ہے۔ مسجد جامعہ محمدیہ چروان میں، ہم تعلیمی پروگراموں، یوتھ کلبوں اور کمیونٹی سروس اقدامات کے ذریعے جوان دماغوں کو مشغول کرتے ہیں۔ ہماری کوششیں اگلی نسل کو علم، ذمہ داری اور ہمدردی کے ساتھ رہنمائی کرنے کے لیے بااختیار بناتی ہیں۔<br>رضاکار، جو اس کے آپریشنز اور فلاح و بہبود کے پروگراموں میں فعال طور پر حصہ دیتے ہیں۔<br><strong>نوجوان رضاکار:</strong><br>1. شوکت احمد میر<br>2. مدثر مجید<br>3. یاسین احمد مگری<br>4. طارق مصطفیٰ شیر گوجری<br>5. منزور احمد وانی<br>6. ریاض احمد مگری<br>7. عادل احمد مگری<br>8. طارق حسان مگری<br>9. ارباز رشید<br>10. عمر ممتاز<br>11. اعجاز احمد مگری<br>12. ارشد احمد میر<br>13. طارق رحمن میر<br>14. انجینئر سلیم احمد مگری<br>15. مہراج احمد مگری<br>16. پرویز احمد مگری<br>17. محمد مقبول مگری<br>18. عادل رحیم مگری<br>19. محمد یوسف رائنا<br>20. پرویز احمد مگری<br>جذبہ، محنت، اور عزم نے مسجد کے رسائی اور کمیونٹی پروگراموں کو مضبوط کرنے میں اہم کردار ادا کیا ہے۔",
+        investmentsTitle: "سرمایہ کاری اور اثاثہ جات",
+        investmentsContent: "مسجد اپنے وجود کا مرہون منت مقامی خیر خواہوں کی سخاوت سے ہے جنہوں نے اس عظیم مقصد کے لیے زمین عطیہ کی۔ ان کی بے لوثی نے ایک ایسی جگہ کی بنیاد رکھی جو کمیونٹی کی خدمت جاری رکھتی ہے۔<br><h3>بنیادی زمین کے عطیہ دہندگان:</h3><br><strong>1. غلام قادر شیر گوجری (غلام محمد شیر گوجری کے بیٹے)</strong><br><strong>2. عبدالرحیم شیر گوجری (عبدالسلام شیر گوجری کے بیٹے)</strong><br>وقت کے ساتھ ساتھ، جیسے جیسے مسجد کا اثر و رسوخ اور ذمہ داریاں بڑھیں، اضافی زمین حاصل کی گئی، جس سے کل رقبہ تقریباً 19 مرلہ تک بڑھ گیا۔ اس توسیع نے مسجد کو زیادہ نمازیوں کو ایڈجسٹ کرنے اور اس کے تعلیمی اور سماجی فلاح و بہبود کے پروگراموں کو بہتر بنانے کے قابل بنایا ہے۔",
+        financeTitle: "مالیاتی انتظام اور احتساب",
+        financeContent: "شفافیت اور دیانتداری مسجد کے مالیاتی عملیات کے مرکز میں ہیں۔ <strong>ٹریژرر محمد یوسف میر</strong> اس بات کو یقینی بناتے ہیں کہ تمام مالی وسائل کو مؤثر طریقے سے منظم کیا جائے اور کمیونٹی کی بہتری کے لیے استعمال کیا جائے۔",
+        welfareTitle: "سماجی فلاح و بہبود اور انسانی خدمات",
+        welfareContent: "اپنے روحانی کردار سے آگے، مسجد، جمیعت اہل حدیث یونٹ چروان کی کوششوں کے ذریعے، کمیونٹی فلاح و بہبود میں سب سے آگے رہی ہے۔ دارالموسات بیت المال کے ذریعے، ضرورت مندوں اور کمزوروں کی مدد کے لیے کئی فلاح و بہبود کے پروگرام چلائے جاتے ہیں۔<br><strong>فلاح و بہبود کے پروگرام:</strong><br><u>1. یتیموں کے لیے شادی کی مدد</u> - یتیم لڑکیوں کی شادیوں کے لیے مالی امداد اور لاجسٹک مدد فراہم کرنا۔<br><u>2. روزگار پیدا کرنے کے پروگرام</u> - بے روزگاروں کے لیے ملازمت کے مواقع پیدا کرنا۔<br><u>3. دائمی مریضوں کے لیے طبی امداد</u> - طویل مدتی بیماریوں میں مبتلا افراد کے لیے مالی امداد اور ادویات فراہم کرنا۔<br><u>4. سیلاب متاثرین کے لیے آفت سے نجات</u> - سیلاب اور دیگر قدرتی آفات سے متاثرہ افراد کو ہنگامی امداد فراہم کرنا۔<br><u>5. غریب خاندانوں کے لیے خوراک کی مدد</u> - پسماندہ خاندانوں کو ضروری خوراک کی فراہمی کو یقینی بنانا۔",
+        footerText: "© 2025 جامعہ اہلی حدیث محمدیہ مسجد چروان۔ جملہ حقوق محفوظ ہیں۔"
+      },
+      ar: {
+        title: "عن جامع أهل الحديث المحمدية مسجد تشيروان",
+        navTitle: "مسجد المحمدية تشيروان",
+        nav: ["الانتساب", "التاريخ", "القيادة", "الشباب", "الأصول", "المالية", "الرعاية الاجتماعية"],
+        headerTitle: "عن جامع أهل الحديث المحمدية مسجد تشيروان",
+        affiliationTitle: "الانتساب",
+        affiliationContent: "جامع أهل الحديث المحمدية مسجد الشريف منتسب بفخر إلى جامعة أهل الحديث جمو وكشمير، باربرشاه. يُدار المسجد بواسطة وحدة جامعة أهل الحديث تشيروان، التي تشرف على مبادراته الدينية والتعليمية والرعاية الاجتماعية. هذا الانتساب يضمن التوافق مع المهمة الأوسع لتعزيز المعرفة الإسلامية وخدمة المجتمع.",
+        historyTitle: "التاريخ",
+        historyContent: "تم تحقيق رؤية إنشاء مركز روحي وتعليمي في تشيروان على يد مجموعة من الأفراد المتفانين الملتزمين بالإيمان وخدمة المجتمع. تحت قيادة خورشيد أحمد مير، ابن علي محمد مير ورئيس وحدة جامعة أهل الحديث تشيروان آنذاك، تم وضع حجر الأساس (سانغ-إي-بونياد) للمسجد. أشرف على التطوير الأولي للمسجد منزور أحمد ماجراي، الذي شغل منصب الرئيس خلال هذه المرحلة الحاسمة. لعب تفانيه دورًا حاسمًا في تحويل الرؤية إلى واقع.<br><strong>أعضاء وحدة جامعة أهل الحديث تشيروان</strong><br>كان الأفراد التاليون أساسيين في تأسيس المسجد:<br>1. المحترم أبو أحمد ماجراي (ابن غلام محمد ماجراي)<br>2. نور محمد ماجراي (ابن محمد سلطان ماجراي)<br>3. نذير أحمد واني (ابن غلام محمد واني)<br>4. محمد شفيع ماجراي (ابن غلام محمد ماجراي)<br>5. منزور أحمد ماجراي (ابن محمد سلطان ماجراي)<br><strong>الصلاة الأولى والأذان</strong><br>في اليوم التاريخي 28 أبريل 2018، تم وضع حجر الأساس وأُقيمت صلاة العصر الأولى. أُعطي الأذان الأول (نداء الصلاة) بواسطة <strong>المحترم منزور أحمد ماجراي</strong>، مما يمثل بداية عصر روحي جديد للمجتمع.",
+        leadershipTitle: "القيادة",
+        leadershipContent: "ازدهر المسجد تحت إشراف قادة متفانين قادوا مهمته بالشغف والرؤية:<br>1. خورشيد أحمد مير<br>2. منزور أحمد ماجراي<br>3. جاويد أحمد راينا<br>4. طارق أحمد ماجراي<br>5. شوكت أحمد مير <span class='current-chairman'>- الرئيس الحالي</span>",
+        youthTitle: "مشاركة الشباب",
+        youthContent: "نحن ندرك أن المستقبل يكمن في أيدي شبابنا. في مسجد جامعة المحمدية تشيروان، نشغل العقول الشابة من خلال البرامج التعليمية، ونوادي الشباب، ومبادرات خدمة المجتمع. جهودنا تمكن الجيل القادم من القيادة بالمعرفة والمسؤولية والرحمة.<br>المتطوعون، الذين يساهمون بنشاط في عملياته وبرامج الرعاية الاجتماعية.<br><strong>المتطوعون الشباب:</strong><br>1. شوكت أحمد مير<br>2. مدثر مجيد<br>3. ياسين أحمد ماجراي<br>4. طارق مصطفى شير غوجري<br>5. منزور أحمد واني<br>6. رياض أحمد ماجراي<br>7. عادل أحمد ماجراي<br>8. طارق حسان ماجراي<br>9. أرباز رشيد<br>10. عمر ممتاز<br>11. أعجاز أحمد ماجراي<br>12. إرشاد أحمد مير<br>13. طارق رحمن مير<br>14. المهندس سليم أحمد ماجراي<br>15. مہراج أحمد ماجراي<br>16. برويز أحمد ماجراي<br>17. محمد مقبول ماجراي<br>18. عادل رحيم ماجراي<br>19. محمد يوسف راينا<br>20. برويز أحمد ماجراي<br>الحماس والعمل الجاد والالتزام كانت أساسية في تعزيز برامج المسجد للتوعية والمجتمع.",
+        investmentsTitle: "الاستثمارات والأصول",
+        investmentsContent: "يعود وجود المسجد إلى كرم المتبرعين المحليين الذين تبرعوا بالأرض لهذا الهدف النبيل. لقد وضعوا بلا أنانية الأساس لمكان يستمر في خدمة المجتمع.<br><h3>المتبرعون الأساسيون بالأرض:</h3><br><strong>1. غلام قادر شير غوجري (ابن غلام محمد شير غوجري)</strong><br><strong>2. عبدالرحيم شير غوجري (ابن عبدالسلام شير غوجري)</strong><br>مع مرور الوقت، ومع نمو تأثير المسجد ومسؤولياته، تم اقتناء أرض إضافية، مما وسع المساحة الإجمالية إلى حوالي 19 مرلة. مكنت هذه التوسعة المسجد من استيعاب المزيد من المصلين وتعزيز برامجه التعليمية والرعاية الاجتماعية.",
+        financeTitle: "الإدارة المالية والمسؤولية",
+        financeContent: "الشفافية والنزاهة هما جوهر العمليات المالية للمسجد. <strong>الأمين محمد يوسف مير</strong> يضمن إدارة جميع الموارد المالية بكفاءة واستخدامها لتحسين المجتمع.",
+        welfareTitle: "الرعاية الاجتماعية والخدمات الإنسانية",
+        welfareContent: "بالإضافة إلى دوره الروحي، كان المسجد، من خلال جهود وحدة جامعة أهل الحديث تشيروان، في صدارة الرعاية الاجتماعية للمجتمع. من خلال دار المواساة بيت المال، يتم تنفيذ العديد من برامج الرعاية الاجتماعية لدعم المحتاجين والضعفاء.<br><strong>برامج الرعاية الاجتماعية:</strong><br><u>1. مساعدة الزواج للأيتام</u> - تقديم المساعدة المالية والدعم اللوجستي لحفلات زفاف الفتيات الأيتام.<br><u>2. برامج توليد فرص العمل</u> - خلق فرص عمل للعاطلين عن العمل.<br><u>3. المساعدة الطبية للمرضى المزمنين</u> - تقديم المساعدة المالية والأدوية لأولئك الذين يعانون من أمراض طويلة الأمد.<br><u>4. الإغاثة من الكوارث لضحايا الفيضانات</u> - تقديم المساعدة الطارئة للمتضررين من الفيضانات وغيرها من الكوارث الطبيعية.<br><u>5. مساعدة الغذاء للعائلات الفقيرة</u> - ضمان حصول العائلات المحرومة على الإمدادات الغذائية الأساسية.",
+        footerText: "© 2025 جامع أهل الحديث المحمدية مسجد تشيروان. جميع الحقوق محفوظة."
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.title = translations[lang].title;
+      document.getElementById('nav-title').textContent = translations[lang].navTitle;
+      const navItems = document.querySelectorAll('.nav-links a');
+      navItems.forEach((item, index) => item.textContent = translations[lang].nav[index]);
+      document.getElementById('header-title').textContent = translations[lang].headerTitle;
+      document.getElementById('affiliation-title').textContent = translations[lang].affiliationTitle;
+      document.getElementById('affiliation-content').innerHTML = translations[lang].affiliationContent;
+      document.getElementById('history-title').textContent = translations[lang].historyTitle;
+      document.getElementById('history-content').innerHTML = translations[lang].historyContent;
+      document.getElementById('leadership-title').textContent = translations[lang].leadershipTitle;
+      document.getElementById('leadership-content').innerHTML = translations[lang].leadershipContent;
+      document.getElementById('youth-title').textContent = translations[lang].youthTitle;
+      document.getElementById('youth-content').innerHTML = translations[lang].youthContent;
+      document.getElementById('investments-title').textContent = translations[lang].investmentsTitle;
+      document.getElementById('investments-content').innerHTML = translations[lang].investmentsContent;
+      document.getElementById('finance-title').textContent = translations[lang].financeTitle;
+      document.getElementById('finance-content').innerHTML = translations[lang].financeContent;
+      document.getElementById('welfare-title').textContent = translations[lang].welfareTitle;
+      document.getElementById('welfare-content').innerHTML = translations[lang].welfareContent;
+      document.getElementById('footer-text').textContent = translations[lang].footerText;
+
+      document.getElementById('language-modal').style.display = 'none';
+      if (lang === 'ur' || lang === 'ar') {
+        document.body.style.direction = 'rtl';
+        document.body.style.textAlign = 'right';
+      } else {
+        document.body.style.direction = 'ltr';
+        document.body.style.textAlign = 'left';
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById('language-modal').style.display = 'block';
+    };
   </script>
 </body>
 </html>
