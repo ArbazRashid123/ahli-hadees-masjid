@@ -9,9 +9,6 @@
   <!-- Include html2canvas and jsPDF for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
   <style>
     /* Reset & Base */
     * {
@@ -468,54 +465,6 @@
       font-weight: bold;
     }
 
-    /* Receipt History Section */
-    #receipt-history {
-      margin-top: 20px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    #receipt-history h2 {
-      color: #1a3c34;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    #history-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .history-item {
-      background: #f9f9f9;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .history-item p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .history-buttons {
-      display: flex;
-      gap: 5px;
-    }
-    .history-buttons button {
-      background: linear-gradient(90deg, #ffd700, #ffaa00);
-      color: #1a3c34;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-    .history-buttons button:hover {
-      background: linear-gradient(90deg, #ffaa00, #ffd700);
-    }
-
     /* Responsive Adjustments */
     @media (min-width: 768px) {
       header { height: 50vh; }
@@ -533,8 +482,6 @@
       .scanner-placeholder.visible { min-height: 180px; }
       .copy-btn { font-size: 0.7rem; padding: 0.15rem 0.4rem; }
       .show-scanner, .get-receipt { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
-      .history-item { flex-direction: column; align-items: flex-start; }
-      .history-buttons { margin-top: 10px; }
     }
   </style>
 </head>
@@ -622,10 +569,6 @@
       <h2>Enter Password</h2>
       <label for="password">Password:</label>
       <input type="password" id="password" />
-      <label for="receipt-giver">Receipt Giver Name:</label>
-      <input type="text" id="receipt-giver" required />
-      <label for="mobile-number">Mobile Number (e.g., 916005317824):</label>
-      <input type="text" id="mobile-number" required />
       <button id="submit-password">Submit</button>
     </div>
     <div id="receipt-form" style="display: none;">
@@ -639,12 +582,6 @@
       <button id="generate-receipt">Generate Receipt</button>
     </div>
     <div id="receipt-preview" style="display: none;"></div>
-  </div>
-
-  <!-- Receipt History Section -->
-  <div id="receipt-history" class="container">
-    <h2 class="section-title">Receipt History</h2>
-    <div id="history-list"></div>
   </div>
 
   <!-- Back-to-Top Button -->
