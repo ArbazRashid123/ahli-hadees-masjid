@@ -1250,6 +1250,35 @@ document.querySelector('.btn-location').addEventListener('click', function(e) {
   e.preventDefault();
   window.open(this.href, '_blank');
 });
+
+  // Add this to your existing JavaScript
+function createFallingStars() {
+  const header = document.querySelector('header');
+  const star = document.createElement('div');
+  star.innerHTML = '✨';
+  star.style.position = 'absolute';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.animation = `falling-star ${2 + Math.random() * 3}s linear`;
+  star.style.fontSize = `${1 + Math.random() * 2}em`;
+  header.appendChild(star);
+
+  setTimeout(() => star.remove(), 3000);
+}
+
+// Create falling stars every 1.5 seconds
+setInterval(createFallingStars, 1500);
+
+// Add this to your CSS
+@keyframes falling-star {
+  0% {
+    transform: translateY(-100%) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200vh) translateX(100px);
+    opacity: 0;
+  }
+}
   </script>
 </body>
 </html>
