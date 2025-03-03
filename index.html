@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamia Ahli-hadees Mohammadia Masjid Cherwan Kangan</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS for Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Language Selection Modal -->
+  <div id="language-modal" class="modal language-modal">
+    <div class="modal-content glass">
+      <h3>Select Language</h3>
+      <div class="language-options">
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ur')">اردو (Urdu)</button>
+        <button onclick="changeLanguage('ar')">العربية (Arabic)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav data-aos="fade-down">
+    <div class="logo"><span id="masjid-name">Jamia Ahli Hadees Mohammadia Masjid Cherwan</span></div>
+    <div class="menu-toggle">☰</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#knowledge">Knowledge Center</a></li>
+      <li><a href="#ramadan">Ramadan</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+<header id="home">
+  <div id="digital-clock" class="digital-clock"></div>
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Welcome to:</h1>
+    <h2>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h2>
+    <p class="hero-subheading">Connecting our community through faith, knowledge, and unity.</p>
+    <a href="#prayer-times" class="btn">View Prayer Times</a>
+  </div>
+</header>
+
+
+  <!-- Announcement Section -->
+  <section id="announcements" data-aos="fade-up">
+    <h2 class="section-title">Important Announcements</h2>
+    <div class="announcement-marquee">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED.YOU CAN CHECK IT IN "UPCOMMING EVENTS" SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED.YOU CAN CHECK IT IN "UPCOMMING EVENTS" SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <!-- Duplicates for seamless loop -->
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED.YOU CAN CHECK IT IN "UPCOMMING EVENTS" SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED.YOU CAN CHECK IT IN "UPCOMMING EVENTS" SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Prayer Times Section -->
+  <section id="prayer-times" data-aos="fade-up">
+    <h2 class="section-title">Prayer Times</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fajr</th>
+          <th>Sunrise</th>
+          <th>Dhuhr</th>
+          <th>Asr</th>
+          <th>Maghrib</th>
+          <th>Isha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05:00 AM</td>
+          <td>06:15 AM</td>
+          <td>12:30 PM</td>
+          <td>03:45 PM</td>
+          <td>06:30 PM</td>
+          <td>07:45 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Ramadan Section -->
+  <section id="ramadan" data-aos="fade-up">
+    <h2 class="section-title">Ramadan 2025</h2>
+    <div class="ramadan-container">
+      <div class="ramadan-times" data-aos="fade-up" data-aos-delay="100">
+        <h3>Today’s Ramadan Timings (J&K)</h3>
+        <p><strong>Suhoor:</strong> <span id="suhoor-time">04:45 AM</span></p>
+        <p><strong>Iftar:</strong> <span id="iftar-time">06:15 PM</span></p>
+        <button class="iftar-button" onclick="showIftarList()">Get List</button>
+        <p class="note">*Approximate times for Srinagar, J&K, based on Ahl al-Hadith methodology. Adjust according to moon sighting.</p>
+      </div>
+      <div class="ramadan-quote" data-aos="fade-up" data-aos-delay="200">
+        <h3>Daily Inspiration</h3>
+        <p id="daily-quote">"Fasting is a shield with which a servant protects himself from the Fire." - Prophet Muhammad (SAW)</p>
+      </div>
+    </div>
+    <div class="ramadan-calendar" data-aos="fade-up" data-aos-delay="300">
+      <h3>Ramadan Calendar (First Week Preview)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Suhoor</th>
+            <th>Iftar</th>
+          </tr>
+        </thead>
+        <tbody id="ramadan-table">
+          <!-- Dynamically populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Us</h2>
+    <div class="content">
+      <p>
+        Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to serving our community with a rich history and visionary leadership.
+      </p>
+      <a href="about.html" class="btn-about" target="_blank">Know More About Us</a>
+    </div>
+  </section>
+
+   <!-- Donation Section -->
+  <section id="donate" data-aos="fade-up">
+    <h2 class="section-title">Support Our Community</h2>
+    <div class="donate-content">
+      <p>Your generous donations help us continue our programs and outreach initiatives. Every contribution makes a difference.</p>
+      <a href="donate.html" class="btn">Donate Now</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" data-aos="fade-up">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-container">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-mosque service-icon"></i>
+        <h3>Masjid Services</h3>
+        <p>Daily prayers, Friday sermons, and spiritual guidance for all.</p>
+        <a href="masjid-services.html" class="btn-service" target="_blank">Explore Masjid Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-heart service-icon"></i>
+        <h3>Dar-ul-Mawasaat Services</h3>
+        <p>Charity, welfare initiatives, and community support programs, including assistance for marriage, food, cash, flood, medical needs, employment, and disasters.</p>
+        <a href="darul-mawasaat-services.html" class="btn-service" target="_blank">Explore Welfare Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-book service-icon"></i>
+        <h3>Darasgah Services</h3>
+        <p>Educational programs, Quranic studies, and youth development.</p>
+        <a href="darasgah-services.html" class="btn-service" target="_blank">Explore Darasgah Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-hands-helping service-icon"></i>
+        <h3>Other Community Services</h3>
+        <p>Cultural events, outreach, and additional community support.</p>
+        <a href="other-services.html" class="btn-service" target="_blank">Explore Other Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Center Section -->
+  <section id="knowledge" data-aos="fade-up">
+    <h2 class="section-title">Knowledge Center</h2>
+    <div class="knowledge-container">
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Quranic Studies</h3>
+        <p>Access resources and videos for deepening your understanding of the Quran.</p>
+        <a href="https://quran.com" class="btn-knowledge">Learn More</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Hadith Library</h3>
+        <p>Explore authentic Hadith collections and their explanations.</p>
+        <a href="https://sunnah.com" class="btn-knowledge">Explore</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="300">
+        <h3>Islamic Lectures</h3>
+        <p>Watch recorded lectures by renowned Ahl al-Hadith scholars.</p>
+        <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv" class="btn-knowledge">Watch Now</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Events Section -->
+  <section id="events" data-aos="fade-up">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="events-container">
+      <div class="event" data-aos="fade-up" data-aos-delay="100">
+        <h3>Friday Khutbah</h3>
+        <p>Join us every Friday for our weekly sermon and congregational prayer.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="200">
+        <h3>Quran Recitation</h3>
+        <p>Experience the beauty of the Quran during our weekly recitation sessions.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="300">
+        <h3>Community Iftar</h3>
+        <p>Break your fast with our community during Ramadan with special iftar gatherings.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="400">
+        <h3>Charity Drive</h3>
+        <p>Support our local community through our ongoing charity initiatives.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="500">
+        <h3>Iftar Party</h3>
+        <p>"Whoever feeds a fasting person will have a reward like that of the fasting person, without diminishing their reward in any way." - Prophet Muhammad (SAW)</p>
+        <button class="iftar-button" onclick="showIftarList()">Get List</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Iftar Party Modal -->
+  <div id="iftar-modal" class="modal">
+    <div class="modal-content glass">
+      <span class="close-btn" onclick="closeIftarList()">&times;</span>
+      <h3>Iftar Party List</h3>
+      <div class="modal-table-container">
+        <table class="iftar-table">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Name of Individual/Person</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="iftar-table-body">
+            <!-- Dynamically populated by JavaScript -->
+          </tbody>
+        </table>
+        <p>For queries, call: 9149792910, 9622467778, 6006254589</p>
+        <p>Arrangements managed by: Tr Irshad Ahmad Mir, Tariq Ahmad Mir, Mubashir Mushtaq, Shahid Qadir SG, Shahbaz Magray</p>
+        <p>Issued by: Unit President Showkat Ahmad Mir</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <section id="gallery" data-aos="fade-up">
+    <div class="gallery-container">
+      <h2 class="section-title">Gallery</h2>
+      <p><strong>Explore our journey and commitment</strong></p>
+      <div class="gallery-grid">
+        <img src="gallery1.jpg" alt="Gallery Image 1">
+        <img src="gallery2.jpg" alt="Gallery Image 2">
+      </div>
+      <a href="gallery.html" class="btn-gallery">Go To Masjid Gallery</a>
+    </div>
+  </section>
+
+
+  <!-- Community Corner Section -->
+  <section id="community" data-aos="fade-up">
+    <h2 class="section-title">Community Corner</h2>
+    <div class="community-container">
+      <div class="community-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Volunteer Opportunities</h3>
+        <p>Join us in serving the community through various volunteer roles.</p>
+        <a href="#" class="btn-community">Sign Up</a>
+      </div>
+      <div class="community-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Youth Programs</h3>
+        <p>Engage our youth in activities that build faith and character.</p>
+        <a href="#" class="btn-community">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+<section id="location" data-aos="fade-up">
+  <h2 class="section-title">Our Location</h2>
+  <div class="location-container">
+    <div class="location-content glass">
+      <p>Visit us at Jamia Ahli Hadees Mohammadia Masjid Cherwan, Cherwan Kangan, 191202.</p>
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.5663918967237!2d74.9064552!3d34.2587258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1f6b6b8e8e8e7%3A0x7b8e8e8e8e8e8e8e!2sJamia%20Ahli%20Hadees%20Mohammadia%20Masjid%20Cherwan!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/GaEAktdQkCu6euRa7" target="_blank" class="btn-location">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Zakat Calculator Section -->
+<section id="zakat-calculator" data-aos="fade-up">
+  <h2 class="section-title">Zakat Calculator</h2>
+  <div class="zakat-container">
+    <div class="zakat-form glass">
+      <p class="zakat-note">Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions. <a href="https://wa.me/916005317824" target="_blank">Click Here</a></p>
+      <div class="zakat-inputs">
+        <label for="gold-silver-input">Value of Gold & Silver you have (in Rupees):</label>
+        <input type="number" id="gold-silver-input" placeholder="Enter value" min="0" step="0.01" value="2000">
+        
+        <label for="cash-home-input">Cash at Home (in Rupees):</label>
+        <input type="number" id="cash-home-input" placeholder="Enter amount" min="0" step="0.01" value="30000">
+        
+        <label for="cash-bank-input">Cash at Bank Account (in Rupees):</label>
+        <input type="number" id="cash-bank-input" placeholder="Enter amount" min="0" step="0.01" value="0">
+        
+        <label for="investments-input">Any Investments & Share Value (in Rupees):</label>
+        <input type="number" id="investments-input" placeholder="Enter value" min="0" step="0.01" value="1000">
+        
+        <label for="business-input">Value of goods & properties for business (in Rupees):</label>
+        <input type="number" id="business-input" placeholder="Enter value" min="0" step="0.01" value="0">
+        
+        <label for="liabilities-input">Total repayable Loan/Debts you have (in Rupees):</label>
+        <input type="number" id="liabilities-input" placeholder="Enter value" min="0" step="0.01" value="0">
+      </div>
+      <button id="calculate-zakat">Calculate Zakat</button>
+      <div class="zakat-result" id="zakat-result">
+        <p>Your Calculated Net Value: <span id="net-value">Rs.33,000</span></p>
+        <p>Your Zakat: <span id="zakat-amount">No Zakat - Total value is below Nisab</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!-- Chatbot Section (Visible by Default, Full Space, All Messages Visible, English Only) -->
+  <div class="chatbot-container glass" data-aos="fade-up">
+    <div class="chatbot" id="chatbot">
+      <h3>Chat with Us <i class="fas fa-robot"></i></h3>
+      <div class="chat-messages" id="chat-messages">
+        <p class="bot-message">Hello User! I am an AI chatbot created for helping users of Jamia ahli hadees mohammadia masjid cherwan webpage.I am not fully trained yet,but u can still ask me anything about this webpage.U can use certian keywords for eg. "services" , "chairman" ,"donation" etc.I will be very happy to help you 🙂 </p>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Ask any question (e.g., masjid, services, prayers, Ramadan...)..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer" data-aos="fade-up">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h3>
+        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#aa83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver?si=hCVWSeK8GyVtbEnv"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Technical support : Arbaz Rashid.</p>
+      <p>© 2025 Masjid Mohammadia Cherwan. All rights reserved.</p>
+    </div>
+  </footer>
+
+<!-- JavaScript -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+  AOS.init();
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.querySelector('nav ul');
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  // Toggle menu on hamburger click
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+    navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+  });
+
+  // Close menu on link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navUl.classList.remove('active');
+      navUl.style.display = 'none';
+    });
+  });
+
+  // Language Selection Logic
+  const translations = {
+    en: {
+      title: "Jamia Ahli-hadees Mohammadia Masjid Cherwan Kangan",
+      nav: ["Home", "About", "Services", "Knowledge Center", "Ramadan", "Gallery", "Announcements", "Donate", "Community", "Islamic Quiz", "Contact"],
+      masjidName: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+      welcome: "Welcome to:",
+      heroTitle: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+      heroSub: "Connecting our community through faith, knowledge, and unity.",
+      prayerBtn: "View Prayer Times",
+      chatbotTitle: "Chat with Us",
+      chatbotMessage: "Hello User! I am an AI chatbot created for helping users of Jamia ahli hadees mohammadia masjid cherwan webpage.I am not fully trained yet,but u can still ask me anything about this webpage.U can use certian keywords for eg. \"services\" , \"chairman\" ,\"donation\" etc.I will be very happy to help you 🙂",
+      chatbotPlaceholder: "Ask any question (e.g., masjid, services, prayers, Ramadan...)",
+      send: "Send",
+      announcementsTitle: "Important Announcements",
+      announcementText: "THE IFTAR PARTY LIST HAS BEEN UPLOADED.YOU CAN CHECK IT IN \"UPCOMMING EVENTS\" SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED",
+      ramadanTitle: "Ramadan 2025",
+      ramadanTimesTitle: "Today’s Ramadan Timings (J&K)",
+      suhoor: "Suhoor",
+      iftar: "Iftar",
+      ramadanNote: "*Approximate times for Srinagar, J&K, based on Ahl al-Hadith methodology. Adjust according to moon sighting.",
+      inspirationTitle: "Daily Inspiration",
+      ramadanCalendarTitle: "Ramadan Calendar (First Week Preview)",
+      date: "Date",
+      aboutTitle: "About Us",
+      aboutText: "Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to serving our community with a rich history and visionary leadership.",
+      aboutBtn: "Know More About Us",
+      servicesTitle: "Our Services",
+      masjidServiceTitle: "Masjid Services",
+      masjidServiceText: "Daily prayers, Friday sermons, and spiritual guidance for all.",
+      masjidServiceBtn: "Explore Masjid Services",
+      darulServiceTitle: "Dar-ul-Mawasaat Services",
+      darulServiceText: "Charity, welfare initiatives, and community support programs, including assistance for marriage, food, cash, flood, medical needs, employment, and disasters.",
+      darulServiceBtn: "Explore Welfare Services",
+      darasgahServiceTitle: "Darasgah Services",
+      darasgahServiceText: "Educational programs, Quranic studies, and youth development.",
+      darasgahServiceBtn: "Explore Darasgah Services",
+      otherServiceTitle: "Other Community Services",
+      otherServiceText: "Cultural events, outreach, and additional community support.",
+      otherServiceBtn: "Explore Other Services",
+      prayerTimesTitle: "Prayer Times",
+      fajr: "Fajr",
+      sunrise: "Sunrise",
+      dhuhr: "Dhuhr",
+      asr: "Asr",
+      maghrib: "Maghrib",
+      isha: "Isha",
+      knowledgeTitle: "Knowledge Center",
+      quranTitle: "Quranic Studies",
+      quranText: "Access resources and videos for deepening your understanding of the Quran.",
+      quranBtn: "Learn More",
+      hadithTitle: "Hadith Library",
+      hadithText: "Explore authentic Hadith collections and their explanations.",
+      hadithBtn: "Explore",
+      lecturesTitle: "Islamic Lectures",
+      lecturesText: "Watch recorded lectures by renowned Ahl al-Hadith scholars.",
+      lecturesBtn: "Watch Now",
+      eventsTitle: "Upcoming Events",
+      fridayTitle: "Friday Khutbah",
+      fridayText: "Join us every Friday for our weekly sermon and congregational prayer.",
+      quranRecitationTitle: "Quran Recitation",
+      quranRecitationText: "Experience the beauty of the Quran during our weekly recitation sessions.",
+      communityIftarTitle: "Community Iftar",
+      communityIftarText: "Break your fast with our community during Ramadan with special iftar gatherings.",
+      charityDriveTitle: "Charity Drive",
+      charityDriveText: "Support our local community through our ongoing charity initiatives.",
+      iftarPartyTitle: "Iftar Party",
+      iftarPartyText: "\"Whoever feeds a fasting person will have a reward like that of the fasting person, without diminishing their reward in any way.\" - Prophet Muhammad (SAW)",
+      iftarPartyBtn: "Get List",
+      iftarModalTitle: "Iftar Party List",
+      iftarTableHeaders: ["S No.", "Name of Individual/Person", "Date"],
+      iftarModalQueries: "For queries, call: 9149792910, 9622467778, 6006254589",
+      iftarModalManaged: "Arrangements managed by: Tr Irshad Ahmad Mir, Tariq Ahmad Mir, Mubashir Mushtaq, Shahid Qadir SG, Shahbaz Magray",
+      iftarModalIssued: "Issued by: Unit President Showkat Ahmad Mir",
+      galleryTitle: "Gallery",
+      galleryText: "Explore our journey and commitment",
+      galleryBtn: "Go To Masjid Gallery",
+      donateTitle: "Support Our Community",
+      donateText: "Your generous donations help us continue our programs and outreach initiatives. Every contribution makes a difference.",
+      donateBtn: "Donate Now",
+      communityTitle: "Community Corner",
+      volunteerTitle: "Volunteer Opportunities",
+      volunteerText: "Join us in serving the community through various volunteer roles.",
+      volunteerBtn: "Sign Up",
+      youthTitle: "Youth Programs",
+      youthText: "Engage our youth in activities that build faith and character.",
+      youthBtn: "Learn More",
+      footerAboutTitle: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+      footerAboutText: "Cherwan Kangan, 191202\nA sacred place to unite, learn, and ponder.",
+      footerContactTitle: "Contact Us",
+      footerContactText: "Phone: 6006254589, 9622000919\nEmail: ",
+      footerSocialTitle: "Follow Us",
+      footerTech: "Technical support : Arbaz Rashid.",
+      footerRights: "© 2025 Masjid Mohammadia Cherwan. All rights reserved.",
+      zakatTitle: "Zakat Calculator",
+      zakatNote: "Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions.",
+      zakatNoteLink: "Click Here",
+      goldSilverLabel: "Value of Gold & Silver you have (in Rupees):",
+      cashHomeLabel: "Cash at Home (in Rupees):",
+      cashBankLabel: "Cash at Bank Account (in Rupees):",
+      investmentsLabel: "Any Investments & Share Value (in Rupees):",
+      businessLabel: "Value of goods & properties for business (in Rupees):",
+      liabilitiesLabel: "Total repayable Loan/Debts you have (in Rupees):",
+      calculateButton: "Calculate Zakat",
+      netValueLabel: "Your Calculated Net Value:",
+      zakatResultLabel: "Your Zakat:"
+    },
+    ur: {
+      title: "جامعہ اہلی حدیث محمدیہ مسجد چروان کنگن",
+      nav: ["ہوم", "ہمارے بارے میں", "خدمات", "علم کا مرکز", "رمضان", "گیلری", "اعلانات", "عطیہ", "کمیونٹی", "اسلامی کوئز", "رابطہ"],
+      masjidName: "جامعہ اہلی حدیث محمدیہ مسجد چروان",
+      welcome: "خوش آمدید:",
+      heroTitle: "جامعہ اہلی حدیث محمدیہ مسجد چرون",
+      heroSub: "ایمان، علم اور اتحاد کے ذریعے ہماری کمیونٹی کو جوڑنا۔",
+      prayerBtn: "نماز کے اوقات دیکھیں",
+      chatbotTitle: "ہم سے بات کریں",
+      chatbotMessage: "ہیلو صارف! میں ایک AI چیٹ بوٹ ہوں جو جامعہ اہلی حدیث محمدیہ مسجد چروان ویب پیج کے صارفین کی مدد کے لیے بنایا گیا ہے۔ میں ابھی مکمل طور پر تربیت یافتہ نہیں ہوں، لیکن آپ پھر بھی اس ویب پیج کے بارے میں مجھ سے کچھ بھی پوچھ سکتے ہیں۔ آپ کچھ خاص الفاظ استعمال کر سکتے ہیں جیسے \"خدمات\"، \"چیئرمین\"، \"عطیہ\" وغیرہ۔ میں آپ کی مدد کے لیے بہت خوش ہوں گا 🙂",
+      chatbotPlaceholder: "کوئی بھی سوال پوچھیں (مثلاً، مسجد، خدمات، نمازیں، رمضان...)",
+      send: "بھیجیں",
+      announcementsTitle: "اہم اعلانات",
+      announcementText: "افطار پارٹی کی فہرست اپ لوڈ کر دی گئی ہے۔ آپ اسے \"آنے والے ایونٹس\" سیکشن میں دیکھ سکتے ہیں۔ -- دانش مشتاق ایس جی / مدثر مجید",
+      ramadanTitle: "رمضان 2025",
+      ramadanTimesTitle: "آج کے رمضان کے اوقات (جموں و کشمیر)",
+      suhoor: "سحری",
+      iftar: "افطار",
+      ramadanNote: "*سری نگر، جموں و کشمیر کے لیے تخمینی اوقات، اہل حدیث طریقہ کار کی بنیاد پر۔ چاند دیکھنے کے مطابق ایڈجسٹ کریں۔",
+      inspirationTitle: "روزانہ کی ترغیب",
+      ramadanCalendarTitle: "رمضان کیلنڈر (پہلے ہفتے کا جائزہ)",
+      date: "تاریخ",
+      aboutTitle: "ہمارے بارے میں",
+      aboutText: "جامعہ اہلی حدیث محمدیہ مسجد چروان اپنی کمیونٹی کی خدمت کے لیے وقف ہے جس کی بھرپور تاریخ اور بصیرت افروز قیادت ہے۔",
+      aboutBtn: "ہمارے بارے میں مزید جانیں",
+      servicesTitle: "ہماری خدمات",
+      masjidServiceTitle: "مسجد کی خدمات",
+      masjidServiceText: "روزانہ کی نمازیں، جمعہ کے خطبے، اور سب کے لیے روحانی رہنمائی۔",
+      masjidServiceBtn: "مسجد کی خدمات دریافت کریں",
+      darulServiceTitle: "دار المواسات خدمات",
+      darulServiceText: "خیرات، فلاح و بہبود کے اقدامات، اور کمیونٹی سپورٹ پروگرامز، بشمول شادی، خوراک، نقد، سیلاب، طبی ضروریات، روزگار، اور آفات کے لیے مدد۔",
+      darulServiceBtn: "فلاح و بہبود کی خدمات دریافت کریں",
+      darasgahServiceTitle: "درسگاہ خدمات",
+      darasgahServiceText: "تعلیمی پروگرامز، قرآنی مطالعہ، اور نوجوانوں کی ترقی۔",
+      darasgahServiceBtn: "درسگاہ خدمات دریافت کریں",
+      otherServiceTitle: "دیگر کمیونٹی خدمات",
+      otherServiceText: "ثقافتی تقریبات، رسائی، اور اضافی کمیونٹی سپورٹ۔",
+      otherServiceBtn: "دیگر خدمات دریافت کریں",
+      prayerTimesTitle: "نماز کے اوقات",
+      fajr: "فجر",
+      sunrise: "طلوع آفتاب",
+      dhuhr: "ظہر",
+      asr: "عصر",
+      maghrib: "مغرب",
+      isha: "عشاء",
+      knowledgeTitle: "علم کا مرکز",
+      quranTitle: "قرآنی مطالعہ",
+      quranText: "قرآن کے بارے میں اپنی سمجھ کو گہرا کرنے کے لیے وسائل اور ویڈیوز تک رسائی۔",
+      quranBtn: "مزید جانیں",
+      hadithTitle: "حدیث لائبریری",
+      hadithText: "مستند حدیث مجموعوں اور ان کی تشریحات کو دریافت کریں۔",
+      hadithBtn: "دریافت کریں",
+      lecturesTitle: "اسلامی لیکچرز",
+      lecturesText: "اہل حدیث کے مشہور علماء کے ریکارڈ شدہ لیکچرز دیکھیں۔",
+      lecturesBtn: "اب دیکھیں",
+      eventsTitle: "آنے والے ایونٹس",
+      fridayTitle: "جمعہ کا خطبہ",
+      fridayText: "ہر جمعہ کو ہمارے ہفتہ وار خطبہ اور اجتماعی نماز میں شامل ہوں۔",
+      quranRecitationTitle: "قرآن کی تلاوت",
+      quranRecitationText: "ہفتہ وار تلاوت کے سیشنز کے دوران قرآن کی خوبصورتی کا تجربہ کریں۔",
+      communityIftarTitle: "کمیونٹی افطار",
+      communityIftarText: "رمضان کے دوران خصوصی افطار اجتماعات کے ساتھ ہماری کمیونٹی کے ساتھ روزہ افطار کریں۔",
+      charityDriveTitle: "خیراتی مہم",
+      charityDriveText: "ہماری جاری خیراتی اقدامات کے ذریعے مقامی کمیونٹی کی حمایت کریں۔",
+      iftarPartyTitle: "افطار پارٹی",
+      iftarPartyText: "جو شخص روزہ دار کو کھانا کھلائے اسے روزہ دار کے برابر ثواب ملے گا، بغیر اس کے کہ اس کے ثواب میں کوئی کمی ہو۔ - نبی محمد (صلی اللہ علیہ وسلم)",
+      iftarPartyBtn: "فہرست حاصل کریں",
+      iftarModalTitle: "افطار پارٹی کی فہرست",
+      iftarTableHeaders: ["نمبر", "فرد/شخص کا نام", "تاریخ"],
+      iftarModalQueries: "سوالات کے لیے رابطہ کریں: 9149792910، 9622467778، 6006254589",
+      iftarModalManaged: "انتظامات سنبھالنے والے: ٹی آر ارشد احمد میر، طارق احمد میر، مبشر مشتاق، شاہد قادر ایس جی، شہباز مگری",
+      iftarModalIssued: "جاری کردہ: یونٹ صدر شوکت احمد میر",
+      galleryTitle: "گیلری",
+      galleryText: "ہمارے سفر اور عزم کو دریافت کریں",
+      galleryBtn: "مسجد کی گیلری دیکھیں",
+      donateTitle: "ہماری کمیونٹی کی حمایت کریں",
+      donateText: "آپ کے فراخدلانہ عطیات ہمارے پروگراموں اور رسائی کے اقدامات کو جاری رکھنے میں مدد کرتے ہیں۔ ہر شراکت فرق ڈالتی ہے۔",
+      donateBtn: "اب عطیہ کریں",
+      communityTitle: "کمیونٹی کارنر",
+      volunteerTitle: "رضاکارانہ مواقع",
+      volunteerText: "مختلف رضاکارانہ کرداروں کے ذریعے کمیونٹی کی خدمت میں ہمارے ساتھ شامل ہوں۔",
+      volunteerBtn: "سائن اپ کریں",
+      youthTitle: "نوجوانوں کے پروگرامز",
+      youthText: "نوجوانوں کو ایسی سرگرمیوں میں مشغول کریں جو ایمان اور کردار کو مضبوط کریں۔",
+      youthBtn: "مزید جانیں",
+      footerAboutTitle: "جامعہ اہلی حدیث محمدیہ مسجد چروان",
+      footerAboutText: "چروان کنگن، 191202\nاتحاد، سیکھنے اور غور و فکر کے لیے ایک مقدس مقام۔",
+      footerContactTitle: "ہم سے رابطہ کریں",
+      footerContactText: "فون: 6006254589، 9622000919\nای میل: ",
+      footerSocialTitle: "ہمیں فالو کریں",
+      footerTech: "تکنیکی معاونت: ارباز رشید۔",
+      footerRights: "© 2025 مسجد محمدیہ چروان۔ جملہ حقوق محفوظ ہیں۔",
+      zakatTitle: "زکوٰۃ کیلکولیٹر",
+      zakatNote: "ایک سال سے زیادہ عرصے تک آپ کے قبضے میں موجود تمام اثاثوں کو درج کریں۔ اگر آپ کے کوئی سوالات ہیں تو ہمیں واٹس ایپ کریں۔",
+      zakatNoteLink: "یہاں کلک کریں",
+      goldSilverLabel: "آپ کے پاس سونے اور چاندی کی قیمت (روپوں میں):",
+      cashHomeLabel: "گھر میں نقد (روپوں میں):",
+      cashBankLabel: "بینک اکاؤنٹ میں نقد (روپوں میں):",
+      investmentsLabel: "کوئی سرمایہ کاری اور شیئرز کی قیمت (روپوں میں):",
+      businessLabel: "کاروبار کے لیے سامان اور جائیداد کی قیمت (روپوں میں):",
+      liabilitiesLabel: "واپس کرنے کے قابل قرض/قرضوں کی کل رقم (روپوں میں):",
+      calculateButton: "زکوٰۃ حساب کریں",
+      netValueLabel: "آپ کی حساب شدہ خالص قیمت:",
+      zakatResultLabel: "آپ کی زکوٰۃ:"
+    },
+    ar: {
+      title: "جامع أهل الحديث المحمدية مسجد تشيروان كانجان",
+      nav: ["الرئيسية", "عنّا", "الخدمات", "مركز المعرفة", "رمضان", "المعرض", "الإعلانات", "التبرع", "المجتمع", "مسابقة إسلامية", "اتصل بنا"],
+      masjidName: "جامع أهل الحديث المحمدية مسجد تشيروان",
+      welcome: "مرحبًا بكم في:",
+      heroTitle: "جامع أهل الحديث المحمدية تشيروان",
+      heroSub: "ربط مجتمعنا بالإيمان والمعرفة والوحدة.",
+      prayerBtn: "عرض مواقيت الصلاة",
+      chatbotTitle: "تحدث معنا",
+      chatbotMessage: "مرحبًا أيها المستخدم! أنا روبوت دردشة ذكي تم إنشائي لمساعدة مستخدمي صفحة جامع أهل الحديث المحمدية تشيروان. لم أكمل تدريبي بعد، لكن يمكنكم سؤالي عن أي شيء يتعلق بهذه الصفحة. يمكنكم استخدام كلمات مفتاحية معينة مثل \"الخدمات\"، \"الرئيس\"، \"التبرع\" إلخ. سأكون سعيدًا جدًا بمساعدتكم 🙂",
+      chatbotPlaceholder: "اسأل أي سؤال (مثل: المسجد، الخدمات، الصلوات، رمضان...)",
+      send: "إرسال",
+      announcementsTitle: "إعلانات هامة",
+      announcementText: "تم رفع قائمة حفلة الإفطار. يمكنكم التحقق منها في قسم \"الأحداث القادمة\" -- دانش مشتاق إس جي / مدثر مجيد",
+      ramadanTitle: "رمضان 2025",
+      ramadanTimesTitle: "مواقيت رمضان اليوم (جمو وكشمير)",
+      suhoor: "السحور",
+      iftar: "الإفطار",
+      ramadanNote: "*مواقيت تقريبية لسريناغار، جمو وكشمير، بناءً على منهج أهل الحديث. يُعدّل حسب رؤية الهلال.",
+      inspirationTitle: "الإلهام اليومي",
+      ramadanCalendarTitle: "تقويم رمضان (معاينة الأسبوع الأول)",
+      date: "التاريخ",
+      aboutTitle: "عنّا",
+      aboutText: "جامع أهل الحديث المحمدية تشيروان مكرس لخدمة مجتمعنا بتاريخ غني وقيادة ذات رؤية.",
+      aboutBtn: "اعرف المزيد عنّا",
+      servicesTitle: "خدماتنا",
+      masjidServiceTitle: "خدمات المسجد",
+      masjidServiceText: "الصلوات اليومية، خطب الجمعة، والإرشاد الروحي للجميع.",
+      masjidServiceBtn: "استكشف خدمات المسجد",
+      darulServiceTitle: "خدمات دار المواساة",
+      darulServiceText: "الصدقة، مبادرات الرفاهية، وبرامج دعم المجتمع، بما في ذلك المساعدة في الزواج، الطعام، النقد، الفيضانات، الاحتياجات الطبية، التوظيف، والكوارث.",
+      darulServiceBtn: "استكشف خدمات الرفاهية",
+      darasgahServiceTitle: "خدمات الدراسة",
+      darasgahServiceText: "البرامج التعليمية، دراسات القرآن، وتنمية الشباب.",
+      darasgahServiceBtn: "استكشف خدمات الدراسة",
+      otherServiceTitle: "خدمات المجتمع الأخرى",
+      otherServiceText: "الفعاليات الثقافية، التوعية، والدعم المجتمعي الإضافي.",
+      otherServiceBtn: "استكشف الخدمات الأخرى",
+      prayerTimesTitle: "مواقيت الصلاة",
+      fajr: "الفجر",
+      sunrise: "الشروق",
+      dhuhr: "الظهر",
+      asr: "العصر",
+      maghrib: "المغرب",
+      isha: "العشاء",
+      knowledgeTitle: "مركز المعرفة",
+      quranTitle: "دراسات القرآن",
+      quranText: "الوصول إلى الموارد والفيديوهات لتعميق فهمك للقرآن.",
+      quranBtn: "اعرف المزيد",
+      hadithTitle: "مكتبة الحديث",
+      hadithText: "استكشف مجموعات الحديث الصحيحة وتفسيراتها.",
+      hadithBtn: "استكشف",
+      lecturesTitle: "محاضرات إسلامية",
+      lecturesText: "شاهد محاضرات مسجلة من علماء أهل الحديث المشهورين.",
+      lecturesBtn: "شاهد الآن",
+      eventsTitle: "الأحداث القادمة",
+      fridayTitle: "خطبة الجمعة",
+      fridayText: "انضم إلينا كل يوم جمعة لخطبتنا الأسبوعية والصلاة الجماعية.",
+      quranRecitationTitle: "تلاوة القرآن",
+      quranRecitationText: "استمتع بجمال القرآن خلال جلسات التلاوة الأسبوعية.",
+      communityIftarTitle: "إفطار المجتمع",
+      communityIftarText: "افطر مع مجتمعنا خلال رمضان في تجمعات إفطار خاصة.",
+      charityDriveTitle: "حملة خيرية",
+      charityDriveText: "ادعم مجتمعنا المحلي من خلال مبادراتنا الخيرية المستمرة.",
+      iftarPartyTitle: "حفلة الإفطار",
+      iftarPartyText: "\"من فطّر صائمًا كان له مثل أجر الصائم دون أن ينقص من أجر الصائم شيء.\" - النبي محمد (صلى الله عليه وسلم)",
+      iftarPartyBtn: "احصل على القائمة",
+      iftarModalTitle: "قائمة حفلة الإفطار",
+      iftarTableHeaders: ["الرقم", "اسم الفرد/الشخص", "التاريخ"],
+      iftarModalQueries: "للاستفسارات، اتصل: 9149792910، 9622467778، 6006254589",
+      iftarModalManaged: "الترتيبات يديرها: تر ارشد أحمد مير، طارق أحمد مير، مبشر مشتاق، شاهد قادر إس جي، شهباز ماغراي",
+      iftarModalIssued: "صادر عن: رئيس الوحدة شوكت أحمد مير",
+      galleryTitle: "المعرض",
+      galleryText: "استكشف رحلتنا والتزامنا",
+      galleryBtn: "اذهب إلى معرض المسجد",
+      donateTitle: "ادعم مجتمعنا",
+      donateText: "تبرعاتكم السخية تساعدنا على مواصلة برامجنا ومبادرات التوعية. كل مساهمة تُحدث فرقًا.",
+      donateBtn: "تبرع الآن",
+      communityTitle: "ركن المجتمع",
+      volunteerTitle: "فرص التطوع",
+      volunteerText: "انضم إلينا في خدمة المجتمع من خلال أدوار تطوعية متنوعة.",
+      volunteerBtn: "اشترك",
+      youthTitle: "برامج الشباب",
+      youthText: "إشراك شبابنا في أنشطة تبني الإيمان والشخصية.",
+      youthBtn: "اعرف المزيد",
+      footerAboutTitle: "جامع أهل الحديث المحمدية تشيروان",
+      footerAboutText: "تشيروان كانجان، 191202\nمكان مقدس للوحدة والتعلم والتأمل.",
+      footerContactTitle: "اتصل بنا",
+      footerContactText: "الهاتف: 6006254589، 9622000919\nالبريد الإلكتروني: ",
+      footerSocialTitle: "تابعنا",
+      footerTech: "الدعم الفني: أرباز رشيد.",
+      footerRights: "© 2025 مسجد المحمدية تشيروان. جميع الحقوق محفوظة.",
+      zakatTitle: "حاسبة الزكاة",
+      zakatNote: "أدخل جميع الأصول التي كانت في حوزتك لأكثر من عام. تواصل معنا عبر واتساب إذا كانت لديك أي أسئلة.",
+      zakatNoteLink: "اضغط هنا",
+      goldSilverLabel: "قيمة الذهب والفضة التي تمتلكها (بالروبية):",
+      cashHomeLabel: "النقد في المنزل (بالروبية):",
+      cashBankLabel: "النقد في الحساب البنكي (بالروبية):",
+      investmentsLabel: "قيمة أي استثمارات وأسهم (بالروبية):",
+      businessLabel: "قيمة البضائع والممتلكات التجارية (بالروبية):",
+      liabilitiesLabel: "إجمالي القروض/الديون القابلة للسداد التي لديك (بالروبية):",
+      calculateButton: "حساب الزكاة",
+      netValueLabel: "القيمة الصافية المحسوبة الخاصة بك:",
+      zakatResultLabel: "زكاتك:"
+    }
+  };
+
+  function changeLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.title = translations[lang].title;
+    const navItems = document.querySelectorAll('nav ul li a');
+    navItems.forEach((item, index) => item.textContent = translations[lang].nav[index]);
+    document.getElementById('masjid-name').textContent = translations[lang].masjidName;
+    document.querySelector('.hero-content h1').textContent = translations[lang].welcome;
+    document.querySelector('.hero-content h2').textContent = translations[lang].heroTitle;
+    document.querySelector('.hero-subheading').textContent = translations[lang].heroSub;
+    document.querySelector('.hero-content .btn').textContent = translations[lang].prayerBtn;
+    document.querySelector('.chatbot h3').innerHTML = `${translations[lang].chatbotTitle} <i class="fas fa-robot"></i>`;
+    document.querySelector('.bot-message').textContent = translations[lang].chatbotMessage;
+    document.querySelector('#chat-input').placeholder = translations[lang].chatbotPlaceholder;
+    document.querySelector('.chat-input-container button').textContent = translations[lang].send;
+    document.querySelector('#announcements .section-title').textContent = translations[lang].announcementsTitle;
+    document.querySelectorAll('.announcement-item').forEach(item => item.textContent = translations[lang].announcementText);
+    document.querySelector('#ramadan .section-title').textContent = translations[lang].ramadanTitle;
+    document.querySelector('.ramadan-times h3').textContent = translations[lang].ramadanTimesTitle;
+    document.querySelector('.ramadan-times p:nth-child(2) strong').textContent = translations[lang].suhoor + ":";
+    document.querySelector('.ramadan-times p:nth-child(3) strong').textContent = translations[lang].iftar + ":";
+    document.querySelector('.ramadan-times .note').textContent = translations[lang].ramadanNote;
+    document.querySelector('.ramadan-quote h3').textContent = translations[lang].inspirationTitle;
+    document.querySelector('.ramadan-calendar h3').textContent = translations[lang].ramadanCalendarTitle;
+    document.querySelectorAll('.ramadan-calendar th')[0].textContent = translations[lang].date;
+    document.querySelectorAll('.ramadan-calendar th')[1].textContent = translations[lang].suhoor;
+    document.querySelectorAll('.ramadan-calendar th')[2].textContent = translations[lang].iftar;
+    document.querySelector('#about .section-title').textContent = translations[lang].aboutTitle;
+    document.querySelector('#about .content p').textContent = translations[lang].aboutText;
+    document.querySelector('.btn-about').textContent = translations[lang].aboutBtn;
+    document.querySelector('#services .section-title').textContent = translations[lang].servicesTitle;
+    document.querySelectorAll('.service-card h3')[0].textContent = translations[lang].masjidServiceTitle;
+    document.querySelectorAll('.service-card p')[0].textContent = translations[lang].masjidServiceText;
+    document.querySelectorAll('.btn-service')[0].textContent = translations[lang].masjidServiceBtn;
+    document.querySelectorAll('.service-card h3')[1].textContent = translations[lang].darulServiceTitle;
+    document.querySelectorAll('.service-card p')[1].textContent = translations[lang].darulServiceText;
+    document.querySelectorAll('.btn-service')[1].textContent = translations[lang].darulServiceBtn;
+    document.querySelectorAll('.service-card h3')[2].textContent = translations[lang].darasgahServiceTitle;
+    document.querySelectorAll('.service-card p')[2].textContent = translations[lang].darasgahServiceText;
+    document.querySelectorAll('.btn-service')[2].textContent = translations[lang].darasgahServiceBtn;
+    document.querySelectorAll('.service-card h3')[3].textContent = translations[lang].otherServiceTitle;
+    document.querySelectorAll('.service-card p')[3].textContent = translations[lang].otherServiceText;
+    document.querySelectorAll('.btn-service')[3].textContent = translations[lang].otherServiceBtn;
+    document.querySelector('#prayer-times .section-title').textContent = translations[lang].prayerTimesTitle;
+    document.querySelectorAll('#prayer-times th')[0].textContent = translations[lang].fajr;
+    document.querySelectorAll('#prayer-times th')[1].textContent = translations[lang].sunrise;
+    document.querySelectorAll('#prayer-times th')[2].textContent = translations[lang].dhuhr;
+    document.querySelectorAll('#prayer-times th')[3].textContent = translations[lang].asr;
+    document.querySelectorAll('#prayer-times th')[4].textContent = translations[lang].maghrib;
+    document.querySelectorAll('#prayer-times th')[5].textContent = translations[lang].isha;
+    document.querySelector('#knowledge .section-title').textContent = translations[lang].knowledgeTitle;
+    document.querySelectorAll('.knowledge-item h3')[0].textContent = translations[lang].quranTitle;
+    document.querySelectorAll('.knowledge-item p')[0].textContent = translations[lang].quranText;
+    document.querySelectorAll('.btn-knowledge')[0].textContent = translations[lang].quranBtn;
+    document.querySelectorAll('.knowledge-item h3')[1].textContent = translations[lang].hadithTitle;
+    document.querySelectorAll('.knowledge-item p')[1].textContent = translations[lang].hadithText;
+    document.querySelectorAll('.btn-knowledge')[1].textContent = translations[lang].hadithBtn;
+    document.querySelectorAll('.knowledge-item h3')[2].textContent = translations[lang].lecturesTitle;
+    document.querySelectorAll('.knowledge-item p')[2].textContent = translations[lang].lecturesText;
+    document.querySelectorAll('.btn-knowledge')[2].textContent = translations[lang].lecturesBtn;
+    document.querySelector('#events .section-title').textContent = translations[lang].eventsTitle;
+    document.querySelectorAll('.event h3')[0].textContent = translations[lang].fridayTitle;
+    document.querySelectorAll('.event p')[0].textContent = translations[lang].fridayText;
+    document.querySelectorAll('.event h3')[1].textContent = translations[lang].quranRecitationTitle;
+    document.querySelectorAll('.event p')[1].textContent = translations[lang].quranRecitationText;
+    document.querySelectorAll('.event h3')[2].textContent = translations[lang].communityIftarTitle;
+    document.querySelectorAll('.event p')[2].textContent = translations[lang].communityIftarText;
+    document.querySelectorAll('.event h3')[3].textContent = translations[lang].charityDriveTitle;
+    document.querySelectorAll('.event p')[3].textContent = translations[lang].charityDriveText;
+    document.querySelectorAll('.event h3')[4].textContent = translations[lang].iftarPartyTitle;
+    document.querySelectorAll('.event p')[4].textContent = translations[lang].iftarPartyText;
+    document.querySelector('.iftar-button').textContent = translations[lang].iftarPartyBtn;
+    document.querySelector('#iftar-modal h3').textContent = translations[lang].iftarModalTitle;
+    document.querySelectorAll('.iftar-table th')[0].textContent = translations[lang].iftarTableHeaders[0];
+    document.querySelectorAll('.iftar-table th')[1].textContent = translations[lang].iftarTableHeaders[1];
+    document.querySelectorAll('.iftar-table th')[2].textContent = translations[lang].iftarTableHeaders[2];
+    document.querySelectorAll('#iftar-modal p')[0].textContent = translations[lang].iftarModalQueries;
+    document.querySelectorAll('#iftar-modal p')[1].textContent = translations[lang].iftarModalManaged;
+    document.querySelectorAll('#iftar-modal p')[2].textContent = translations[lang].iftarModalIssued;
+    document.querySelector('#gallery .section-title').textContent = translations[lang].galleryTitle;
+    document.querySelector('#gallery p strong').textContent = translations[lang].galleryText;
+    document.querySelector('.btn-gallery').textContent = translations[lang].galleryBtn;
+    document.querySelector('#donate .section-title').textContent = translations[lang].donateTitle;
+    document.querySelector('.donate-content p').textContent = translations[lang].donateText;
+    document.querySelector('.donate-content .btn').textContent = translations[lang].donateBtn;
+    document.querySelector('#community .section-title').textContent = translations[lang].communityTitle;
+    document.querySelectorAll('.community-item h3')[0].textContent = translations[lang].volunteerTitle;
+    document.querySelectorAll('.community-item p')[0].textContent = translations[lang].volunteerText;
+    document.querySelectorAll('.btn-community')[0].textContent = translations[lang].volunteerBtn;
+    document.querySelectorAll('.community-item h3')[1].textContent = translations[lang].youthTitle;
+    document.querySelectorAll('.community-item p')[1].textContent = translations[lang].youthText;
+    document.querySelectorAll('.btn-community')[1].textContent = translations[lang].youthBtn;
+    document.querySelector('.footer-about h3').textContent = translations[lang].footerAboutTitle;
+    document.querySelector('.footer-about p').textContent = translations[lang].footerAboutText;
+    document.querySelector('.footer-contact h3').textContent = translations[lang].footerContactTitle;
+    document.querySelector('.footer-contact p').innerHTML = translations[lang].footerContactText + '<a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a>';
+    document.querySelector('.footer-social h3').textContent = translations[lang].footerSocialTitle;
+    document.querySelectorAll('.footer-bottom p')[0].textContent = translations[lang].footerTech;
+    document.querySelectorAll('.footer-bottom p')[1].textContent = translations[lang].footerRights;
+    // Zakat Calculator Translations
+    document.querySelector('#zakat-calculator .section-title').textContent = translations[lang].zakatTitle;
+    document.querySelector('.zakat-note').innerHTML = `${translations[lang].zakatNote} <a href="https://wa.me/6006254589" target="_blank">${translations[lang].zakatNoteLink}</a>`;
+    document.querySelector('label[for="gold-silver-input"]').textContent = translations[lang].goldSilverLabel;
+    document.querySelector('label[for="cash-home-input"]').textContent = translations[lang].cashHomeLabel;
+    document.querySelector('label[for="cash-bank-input"]').textContent = translations[lang].cashBankLabel;
+    document.querySelector('label[for="investments-input"]').textContent = translations[lang].investmentsLabel;
+    document.querySelector('label[for="business-input"]').textContent = translations[lang].businessLabel;
+    document.querySelector('label[for="liabilities-input"]').textContent = translations[lang].liabilitiesLabel;
+    document.querySelector('#calculate-zakat').textContent = translations[lang].calculateButton;
+    document.querySelector('#zakat-result p:nth-child(1)').innerHTML = `${translations[lang].netValueLabel} <span id="net-value">Rs.33,000</span>`;
+    document.querySelector('#zakat-result p:nth-child(2)').innerHTML = `${translations[lang].zakatResultLabel} <span id="zakat-amount">No Zakat - Total value is below Nisab</span>`;
+
+    document.getElementById('language-modal').style.display = 'none';
+    if (lang === 'ur' || lang === 'ar') {
+      document.body.style.direction = 'rtl';
+      document.body.style.textAlign = 'right';
+    } else {
+      document.body.style.direction = 'ltr';
+      document.body.style.textAlign = 'left';
+    }
+  }
+
+  // Zakat Calculator Logic
+  document.getElementById('calculate-zakat').addEventListener('click', () => {
+    const goldSilver = parseFloat(document.getElementById('gold-silver-input').value) || 0;
+    const cashHome = parseFloat(document.getElementById('cash-home-input').value) || 0;
+    const cashBank = parseFloat(document.getElementById('cash-bank-input').value) || 0;
+    const investments = parseFloat(document.getElementById('investments-input').value) || 0;
+    const business = parseFloat(document.getElementById('business-input').value) || 0;
+    const liabilities = parseFloat(document.getElementById('liabilities-input').value) || 0;
+
+    const totalAssets = goldSilver + cashHome + cashBank + investments + business;
+    const netValue = totalAssets - liabilities;
+    const zakatRate = 0.025; // 2.5%
+    const nisabThreshold = 75000; // Approx Nisab in INR (e.g., 87.48g gold @ ~₹850/g, adjust as needed)
+    
+    let zakatAmount = 0;
+    if (netValue >= nisabThreshold) {
+      zakatAmount = netValue * zakatRate;
+      document.getElementById('zakat-amount').textContent = `Rs.${zakatAmount.toFixed(2)}`;
+    } else {
+      document.getElementById('zakat-amount').textContent = "No Zakat - Total value is below Nisab";
+    }
+
+    document.getElementById('net-value').textContent = `Rs.${netValue.toFixed(2)}`;
+  });
+
+  window.onload = () => {
+    changeLanguage('en'); // Sets English as default and updates all translations
+    document.getElementById('language-modal').style.display = 'block';
+  };
+
+
+
+    // Digital Clock (12-hour format with AM/PM)
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  
+  // Convert to 12-hour format
+  const period = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12; // Convert 0 to 12 for midnight/noon, and 13-23 to 1-11
+  const formattedHours = hours.toString().padStart(2, '0');
+  
+  document.getElementById('digital-clock').textContent = `${formattedHours}:${minutes}:${seconds} ${period}`;
+}
+
+setInterval(updateClock, 1000); // Update every second
+updateClock(); // Initial call to display immediately
+
+    // Daily Quote or Scientific Fact for Ramadan
+    const quotes = [
+      '"Fasting is a shield with which a servant protects himself from the Fire." - Prophet Muhammad (SAW)',
+      '"The month of Ramadan [is that] in which was revealed the Quran." - Quran 2:185',
+      'Scientific Fact: Fasting boosts brain function by increasing BDNF levels.',
+      '"Whoever fasts Ramadan with faith and seeking reward, his past sins will be forgiven." - Sahih Bukhari',
+      'Scientific Fact: Intermittent fasting improves insulin sensitivity.',
+      '"When Ramadan arrives, the gates of Paradise are opened." - Sahih Muslim',
+      'Scientific Fact: Fasting promotes cellular repair through autophagy.'
+    ];
+    const today = new Date().getDate() % quotes.length;
+    document.getElementById('daily-quote').textContent = quotes[today];
+
+    // Dynamic Ramadan Timings and Calendar
+    function updateRamadanTimings() {
+      const baseDate = new Date('2025-02-22');
+      const currentDate = new Date();
+      const daysSinceBase = Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24));
+
+      let baseSuhoorMinutes = (4 * 60) + 45; // 04:45 AM
+      let baseIftarMinutes = (18 * 60) + 15; // 06:15 PM
+
+      const suhoorShift = daysSinceBase * 1;
+      const iftarShift = daysSinceBase * 2;
+
+      let suhoorTotal = baseSuhoorMinutes + suhoorShift;
+      let iftarTotal = baseIftarMinutes + iftarShift;
+
+      const suhoorHours = Math.floor(suhoorTotal / 60);
+      const suhoorMins = suhoorTotal % 60;
+      const iftarHours = Math.floor(iftarTotal / 60);
+      const iftarMins = iftarTotal % 60;
+
+      const suhoorTime = `${suhoorHours.toString().padStart(2, '0')}:${suhoorMins.toString().padStart(2, '0')} AM`;
+      const iftarTime = `${(iftarHours > 12 ? iftarHours - 12 : iftarHours).toString().padStart(2, '0')}:${iftarMins.toString().padStart(2, '0')} PM`;
+
+      document.getElementById('suhoor-time').textContent = suhoorTime;
+      document.getElementById('iftar-time').textContent = iftarTime;
+
+      const tableBody = document.getElementById('ramadan-table');
+      tableBody.innerHTML = '';
+      for (let i = 0; i < 7; i++) {
+        const dayDate = new Date(baseDate);
+        dayDate.setDate(baseDate.getDate() + i);
+        const daySuhoor = baseSuhoorMinutes + (i * 1);
+        const dayIftar = baseIftarMinutes + (i * 2);
+        const suhoorH = Math.floor(daySuhoor / 60);
+        const suhoorM = daySuhoor % 60;
+        const iftarH = Math.floor(dayIftar / 60);
+        const iftarM = dayIftar % 60;
+        const row = `
+          <tr>
+            <td>${dayDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</td>
+            <td>${suhoorH.toString().padStart(2, '0')}:${suhoorM.toString().padStart(2, '0')} AM</td>
+            <td>${(iftarH > 12 ? iftarH - 12 : iftarH).toString().padStart(2, '0')}:${iftarM.toString().padStart(2, '0')} PM</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      }
+    }
+
+    updateRamadanTimings();
+    setInterval(updateRamadanTimings, 24 * 60 * 60 * 1000);
+
+    // Advanced Chatbot Functionality (Dynamic Analysis, Single-Word Queries, English Only, No Links)
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim().toLowerCase();
+      if (message) {
+        const messages = document.getElementById('chat-messages');
+        messages.innerHTML += `<p class="user-message">You: ${input.value}</p>`;
+        let response = analyzeAndRespond(message);
+        setTimeout(() => {
+          messages.innerHTML += `<p class="bot-message">Bot: ${response}</p>`;
+          messages.scrollTop = messages.scrollHeight; // Auto-scroll to show all messages
+        }, 1000); // Longer delay for realistic, thoughtful response
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight; // Ensure all messages are visible
+      }
+    }
+
+    function analyzeAndRespond(message) {
+      // Simulate dynamic analysis of index.html, about.html, darul-mawasaat-services.html, and other linked pages
+      const content = {
+        // General webpage data from index.html
+        general: {
+          name: 'Jamia Ahli Hadees Mohammadia Masjid Cherwan',
+          location: 'Cherwan Kangan, 191202',
+          purpose: 'Unites the community through faith, knowledge, and unity',
+          services: 'Religious services (prayers, sermons), charity, education, youth programs, community events, welfare (marriage aid, food assistance, employment, medical support, disaster relief, cash assistance, flood assistance)',
+          events: 'Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, Iftar Party',
+          prayerTimes: {
+            fajr: '5:00 AM', sunrise: '6:15 AM', dhuhr: '12:30 PM', asr: '3:45 PM', maghrib: '6:30 PM', isha: '7:45 PM'
+          },
+          ramadan: 'Sacred month of fasting, prayer, and reflection with Suhoor at 04:45 AM and Iftar at 06:15 PM (J&K, approximate)',
+          knowledge: 'Quranic Studies, Hadith Library, Islamic Lectures',
+          gallery: 'Photos of masjid, events, and community activities',
+          donation: 'Supports programs, charity, and community initiatives',
+          community: 'Volunteer opportunities, youth programs, welfare initiatives',
+          help: 'Assistance for marriage, food, employment, medical needs, disasters, emergencies, cash, floods',
+                    contact: 'Phone: 6006254589, 9622000919; Email: [email protected]',
+          social: 'Facebook and YouTube for updates'
+        },
+        // About.html data
+        about: {
+          history: 'Founded decades ago, foundation stone laid April 28, 2018, by Khursheed Ahmad Mir, first prayer by Manzoor Ahmad Magaray, land donated by Gh. Qadir Sheer Gojri and Abdul Raheem Sheer Gojri (19 marlas)',
+          leadership: 'Led by Showkat Ahmad Mir (current chairman), Khursheed Ahmad Mir, Manzoor Ahmad Magaray, Javaid Ahmad Raina, Tariq Ahmad Magray',
+          youth: 'Youth programs include Quranic studies, clubs, service by volunteers like Mudasir Majeed, Yaseen Ahmad Magaray',
+          affiliation: 'Affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah',
+          finance: 'Managed transparently by Tr. Mohammad Yousuf Mir',
+          welfare: 'Darul Mawasat Bait-ul-Maal offers marriage aid for orphans, employment, medical aid, disaster relief, food assistance, cash assistance, flood assistance'
+        },
+        // Linked pages (inferred from service links, including darul-mawasaat-services.html)
+        services: {
+          masjid: 'Daily prayers, Friday sermons, spiritual guidance',
+          darulMawasaat: 'Charity, welfare (marriage assistance, food assistance, cash assistance, flood assistance, medical assistance, employment assistance, disaster relief), community support',
+          darasgah: 'Education, Quranic studies, youth development',
+          community: 'Cultural events, outreach, community support'
+        }
+      };
+
+      // Dynamic response generation for any input, including single words and English queries
+      let response = '';
+      const words = message.split(' ');
+      const firstWord = words[0];
+
+      // Handle single words or short queries
+      if (message.length <= 1 || words.length === 1) {
+        response = handleSingleWord(message, content);
+      } else {
+        // Handle full questions, prioritizing interrogatives (what, which, when, how, why, where) and general terms
+        const interrogatives = {
+          what: ['what'],
+          which: ['which'],
+          when: ['when'],
+          how: ['how'],
+          why: ['why'],
+          where: ['where']
+        };
+
+        for (let type in interrogatives) {
+          if (interrogatives[type].some(word => message.includes(word))) {
+            response = generateInterrogativeResponse(message, type, content);
+            break;
+          }
+        }
+
+        if (!response) {
+          response = generateGeneralResponse(message, content);
+        }
+      }
+
+      return response || 'Please clarify your question. I’m here to help with any inquiry about Masjid Mohammadia Cherwan, its services, events, or community!';
+    }
+
+    function handleSingleWord(word, content) {
+      const lowercaseWord = word.toLowerCase();
+      // English single-word mappings
+      const wordMap = {
+        'masjid': 'Jamia Ahli Hadees Mohammadia Masjid Cherwan is a sacred place in Cherwan Kangan that serves our community with faith, knowledge, and unity.',
+        'services': 'We offer religious services like prayers and sermons, charity, education, youth programs, and community events.',
+        'prayers': 'Prayers are held daily with timings like Fajr at 5:00 AM, Dhuhr at 12:30 PM, and Friday sermons weekly.',
+        'ramadan': 'Ramadan 2025 is a sacred month of fasting, prayer, and reflection, with Suhoor at 04:45 AM and Iftar at 06:15 PM for J&K.',
+        'events': 'Events include Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party.',
+        'knowledge': 'The Knowledge Center provides Quranic Studies, Hadith Library, and Islamic Lectures for learning.',
+        'gallery': 'The gallery shows photos of our masjid, events, and community activities.',
+        'donate': 'Donating supports our programs, charity, and community initiatives.',
+        'community': 'Our community benefits from services, volunteering, youth programs, and welfare.',
+        'help': 'We provide assistance for marriage, food, employment, medical needs, disasters, cash, and floods.',
+        'contact': 'Contact us at 6006254589, 9622000919, or [email protected].',
+        'social': 'Follow us on Facebook and YouTube for updates.',
+        'youth': 'Youth programs include Quranic studies, clubs, and service by volunteers like Mudasir Majeed.',
+        'welfare': 'Welfare includes marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment, and disaster relief.',
+        'chairman': 'The current chairman is Showkat Ahmad Mir, leading our masjid’s initiatives.',
+        'history': 'Our masjid was founded decades ago, with the foundation stone laid on April 28, 2018.',
+        'affiliation': 'We’re affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah.'
+      };
+
+      return wordMap[lowercaseWord] || generateGeneralResponse(lowercaseWord, content);
+    }
+
+    function generateInterrogativeResponse(message, type, content) {
+      const words = message.split(' ').slice(1).join(' ').toLowerCase();
+      switch (type) {
+        case 'what':
+          if (words.includes('masjid')) return 'Jamia Ahli Hadees Mohammadia Masjid Cherwan is a sacred place in Cherwan Kangan that serves our community with faith, knowledge, and unity, led by dedicated leaders.';
+          if (words.includes('services')) return 'We offer religious services like prayers and sermons, charity including marriage, food, cash, flood, and medical assistance, education, youth programs, and community events.';
+          if (words.includes('events')) return 'Our events include Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive, and Iftar Party during Ramadan.';
+          if (words.includes('prayer times')) return 'Prayer times are Fajr at 5:00 AM, Sunrise at 6:15 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM.';
+          if (words.includes('ramadan')) return 'Ramadan 2025 is a sacred month of fasting, prayer, and reflection, with Suhoor at 04:45 AM and Iftar at 06:15 PM for J&K, approximate for Srinagar.';
+          if (words.includes('knowledge')) return 'The Knowledge Center provides Quranic Studies, Hadith Library, and Islamic Lectures for learning.';
+          if (words.includes('gallery')) return 'The gallery features photos of our masjid, events, and community activities.';
+          if (words.includes('donate') || words.includes('donations')) return 'Donating supports our religious programs, charity, education, youth initiatives, and community welfare.';
+          if (words.includes('community')) return 'Our community benefits from services, volunteer opportunities, youth programs, and welfare initiatives like marriage and food aid.';
+          if (words.includes('help')) return 'We provide assistance for marriage, food, employment, medical needs, disasters, emergencies, cash, and floods through our welfare programs.';
+          break;
+        case 'which':
+          if (words.includes('masjid')) return 'This is Jamia Ahli Hadees Mohammadia Masjid Cherwan in Cherwan Kangan, serving our community.';
+          if (words.includes('services')) return 'Services that include youth are educational programs and community events, while charity includes welfare like marriage, food, cash, flood, and medical assistance.';
+          if (words.includes('events')) return 'Events for Ramadan include Community Iftar and Iftar Party, while weekly events include Friday Khutbah and Quran Recitation.';
+          if (words.includes('prayers')) return 'Daily prayers are Fajr, Dhuhr, Asr, Maghrib, and Isha, with Friday Khutbah as a weekly event.';
+          if (words.includes('resources')) return 'Resources covering Quran are in Quranic Studies, Hadith in Hadith Library, and lectures in Islamic Lectures, all in the Knowledge Center.';
+          if (words.includes('photos')) return 'Photos in the gallery show our masjid, events, and community moments.';
+          if (words.includes('donations')) return 'Donations that help charity support welfare programs like marriage, food, cash, flood, and medical assistance.';
+          if (words.includes('volunteers')) return 'Volunteers leading youth include Mudasir Majeed, Yaseen Ahmad Magaray, and others in our programs.';
+          if (words.includes('welfare')) return 'Welfare programs assisting the needy include marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment, and disaster relief.';
+          if (words.includes('contact')) return 'Contact methods that work are phone at 6006254589 or 9622000919, and email at [email protected].';
+          break;
+        case 'when':
+          if (words.includes('prayer times')) return 'Prayer times are Fajr at 5:00 AM, Dhuhr at 12:30 PM, Asr at 3:45 PM, Maghrib at 6:30 PM, and Isha at 7:45 PM, with Sunrise at 6:15 AM.';
+          if (words.includes('ramadan')) return 'Ramadan 2025 occurs annually, starting around February 22, 2025, with fasting from dawn to sunset.';
+          if (words.includes('events')) return 'Events occur weekly (Friday Khutbah, Quran Recitation) and during Ramadan (Community Iftar, Iftar Party).';
+          if (words.includes('masjid founded')) return 'The masjid was founded with its foundation stone laid on April 28, 2018.';
+          if (words.includes('youth programs')) return 'Youth programs are held weekly through educational and community activities, often on weekends or after prayers.';
+          if (words.includes('suhoor')) return 'Suhoor is at about 04:45 AM during Ramadan for J&K, approximate for Srinagar.';
+          if (words.includes('iftar')) return 'Iftar is at about 06:15 PM during Ramadan for J&K, approximate for Srinagar.';
+          if (words.includes('volunteer')) return 'You can volunteer during community events, typically scheduled weekly or monthly, contact us for details.';
+          if (words.includes('help')) return 'Help is available anytime; contact us at 6006254589 or 9622000919 for immediate assistance.';
+          if (words.includes('charity drives')) return 'Charity drives occur periodically, often during Ramadan or community events, check announcements for dates.';
+          break;
+        case 'how':
+          if (words.includes('donate')) return 'You can donate by visiting the Support Our Community section on our website or contacting us at 6006254589 or 9622000919.';
+          if (words.includes('contact')) return 'Contact us by calling 6006254589 or 9622000919, or emailing [email protected].';
+          if (words.includes('services')) return 'Services are provided through daily prayers, educational sessions, charity programs, and community events organized by our team.';
+          if (words.includes('ramadan')) return 'Ramadan works by fasting from dawn (Suhoor at 04:45 AM) to sunset (Iftar at 06:15 PM), with prayers and community support during the month.';
+          if (words.includes('events')) return 'Events are organized by scheduling prayers, recitations, and gatherings, announced in the Upcoming Events section.';
+          if (words.includes('volunteer')) return 'Volunteer by contacting us at 6006254589 or 9622000919, or signing up in the Community Corner section.';
+          if (words.includes('gallery')) return 'The gallery works by displaying photos of our masjid, events, and community in the Gallery section for viewing.';
+          if (words.includes('help')) return 'Get help by filling out the form in the Dar-ul-Mawasaat Services section or calling 6006254589 or 9622000919.';
+          if (words.includes('youth programs')) return 'Youth programs are run through educational classes, clubs, and service projects, led by our youth volunteers and staff.';
+          if (words.includes('welfare')) return 'Welfare is managed by Darul Mawasat Bait-ul-Maal, distributing aid for marriage, food, cash, flood, medical needs, and disasters transparently.';
+          break;
+        case 'why':
+          if (words.includes('masjid')) return 'The masjid is important to unite our community through faith, provide education, and offer welfare services for spiritual and social growth.';
+          if (words.includes('services')) return 'We offer services to support religious practice, educate our youth, assist the needy with marriage, food, cash, flood, and medical aid, and foster community unity.';
+          if (words.includes('events')) return 'Events are held to engage the community, celebrate Ramadan, raise charity, and strengthen bonds through spiritual and social activities.';
+          if (words.includes('prayer times')) return 'We follow prayer times to maintain daily spiritual practice, aligning with Islamic tradition for community worship.';
+          if (words.includes('ramadan')) return 'We observe Ramadan to fast, pray, and reflect, fostering spiritual growth and community solidarity during this sacred month.';
+          if (words.includes('knowledge')) return 'Knowledge resources are provided to deepen understanding of Islam, educate the community, and inspire spiritual growth.';
+          if (words.includes('gallery')) return 'The gallery exists to showcase our masjid’s history, events, and community efforts, inspiring pride and connection.';
+          if (words.includes('donate')) return 'Donations are needed to fund our programs, charity, education, and community initiatives for continued service.';
+          if (words.includes('community')) return 'We engage the community to build unity, support welfare, and involve youth in meaningful activities for collective growth.';
+          if (words.includes('help')) return 'We offer help to support the needy, strengthen community bonds, and fulfill our welfare mission for social harmony.';
+          break;
+        case 'where':
+          if (words.includes('masjid')) return 'The masjid is located in Cherwan Kangan, 191202.';
+          if (words.includes('events')) return 'Events are held at the masjid in Cherwan Kangan or announced in the Upcoming Events section.';
+          if (words.includes('prayer times')) return 'Prayer times are listed in the Prayer Times section on our website.';
+          if (words.includes('ramadan info')) return 'Ramadan information is in the Ramadan 2025 section on our website.';
+          if (words.includes('knowledge')) return 'Knowledge resources are in the Knowledge Center section on our website.';
+          if (words.includes('gallery')) return 'The gallery is in the Gallery section on our website, showing our photos and events.';
+          if (words.includes('donate')) return 'You can donate through the Support Our Community section on our website.';
+          if (words.includes('community programs')) return 'Community programs are in the Community Corner and Services sections on our website.';
+          if (words.includes('help')) return 'Help is available through the Dar-ul-Mawasaat Services section on our website or by contacting us.';
+          if (words.includes('social media')) return 'Social media links are in the Follow Us section in the footer of our website.';
+          break;
+      }
+      return 'Please clarify your question. I’m here to help!' || generateGeneralResponse(message, content);
+    }
+
+    function generateGeneralResponse(message, content) {
+      const words = message.split(' ');
+      for (let word of words) {
+        if (content.general.hasOwnProperty(word)) {
+          if (typeof content.general[word] === 'object') {
+            return `Here are details for ${word}: ${JSON.stringify(content.general[word]).replace(/["{}]/g, '')}`;
+          }
+          return content.general[word];
+        }
+        if (content.about.hasOwnProperty(word)) return content.about[word];
+        if (content.services.hasOwnProperty(word)) return content.services[word];
+      }
+      return 'Please clarify your question. I’m here to help with any inquiry about Masjid Mohammadia Cherwan, its services, events, or community!';
+    }
+
+    // Iftar Party List Functions
+    const iftarList = [
+      { sno: 1, name: "Tariq Ahmad Sheer Gojri", date: "02/03/2025" },
+      { sno: 2, name: "Mehraj-ud-Din Magray", date: "03/03/2025" },
+      { sno: 3, name: "Gh Nabi Mir", date: "04/03/2025" },
+      { sno: 4, name: "Tariq Ahmad Magray (Hardpath)", date: "05/03/2025" },
+      { sno: 5, name: "Irshad Ahmad Mir", date: "06/03/2025" },
+      { sno: 6, name: "Showkat Ahmad Mir", date: "07/03/2025" },
+      { sno: 7, name: "Manzoor Ahmad Magray", date: "08/03/2025" },
+      { sno: 8, name: "Javaid Ahmad Raina", date: "09/03/2025" },
+      { sno: 9, name: "Nazir Ahmad Wani", date: "10/03/2025" },
+      { sno: 10, name: "Abdul Raheem Magray", date: "11/03/2025" },
+      { sno: 11, name: "Mohd Maqbool Magray", date: "12/03/2025" },
+      { sno: 12, name: "Tr Shabir Ahmad Magray", date: "13/03/2025" },
+      { sno: 13, name: "Tr. Mohd Yousuf Mir", date: "14/03/2025" },
+      { sno: 14, name: "Adil Majeed Magray", date: "15/03/2025" },
+      { sno: 15, name: "Tariq Ahmad Mir", date: "16/03/2025" },
+      { sno: 16, name: "Shabir Ahmad Sheer Gojri", date: "17/03/2025" },
+      { sno: 17, name: "Manzoor Ahmad Wani", date: "18/03/2025" },
+      { sno: 18, name: "Mumtaz Ahmad Sheer Gojri", date: "19/03/2025" },
+      { sno: 19, name: "Mohd Saleem Magray", date: "20/03/2025" },
+      { sno: 20, name: "Aadil Magray (Hardpet)", date: "21/03/2025" },
+      { sno: 21, name: "Parvaiz Ahmad Magray", date: "22/03/2025" },
+      { sno: 22, name: "Abdul Rashid Magray", date: "23/03/2025" },
+      { sno: 23, name: "Manzoor Ahmad Sheer Gojri", date: "24/03/2025" },
+      { sno: 24, name: "Khursheed Ahmad Mir", date: "25/03/2025" },
+      { sno: 25, name: "Shahnawaz Ahmad Sheer Gojri", date: "26/03/2025" },
+      { sno: 26, name: "Irfan Ahmad Magray", date: "27/03/2025" },
+      { sno: 27, name: "Ali Mohd Wani", date: "28/03/2025" },
+      { sno: 28, name: "Tariq Ahmad Magray (Herpora)", date: "29/03/2025" },
+      { sno: 29, name: "Abdul Ahad Magray", date: "30/03/2025" },
+      { sno: 30, name: "Mohd Shafi Magray", date: "31/03/2025" },
+      { sno: 31, name: "Shakeel Ahmad Sheer Gojri", date: "" },
+      { sno: 32, name: "Javaid Ahmad Sheer Gojri", date: "" },
+      { sno: 33, name: "Tr Mushtaq Ahmad Mir", date: "" },
+      { sno: 34, name: "Dr Tanveer", date: "" },
+      { sno: 35, name: "Mehraj Ud Din Magray (Banpora)", date: "" },
+      { sno: 36, name: "Mohd Yousuf Wani", date: "" },
+      { sno: 37, name: "Tr Mushtaq Ahmad Magray", date: "" },
+      { sno: 38, name: "Mushtaq Ahmad Magray", date: "" },
+      { sno: 39, name: "Manzoor Ahmad Magray Herpora", date: "" },
+      { sno: 40, name: "Mohd Yousf Raina", date: "" },
+      { sno: 41, name: "Farooq Ahmad Magray", date: "" }
+    ];
+
+    function showIftarList() {
+      const tableBody = document.getElementById('iftar-table-body');
+      tableBody.innerHTML = '';
+      iftarList.forEach(item => {
+        const row = `
+          <tr>
+            <td>${item.sno}</td>
+            <td>${item.name}</td>
+            <td>${item.date || 'TBD'}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+      document.getElementById('iftar-modal').style.display = 'block';
+    }
+
+    function closeIftarList() {
+      document.getElementById('iftar-modal').style.display = 'none';
+    }
+
+    // Auto-scroll for mobile and desktop, ensuring all messages are visible
+    document.getElementById('chat-messages').addEventListener('DOMNodeInserted', () => {
+      const messages = document.getElementById('chat-messages');
+      messages.scrollTop = messages.scrollHeight; // Always show the latest message, but keep all visible
+    });
+
+    // Ensure the location link opens in a new tab (optional enhancement)
+document.querySelector('.btn-location').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.open(this.href, '_blank');
+});
+  </script>
+</body>
+</html>
