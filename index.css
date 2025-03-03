@@ -54,26 +54,6 @@ a {
   gap: 15px;
 }
 
-.language-options button {
-  padding: 12px 20px;
-  font-size: 1em;
-  background: linear-gradient(90deg, #006600, #008000);
-  color: #fff;
-  border-radius: 10px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.language-options button:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
-  transform: scale(1.05);
-}
-
-@media (min-width: 768px) {
-  .language-options {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
 /* Zakat Calculator Section */
 #zakat-calculator {
   background: linear-gradient(135deg, #f0f4f8, #e6eef3);
@@ -94,7 +74,7 @@ a {
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px; /* Same size as before */
+  max-width: 500px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -119,9 +99,9 @@ a {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 300px; /* Fixed height for scrolling */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding-right: 10px; /* Space for scrollbar */
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .zakat-inputs label {
@@ -142,25 +122,6 @@ a {
 .zakat-inputs input:focus {
   border-color: #006600;
   outline: none;
-}
-
-#calculate-zakat {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #006600, #008000);
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-#calculate-zakat:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
-  transform: scale(1.05);
 }
 
 .zakat-result {
@@ -213,31 +174,31 @@ nav .menu-toggle {
 
 nav ul {
   display: none;
-  flex-direction: row; /* Links in a horizontal row */
-  flex-wrap: wrap; /* Wraps links to next line if needed */
-  background: rgba(178, 84, 133, 0.8); /* Your pinkish background */
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: rgba(178, 84, 133, 0.8);
   position: fixed;
   top: 50px;
   left: 0;
   right: 0;
   padding: 15px;
   width: 100%;
-  max-width: 100vw; /* Stays within viewport */
+  max-width: 100vw;
   z-index: 1001;
-  justify-content: center; /* Centers links */
-  gap: 10px; /* Spacing between links */
-  overflow-x: auto; /* Scrollbar if needed */
-  list-style: none; /* Removes black dots */
+  justify-content: center;
+  gap: 10px;
+  overflow-x: auto;
+  list-style: none;
 }
 
 nav ul.active {
-  display: flex; /* Shows menu when active */
+  display: flex;
 }
 
 nav ul li {
-  margin: 0; /* No vertical margin for horizontal layout */
-  flex: 0 0 auto; /* Fixed size for items */
-  list-style: none; /* Extra assurance to remove dots */
+  margin: 0;
+  flex: 0 0 auto;
+  list-style: none;
 }
 
 nav ul li a {
@@ -246,7 +207,7 @@ nav ul li a {
   font-weight: 500;
   padding: 5px 10px;
   transition: color 0.3s ease, transform 0.3s ease;
-  white-space: nowrap; /* Keeps link text on one line */
+  white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -257,41 +218,41 @@ nav ul li a:hover {
 /* Responsive Adjustments */
 @media (max-width: 767px) {
   nav {
-    padding: 8px 10px; /* Less padding on mobile */
+    padding: 8px 10px;
   }
 
   nav .logo {
-    font-size: 0.9em; /* Smaller logo text */
+    font-size: 0.9em;
   }
 
   nav ul {
-    padding: 10px; /* Reduced padding */
-    gap: 8px; /* Smaller gap */
+    padding: 10px;
+    gap: 8px;
   }
 
   nav ul li a {
-    font-size: 0.9em; /* Smaller font */
-    padding: 5px 8px; /* Reduced padding */
+    font-size: 0.9em;
+    padding: 5px 8px;
   }
 }
 
 @media (min-width: 768px) {
   nav {
-    padding: 10px 30px; /* More padding on desktop */
+    padding: 10px 30px;
   }
 
   nav .logo {
-    font-size: 1.3em; /* Larger logo text */
+    font-size: 1.3em;
   }
 
   nav ul {
-    padding: 15px 30px; /* More padding */
-    gap: 15px; /* Larger gap */
+    padding: 15px 30px;
+    gap: 15px;
   }
 
   nav ul li a {
     font-size: 1em;
-    padding: 5px 12px; /* Slightly larger padding */
+    padding: 5px 12px;
   }
 }
 
@@ -299,7 +260,7 @@ nav ul li a:hover {
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
               url('background-logo.png') no-repeat center center/cover;
-  height: 60vh; /* Keeps the height as is */
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,13 +268,13 @@ header {
   padding: 50px 15px 0;
   position: relative;
   max-width: 100vw;
-  background-size: cover; /* Ensures image fits and covers the section */
-  background-position: center; /* Centers the image */
+  background-size: cover;
+  background-position: center;
 }
 
 .digital-clock {
   position: absolute;
-  top: 70px; /* Adjusted from 60px to 70px to move slightly lower */
+  top: 70px;
   left: 15px;
   color: #fff;
   font-size: 1.2em;
@@ -325,7 +286,7 @@ header {
 }
 
 .hero-content {
-  color: #fff; /* Changed to white for better contrast against dark overlay */
+  color: #fff;
   max-width: 100%;
   padding: 0 10px;
 }
@@ -348,27 +309,10 @@ header .hero-subheading {
   margin-bottom: 20px;
 }
 
-header .btn {
-  background: #006600;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-header .btn:hover {
-  background: #004d00;
-  transform: scale(1.05);
-}
-
 /* Responsive Adjustments */
 @media (min-width: 768px) {
   header {
-    height: 80vh; /* Existing desktop height */
+    height: 80vh;
     padding: 60px 30px 0;
   }
 
@@ -384,16 +328,12 @@ header .btn:hover {
     font-size: 1.4em;
   }
 
-  header .btn {
-    padding: 14px 28px;
-    font-size: 1.1em;
-  }
-
   .digital-clock {
-    top: 80px; /* Existing desktop adjustment */
+    top: 80px;
     font-size: 1.5em;
   }
 }
+
 /* Chatbot Container (Mobile-First, Full Space, All Messages Visible) */
 .chatbot-container {
   display: flex;
@@ -416,7 +356,7 @@ header .btn:hover {
   }
 
   .digital-clock {
-    top: 80px; /* Adjusted for desktop */
+    top: 80px;
     font-size: 1.5em;
   }
 
@@ -436,14 +376,8 @@ header .btn:hover {
   header .hero-subheading {
     font-size: 1.4em;
   }
-
-  header .btn {
-    padding: 14px 28px;
-    font-size: 1.1em;
-  }
 }
 
-/* Remaining CSS remains unchanged */
 .glass {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -543,27 +477,101 @@ header .btn:hover {
   outline: none;
 }
 
-button {
-  padding: 10px 18px;
+/* Unified Button Styles */
+button,
+.btn,
+.btn-service,
+.btn-knowledge,
+.iftar-button,
+.btn-gallery,
+.btn-community,
+.btn-about,
+.btn-location,
+#calculate-zakat,
+.language-options button {
+  /* Base styles */
+  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #006600, #008000);
+  border-radius: 25px;
+  background: linear-gradient(90deg, #1a3c34, #245f54); /* Gradient background (teal to dark teal) */
   color: #fff;
-  cursor: pointer;
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.3);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
 }
 
-button:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
+/* Add diamond icon using ::before */
+button::before,
+.btn::before,
+.btn-service::before,
+.btn-knowledge::before,
+.iftar-button::before,
+.btn-gallery::before,
+.btn-community::before,
+.btn-about::before,
+.btn-location::before,
+#calculate-zakat::before,
+.language-options button::before {
+  content: "◆"; /* Diamond icon (Unicode) */
+  font-size: 0.8em;
+  color: #fff;
+}
+
+/* Hover effect */
+button:hover,
+.btn:hover,
+.btn-service:hover,
+.btn-knowledge:hover,
+.iftar-button:hover,
+.btn-gallery:hover,
+.btn-community:hover,
+.btn-about:hover,
+.btn-location:hover,
+#calculate-zakat:hover,
+.language-options button:hover {
+  background: linear-gradient(90deg, #15332d, #1e4f48); /* Slightly darker gradient on hover */
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Remaining CSS sections (Modal, Sections, etc.) remain unchanged */
+/* Remove any conflicting styles */
+.language-options button {
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+#calculate-zakat {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+/* Ensure responsive adjustments for buttons */
+@media (min-width: 768px) {
+  button,
+  .btn,
+  .btn-service,
+  .btn-knowledge,
+  .iftar-button,
+  .btn-gallery,
+  .btn-community,
+  .btn-about,
+  .btn-location,
+  #calculate-zakat,
+  .language-options button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+  }
+}
+
+/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -926,23 +934,6 @@ section {
   margin-bottom: 15px;
 }
 
-.btn-service {
-  display: inline-block;
-  background: linear-gradient(90deg, #006600, #008000);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn-service:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
-  transform: scale(1.05);
-}
-
 #prayer-times {
   background: #f9f9f9;
   border-radius: 15px;
@@ -1011,23 +1002,6 @@ section {
   margin-bottom: 15px;
 }
 
-.btn-knowledge {
-  background: linear-gradient(90deg, #006600, #008000);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-knowledge:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
-  transform: translateY(-5px);
-}
-
 #events {
   background: #ffffff;
 }
@@ -1064,23 +1038,6 @@ section {
   margin-bottom: 15px;
 }
 
-.iftar-button {
-  background: linear-gradient(90deg, #1dd748, #17b13b);
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.iftar-button:hover {
-  background: linear-gradient(90deg, #fffb33, #ffd700);
-  color: #333;
-  transform: scale(1.05);
-}
-
 #gallery {
   background: linear-gradient(135deg, #f0f4f8, #e6eef3);
 }
@@ -1110,23 +1067,6 @@ section {
   transform: scale(1.05);
 }
 
-.btn-gallery {
-  background: linear-gradient(90deg, #28a745, #218838);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-gallery:hover {
-  background: linear-gradient(90deg, #218838, #1e7e34);
-  transform: translateY(-5px);
-}
-
 #donate {
   background: linear-gradient(135deg, #e0ffe0, #ccffcc);
 }
@@ -1144,23 +1084,6 @@ section {
   font-size: 1em;
   color: #444;
   margin-bottom: 15px;
-}
-
-.donate-content .btn {
-  background: #006600;
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.donate-content .btn:hover {
-  background: #004d00;
-  transform: scale(1.05);
 }
 
 #community {
@@ -1197,23 +1120,6 @@ section {
   font-size: 0.9em;
   color: #555;
   margin-bottom: 15px;
-}
-
-.btn-community {
-  background: linear-gradient(90deg, #ffcc00, #ff9900);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #333;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.btn-community:hover {
-  background: linear-gradient(90deg, #ffb700, #ffcc00);
-  transform: translateY(-5px);
 }
 
 footer {
@@ -1273,24 +1179,67 @@ footer {
   margin: 0;
 }
 
-.btn-about {
-  background: linear-gradient(90deg, #28a745, #218838);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
+/* Location Section Styles */
+#location {
+  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+  padding: 40px 15px;
+  max-width: 100vw;
+}
+
+.location-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.location-content {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.location-content p {
   font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-  display: inline-block;
+  color: #444;
+  margin-bottom: 20px;
 }
 
-.btn-about:hover {
-  background: linear-gradient(90deg, #218838, #1e7e34);
-  transform: translateY(-5px);
+.map-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
+.map-wrapper iframe {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+/* Responsive Adjustments */
 @media (min-width: 768px) {
+  #location {
+    padding: 80px 30px;
+  }
+
+  .location-content {
+    padding: 30px;
+  }
+
+  .location-content p {
+    font-size: 1.2em;
+  }
+
+  .map-wrapper iframe {
+    height: 400px;
+  }
+
   nav {
     padding: 10px 30px;
   }
@@ -1433,96 +1382,6 @@ footer {
     font-size: 1.5em;
   }
 }
-
-/* Location Section Styles */
-#location {
-  background: linear-gradient(135deg, #f0f4f8, #e6eef3);
-  padding: 40px 15px;
-  max-width: 100vw;
-}
-
-.location-container {
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.location-content {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px; /* Limits width on larger screens */
-}
-
-.location-content p {
-  font-size: 1em;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.map-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.map-wrapper iframe {
-  width: 100%;
-  height: 300px; /* Fixed height for mobile */
-  display: block;
-}
-
-.btn-location {
-  display: inline-block;
-  background: linear-gradient(90deg, #006600, #008000);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn-location:hover {
-  background: linear-gradient(90deg, #004d00, #006600);
-  transform: scale(1.05);
-}
-
-/* Responsive Adjustments */
-@media (min-width: 768px) {
-  #location {
-    padding: 80px 30px;
-  }
-
-  .location-content {
-    padding: 30px;
-  }
-
-  .location-content p {
-    font-size: 1.2em;
-  }
-
-  .map-wrapper iframe {
-    height: 400px; /* Larger height for desktop */
-  }
-
-  .btn-location {
-    padding: 12px 25px;
-    font-size: 1.1em;
-  }
-}
-
-
-
-
-
-
 
 @media (min-width: 1024px) {
   .service-card, .knowledge-item, .event, .community-item {
