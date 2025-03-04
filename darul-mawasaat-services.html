@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Dar-ul-Mawasaat Services - Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
+  <title>Dar-ul-Mawasaat Welfare Foundation - Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
   <!-- Font Awesome for Icons -->
@@ -157,7 +157,34 @@
       transform: translateY(-3px);
     }
 
-    /* Hero Section with Particles */
+    /* Donate Sidebar */
+    .donate-sidebar {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ffd700;
+      padding: clamp(10px, 3vw, 15px) clamp(15px, 3vw, 20px);
+      border-radius: 10px 0 0 10px;
+      color: #000;
+      font-size: clamp(1em, 3vw, 1.2em);
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .donate-sidebar:hover {
+      background: #e6c200;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hero Section with Waves of Support Animation */
     header {
       height: 100vh;
       position: relative;
@@ -167,7 +194,7 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      background: url('https://via.placeholder.com/1600x900?text=Dar-ul-Mawasaat+Services') no-repeat center center/cover;
+      background: url('https://via.placeholder.com/1600x900?text=Dar-ul-Mawasaat+Welfare+Foundation') no-repeat center center/cover;
     }
 
     header::before {
@@ -181,142 +208,65 @@
       z-index: 1;
     }
 
-    #particles-js {
+    /* Waves of Support Animation */
+    .waves-background {
       position: absolute;
       width: 100%;
       height: 100%;
       z-index: 2;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 10%, transparent 70%);
+      opacity: 0.3;
+      animation: wave 10s infinite linear;
+    }
+
+    .wave:nth-child(1) {
+      top: -50%;
+      left: -50%;
+      animation-delay: 0s;
+    }
+
+    .wave:nth-child(2) {
+      top: -40%;
+      left: -40%;
+      animation-delay: 2s;
+    }
+
+    .wave:nth-child(3) {
+      top: -30%;
+      left: -30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     header h1 {
-      font-size: clamp(2em, 8vw, 4em);
+      font-size: clamp(1.5em, 5vw, 3em);
       color: #ffd700;
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
       z-index: 3;
-      animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-      white-space: nowrap;
+      white-space: normal;
       overflow: hidden;
-      border-right: 3px solid #ffd700;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #ffd700; }
-    }
-
-    .donate-button {
-      background: linear-gradient(90deg, #006600, #00cc00);
-      padding: clamp(10px, 3vw, 15px) clamp(30px, 5vw, 40px);
-      border-radius: 50px;
-      color: #ffd700;
-      font-size: clamp(1em, 3vw, 1.5em);
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(0, 204, 0, 0.5);
-      z-index: 3;
-      transition: all 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 204, 0, 0.5); }
-      50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 204, 0, 0.8); }
-      100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 204, 0, 0.5); }
-    }
-
-    .donate-button:hover {
-      background: linear-gradient(90deg, #004d00, #009900);
-      transform: scale(1.1);
-      box-shadow: 0 0 40px rgba(0, 204, 0, 1);
-    }
-
-    /* AR Qibla Finder */
-    .ar-qibla {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background: #ffd700;
-      color: #006600;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .ar-qibla:hover {
-      background: #fff;
-      transform: scale(1.1);
-    }
-
-    #ar-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #ar-container.active {
-      display: flex;
-    }
-
-    #ar-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #qibla-arrow {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: url('https://via.placeholder.com/50x50?text=↑') no-repeat center;
-      transform: rotate(0deg);
-      transition: transform 0.5s ease;
-    }
-
-    .ar-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #ffd700;
-      font-size: 2em;
-      cursor: pointer;
-    }
-
-    /* Voice Narration Button */
-    .voice-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ffd700;
-      color: #006600;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .voice-toggle:hover {
-      background: #fff;
-      transform: scale(1.1);
+      max-width: 90%;
+      line-height: 1.2;
     }
 
     /* Content Sections */
@@ -354,7 +304,7 @@
       text-align: center;
     }
 
-    /* Assistance Programs */
+    /* Assistance Programs with Colors */
     .assistance-programs {
       padding: clamp(20px, 5vw, 50px);
       background: rgba(255, 255, 255, 0.05);
@@ -366,13 +316,11 @@
 
     .assistance-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 300px), 1fr));
       gap: clamp(20px, 5vw, 30px);
       padding: 0;
     }
 
     .assistance-item {
-      background: rgba(255, 255, 255, 0.1);
       border-radius: 15px;
       padding: clamp(15px, 4vw, 20px);
       text-align: center;
@@ -390,22 +338,32 @@
     .assistance-item:hover {
       transform: scale(1.05) translateY(-10px);
       box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
-      background: rgba(255, 255, 255, 0.2);
     }
+
+    /* Unique Colors for Each Assistance Type */
+    .assistance-item:nth-child(1) { background: linear-gradient(135deg, #ff6f61, #ff9f80); } /* Marriage Assistance - Coral */
+    .assistance-item:nth-child(2) { background: linear-gradient(135deg, #4facfe, #00f2fe); } /* Cash Assistance - Blue */
+    .assistance-item:nth-child(3) { background: linear-gradient(135deg, #a8e063, #56ab2f); } /* Flood Assistance - Green */
+    .assistance-item:nth-child(4) { background: linear-gradient(135deg, #f7971e, #ffd200); } /* Medical Assistance - Yellow */
+    .assistance-item:nth-child(5) { background: linear-gradient(135deg, #ff5e62, #f06292); } /* Employment Assistance - Pink */
+    .assistance-item:nth-child(6) { background: linear-gradient(135deg, #667eea, #764ba2); } /* Disaster Relief - Purple */
+    .assistance-item:nth-child(7) { background: linear-gradient(135deg, #ff9966, #ff5e62); } /* Other Assistance - Orange */
 
     .assistance-item h3 {
       font-size: clamp(1.2em, 4vw, 1.5em);
-      color: #ffd700;
+      color: #fff;
       margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .assistance-item p {
       font-size: clamp(0.9em, 2.5vw, 1em);
-      color: #e0e0e0;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .assistance-button {
-      background: linear-gradient(90deg, #006600, #008000);
+      background: rgba(255, 255, 255, 0.2);
       color: #fff;
       padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
       border-radius: 25px;
@@ -415,32 +373,63 @@
       display: inline-block;
       margin-top: 10px;
       font-size: clamp(0.8em, 2vw, 0.9em);
+      border: 2px solid #fff;
     }
 
     .assistance-button:hover {
-      background: linear-gradient(90deg, #004d00, #006600);
+      background: #fff;
+      color: #333;
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 204, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     }
 
-    /* Footer */
+    /* Compact Footer */
     footer {
-      background: rgba(0, 0, 0, 0.9);
-      padding: clamp(20px, 5vw, 50px);
+      background: linear-gradient(135deg, #1a3c34, #2e6656);
+      padding: clamp(15px, 3vw, 30px);
       text-align: center;
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
     }
 
     .footer-content {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       max-width: 1200px;
       margin: 0 auto;
+      gap: 20px;
     }
 
     .footer-about, .footer-contact, .footer-social {
-      margin: clamp(10px, 3vw, 20px);
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .footer-about h3, .footer-contact h3, .footer-social h3 {
+      font-size: clamp(1em, 3vw, 1.2em);
+      color: #ffd700;
+      margin-bottom: 8px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-about p, .footer-contact p {
+      font-size: clamp(0.8em, 2vw, 0.9em);
+      color: #e0e0e0;
+      margin: 0;
+    }
+
+    .footer-contact a {
+      color: #ffd700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+      color: #fff;
     }
 
     .footer-social .social-icons a {
@@ -453,10 +442,11 @@
     .footer-social .social-icons a:hover {
       color: #fff;
       transform: scale(1.2);
+      text-shadow: 0 0 15px #ffd700;
     }
 
     .footer-bottom {
-      margin-top: 30px;
+      margin-top: 15px;
       font-size: clamp(0.8em, 2vw, 0.9em);
       color: #e0e0e0;
     }
@@ -477,7 +467,18 @@
       nav ul.active { display: flex; }
       .cube.active { transform: rotateY(90deg); }
       header { height: 80vh; }
-      .ar-qibla, .voice-toggle { font-size: 0.9em; padding: 8px 15px; }
+      .assistance-list { grid-template-columns: repeat(1, 1fr); }
+      .donate-sidebar {
+        padding: clamp(8px, 2vw, 12px) clamp(10px, 2vw, 15px);
+        font-size: clamp(0.9em, 2.5vw, 1em);
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-about, .footer-contact, .footer-social {
+        min-width: 100%;
+      }
     }
 
     @media (min-width: 768px) {
@@ -512,30 +513,25 @@
     </ul>
   </nav>
 
-  <!-- Header with Particles -->
+  <!-- Donate Sidebar -->
+  <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
+
+  <!-- Header with Waves of Support Animation -->
   <header data-aos="fade-up">
-    <div id="particles-js"></div>
+    <div class="waves-background">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
     <h1>Dar-ul-Mawasaat Welfare Foundation</h1>
-    <a href="donate.html#donate-welfare" class="donate-button">Donate Now</a>
   </header>
-
-  <!-- AR Qibla Finder -->
-  <button class="ar-qibla" onclick="toggleAR()">Find Qibla (AR)</button>
-  <div id="ar-container">
-    <video id="ar-video" autoplay></video>
-    <div id="qibla-arrow"></div>
-    <span class="ar-close" onclick="toggleAR()">×</span>
-  </div>
-
-  <!-- Voice Narration Toggle -->
-  <button class="voice-toggle" onclick="toggleNarration()">Toggle Narration</button>
 
   <!-- Welfare Efforts -->
   <div class="container" id="welfare-efforts" data-aos="fade-up">
     <div class="content">
       <h2 class="section-title">Our Welfare Efforts</h2>
       <p>
-        Dar-ul-Mawasaat Services under Jamia Ahli Hadees Mohammadia Masjid Cherwan are dedicated to supporting the community through charity, welfare, and community support programs. Our efforts provide assistance for the needy, including marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment assistance, and disaster relief.
+        Dar-ul-Mawasaat Welfare Foundation under Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to supporting the community through charity, welfare, and community support programs. Our efforts provide assistance for the needy, including marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment assistance, and disaster relief.
       </p>
     </div>
   </div>
@@ -587,11 +583,11 @@
     <div class="footer-content">
       <div class="footer-about">
         <h3>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h3>
-        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+        <p>Cherwan Kangan, 191202 | A sacred place to unite, learn, and ponder.</p>
       </div>
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <p>Phone: 6006254589, 9622000919<br>Email: <a href="mailto:info@masjidcherwan.org">info@masjidcherwan.org</a></p>
+        <p>Phone: 6006254589, 9622000919 | Email: <a href="mailto:info@masjidcherwan.org">info@masjidcherwan.org</a></p>
       </div>
       <div class="footer-social">
         <h3>Follow Us</h3>
@@ -608,28 +604,8 @@
 
   <!-- JavaScript -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     AOS.init();
-
-    // Particle Background
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: '#ffd700' },
-        shape: { type: 'circle' },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: '#ffd700', opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
-    });
 
     // 3D Cube Menu
     const cubeMenu = document.querySelector('.cube-menu');
@@ -657,78 +633,6 @@
       const hue = scrollTop / docHeight * 360;
       document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 10%), hsl(${hue + 60}, 50%, 20%))`;
     });
-
-    // Voice Narration
-    let narrationOn = false;
-    function toggleNarration() {
-      narrationOn = !narrationOn;
-      const text = document.body.innerText;
-      if (narrationOn) {
-        alert('Narration ON: ' + text.slice(0, 100) + '...');
-        // Uncomment for real TTS:
-        // const utterance = new SpeechSynthesisUtterance(text);
-        // window.speechSynthesis.speak(utterance);
-      } else {
-        alert('Narration OFF');
-        // window.speechSynthesis.cancel();
-      }
-    }
-
-    // AR Qibla Finder
-    let arActive = false;
-    const arContainer = document.getElementById('ar-container');
-    const arVideo = document.getElementById('ar-video');
-    const qiblaArrow = document.getElementById('qibla-arrow');
-
-    function toggleAR() {
-      arActive = !arActive;
-      arContainer.classList.toggle('active');
-
-      if (arActive) {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-          .then(stream => {
-            arVideo.srcObject = stream;
-            arVideo.play();
-            updateQiblaDirection();
-          })
-          .catch(err => {
-            alert('Camera access denied. Please allow camera permissions for AR Qibla Finder.');
-            arContainer.classList.remove('active');
-            arActive = false;
-          });
-      } else {
-        arVideo.srcObject.getTracks().forEach(track => track.stop());
-      }
-    }
-
-    function updateQiblaDirection() {
-      if (!arActive) return;
-      if ('geolocation' in navigator && 'DeviceOrientationEvent' in window) {
-        navigator.geolocation.getCurrentPosition(position => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          const qiblaLat = 21.4225; // Kaaba latitude
-          const qiblaLon = 39.8262; // Kaaba longitude
-
-          const dLon = qiblaLon - lon;
-          const y = Math.sin(dLon * Math.PI / 180);
-          const x = Math.cos(lat * Math.PI / 180) * Math.tan(qiblaLat * Math.PI / 180) -
-                    Math.sin(lat * Math.PI / 180) * Math.cos(dLon * Math.PI / 180);
-          let bearing = Math.atan2(y, x) * 180 / Math.PI;
-          bearing = (bearing + 360) % 360;
-
-          window.addEventListener('deviceorientation', event => {
-            const alpha = event.alpha || 0;
-            const direction = (bearing - alpha + 360) % 360;
-            qiblaArrow.style.transform = `rotate(${direction}deg)`;
-          });
-        });
-      } else {
-        alert('AR Qibla Finder requires geolocation and device orientation support.');
-        toggleAR();
-      }
-      requestAnimationFrame(updateQiblaDirection);
-    }
   </script>
 </body>
 </html>
