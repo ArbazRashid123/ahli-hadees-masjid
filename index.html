@@ -1248,6 +1248,33 @@ document.querySelector('.btn-location').addEventListener('click', function(e) {
   e.preventDefault();
   window.open(this.href, '_blank');
 });
+
+  
+  // Ensure this is added to your existing script
+const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('nav ul');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            navUl.classList.remove('active');
+        }
+    });
+});
   </script>
 </body>
 </html>
