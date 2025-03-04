@@ -146,115 +146,142 @@ a {
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 15px;
-  background: linear-gradient(135deg, #1a1a1a, #333);
-  position: fixed;
-  width: 100%;
-  max-width: 100vw;
-  top: 0;
-  z-index: 1001;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    position: fixed;
+    width: 100%;
+    max-width: 100vw;
+    top: 0;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 nav .logo {
-  font-size: 1em;
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 nav .menu-toggle {
-  display: block;
-  font-size: 1.7em;
-  color: #fff;
-  cursor: pointer;
+    display: block;
+    font-size: 1.7em;
+    color: #fff;
+    cursor: pointer;
 }
 
 nav ul {
-  display: none;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background: rgba(178, 84, 133, 0.8);
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  padding: 15px;
-  width: 100%;
-  max-width: 100vw;
-  z-index: 1001;
-  justify-content: center;
-  gap: 10px;
-  overflow-x: auto;
-  list-style: none;
+    display: none;
+    flex-direction: row;
+    background: rgba(178, 84, 133, 0.8);
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    width: 100%;
+    max-width: 100vw;
+    z-index: 1001;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    scrollbar-width: thin; /* Firefox: slim scrollbar */
+    scrollbar-color: #ffcc00 rgba(0, 0, 0, 0.3); /* Firefox: scrollbar color */
+    list-style: none;
+    white-space: nowrap; /* Prevent wrapping */
+    transition: all 0.3s ease; /* Smooth transition for visibility */
+}
+
+nav ul::-webkit-scrollbar {
+    height: 6px; /* Chrome/Safari: slim scrollbar */
+}
+
+nav ul::-webkit-scrollbar-thumb {
+    background: #ffcc00; /* Scrollbar color */
+    border-radius: 3px;
+}
+
+nav ul::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3); /* Track background */
 }
 
 nav ul.active {
-  display: flex;
+    display: flex;
 }
 
 nav ul li {
-  margin: 0;
-  flex: 0 0 auto;
-  list-style: none;
+    margin: 0;
+    flex: 0 0 auto; /* Prevent items from shrinking or growing */
+    list-style: none;
 }
 
 nav ul li a {
-  color: #fff;
-  font-size: 1em;
-  font-weight: 500;
-  padding: 5px 10px;
-  transition: color 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    display: block;
 }
 
 nav ul li a:hover {
-  color: #ffcc00;
-  transform: scale(1.1);
+    color: #ffcc00;
+    transform: scale(1.1);
 }
 
 /* Responsive Adjustments */
 @media (max-width: 767px) {
-  nav {
-    padding: 8px 10px;
-  }
+    nav {
+        padding: 8px 10px;
+    }
 
-  nav .logo {
-    font-size: 0.9em;
-  }
+    nav .logo {
+        font-size: 0.9em;
+    }
 
-  nav ul {
-    padding: 10px;
-    gap: 8px;
-  }
+    nav ul {
+        padding: 10px;
+        gap: 8px;
+        top: 45px; /* Adjust for smaller screens */
+    }
 
-  nav ul li a {
-    font-size: 0.9em;
-    padding: 5px 8px;
-  }
+    nav ul li a {
+        font-size: 0.9em;
+        padding: 5px 8px;
+    }
 }
 
 @media (min-width: 768px) {
-  nav {
-    padding: 10px 30px;
-  }
+    nav {
+        padding: 10px 30px;
+    }
 
-  nav .logo {
-    font-size: 1.3em;
-  }
+    nav .logo {
+        font-size: 1.3em;
+    }
 
-  nav ul {
-    padding: 15px 30px;
-    gap: 15px;
-  }
+    nav .menu-toggle {
+        display: none; /* Hide hamburger on desktop */
+    }
 
-  nav ul li a {
-    font-size: 1em;
-    padding: 5px 12px;
-  }
+    nav ul {
+        display: flex; /* Always visible on desktop */
+        position: static; /* Integrated in nav bar */
+        background: transparent; /* Matches nav background */
+        padding: 0;
+        gap: 15px;
+        overflow-x: auto; /* Still scrollable if needed */
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        padding: 5px 12px;
+    }
 }
 
 /* Hero Section (Mobile-First) */
