@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Dar-ul-Mawasaat Services - Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
@@ -10,509 +10,527 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS for Animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
   <style>
-    /* Additional Styles for Dar-ul-Mawasaat Services */
-    .service-header {
-      background: linear-gradient(135deg, #e0ffe0, #ccffcc);
-      padding: 40px 15px;
-      text-align: center;
-      border-radius: 15px 15px 0 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    .service-header h1 {
-      font-size: 2em;
-      color: #006600;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    .container {
-      max-width: 100%;
-      margin: 20px 15px;
-    }
-
-    .content {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      text-align: center; /* Center align the content */
-      margin-left: 5%; /* Slight right shift for mobile, adjustable for larger screens */
-      margin-right: 5%;
-    }
-
-    .content p {
-      font-size: 1em;
-      color: #444;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.8em;
-      color: #006600;
-      font-weight: 700;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      color: #fff;
+      overflow-x: hidden;
       position: relative;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: background 2s ease;
     }
 
-    .section-title::after {
-      content: "";
-      width: 60px;
+    /* Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
       height: 4px;
-      background: linear-gradient(90deg, #ffcc00, #ff9900);
-      display: block;
-      margin: 10px auto 0;
-      border-radius: 2px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: #ffd700;
+      z-index: 1001;
+      transition: width 0.3s ease;
     }
 
-    /* Hamburger Menu Styles */
+    /* Navigation with 3D Cube Effect for Mobile */
     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 15px;
-      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
-      position: fixed;
-      width: 100%;
-      max-width: 100vw;
-      top: 0;
-      z-index: 1001;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     nav .logo {
-      font-size: 1.2em;
-      color: #ffd700;
+      font-size: clamp(1.2em, 4vw, 1.8em);
       font-weight: 700;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    nav .menu-toggle {
-      display: block;
-      font-size: 1.5em;
-      color: #ffd700;
-      cursor: pointer;
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
+      to { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
     }
+
+    nav .cube-menu {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      perspective: 1000px;
+      display: none;
+    }
+
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 215, 0, 0.8);
+      color: #006600;
+      font-size: 1.5em;
+      border-radius: 5px;
+    }
+
+    .cube-face.front { transform: translateZ(20px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(20px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(20px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(20px); }
 
     nav ul {
-      display: none;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.95);
-      position: fixed;
-      top: 50px;
-      left: 0;
-      right: 0;
-      padding: 15px;
-      width: 100%;
-      z-index: 1001;
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     nav ul.active {
       display: flex;
-    }
-
-    nav ul li {
-      margin: 10px 0;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      padding: 15px;
     }
 
     nav ul li a {
       color: #ffd700;
-      font-size: 1em;
-      font-weight: 500;
-      padding: 5px 10px;
-      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: clamp(1em, 3vw, 1.2em);
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     nav ul li a:hover {
       color: #fff;
-      transform: scale(1.1);
+      transform: translateY(-3px);
     }
 
-    /* Section Anchors for In-Page Navigation */
-    #welfare-efforts, #assistance-programs {
-      scroll-margin-top: 80px; /* Offset for fixed nav */
-    }
-
-    /* Hero Section with Donate Button */
+    /* Hero Section with Particles */
     header {
-      height: 40vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-                  url('https://via.placeholder.com/1600x400?text=Dar-ul-Mawasaat+Services') no-repeat center center/cover;
-      background-size: cover, 200% 200%;
-      background-attachment: fixed;
+      height: 100vh;
+      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #ffd700;
       text-align: center;
-      position: relative;
-      animation: flowColors 8s ease infinite, fadeIn 2s ease-out;
       overflow: hidden;
+      background: url('https://via.placeholder.com/1600x900?text=Dar-ul-Mawasaat+Services') no-repeat center center/cover;
     }
 
     header::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-      animation: particleFlow 15s linear infinite;
-    }
-
-    @keyframes particleFlow {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      padding: 0 1rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, rgba(0, 102, 0, 0.5), rgba(0, 0, 0, 0.7));
       z-index: 1;
     }
 
-    .donate-button {
-      display: inline-block;
-      background: linear-gradient(90deg, #006600, #008000);
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: clamp(2em, 8vw, 4em);
       color: #ffd700;
-      font-size: 1rem;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      z-index: 3;
+      animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ffd700;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #ffd700; }
+    }
+
+    .donate-button {
+      background: linear-gradient(90deg, #006600, #00cc00);
+      padding: clamp(10px, 3vw, 15px) clamp(30px, 5vw, 40px);
+      border-radius: 50px;
+      color: #ffd700;
+      font-size: clamp(1em, 3vw, 1.5em);
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.3);
-      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 1rem;
-      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0, 204, 0, 0.5);
+      z-index: 3;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 204, 0, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 204, 0, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 204, 0, 0.5); }
     }
 
     .donate-button:hover {
-      background: linear-gradient(90deg, #004d00, #006600);
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4);
+      background: linear-gradient(90deg, #004d00, #009900);
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(0, 204, 0, 1);
     }
 
-    @media (max-width: 767px) {
-      header {
-        height: 35vh;
-      }
-
-      header h1 {
-        font-size: 1.5rem;
-      }
-
-      .donate-button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-        margin-top: 0.8rem;
-      }
+    /* AR Qibla Finder */
+    .ar-qibla {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #ffd700;
+      color: #006600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s ease;
     }
 
-    @media (min-width: 768px) {
-      header {
-        height: 50vh;
-      }
-
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      .donate-button {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-      }
+    .ar-qibla:hover {
+      background: #fff;
+      transform: scale(1.1);
     }
 
+    #ar-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #ar-container.active {
+      display: flex;
+    }
+
+    #ar-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #qibla-arrow {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://via.placeholder.com/50x50?text=↑') no-repeat center;
+      transform: rotate(0deg);
+      transition: transform 0.5s ease;
+    }
+
+    .ar-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #ffd700;
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    /* Voice Narration Button */
+    .voice-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ffd700;
+      color: #006600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .voice-toggle:hover {
+      background: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Content Sections */
+    .container {
+      padding: clamp(20px, 5vw, 50px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      margin: clamp(20px, 5vw, 40px) auto;
+      max-width: 1200px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+
+    .section-title {
+      font-size: clamp(1.8em, 6vw, 2.5em);
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: clamp(60px, 10vw, 100px);
+      height: 5px;
+      background: #ffd700;
+      display: block;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    .content p {
+      font-size: clamp(1em, 3vw, 1.2em);
+      color: #e0e0e0;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* Assistance Programs */
     .assistance-programs {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255, 215, 0, 0.2);
-      padding: 20px;
-      margin: 20px 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .assistance-programs:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 215, 0, 0.3);
+      padding: clamp(20px, 5vw, 50px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      margin: clamp(20px, 5vw, 40px) auto;
+      max-width: 1200px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
     }
 
     .assistance-list {
-      list-style: none;
       display: grid;
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 300px), 1fr));
+      gap: clamp(20px, 5vw, 30px);
       padding: 0;
     }
 
     .assistance-item {
-      background: linear-gradient(135deg, #fff, #f9f9f9);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: clamp(15px, 4vw, 20px);
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
     }
 
     .assistance-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 10px rgba(255, 215, 0, 0.3);
-    }
-
-    .assistance-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(0, 102, 0, 0.1));
-      animation: shimmer 3s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
+      transform: scale(1.05) translateY(-10px);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .assistance-item h3 {
-      font-size: 1.1em;
-      color: #006600;
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 1;
+      font-size: clamp(1.2em, 4vw, 1.5em);
+      color: #ffd700;
+      margin-bottom: 10px;
     }
 
     .assistance-item p {
-      font-size: 0.9em;
-      color: #444;
-      position: relative;
-      z-index: 1;
+      font-size: clamp(0.9em, 2.5vw, 1em);
+      color: #e0e0e0;
     }
 
     .assistance-button {
       background: linear-gradient(90deg, #006600, #008000);
-      padding: 8px 16px;
-      border-radius: 20px;
       color: #fff;
-      font-size: 0.9em;
+      padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+      border-radius: 25px;
       font-weight: 600;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+      transition: all 0.3s ease;
       display: inline-block;
       margin-top: 10px;
-      cursor: pointer;
+      font-size: clamp(0.8em, 2vw, 0.9em);
     }
 
-    .assistance-button.clicked {
-      background: linear-gradient(90deg, #004d00, #003300); /* Darker green for clicked state */
-      transform: scale(0.95); /* Slight scale down on click */
-      color: #e0e0e0; /* Slightly lighter text for contrast */
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 51, 0, 0.3); /* Subtle shadow change */
-    }
-
-    .assistance-button:hover:not(.clicked) {
+    .assistance-button:hover {
       background: linear-gradient(90deg, #004d00, #006600);
-      transform: translateY(-2px);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 204, 0, 0.5);
     }
 
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      padding: clamp(20px, 5vw, 50px);
+      text-align: center;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-about, .footer-contact, .footer-social {
+      margin: clamp(10px, 3vw, 20px);
+    }
+
+    .footer-social .social-icons a {
+      color: #ffd700;
+      font-size: clamp(1.2em, 4vw, 1.5em);
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      font-size: clamp(0.8em, 2vw, 0.9em);
+      color: #e0e0e0;
+    }
+
+    /* Mobile-First Responsiveness */
     @media (max-width: 767px) {
-      .service-header {
-        padding: 20px 10px;
-      }
-
-      .service-header h1 {
-        font-size: 1.5em;
-      }
-
-      .container {
-        margin: 15px 10px;
-      }
-
-      .content {
-        margin-left: 3%; /* Smaller right shift for mobile */
-        margin-right: 3%;
-        padding: 15px;
-      }
-
-      .content p {
-        font-size: 0.9em;
-      }
-
-      nav {
-        padding: 8px 10px;
-      }
-
-      nav .logo {
-        font-size: 1.1em;
-      }
-
-      nav .menu-toggle {
-        font-size: 1.4em;
-      }
-
+      nav .cube-menu { display: block; }
       nav ul {
-        padding: 10px;
-      }
-
-      nav ul li a {
-        font-size: 0.9em;
-        padding: 4px 8px;
-      }
-
-      header {
-        height: 35vh;
-      }
-
-      header h1 {
-        font-size: 1.5rem;
-      }
-
-      .donate-button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-        margin-top: 0.8rem;
-      }
-
-      .assistance-programs {
-        margin: 15px 10px;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
         padding: 15px;
       }
-
-      .assistance-list {
-        gap: 10px;
-      }
-
-      .assistance-item {
-        padding: 12px;
-      }
-
-      .assistance-item h3 {
-        font-size: 1em;
-      }
-
-      .assistance-item p {
-        font-size: 0.85em;
-      }
-
-      .assistance-button {
-        padding: 6px 12px;
-        font-size: 0.8em;
-      }
+      nav ul.active { display: flex; }
+      .cube.active { transform: rotateY(90deg); }
+      header { height: 80vh; }
+      .ar-qibla, .voice-toggle { font-size: 0.9em; padding: 8px 15px; }
     }
 
     @media (min-width: 768px) {
-      .container {
-        margin: 20px 30px;
-      }
-
-      .content {
-        margin-left: 10%; /* Larger right shift for desktop */
-        margin-right: 10%;
-        padding: 25px;
-      }
-
-      .content p {
-        font-size: 1.1em;
-      }
-
-      nav {
-        padding: 10px 30px;
-      }
-
-      nav .logo {
-        font-size: 1.5em;
-      }
-
-      nav ul {
-        padding: 15px;
-      }
-
-      nav ul li a {
-        font-size: 1em;
-        padding: 5px 10px;
-      }
-
-      header {
-        height: 50vh;
-      }
-
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      .donate-button {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-      }
-
-      .assistance-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .assistance-programs {
-        margin: 20px 30px;
-        padding: 25px;
-      }
-
-      .assistance-item {
-        padding: 18px;
-      }
-
-      .assistance-item h3 {
-        font-size: 1.2em;
-      }
-
-      .assistance-item p {
-        font-size: 1em;
-      }
-
-      .assistance-button {
-        padding: 10px 18px;
-        font-size: 1em;
-      }
+      nav .cube-menu { display: none; }
+      nav ul { display: flex; }
+      .assistance-list { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 1024px) {
-      .assistance-list {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .assistance-list { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
 <body>
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
+
   <!-- Navigation -->
   <nav data-aos="fade-down">
     <div class="logo">Masjid Mohammadia Cherwan</div>
-    <div class="menu-toggle">☰</div>
+    <div class="cube-menu">
+      <div class="cube">
+        <div class="cube-face front"><i class="fas fa-bars"></i></div>
+        <div class="cube-face back"><i class="fas fa-times"></i></div>
+        <div class="cube-face right"></div>
+        <div class="cube-face left"></div>
+      </div>
+    </div>
     <ul>
       <li><a href="#welfare-efforts">Our Welfare Efforts</a></li>
       <li><a href="#assistance-programs">Assistance Programs</a></li>
     </ul>
   </nav>
 
-  <!-- Header with Donate Button -->
+  <!-- Header with Particles -->
   <header data-aos="fade-up">
+    <div id="particles-js"></div>
     <h1>Dar-ul-Mawasaat Services</h1>
-    <a href="donate.html#donate-welfare" class="donate-button">Donate to Dar-ul-Mawasaat</a>
+    <a href="donate.html#donate-welfare" class="donate-button">Donate Now</a>
   </header>
 
-  <!-- Dar-ul-Mawasaat Services Content -->
+  <!-- AR Qibla Finder -->
+  <button class="ar-qibla" onclick="toggleAR()">Find Qibla (AR)</button>
+  <div id="ar-container">
+    <video id="ar-video" autoplay></video>
+    <div id="qibla-arrow"></div>
+    <span class="ar-close" onclick="toggleAR()">×</span>
+  </div>
+
+  <!-- Voice Narration Toggle -->
+  <button class="voice-toggle" onclick="toggleNarration()">Toggle Narration</button>
+
+  <!-- Welfare Efforts -->
   <div class="container" id="welfare-efforts" data-aos="fade-up">
     <div class="content">
       <h2 class="section-title">Our Welfare Efforts</h2>
@@ -522,44 +540,44 @@
     </div>
   </div>
 
-  <!-- Assistance Programs (Integrated into Dar-ul-Mawasaat Services) -->
-  <div class="assistance-programs" id="assistance-programs" data-aos="fade-up" data-aos-delay="200">
+  <!-- Assistance Programs -->
+  <div class="assistance-programs" id="assistance-programs" data-aos="fade-up">
     <h2 class="section-title">Assistance Programs</h2>
     <ul class="assistance-list">
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="300">
         <h3>Marriage Assistance</h3>
         <p>We provide financial and logistical support for the weddings of orphan girls to ease their marital journey.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="400">
         <h3>Cash Assistance</h3>
         <p>Cash assistance is provided to needy families for financial stability, especially in emergency situations.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="500">
         <h3>Flood Assistance</h3>
         <p>Immediate aid for flood victims, including food, shelter, and basic necessities, is provided to support recovery.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="600">
         <h3>Medical Assistance</h3>
         <p>Financial support and medicines are provided for chronic patients to improve their health and well-being.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="700">
         <h3>Employment Assistance</h3>
         <p>Programs to create job opportunities for the unemployed, promoting economic growth in the community.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="800">
         <h3>Disaster Relief</h3>
         <p>Emergency aid and rehabilitation services for those affected by natural disasters like floods and earthquakes.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="900">
         <h3>Other Assistance</h3>
         <p>Immediate and long-term aid for other community needs, such as education, shelter, and basic necessities.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button" onclick="markButtonClicked(this)">Request Assistance</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
     </ul>
   </div>
@@ -573,7 +591,7 @@
       </div>
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <p>Phone: 6006254589, 9622000919<br>Email: <a href="/cdn-cgi/l/email-protection#ea83848c85aa878b9980838e8785828b87878b8e838bc4898587"><span class="__cf_email__" data-cfemail="8ce5e2eae3cce1edffe6e5e8e1e3e4ede1e1ede8e5eda2efe3e1">[email protected]</span></a></p>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="mailto:info@masjidcherwan.org">info@masjidcherwan.org</a></p>
       </div>
       <div class="footer-social">
         <h3>Follow Us</h3>
@@ -590,35 +608,126 @@
 
   <!-- JavaScript -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     AOS.init();
 
-    const menuToggle = document.querySelector('.menu-toggle');
+    // Particle Background
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#ffd700' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#ffd700', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    // 3D Cube Menu
+    const cubeMenu = document.querySelector('.cube-menu');
+    const cube = document.querySelector('.cube');
     const navUl = document.querySelector('nav ul');
-    const navLinks = document.querySelectorAll('nav ul li a');
 
-    // Toggle menu on hamburger click
-    menuToggle.addEventListener('click', () => {
+    cubeMenu.addEventListener('click', () => {
+      cube.classList.toggle('active');
       navUl.classList.toggle('active');
-      navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
     });
 
-    // Close menu on link click
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navUl.classList.remove('active');
-        navUl.style.display = 'none';
-      });
+    // Scroll Effects
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrollPercent + '%';
+
+      if (scrollTop > 50) {
+        document.querySelector('nav').classList.add('scrolled');
+      } else {
+        document.querySelector('nav').classList.remove('scrolled');
+      }
+
+      const hue = scrollTop / docHeight * 360;
+      document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 10%), hsl(${hue + 60}, 50%, 20%))`;
     });
 
-    // JavaScript for marking buttons as clicked
-    function markButtonClicked(button) {
-      button.classList.add('clicked');
-      // Remove clicked state after 2 seconds (optional, can adjust timing)
-      setTimeout(() => {
-        button.classList.remove('clicked');
-      }, 2000);
+    // Voice Narration
+    let narrationOn = false;
+    function toggleNarration() {
+      narrationOn = !narrationOn;
+      const text = document.body.innerText;
+      if (narrationOn) {
+        alert('Narration ON: ' + text.slice(0, 100) + '...');
+        // Uncomment for real TTS:
+        // const utterance = new SpeechSynthesisUtterance(text);
+        // window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Narration OFF');
+        // window.speechSynthesis.cancel();
+      }
+    }
+
+    // AR Qibla Finder
+    let arActive = false;
+    const arContainer = document.getElementById('ar-container');
+    const arVideo = document.getElementById('ar-video');
+    const qiblaArrow = document.getElementById('qibla-arrow');
+
+    function toggleAR() {
+      arActive = !arActive;
+      arContainer.classList.toggle('active');
+
+      if (arActive) {
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+          .then(stream => {
+            arVideo.srcObject = stream;
+            arVideo.play();
+            updateQiblaDirection();
+          })
+          .catch(err => {
+            alert('Camera access denied. Please allow camera permissions for AR Qibla Finder.');
+            arContainer.classList.remove('active');
+            arActive = false;
+          });
+      } else {
+        arVideo.srcObject.getTracks().forEach(track => track.stop());
+      }
+    }
+
+    function updateQiblaDirection() {
+      if (!arActive) return;
+      if ('geolocation' in navigator && 'DeviceOrientationEvent' in window) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          const qiblaLat = 21.4225; // Kaaba latitude
+          const qiblaLon = 39.8262; // Kaaba longitude
+
+          const dLon = qiblaLon - lon;
+          const y = Math.sin(dLon * Math.PI / 180);
+          const x = Math.cos(lat * Math.PI / 180) * Math.tan(qiblaLat * Math.PI / 180) -
+                    Math.sin(lat * Math.PI / 180) * Math.cos(dLon * Math.PI / 180);
+          let bearing = Math.atan2(y, x) * 180 / Math.PI;
+          bearing = (bearing + 360) % 360;
+
+          window.addEventListener('deviceorientation', event => {
+            const alpha = event.alpha || 0;
+            const direction = (bearing - alpha + 360) % 360;
+            qiblaArrow.style.transform = `rotate(${direction}deg)`;
+          });
+        });
+      } else {
+        alert('AR Qibla Finder requires geolocation and device orientation support.');
+        toggleAR();
+      }
+      requestAnimationFrame(updateQiblaDirection);
     }
   </script>
 </body>
