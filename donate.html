@@ -553,9 +553,19 @@
       canvas.height = window.innerHeight;
     });
 
-    // Hamburger Menu Toggle
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
+    // Hamburger Menu Toggle and Auto-Close
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active'); // Close menu when a link is clicked
+      });
     });
 
     // Show Scanner Toggle
