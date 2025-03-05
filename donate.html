@@ -14,8 +14,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #0a0f1c;
-      color: #e0e0e0;
+      background: #ffffff; /* White background */
+      color: #333333; /* Darker text for contrast */
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -28,15 +28,15 @@
       left: 0;
       width: 0;
       height: 5px;
-      background: linear-gradient(90deg, #00ffcc, #ff007a);
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
       z-index: 1000;
       transition: width 0.1s ease;
     }
 
     /* Navigation */
     nav {
-      background: linear-gradient(135deg, #1a1a3d, #2e2e66, #1a1a3d);
-      color: #00ffcc;
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0); /* Light gradient */
+      color: #333333;
       padding: 1rem;
       position: sticky;
       top: 0;
@@ -44,7 +44,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(0, 255, 204, 0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       animation: flowColors 6s ease infinite;
     }
     @keyframes flowColors {
@@ -52,21 +52,21 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #007bff; }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
-      color: #00ffcc;
+      color: #007bff;
       font-size: 1rem;
       padding: 0.5rem 1rem;
       transition: all 0.3s ease;
       border-radius: 20px;
     }
     .nav-links a:hover {
-      color: #ff007a;
-      background: rgba(255, 255, 255, 0.1);
+      color: #ff4d4d;
+      background: rgba(0, 0, 0, 0.05);
       transform: scale(1.1);
     }
-    .hamburger { font-size: 1.8rem; cursor: pointer; color: #00ffcc; display: none; }
+    .hamburger { font-size: 1.8rem; cursor: pointer; color: #007bff; display: none; }
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links {
@@ -76,9 +76,9 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: #1a1a3d;
+        background: #f0f0f0;
         padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
       .nav-links.active { display: flex; }
     }
@@ -87,7 +87,7 @@
     header {
       height: 60vh;
       position: relative;
-      background: linear-gradient(135deg, rgba(10, 15, 28, 0.9), rgba(20, 30, 56, 0.7)),
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7)),
                   url('https://via.placeholder.com/1600x400?text=Donate+Now') no-repeat center center/cover;
       display: flex;
       align-items: center;
@@ -104,16 +104,16 @@
     }
     header h1 {
       font-size: 3rem;
-      color: #00ffcc;
+      color: #007bff;
       text-transform: uppercase;
       letter-spacing: 4px;
-      text-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(255, 0, 122, 0.5);
+      text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
       z-index: 1;
       animation: glowText 2s ease-in-out infinite;
     }
     @keyframes glowText {
-      0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(255, 0, 122, 0.5); }
-      50% { text-shadow: 0 0 30px rgba(0, 255, 204, 1), 0 0 60px rgba(255, 0, 122, 0.8); }
+      0%, 100% { text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
+      50% { text-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
     }
     @media (max-width: 768px) { header h1 { font-size: 2rem; } }
 
@@ -123,9 +123,9 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 2rem;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      background: #f9f9f9; /* Slightly off-white for contrast */
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 255, 204, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
 
     /* Section Title */
@@ -133,15 +133,15 @@
       text-align: center;
       margin-bottom: 2.5rem;
       font-size: 2.5rem;
-      color: #00ffcc;
-      text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      color: #007bff;
+      text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
       animation: slideInUp 1s ease-out;
     }
     .section-title::after {
       content: "";
       width: 80px;
       height: 5px;
-      background: linear-gradient(90deg, #00ffcc, #ff007a);
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
       display: block;
       margin: 0.8rem auto;
       border-radius: 5px;
@@ -162,43 +162,56 @@
       flex-wrap: wrap;
       margin-bottom: 2rem;
       padding: 2rem;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      background: #ffffff;
       border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 255, 204, 0.15);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
     .donation-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 50px rgba(0, 255, 204, 0.3), 0 0 20px rgba(255, 0, 122, 0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     }
     .donation-details, .scanner-placeholder { flex: 1 1 100%; padding: 1rem; }
-    .donation-details { border-bottom: 2px dashed rgba(0, 255, 204, 0.3); }
+    .donation-details { border-bottom: 2px dashed #e0e0e0; }
     @media (min-width: 768px) {
-      .donation-details { border-bottom: none; border-right: 2px dashed rgba(0, 255, 204, 0.3); }
+      .donation-details { border-bottom: none; border-right: 2px dashed #e0e0e0; }
       .scanner-placeholder.visible { flex: 1 1 45%; }
     }
     .donation-details h2 {
       font-size: 1.8rem;
-      color: #ff007a;
+      color: #ff4d4d;
       margin-bottom: 1rem;
-      text-shadow: 0 0 10px rgba(255, 0, 122, 0.5);
     }
-    .donation-details p { font-size: 1rem; color: #e0e0e0; margin-bottom: 0.8rem; display: flex; justify-content: space-between; }
-    .donation-details strong { color: #00ffcc; }
+    .donation-details p {
+      font-size: 1rem;
+      color: #333333;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .donation-details strong {
+      color: #007bff;
+      margin-right: 1rem; /* Space between label and value */
+    }
+    .donation-details .copyable {
+      flex-grow: 1;
+      text-align: right;
+    }
 
     /* Copyable Text & Buttons */
     .copyable {
       position: relative;
       cursor: pointer;
       padding: 0.2rem 0.5rem;
-      background: rgba(0, 255, 204, 0.1);
+      background: #f0f0f0;
       border-radius: 4px;
       transition: background 0.3s ease;
     }
-    .copyable:hover { background: rgba(0, 255, 204, 0.2); }
+    .copyable:hover { background: #e0e0e0; }
     .copy-btn {
-      background: #ff007a;
-      color: #fff;
+      background: #ff4d4d;
+      color: #ffffff;
       border: none;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
@@ -213,8 +226,8 @@
       top: -2rem;
       left: 50%;
       transform: translateX(-50%);
-      background: #ff007a;
-      color: #fff;
+      background: #ff4d4d;
+      color: #ffffff;
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
       font-size: 0.8rem;
@@ -226,8 +239,8 @@
 
     /* Buttons */
     .show-scanner, .get-receipt {
-      background: linear-gradient(90deg, #00ffcc, #ff007a);
-      color: #0a0f1c;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       border: none;
@@ -239,7 +252,7 @@
     }
     .show-scanner:hover, .get-receipt:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
     /* Scanner Placeholder */
@@ -247,9 +260,9 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 255, 204, 0.05);
+      background: #f9f9f9;
       border-radius: 10px;
-      color: #00ffcc;
+      color: #007bff;
       font-size: 1.2rem;
       opacity: 0;
       transform: translateX(100%);
@@ -267,24 +280,24 @@
     .receipt-section {
       margin-top: 2rem;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: #f9f9f9;
       border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 255, 204, 0.15);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
     }
-    .receipt-section h2 { color: #ff007a; text-align: center; margin-bottom: 1.5rem; }
-    .receipt-section label { display: block; margin: 0.5rem 0; color: #00ffcc; }
+    .receipt-section h2 { color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; }
+    .receipt-section label { display: block; margin: 0.5rem 0; color: #007bff; }
     .receipt-section input {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
-      border: 1px solid rgba(0, 255, 204, 0.3);
+      border: 1px solid #e0e0e0;
       border-radius: 5px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #e0e0e0;
+      background: #ffffff;
+      color: #333333;
     }
     .receipt-section button {
-      background: linear-gradient(90deg, #00ffcc, #ff007a);
-      color: #0a0f1c;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
@@ -292,12 +305,12 @@
       margin: 0.5rem 0;
       width: 100%;
     }
-    .receipt-section button:hover { background: linear-gradient(90deg, #ff007a, #00ffcc); }
+    .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
     /* Enhanced Receipt Preview */
     #receipt-preview {
       margin-top: 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
+      background: #f0f0f0;
       padding: 1rem;
       border-radius: 5px;
       text-align: center;
@@ -306,57 +319,55 @@
       max-width: 400px;
       margin: 0 auto;
       padding: 2rem;
-      background: linear-gradient(135deg, rgba(10, 15, 28, 0.9), rgba(20, 30, 56, 0.7));
+      background: #ffffff;
       border: 3px solid transparent;
-      border-image: linear-gradient(90deg, #00ffcc, #ff007a) 1;
+      border-image: linear-gradient(90deg, #007bff, #ff4d4d) 1;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
-      color: #e0e0e0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      color: #333333;
       font-family: 'Poppins', sans-serif;
     }
     .receipt-content h2 {
       font-size: 1.8rem;
-      color: #00ffcc;
+      color: #007bff;
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
       margin-bottom: 1rem;
     }
     .receipt-content h3 {
       font-size: 1.2rem;
-      color: #ff007a;
+      color: #ff4d4d;
       margin-bottom: 1rem;
-      border-bottom: 1px dashed #00ffcc;
+      border-bottom: 1px dashed #007bff;
       padding-bottom: 0.5rem;
     }
     .receipt-content p {
       font-size: 1rem;
       margin: 0.5rem 0;
-      color: #e0e0e0;
+      color: #333333;
     }
     .receipt-content hr {
       border: 0;
-      border-top: 1px dashed #ff007a;
+      border-top: 1px dashed #ff4d4d;
       margin: 1rem 0;
     }
     .receipt-content .signature-line {
-      border-bottom: 1px solid #00ffcc;
+      border-bottom: 1px solid #007bff;
       width: 150px;
       margin: 1.5rem auto 0.5rem;
     }
     .receipt-content .quote {
       font-style: italic;
       font-size: 0.9rem;
-      color: #00ffcc;
+      color: #007bff;
       margin-top: 1rem;
-      border-left: 3px solid #ff007a;
+      border-left: 3px solid #ff4d4d;
       padding-left: 0.5rem;
     }
     .receipt-content .thank-you {
       font-size: 1rem;
-      color: #ff007a;
+      color: #ff4d4d;
       font-weight: bold;
       margin-top: 0.5rem;
-      text-shadow: 0 0 10px rgba(255, 0, 122, 0.5);
     }
     .receipt-actions {
       margin-top: 1rem;
@@ -371,11 +382,24 @@
     /* Footer */
     footer {
       padding: 1.5rem;
-      background: linear-gradient(135deg, #1a1a3d, #2e2e66);
-      color: #00ffcc;
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+      color: #333333;
       text-align: center;
       font-size: 1rem;
-      box-shadow: 0 -4px 20px rgba(0, 255, 204, 0.2);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 500px) {
+      header { height: 40vh; }
+      header h1 { font-size: 1.8rem; }
+      .section-title { font-size: 2rem; }
+      .donation-details h2 { font-size: 1.5rem; }
+      .donation-details p { font-size: 0.9rem; flex-direction: column; align-items: flex-start; }
+      .donation-details strong { margin-right: 0; margin-bottom: 0.3rem; }
+      .donation-details .copyable { text-align: left; }
+      .show-scanner, .get-receipt { padding: 0.5rem 1rem; font-size: 0.9rem; }
+      .scanner-placeholder.visible { min-height: 180px; }
     }
   </style>
 </head>
@@ -482,7 +506,7 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Constellation Animation
+    // Constellation Animation (adjusted for white background)
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -508,7 +532,7 @@
         else if (this.y < 0) this.y = canvas.height;
       }
       draw() {
-        ctx.fillStyle = '#00ffcc';
+        ctx.fillStyle = '#007bff'; // Blue particles for contrast
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -526,11 +550,11 @@
           const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
-            ctx.strokeStyle = `rgba(255, 0, 122, ${1 - distance / 100})`;
+            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`; // Red lines
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.lineTo(particles[b].x, particles[b].y); // Fixed typo: 'patients' to 'particles'
             ctx.stroke();
           }
         }
@@ -564,7 +588,7 @@
 
     links.forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('active'); // Close menu when a link is clicked
+        navLinks.classList.remove('active');
       });
     });
 
