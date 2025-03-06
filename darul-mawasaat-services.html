@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Dar-ul-Mawasaat Welfare Foundation - Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS for Animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
@@ -20,25 +17,22 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fff; /* White background */
-      color: #333; /* Dark gray for default text */
+      background: #f5f5f5;
+      color: #1a2b34;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Progress Bar */
     #progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 0;
       height: 4px;
-      background: #006600; /* Dark green for visibility */
+      background: #006600;
       z-index: 1001;
       transition: width 0.3s ease;
     }
 
-    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -47,21 +41,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.9); /* Light transparent background */
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0, 102, 0, 0.1);
       z-index: 1000;
       transition: all 0.3s ease;
     }
 
     nav.scrolled {
-      background: #fff; /* Solid white when scrolled */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 102, 0, 0.1);
     }
 
     nav .logo {
       font-size: clamp(1.2em, 4vw, 1.8em);
       font-weight: 700;
-      color: #006600; /* Dark green for logo */
+      color: #006600;
       text-transform: uppercase;
       letter-spacing: 2px;
       animation: glow 2s ease-in-out infinite alternate;
@@ -73,7 +67,6 @@
     }
 
     nav .cube-menu {
-      position: relative;
       width: 40px;
       height: 40px;
       cursor: pointer;
@@ -96,8 +89,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #006600; /* Dark green */
-      color: #fff; /* White for contrast */
+      background: #006600;
+      color: #fff;
       font-size: 1.5em;
       border-radius: 5px;
     }
@@ -110,8 +103,6 @@
     nav ul {
       display: flex;
       list-style: none;
-      margin: 0;
-      padding: 0;
     }
 
     nav ul.active {
@@ -121,13 +112,13 @@
       top: 60px;
       left: 0;
       width: 100%;
-      background: #fff; /* White for mobile menu */
+      background: #fff;
       padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 102, 0, 0.1);
     }
 
     nav ul li a {
-      color: #006600; /* Dark green */
+      color: #006600;
       font-size: clamp(1em, 3vw, 1.2em);
       padding: 10px 20px;
       text-decoration: none;
@@ -142,7 +133,7 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background: #006600; /* Dark green underline */
+      background: #006600;
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
@@ -152,38 +143,37 @@
     }
 
     nav ul li a:hover {
-      color: #004d00; /* Darker green on hover */
+      color: #004d00;
       transform: translateY(-3px);
     }
 
-    /* Donate Sidebar */
     .donate-sidebar {
       position: fixed;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      background: #006600; /* Dark green */
-      padding: clamp(10px, 3vw, 15px) clamp(15px, 3vw, 20px);
-      border-radius: 10px 0 0 10px;
-      color: #fff; /* White text */
+      background: linear-gradient(45deg, #006600, #008000);
+      padding: clamp(15px, 3vw, 20px) clamp(20px, 3vw, 25px);
+      border-radius: 15px 0 0 15px;
+      color: #fff;
       font-size: clamp(1em, 3vw, 1.2em);
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 102, 0, 0.3);
       z-index: 999;
       transition: all 0.3s ease;
       text-transform: uppercase;
       writing-mode: vertical-rl;
       text-orientation: mixed;
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .donate-sidebar:hover {
-      background: #004d00; /* Darker green on hover */
-      transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #004d00, #006600);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 102, 0, 0.4);
     }
 
-    /* Header */
     header {
       height: 100vh;
       position: relative;
@@ -193,73 +183,87 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      background: url('https://via.placeholder.com/1600x900?text=Dar-ul-Mawasaat+Welfare+Foundation') no-repeat center center/cover;
+      background: #e6f0e6;
     }
 
-    header::before {
-      content: '';
+    .hero-animation {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 102, 0, 0.3); /* Subtle green overlay */
       z-index: 1;
-    }
-
-    .waves-background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
       overflow: hidden;
     }
 
-    .wave {
+    .charity-scene {
       position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0, 102, 0, 0.2) 10%, transparent 70%);
-      opacity: 0.3;
-      animation: wave 10s infinite linear;
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: floatScene 8s ease-in-out infinite;
     }
 
-    .wave:nth-child(1) { top: -50%; left: -50%; animation-delay: 0s; }
-    .wave:nth-child(2) { top: -40%; left: -40%; animation-delay: 2s; }
-    .wave:nth-child(3) { top: -30%; left: -30%; animation-delay: 4s; }
+    .giver, .receiver {
+      position: absolute;
+      width: 100px;
+      height: 150px;
+      background: url('https://via.placeholder.com/100x150?text=Person') center/contain no-repeat;
+      animation: moveHands 2s ease-in-out infinite alternate;
+    }
 
-    @keyframes wave {
-      0% { transform: translate(-50%, -50%) scale(0.5) rotate(0deg); opacity: 0.3; }
-      50% { opacity: 0.5; }
-      100% { transform: translate(-50%, -50%) scale(1.5) rotate(360deg); opacity: 0; }
+    .giver { left: 0; }
+    .receiver { right: 0; }
+
+    .charity-box {
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      background: #006600;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: passBox 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatScene {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-20px); }
+    }
+
+    @keyframes moveHands {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes passBox {
+      0% { transform: translate(-50%, -50%) translateX(-20px); }
+      100% { transform: translate(-50%, -50%) translateX(20px); }
     }
 
     header h1 {
-      font-size: clamp(1.5em, 5vw, 3em);
-      color: #006600; /* Dark green */
-      text-shadow: 0 0 20px rgba(0, 102, 0, 0.5);
-      z-index: 3;
-      white-space: normal;
-      overflow: hidden;
+      font-size: clamp(1.8em, 5vw, 3.2em);
+      color: #004d00;
+      text-shadow: 0 2px 10px rgba(0, 102, 0, 0.3);
+      z-index: 2;
       max-width: 90%;
       line-height: 1.2;
     }
 
-    /* Content Sections */
     .container {
-      padding: clamp(20px, 5vw, 50px);
-      background: #f9f9f9; /* Light gray */
-      border-radius: 20px;
+      padding: clamp(20px, 5vw, 40px);
+      background: #fff;
+      border-radius: 25px;
       margin: clamp(20px, 5vw, 40px) auto;
-      max-width: 1200px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      max-width: 1300px;
+      box-shadow: 0 0 25px rgba(0, 102, 0, 0.1);
     }
 
     .section-title {
       font-size: clamp(1.8em, 6vw, 2.5em);
-      color: #006600; /* Dark green */
+      color: #006600;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       position: relative;
     }
 
@@ -267,38 +271,37 @@
       content: '';
       width: clamp(60px, 10vw, 100px);
       height: 5px;
-      background: #006600; /* Dark green */
+      background: #006600;
       display: block;
       margin: 10px auto;
       border-radius: 5px;
     }
 
     .content p {
-      font-size: clamp(1em, 3vw, 1.2em);
-      color: #555; /* Medium gray for readability */
-      line-height: 1.8;
+      font-size: clamp(0.9em, 2.5vw, 1.1em);
+      color: #2c3e50;
+      line-height: 1.6;
       text-align: center;
     }
 
-    /* Assistance Programs */
     .assistance-programs {
-      padding: clamp(20px, 5vw, 50px);
-      background: #f9f9f9; /* Light gray */
-      border-radius: 20px;
+      padding: clamp(20px, 5vw, 40px);
+      background: #fff;
+      border-radius: 25px;
       margin: clamp(20px, 5vw, 40px) auto;
-      max-width: 1200px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      max-width: 1300px;
+      box-shadow: 0 0 25px rgba(0, 102, 0, 0.1);
     }
 
     .assistance-list {
       display: grid;
-      gap: clamp(20px, 5vw, 30px);
+      gap: clamp(15px, 4vw, 20px);
       padding: 0;
     }
 
     .assistance-item {
       border-radius: 15px;
-      padding: clamp(15px, 4vw, 20px);
+      padding: clamp(12px, 3vw, 15px);
       text-align: center;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
@@ -307,64 +310,62 @@
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      50% { transform: translateY(-15px); }
       100% { transform: translateY(0); }
     }
 
     .assistance-item:hover {
       transform: scale(1.05) translateY(-10px);
-      box-shadow: 0 0 30px rgba(0, 102, 0, 0.3);
+      box-shadow: 0 0 25px rgba(0, 102, 0, 0.3);
     }
 
-    /* Adjusted Colors for Assistance Items */
-    .assistance-item:nth-child(1) { background: linear-gradient(135deg, #ff6f61, #ff9f80); } /* Marriage - Coral */
-    .assistance-item:nth-child(2) { background: linear-gradient(135deg, #4facfe, #00f2fe); } /* Cash - Blue */
-    .assistance-item:nth-child(3) { background: linear-gradient(135deg, #a8e063, #56ab2f); } /* Flood - Green */
-    .assistance-item:nth-child(4) { background: linear-gradient(135deg, #f7971e, #ffd200); } /* Medical - Yellow */
-    .assistance-item:nth-child(5) { background: linear-gradient(135deg, #ff5e62, #f06292); } /* Employment - Pink */
-    .assistance-item:nth-child(6) { background: linear-gradient(135deg, #667eea, #764ba2); } /* Disaster - Purple */
-    .assistance-item:nth-child(7) { background: linear-gradient(135deg, #ff9966, #ff5e62); } /* Other - Orange */
+    .assistance-item:nth-child(1) { background: linear-gradient(135deg, #ff6f61, #ff9f80); }
+    .assistance-item:nth-child(2) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .assistance-item:nth-child(3) { background: linear-gradient(135deg, #a8e063, #56ab2f); }
+    .assistance-item:nth-child(4) { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .assistance-item:nth-child(5) { background: linear-gradient(135deg, #ff5e62, #f06292); }
+    .assistance-item:nth-child(6) { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .assistance-item:nth-child(7) { background: linear-gradient(135deg, #ff9966, #ff5e62); }
 
     .assistance-item h3 {
-      font-size: clamp(1.2em, 4vw, 1.5em);
-      color: #fff; /* White for contrast */
-      margin-bottom: 10px;
+      font-size: clamp(1em, 3vw, 1.3em);
+      color: #fff;
+      margin-bottom: 8px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .assistance-item p {
-      font-size: clamp(0.9em, 2.5vw, 1em);
-      color: #fff; /* White for contrast */
+      font-size: clamp(0.7em, 2vw, 0.85em);
+      color: #fff;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      line-height: 1.4;
     }
 
     .assistance-button {
-      background: rgba(255, 255, 255, 0.3);
-      color: #fff; /* White text */
-      padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
-      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.4);
+      color: #fff;
+      padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 15px);
+      border-radius: 20px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.3s ease;
       display: inline-block;
-      margin-top: 10px;
-      font-size: clamp(0.8em, 2vw, 0.9em);
+      margin-top: 8px;
+      font-size: clamp(0.7em, 1.8vw, 0.8em);
       border: 2px solid #fff;
     }
 
     .assistance-button:hover {
-      background: #006600; /* Dark green */
-      color: #fff;
+      background: #006600;
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 102, 0, 0.5);
+      box-shadow: 0 0 15px rgba(0, 102, 0, 0.5);
     }
 
-    /* Footer */
     footer {
-      background: #f0f0f0; /* Light gray */
-      padding: clamp(15px, 3vw, 30px);
+      background: #fff;
+      padding: clamp(20px, 4vw, 40px);
       text-align: center;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 -4px 20px rgba(0, 102, 0, 0.1);
       position: relative;
       z-index: 1;
     }
@@ -374,9 +375,9 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
-      gap: 20px;
+      gap: 25px;
     }
 
     .footer-about, .footer-contact, .footer-social {
@@ -387,46 +388,44 @@
 
     .footer-about h3, .footer-contact h3, .footer-social h3 {
       font-size: clamp(1em, 3vw, 1.2em);
-      color: #006600; /* Dark green */
-      margin-bottom: 8px;
+      color: #006600;
+      margin-bottom: 10px;
     }
 
     .footer-about p, .footer-contact p {
       font-size: clamp(0.8em, 2vw, 0.9em);
-      color: #555; /* Medium gray */
-      margin: 0;
+      color: #2c3e50;
     }
 
     .footer-contact a {
-      color: #006600; /* Dark green */
+      color: #006600;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .footer-contact a:hover {
-      color: #004d00; /* Darker green */
+      color: #004d00;
     }
 
     .footer-social .social-icons a {
-      color: #006600; /* Dark green */
+      color: #006600;
       font-size: clamp(1.2em, 4vw, 1.5em);
-      margin: 0 10px;
+      margin: 0 12px;
       transition: all 0.3s ease;
     }
 
     .footer-social .social-icons a:hover {
-      color: #004d00; /* Darker green */
+      color: #004d00;
       transform: scale(1.2);
       text-shadow: 0 0 15px rgba(0, 102, 0, 0.5);
     }
 
     .footer-bottom {
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: clamp(0.8em, 2vw, 0.9em);
-      color: #555; /* Medium gray */
+      color: #2c3e50;
     }
 
-    /* Mobile-First Responsiveness */
     @media (max-width: 767px) {
       nav .cube-menu { display: block; }
       nav ul {
@@ -442,24 +441,16 @@
       nav ul.active { display: flex; }
       .cube.active { transform: rotateY(90deg); }
       header { height: 80vh; }
-      .assistance-list { grid-template-columns: repeat(1, 1fr); }
-      .donate-sidebar {
-        padding: clamp(8px, 2vw, 12px) clamp(10px, 2vw, 15px);
-        font-size: clamp(0.9em, 2.5vw, 1em);
-      }
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .footer-about, .footer-contact, .footer-social {
-        min-width: 100%;
-      }
+      .assistance-list { grid-template-columns: repeat(3, 1fr); }
+      .charity-scene { width: 200px; height: 200px; }
+      .giver, .receiver { width: 70px; height: 100px; }
+      .charity-box { width: 40px; height: 25px; }
     }
 
     @media (min-width: 768px) {
       nav .cube-menu { display: none; }
       nav ul { display: flex; }
-      .assistance-list { grid-template-columns: repeat(2, 1fr); }
+      .assistance-list { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (min-width: 1024px) {
@@ -468,10 +459,8 @@
   </style>
 </head>
 <body>
-  <!-- Progress Bar -->
   <div id="progress-bar"></div>
 
-  <!-- Navigation -->
   <nav data-aos="fade-down">
     <div class="logo">Masjid Mohammadia Cherwan</div>
     <div class="cube-menu">
@@ -488,20 +477,19 @@
     </ul>
   </nav>
 
-  <!-- Donate Sidebar -->
   <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
 
-  <!-- Header -->
   <header data-aos="fade-up">
-    <div class="waves-background">
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
+    <div class="hero-animation">
+      <div class="charity-scene">
+        <div class="giver"></div>
+        <div class="charity-box"></div>
+        <div class="receiver"></div>
+      </div>
     </div>
     <h1>Dar-ul-Mawasaat Welfare Foundation</h1>
   </header>
 
-  <!-- Welfare Efforts -->
   <div class="container" id="welfare-efforts" data-aos="fade-up">
     <div class="content">
       <h2 class="section-title">Our Welfare Efforts</h2>
@@ -511,49 +499,47 @@
     </div>
   </div>
 
-  <!-- Assistance Programs -->
   <div class="assistance-programs" id="assistance-programs" data-aos="fade-up">
     <h2 class="section-title">Assistance Programs</h2>
     <ul class="assistance-list">
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="300">
         <h3>Marriage Assistance</h3>
-        <p>We provide financial and logistical support for the weddings of orphan girls to ease their marital journey.</p>
+        <p>We provide financial and logistical support for orphan girls' weddings.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="400">
         <h3>Cash Assistance</h3>
-        <p>Cash assistance is provided to needy families for financial stability, especially in emergency situations.</p>
+        <p>Cash aid for needy families in emergency situations.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="500">
         <h3>Flood Assistance</h3>
-        <p>Immediate aid for flood victims, including food, shelter, and basic necessities, is provided to support recovery.</p>
+        <p>Immediate aid for flood victims with essentials.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="600">
         <h3>Medical Assistance</h3>
-        <p>Financial support and medicines are provided for chronic patients to improve their health and well-being.</p>
+        <p>Financial support and medicines for chronic patients.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="700">
         <h3>Employment Assistance</h3>
-        <p>Programs to create job opportunities for the unemployed, promoting economic growth in the community.</p>
+        <p>Job opportunities for the unemployed.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="800">
         <h3>Disaster Relief</h3>
-        <p>Emergency aid and rehabilitation services for those affected by natural disasters like floods and earthquakes.</p>
+        <p>Emergency aid for natural disaster victims.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
       <li class="assistance-item" data-aos="zoom-in" data-aos-delay="900">
         <h3>Other Assistance</h3>
-        <p>Immediate and long-term aid for other community needs, such as education, shelter, and basic necessities.</p>
+        <p>Aid for education, shelter, and basic needs.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
     </ul>
   </div>
 
-  <!-- Footer -->
   <footer data-aos="fade-up">
     <div class="footer-content">
       <div class="footer-about">
@@ -562,7 +548,7 @@
       </div>
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c0343021f0a"><span class="__cf_email__" data-cfemail="abc2c5cdc4ebc6cad8c1c2cfc8c3ced9dccac585c4d9cc">[email&#160;protected]</span></a></p>
+        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c0343021f0a">[email&#160;protected]</a></p>
       </div>
       <div class="footer-social">
         <h3>Follow Us</h3>
@@ -577,13 +563,10 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
 
-    // 3D Cube Menu
     const cubeMenu = document.querySelector('.cube-menu');
     const cube = document.querySelector('.cube');
     const navUl = document.querySelector('nav ul');
@@ -593,7 +576,6 @@
       navUl.classList.toggle('active');
     });
 
-    // Scroll Effects
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -607,6 +589,5 @@
       }
     });
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91bbadd5aa12b0e2',t:'MTc0MTE5OTM2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
