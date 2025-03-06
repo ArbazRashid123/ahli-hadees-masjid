@@ -967,40 +967,113 @@ section {
   background: #f1f1f1;
 }
 
+/* Knowledge Centre Section */
 #knowledge {
   background: linear-gradient(135deg, #f0f4f8, #e6eef3);
+  padding: 40px 15px; /* Consistent padding with other sections */
 }
 
 .knowledge-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid; /* Changed from flex to grid */
+  grid-template-columns: repeat(3, 1fr); /* Three columns in a single row */
+  gap: clamp(10px, 2vw, 15px); /* Consistent gap between items */
   max-width: 100%;
+  padding: 0 10px; /* Added padding for better spacing */
+  box-sizing: border-box;
 }
 
 .knowledge-item {
-  background: #fff;
-  padding: 20px;
+  background: #fff; /* Default background, will be overridden by gradients */
+  padding: clamp(15px, 2vw, 20px); /* Adjusted padding for better spacing */
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 6s ease-in-out infinite; /* Added float animation for visual appeal */
+  word-break: break-word;
+  overflow: hidden;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
 }
 
 .knowledge-item:hover {
-  transform: translateY(-8px);
+  transform: scale(1.05) translateY(-10px); /* Enhanced hover effect */
+  box-shadow: 0 0 25px rgba(0, 102, 0, 0.3);
 }
 
+/* Gradient backgrounds for each knowledge item (similar to assistance-item) */
+.knowledge-item:nth-child(1) { background: linear-gradient(135deg, #ff6f61, #ff9f80); }
+.knowledge-item:nth-child(2) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.knowledge-item:nth-child(3) { background: linear-gradient(135deg, #a8e063, #56ab2f); }
+
+/* Adjust text colors for readability on gradient backgrounds */
 .knowledge-item h3 {
-  color: #006600;
-  font-size: 1.2em;
+  color: #fff; /* Changed to white for contrast */
+  font-size: clamp(0.9em, 2vw, 1.2em); /* Adjusted font size */
   margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for readability */
 }
 
 .knowledge-item p {
-  font-size: 0.9em;
-  color: #555;
+  font-size: clamp(0.7em, 1.8vw, 0.9em); /* Adjusted font size */
+  color: #fff; /* Changed to white for contrast */
   margin-bottom: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Added shadow for readability */
+}
+
+/* Enhanced button styles for .btn-knowledge */
+.btn-knowledge {
+  background: #006600; /* Solid green background for visibility */
+  color: #fff; /* White text for contrast */
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px); /* Slightly increased padding */
+  border-radius: 20px; /* Adjusted for consistency */
+  font-weight: 700; /* Bolder text */
+  font-size: clamp(0.65em, 1.6vw, 0.8em); /* Slightly larger font size */
+  border: 2px solid #fff; /* White border to stand out */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+  transition: all 0.3s ease;
+}
+
+.btn-knowledge:hover {
+  background: #008000; /* Brighter green on hover */
+  transform: scale(1.15); /* Slightly larger scale on hover */
+  box-shadow: 0 0 15px rgba(0, 102, 0, 0.5);
+}
+
+/* Remove the diamond icon for btn-knowledge to match assistance-button style */
+.btn-knowledge::before {
+  content: none; /* Remove the diamond icon */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .knowledge-container {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    padding: 0 5px;
+  }
+
+  .knowledge-item {
+    padding: 15px; /* Reduced padding for mobile */
+  }
+}
+
+@media (min-width: 768px) {
+  .knowledge-container {
+    grid-template-columns: repeat(3, 1fr); /* Maintain three columns */
+    padding: 0 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .knowledge-container {
+    grid-template-columns: repeat(3, 1fr); /* Maintain three columns */
+    max-width: 1200px; /* Match other sections */
+    margin: 0 auto; /* Center the container */
+  }
 }
 
 #events {
