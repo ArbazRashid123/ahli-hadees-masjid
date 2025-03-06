@@ -187,19 +187,35 @@
       background: #e6f0e6;
     }
 
-    .hero-gradient {
+    .hero-animation {
       position: absolute;
       width: 100%;
       height: 100%;
       z-index: 1;
-      background: radial-gradient(circle at center, rgba(0, 102, 0, 0.2) 0%, transparent 70%);
-      animation: pulseGradient 8s infinite ease-in-out;
+      overflow: hidden;
     }
 
-    @keyframes pulseGradient {
-      0% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 0.5; }
+    .charity-symbol {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23006600"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>') center/contain no-repeat;
+      animation: orbit 10s infinite linear, pulse 2s infinite ease-in-out;
+    }
+
+    .charity-symbol:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+    .charity-symbol:nth-child(2) { top: 40%; left: 70%; animation-delay: 2s; }
+    .charity-symbol:nth-child(3) { top: 70%; left: 30%; animation-delay: 4s; }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.6; }
     }
 
     header h1 {
@@ -267,6 +283,7 @@
       padding: 0 10px;
       width: 100%;
       box-sizing: border-box;
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .assistance-item {
@@ -276,6 +293,8 @@
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       animation: float 6s ease-in-out infinite;
+      word-break: break-word;
+      overflow: hidden;
     }
 
     @keyframes float {
@@ -298,7 +317,7 @@
     .assistance-item:nth-child(7) { background: linear-gradient(135deg, #ff9966, #ff5e62); }
 
     .assistance-item h3 {
-      font-size: clamp(0.8em, 2.5vw, 1.1em);
+      font-size: clamp(0.7em, 2vw, 1em);
       color: #fff;
       margin-bottom: 6px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -414,12 +433,13 @@
       .assistance-list { 
         grid-template-columns: repeat(3, 1fr);
         width: 100%;
-        padding: 0 10px;
+        padding: 0 5px;
         box-sizing: border-box;
       }
       .assistance-item {
-        padding: 8px;
+        padding: 6px;
       }
+      .charity-symbol { width: 40px; height: 40px; }
     }
 
     @media (min-width: 768px) {
@@ -443,7 +463,7 @@
   <div id="progress-bar"></div>
 
   <nav data-aos="fade-down">
-    <div class="logo">Darul Mawasaat welfare foundation</div>
+    <div class="logo">Masjid Mohammadia Cherwan</div>
     <div class="cube-menu">
       <div class="cube">
         <div class="cube-face front"><i class="fas fa-bars"></i></div>
@@ -461,7 +481,11 @@
   <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
 
   <header data-aos="fade-up">
-    <div class="hero-gradient"></div>
+    <div class="hero-animation">
+      <div class="charity-symbol"></div>
+      <div class="charity-symbol"></div>
+      <div class="charity-symbol"></div>
+    </div>
     <h1>Dar-ul-Mawasaat Welfare Foundation</h1>
   </header>
 
@@ -517,9 +541,13 @@
 
   <footer data-aos="fade-up">
     <div class="footer-content">
+      <div class="footer-about">
+        <h3>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h3>
+        <p>Cherwan Kangan, 191202 | A sacred place to unite, learn, and ponder.</p>
+      </div>
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c0343021f0a">[email&#160;protected]</a></p>
+        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c0343021f0a">[email protected]</a></p>
       </div>
       <div class="footer-social">
         <h3>Follow Us</h3>
