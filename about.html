@@ -196,25 +196,48 @@
       .hero-content { top: 45%; }
     }
 
-    /* Content Sections */
-    .container {
+    /* Main Content Grid */
+    .main-content {
+      padding: 2rem 1rem;
       width: 90%;
-      max-width: 800px;
-      margin: -30vh auto 8rem; /* Increased spacing between sections */
-      padding: 3rem 2rem;
-      background: rgba(26, 42, 68, 0.85);
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(20px, 2vw, 30px);
       position: relative;
       z-index: 2;
+    }
+
+    .container {
+      background: #fff; /* Default background, overridden by gradients */
+      padding: clamp(1.5rem, 2vw, 2rem);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.6s ease;
+      transition: all 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
+      position: relative;
+      overflow: hidden;
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .container.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    .container:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+
     .section-icon {
       display: block;
       margin: 0 auto 1.5rem;
@@ -225,6 +248,7 @@
       -webkit-text-fill-color: transparent;
       animation: float 4s infinite ease-in-out;
     }
+
     .container .section-title {
       font-size: 2.5rem;
       font-weight: 600;
@@ -233,12 +257,14 @@
       text-align: center;
       text-transform: uppercase;
     }
+
     .content {
       font-size: 1.1rem;
       color: #e0e0e0;
       line-height: 1.8;
       text-align: center;
     }
+
     .content strong { color: #f5a623; }
     .content u { text-decoration: underline; color: #ff6f61; }
     .current-chairman {
@@ -246,6 +272,23 @@
       font-style: italic;
       font-weight: 600;
     }
+
+    /* Gradient backgrounds for each container */
+    #affiliation { background: linear-gradient(135deg, #ff6f61, #ff9f80); }
+    #history { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    #leadership { background: linear-gradient(135deg, #a8e063, #56ab2f); }
+    #youth { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    #investments { background: linear-gradient(135deg, #ff5e62, #f06292); }
+    #leadership-finance { background: linear-gradient(135deg, #667eea, #764ba2); }
+    #community-impact { background: linear-gradient(135deg, #ff9966, #ff5e62); }
+
+    /* Adjust text colors for readability on gradient backgrounds */
+    .container h2,
+    .container h3,
+    .container p {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
     .container::before {
       content: '';
       position: absolute;
@@ -259,12 +302,34 @@
       z-index: -1;
       animation: float 4s infinite ease-in-out;
     }
+
     @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      .main-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .container { padding: clamp(2rem, 2vw, 2.5rem); }
+      .container .section-title { font-size: 2.8rem; }
+      .content { font-size: 1.2rem; }
+      .container::before { width: 120px; height: 120px; }
+    }
+
+    @media (min-width: 1024px) {
+      .main-content {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .container { padding: clamp(2.5rem, 2vw, 3rem); }
+      .container .section-title { font-size: 3rem; }
+      .content { font-size: 1.3rem; }
+    }
+
     @media (max-width: 768px) {
-      .container { margin: -15vh auto 4rem; padding: 2rem 1rem; }
+      .container { margin: -15vh auto 4rem; padding: 1.5rem 1rem; }
       .container .section-title { font-size: 1.8rem; }
       .content { font-size: 0.95rem; }
       .container::before { width: 70px; height: 70px; }
@@ -345,130 +410,133 @@
     <div class="hero-overlay"></div>
   </header>
 
-  <!-- Affiliation Section -->
-  <div class="container" id="affiliation">
-    <i class="fas fa-handshake section-icon"></i>
-    <h2 class="section-title" id="affiliation-title">Affiliation</h2>
-    <div class="content" id="affiliation-content">
-      <p>
-        Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.
-      </p>
+  <!-- Main Content Grid -->
+  <div class="main-content">
+    <!-- Affiliation Section -->
+    <div class="container" id="affiliation">
+      <i class="fas fa-handshake section-icon"></i>
+      <h2 class="section-title" id="affiliation-title">Affiliation</h2>
+      <div class="content" id="affiliation-content">
+        <p>
+          Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- History Section -->
-  <div class="container" id="history">
-    <i class="fas fa-book section-icon"></i>
-    <h2 class="section-title" id="history-title">History</h2>
-    <div class="content" id="history-content">
-      <p>
-        The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
-        <strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>
-        The following individuals were instrumental in the establishment of the masjid:<br>
-        1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>
-        2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>
-        3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>
-        4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>
-        5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br>
-        <strong>First Prayer and Azan</strong><br>
-        On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.
-      </p>
+    <!-- History Section -->
+    <div class="container" id="history">
+      <i class="fas fa-book section-icon"></i>
+      <h2 class="section-title" id="history-title">History</h2>
+      <div class="content" id="history-content">
+        <p>
+          The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
+          <strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>
+          The following individuals were instrumental in the establishment of the masjid:<br>
+          1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>
+          2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>
+          3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>
+          4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>
+          5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br>
+          <strong>First Prayer and Azan</strong><br>
+          On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Leadership Section -->
-  <div class="container" id="leadership">
-    <i class="fas fa-users section-icon"></i>
-    <h2 class="section-title" id="leadership-title">Leadership</h2>
-    <div class="content" id="leadership-content">
-      <p>
-        The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
-        1. Khursheed Ahmad Mir<br>
-        2. Manzoor Ahmad Magray<br>
-        3. Javaid Ahmad Raina<br>
-        4. Tariq Ahmad Magray<br>
-        5. Showkat Ahmad Mir <span class="current-chairman">- Current Chairman</span>
-      </p>
+    <!-- Leadership Section -->
+    <div class="container" id="leadership">
+      <i class="fas fa-users section-icon"></i>
+      <h2 class="section-title" id="leadership-title">Leadership</h2>
+      <div class="content" id="leadership-content">
+        <p>
+          The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
+          1. Khursheed Ahmad Mir<br>
+          2. Manzoor Ahmad Magray<br>
+          3. Javaid Ahmad Raina<br>
+          4. Tariq Ahmad Magray<br>
+          5. Showkat Ahmad Mir <span class="current-chairman">- Current Chairman</span>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Youth Involvement Section -->
-  <div class="container" id="youth">
-    <i class="fas fa-child section-icon"></i>
-    <h2 class="section-title" id="youth-title">Youth Involvement</h2>
-    <div class="content" id="youth-content">
-      <p>
-        We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
-        Volunteers, who actively contribute to its operations and welfare programs.<br>
-        <strong>Youth Volunteers:</strong><br>
-        1. Showkat Ahmad Mir<br>
-        2. Mudasir Majeed<br>
-        3. Yaseen Ahmad Magaray<br>
-        4. Tariq Mushtaq Sheer Gojri<br>
-        5. Manzoor Ahmad Wani<br>
-        6. Reyaz Ahmad Magray<br>
-        7. Adil Ahmad Magray<br>
-        8. Tariq Hassan Magray<br>
-        9. Arbaz Rasheed<br>
-        10. Umer Mumtaz<br>
-        11. Aijaz Ahmad Magray<br>
-        12. Irshad Ahmad Mir<br>
-        13. Tariq Rahman Mir<br>
-        14. Er. Saleem Ahmad Magray<br>
-        15. Mehraj Ahmad Magray<br>
-        16. Parvaiz Ahmad Magray<br>
-        17. Mohammad Maqbool Magray<br>
-        18. Adil Raheem Magray<br>
-        19. Mohammad Yousuf Raina<br>
-        20. Parvaiz Ahmad Magray<br>
-        21. Shahbaz Mehraj<br>
-        22. Mubashir Mushtaq<br>
-        23. Shoiab Shafi<br>
-        Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.
-      </p>
+    <!-- Youth Involvement Section -->
+    <div class="container" id="youth">
+      <i class="fas fa-child section-icon"></i>
+      <h2 class="section-title" id="youth-title">Youth Involvement</h2>
+      <div class="content" id="youth-content">
+        <p>
+          We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
+          Volunteers, who actively contribute to its operations and welfare programs.<br>
+          <strong>Youth Volunteers:</strong><br>
+          1. Showkat Ahmad Mir<br>
+          2. Mudasir Majeed<br>
+          3. Yaseen Ahmad Magaray<br>
+          4. Tariq Mushtaq Sheer Gojri<br>
+          5. Manzoor Ahmad Wani<br>
+          6. Reyaz Ahmad Magray<br>
+          7. Adil Ahmad Magray<br>
+          8. Tariq Hassan Magray<br>
+          9. Arbaz Rasheed<br>
+          10. Umer Mumtaz<br>
+          11. Aijaz Ahmad Magray<br>
+          12. Irshad Ahmad Mir<br>
+          13. Tariq Rahman Mir<br>
+          14. Er. Saleem Ahmad Magray<br>
+          15. Mehraj Ahmad Magray<br>
+          16. Parvaiz Ahmad Magray<br>
+          17. Mohammad Maqbool Magray<br>
+          18. Adil Raheem Magray<br>
+          19. Mohammad Yousuf Raina<br>
+          20. Parvaiz Ahmad Magray<br>
+          21. Shahbaz Mehraj<br>
+          22. Mubashir Mushtaq<br>
+          23. Shoiab Shafi<br>
+          Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Investments & Assets Section -->
-  <div class="container" id="investments">
-    <i class="fas fa-landmark section-icon"></i>
-    <h2 class="section-title" id="investments-title">Investments & Assets</h2>
-    <div class="content" id="investments-content">
-      <p>
-        The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br>
-        <h3>Primary Land Donors:</h3><br>
-        <strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
-        <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
-        With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
-      </p>
+    <!-- Investments & Assets Section -->
+    <div class="container" id="investments">
+      <i class="fas fa-landmark section-icon"></i>
+      <h2 class="section-title" id="investments-title">Investments & Assets</h2>
+      <div class="content" id="investments-content">
+        <p>
+          The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br>
+          <h3>Primary Land Donors:</h3><br>
+          <strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
+          <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
+          With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Financial Management Section -->
-  <div class="container" id="leadership-finance">
-    <i class="fas fa-wallet section-icon"></i>
-    <h2 class="section-title" id="finance-title">Financial Management and Accountability</h2>
-    <div class="content" id="finance-content">
-      <p>
-        Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
-      </p>
+    <!-- Financial Management Section -->
+    <div class="container" id="leadership-finance">
+      <i class="fas fa-wallet section-icon"></i>
+      <h2 class="section-title" id="finance-title">Financial Management and Accountability</h2>
+      <div class="content" id="finance-content">
+        <p>
+          Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Social Welfare Section -->
-  <div class="container" id="community-impact">
-    <i class="fas fa-heart section-icon"></i>
-    <h2 class="section-title" id="welfare-title">Social Welfare and Humanitarian Services</h2>
-    <div class="content" id="welfare-content">
-      <p>
-        Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
-        <strong>Welfare Programs:</strong><br>
-        <u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br>
-        <u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br>
-        <u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br>
-        <u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br>
-        <u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.
-      </p>
+    <!-- Social Welfare Section -->
+    <div class="container" id="community-impact">
+      <i class="fas fa-heart section-icon"></i>
+      <h2 class="section-title" id="welfare-title">Social Welfare and Humanitarian Services</h2>
+      <div class="content" id="welfare-content">
+        <p>
+          Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
+          <strong>Welfare Programs:</strong><br>
+          <u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br>
+          <u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br>
+          <u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br>
+          <u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br>
+          <u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -625,5 +693,6 @@
       document.getElementById('language-modal').style.display = 'flex';
     };
   </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c3de6bbe56f5f8',t:'MTc0MTI4NTI0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
