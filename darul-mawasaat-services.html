@@ -28,7 +28,7 @@
       left: 0;
       width: 0;
       height: 4px;
-      background: #006600;
+      background: linear-gradient(90deg, #006600, #008000);
       z-index: 1001;
       transition: width 0.3s ease;
     }
@@ -37,7 +37,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 15px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,12 +58,11 @@
       color: #006600;
       text-transform: uppercase;
       letter-spacing: 2px;
-      animation: glow 2s ease-in-out infinite alternate;
+      transition: transform 0.3s ease;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #006600, 0 0 10px #006600; }
-      to { text-shadow: 0 0 20px #006600, 0 0 30px #006600; }
+    nav .logo:hover {
+      transform: scale(1.05);
     }
 
     nav .cube-menu {
@@ -152,26 +151,28 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      background: linear-gradient(45deg, #006600, #008000);
-      padding: clamp(15px, 3vw, 20px) clamp(20px, 3vw, 25px);
+      background: #fff;
+      padding: 10px 15px;
       border-radius: 15px 0 0 15px;
-      color: #fff;
-      font-size: clamp(1em, 3vw, 1.2em);
-      font-weight: 700;
+      color: #000;
+      font-size: clamp(0.9em, 2.5vw, 1.1em);
+      font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0, 102, 0, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 102, 0, 0.2);
       z-index: 999;
       transition: all 0.3s ease;
       text-transform: uppercase;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 2px solid #006600;
+      width: 40px;
     }
 
     .donate-sidebar:hover {
-      background: linear-gradient(45deg, #004d00, #006600);
-      transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 8px 20px rgba(0, 102, 0, 0.4);
+      background: #006600;
+      color: #fff;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 102, 0, 0.3);
     }
 
     header {
@@ -186,7 +187,7 @@
       background: #e6f0e6;
     }
 
-    .hero-animation {
+    .hero-particles {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -194,51 +195,25 @@
       overflow: hidden;
     }
 
-    .charity-scene {
+    .particle {
       position: absolute;
-      width: 300px;
-      height: 300px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: floatScene 8s ease-in-out infinite;
+      width: 10px;
+      height: 10px;
+      background: rgba(0, 102, 0, 0.3);
+      border-radius: 50%;
+      animation: floatParticle 15s infinite ease-in-out;
     }
 
-    .giver, .receiver {
-      position: absolute;
-      width: 100px;
-      height: 150px;
-      background: url('https://via.placeholder.com/100x150?text=Person') center/contain no-repeat;
-      animation: moveHands 2s ease-in-out infinite alternate;
-    }
+    .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 40%; left: 30%; animation-delay: 2s; }
+    .particle:nth-child(3) { top: 60%; left: 50%; animation-delay: 4s; }
+    .particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 6s; }
+    .particle:nth-child(5) { top: 70%; left: 20%; animation-delay: 8s; }
 
-    .giver { left: 0; }
-    .receiver { right: 0; }
-
-    .charity-box {
-      position: absolute;
-      width: 60px;
-      height: 40px;
-      background: #006600;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: passBox 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatScene {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-20px); }
-    }
-
-    @keyframes moveHands {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    @keyframes passBox {
-      0% { transform: translate(-50%, -50%) translateX(-20px); }
-      100% { transform: translate(-50%, -50%) translateX(20px); }
+    @keyframes floatParticle {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+      50% { transform: translate(30px, -50px) scale(1.2); opacity: 0.4; }
+      100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
     }
 
     header h1 {
@@ -248,6 +223,12 @@
       z-index: 2;
       max-width: 90%;
       line-height: 1.2;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -291,12 +272,14 @@
       margin: clamp(20px, 5vw, 40px) auto;
       max-width: 1300px;
       box-shadow: 0 0 25px rgba(0, 102, 0, 0.1);
+      overflow: hidden;
     }
 
     .assistance-list {
       display: grid;
       gap: clamp(15px, 4vw, 20px);
       padding: 0;
+      width: 100%;
     }
 
     .assistance-item {
@@ -441,20 +424,31 @@
       nav ul.active { display: flex; }
       .cube.active { transform: rotateY(90deg); }
       header { height: 80vh; }
-      .assistance-list { grid-template-columns: repeat(3, 1fr); }
-      .charity-scene { width: 200px; height: 200px; }
-      .giver, .receiver { width: 70px; height: 100px; }
-      .charity-box { width: 40px; height: 25px; }
+      .assistance-list { 
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        padding: 0 10px;
+      }
+      .assistance-item {
+        padding: 10px;
+      }
+      .particle { width: 8px; height: 8px; }
     }
 
     @media (min-width: 768px) {
       nav .cube-menu { display: none; }
       nav ul { display: flex; }
-      .assistance-list { grid-template-columns: repeat(3, 1fr); }
+      .assistance-list { 
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+      }
     }
 
     @media (min-width: 1024px) {
-      .assistance-list { grid-template-columns: repeat(3, 1fr); }
+      .assistance-list { 
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -480,12 +474,12 @@
   <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
 
   <header data-aos="fade-up">
-    <div class="hero-animation">
-      <div class="charity-scene">
-        <div class="giver"></div>
-        <div class="charity-box"></div>
-        <div class="receiver"></div>
-      </div>
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
     <h1>Dar-ul-Mawasaat Welfare Foundation</h1>
   </header>
