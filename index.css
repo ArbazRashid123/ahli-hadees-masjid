@@ -1,4 +1,3 @@
-
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -967,7 +966,6 @@ section {
   background: #f1f1f1;
 }
 
-/* Knowledge Centre Section */
 #knowledge {
   background: linear-gradient(135deg, #f0f4f8, #e6eef3);
   padding: 40px 15px; /* Consistent padding with other sections */
