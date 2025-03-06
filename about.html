@@ -8,8 +8,6 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     /* Reset & Base */
     * {
@@ -19,24 +17,14 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      background: linear-gradient(to bottom, #1a2a44, #2e6f5c);
+      color: #ffffff;
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
     }
-    a { text-decoration: none; color: inherit; }
-
-    /* Particle Background */
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: transparent;
-    }
+    a { text-decoration: none; color: #f5a623; transition: color 0.3s ease; }
+    a:hover { color: #ff6f61; }
 
     /* Scroll Progress Bar */
     #progress-bar {
@@ -44,9 +32,8 @@
       top: 0;
       left: 0;
       width: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #ffd700, #ffaa00, #ff4500);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      height: 4px;
+      background: #f5a623;
       z-index: 1000;
       transition: width 0.2s ease;
     }
@@ -59,125 +46,98 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
       z-index: 1003;
-      overflow-y: auto;
-      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .language-modal .modal-content {
-      margin: 20vh auto;
-      width: 90%;
-      max-width: 450px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border: 2px solid rgba(255, 215, 0, 0.5);
-      border-radius: 20px;
+      background: rgba(26, 42, 68, 0.9);
       padding: 30px;
-      box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
-      transform: scale(0.9);
-      animation: modalPop 0.5s ease forwards;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.5s ease;
     }
-    @keyframes modalPop {
-      to { transform: scale(1); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .language-modal h3 {
-      font-size: 2em;
-      color: #ffd700;
-      margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      font-size: 1.8rem;
+      color: #f5a623;
+      margin-bottom: 20px;
     }
     .language-options {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
     }
     .language-options button {
-      padding: 15px 25px;
-      font-size: 1.2em;
-      background: linear-gradient(90deg, #006600, #00cc00);
-      color: #fff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background: #f5a623;
+      color: #1a2a44;
       border: none;
-      border-radius: 15px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 20px rgba(0, 204, 0, 0.5);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
     .language-options button:hover {
-      background: linear-gradient(90deg, #004d00, #009900);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 0 30px rgba(0, 204, 0, 0.8);
-    }
-    @media (min-width: 768px) {
-      .language-options {
-        flex-direction: row;
-        justify-content: center;
-      }
+      background: #ff6f61;
+      transform: translateY(-3px);
     }
 
     /* Navigation */
     nav {
-      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
-      background-size: 300% 300%;
-      color: #ffd700;
-      padding: 1rem;
+      background: rgba(26, 42, 68, 0.95);
+      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      animation: flowColors 10s ease infinite;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-    }
-    @keyframes flowColors {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     nav h2 {
       font-size: 1.5rem;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-      transition: transform 0.3s ease;
+      color: #f5a623;
+      font-weight: 600;
     }
-    nav h2:hover { transform: scale(1.1); }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
     }
     .nav-links a {
-      color: #ffd700;
       font-size: 1rem;
-      padding: 0.7rem 1rem;
-      transition: all 0.4s ease;
+      font-weight: 500;
+      padding: 0.5rem 0;
       position: relative;
-      overflow: hidden;
+      color: #ffffff;
     }
     .nav-links a::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 0;
       height: 2px;
-      background: #fff;
-      transform: translateX(-100%);
-      transition: transform 0.4s ease;
+      background: #f5a623;
+      transition: width 0.3s ease;
     }
-    .nav-links a:hover::after { transform: translateX(0); }
-    .nav-links a:hover {
-      color: #fff;
-      transform: translateY(-3px);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #f5a623; }
     .hamburger {
-      font-size: 2rem;
-      cursor: pointer;
-      color: #ffd700;
+      font-size: 1.8rem;
+      color: #f5a623;
       display: none;
-      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-    .hamburger:hover { transform: rotate(90deg); }
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links {
@@ -187,114 +147,128 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: #1a3c34;
-        padding: 1.5rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        background: rgba(26, 42, 68, 0.95);
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
       .nav-links.active { display: flex; }
+      .nav-links a { padding: 1rem; }
     }
 
-    /* Header */
+    /* Header (Hero Section) */
     header {
-      height: 60vh;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)),
-                  url('https://via.placeholder.com/1600x600?text=Masjid+Cherwan') no-repeat center center/cover;
-      background-attachment: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
+      height: 100vh;
+      background: linear-gradient(rgba(26, 42, 68, 0.7), rgba(46, 111, 92, 0.5)),
+                  url('https://via.placeholder.com/1600x900?text=Masjid+Cherwan') no-repeat center center/cover;
       position: relative;
       overflow: hidden;
     }
-    header::before {
-      content: '';
+    .hero-content {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      padding: 0 1rem;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(245, 166, 35, 0.7);
+      animation: fadeIn 1s ease;
+    }
+    .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);
-      animation: pulse 8s infinite ease;
+      background: linear-gradient(to bottom, rgba(26, 42, 68, 0), rgba(26, 42, 68, 0.9));
+      z-index: 1;
+      transition: opacity 0.3s ease;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-    header h1 {
-      font-size: 2.5rem;
-      padding: 0 1.5rem;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
-      animation: glowText 3s infinite alternate;
-    }
-    @keyframes glowText {
-      0% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700; }
-      100% { text-shadow: 0 0 20px #ffaa00, 0 0 40px #ff4500; }
+    @media (max-width: 768px) {
+      header { height: 70vh; }
+      header h1 { font-size: 2.5rem; }
+      .hero-content { top: 45%; }
     }
 
-    /* Container */
+    /* Content Sections */
     .container {
       width: 90%;
-      margin: 2rem auto;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(50px) rotateX(-10deg);
-      transition: all 0.8s ease;
+      max-width: 800px;
+      margin: -30vh auto 8rem; /* Increased spacing between sections */
+      padding: 3rem 2rem;
+      background: rgba(26, 42, 68, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       position: relative;
-      perspective: 1000px;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
     .container.visible {
       opacity: 1;
-      transform: translateY(0) rotateX(0);
+      transform: translateY(0);
+    }
+    .section-icon {
+      display: block;
+      margin: 0 auto 1.5rem;
+      font-size: 3rem;
+      color: #f5a623;
+      background: linear-gradient(135deg, #f5a623, #ff6f61);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 4s infinite ease-in-out;
     }
     .container .section-title {
-      padding: 1.5rem;
-      color: #ffd700;
-      font-size: 1.8rem;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
       text-align: center;
-      background-size: 300% 300%;
-      animation: flowColors 8s ease infinite;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      position: relative;
-      z-index: 1;
+      text-transform: uppercase;
     }
     .content {
-      padding: 2rem;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #e0e0e0;
-      position: relative;
+      line-height: 1.8;
+      text-align: center;
     }
-    .content p { transition: color 0.3s ease; }
-    .content p:hover { color: #ffd700; }
-
-    /* Dynamic Section Styles */
-    #affiliation { border-top: 6px solid #2d8652; background: linear-gradient(135deg, rgba(230, 245, 230, 0.1), rgba(217, 240, 217, 0.1)); }
-    #affiliation .section-title { background: linear-gradient(90deg, #2d8652, #3ca372, #2d8652); }
-    #history { border-top: 6px solid #e68a00; background: linear-gradient(135deg, rgba(255, 245, 230, 0.1), rgba(255, 238, 217, 0.1)); }
-    #history .section-title { background: linear-gradient(90deg, #e68a00, #ffaa00, #e68a00); }
-    #leadership { border-top: 6px solid #0066cc; background: linear-gradient(135deg, rgba(230, 240, 255, 0.1), rgba(217, 234, 255, 0.1)); }
-    #leadership .section-title { background: linear-gradient(90deg, #0066cc, #3385ff, #0066cc); }
-    #youth { border-top: 6px solid #6b2be6; background: linear-gradient(135deg, rgba(240, 230, 255, 0.1), rgba(230, 217, 255, 0.1)); }
-    #youth .section-title { background: linear-gradient(90deg, #6b2be6, #8a4dff, #6b2be6); }
-    #investments { border-top: 6px solid #cc3366; background: linear-gradient(135deg, rgba(255, 230, 240, 0.1), rgba(255, 217, 230, 0.1)); }
-    #investments .section-title { background: linear-gradient(90deg, #cc3366, #ff4d88, #cc3366); }
-    #leadership-finance { border-top: 6px solid #0066cc; background: linear-gradient(135deg, rgba(230, 240, 255, 0.1), rgba(217, 234, 255, 0.1)); }
-    #leadership-finance .section-title { background: linear-gradient(90deg, #0066cc, #3385ff, #0066cc); }
-    #community-impact { border-top: 6px solid #2d8652; background: linear-gradient(135deg, rgba(230, 249, 230, 0.1), rgba(217, 245, 217, 0.1)); }
-    #community-impact .section-title { background: linear-gradient(90deg, #2d8652, #3ca372, #2d8652); }
-
-    /* Current Chairman Styling */
+    .content strong { color: #f5a623; }
+    .content u { text-decoration: underline; color: #ff6f61; }
     .current-chairman {
-      font-size: 1.2rem;
+      color: #f5a623;
       font-style: italic;
-      color: #ffd700;
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      font-weight: 600;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(245, 166, 35, 0.1);
+      border-radius: 50%;
+      z-index: -1;
+      animation: float 4s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    @media (max-width: 768px) {
+      .container { margin: -15vh auto 4rem; padding: 2rem 1rem; }
+      .container .section-title { font-size: 1.8rem; }
+      .content { font-size: 0.95rem; }
+      .container::before { width: 70px; height: 70px; }
+      .section-icon { font-size: 2.5rem; }
     }
 
     /* Back-to-Top Button */
@@ -302,66 +276,37 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #1a3c34;
-      color: #ffd700;
-      padding: 1rem;
+      background: #f5a623;
+      color: #1a2a44;
+      padding: 0.8rem;
       border-radius: 50%;
       cursor: pointer;
       opacity: 0;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 10px rgba(245, 166, 35, 0.5);
     }
-    .back-to-top.visible { opacity: 1; transform: scale(1.1); }
-    .back-to-top:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-    }
+    .back-to-top.visible { opacity: 1; }
+    .back-to-top:hover { background: #ff6f61; transform: scale(1.1); }
 
     /* Footer */
     footer {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #1a3c34, #2e6656, #1a3c34);
-      background-size: 300% 300%;
-      color: #ffd700;
+      background: #1a2a44;
+      padding: 2rem;
       text-align: center;
-      font-size: 1rem;
-      animation: flowColors 10s ease infinite;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      color: #e0e0e0;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
       position: relative;
+      z-index: 2;
     }
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
-      opacity: 0.5;
-    }
-
-    /* Responsive Adjustments */
-    @media (min-width: 768px) {
-      header { height: 70vh; }
-      header h1 { font-size: 3.5rem; }
-      .container { width: 85%; }
-      .container .section-title { font-size: 2rem; }
-      .content { font-size: 1.1rem; }
-      nav h2 { font-size: 2rem; }
-    }
-    @media (max-width: 500px) {
-      header { height: 50vh; }
-      header h1 { font-size: 1.8rem; }
-      .container .section-title { font-size: 1.5rem; }
-      .content { font-size: 0.9rem; }
-      .current-chairman { font-size: 1.1rem; }
+    footer p { margin: 0; }
+    @media (max-width: 768px) {
+      footer { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Particle Background -->
-  <div id="particles-js"></div>
-
   <!-- Language Selection Modal -->
   <div id="language-modal" class="language-modal">
     <div class="modal-content">
@@ -392,13 +337,17 @@
     <span class="hamburger">☰</span>
   </nav>
 
-  <!-- Header -->
+  <!-- Header (Hero Section) -->
   <header>
-    <h1 id="header-title">About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
+    <div class="hero-content">
+      <h1 id="header-title">About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
+    </div>
+    <div class="hero-overlay"></div>
   </header>
 
   <!-- Affiliation Section -->
   <div class="container" id="affiliation">
+    <i class="fas fa-handshake section-icon"></i>
     <h2 class="section-title" id="affiliation-title">Affiliation</h2>
     <div class="content" id="affiliation-content">
       <p>
@@ -409,6 +358,7 @@
 
   <!-- History Section -->
   <div class="container" id="history">
+    <i class="fas fa-book section-icon"></i>
     <h2 class="section-title" id="history-title">History</h2>
     <div class="content" id="history-content">
       <p>
@@ -428,6 +378,7 @@
 
   <!-- Leadership Section -->
   <div class="container" id="leadership">
+    <i class="fas fa-users section-icon"></i>
     <h2 class="section-title" id="leadership-title">Leadership</h2>
     <div class="content" id="leadership-content">
       <p>
@@ -443,6 +394,7 @@
 
   <!-- Youth Involvement Section -->
   <div class="container" id="youth">
+    <i class="fas fa-child section-icon"></i>
     <h2 class="section-title" id="youth-title">Youth Involvement</h2>
     <div class="content" id="youth-content">
       <p>
@@ -479,6 +431,7 @@
 
   <!-- Investments & Assets Section -->
   <div class="container" id="investments">
+    <i class="fas fa-landmark section-icon"></i>
     <h2 class="section-title" id="investments-title">Investments & Assets</h2>
     <div class="content" id="investments-content">
       <p>
@@ -486,12 +439,14 @@
         <h3>Primary Land Donors:</h3><br>
         <strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
         <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
-        With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educationaland social welfare programs.
+        With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
       </p>
     </div>
   </div>
+
   <!-- Financial Management Section -->
   <div class="container" id="leadership-finance">
+    <i class="fas fa-wallet section-icon"></i>
     <h2 class="section-title" id="finance-title">Financial Management and Accountability</h2>
     <div class="content" id="finance-content">
       <p>
@@ -502,6 +457,7 @@
 
   <!-- Social Welfare Section -->
   <div class="container" id="community-impact">
+    <i class="fas fa-heart section-icon"></i>
     <h2 class="section-title" id="welfare-title">Social Welfare and Humanitarian Services</h2>
     <div class="content" id="welfare-content">
       <p>
@@ -525,25 +481,6 @@
   </footer>
 
   <script>
-    // Particles.js Configuration
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 100, density: { enable: true, value_area: 800 } },
-        color: { value: '#ffd700' },
-        shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
-        line_linked: { enable: true, distance: 150, color: '#ffd700', opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
-    });
-
     // Hamburger Menu
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -575,13 +512,10 @@
     });
 
     // Scroll Animations
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry, index) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 200);
-          observer.unobserve(entry.target);
+          entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.1 });
@@ -688,7 +622,7 @@
     }
 
     window.onload = () => {
-      document.getElementById('language-modal').style.display = 'block';
+      document.getElementById('language-modal').style.display = 'flex';
     };
   </script>
 </body>
