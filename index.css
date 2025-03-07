@@ -215,7 +215,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 header {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('background-logo.png') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('herobg.png') no-repeat center center/cover;
   height: 55vh;
   display: flex;
   align-items: center;
