@@ -1,0 +1,959 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f7fa;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  font-weight: 500; /* Thicker text */
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #006600, #00cc00);
+  z-index: 1004;
+  transition: width 0.3s ease;
+}
+
+/* Back-to-Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #006600;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  background: #00cc00;
+  transform: scale(1.1);
+}
+
+/* Navigation */
+nav {
+  background: linear-gradient(135deg, #006600, #00cc00);
+  color: #fff;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav .logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language-toggle {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffeb3b;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #006600;
+    padding: 1rem;
+  }
+  nav ul.active {
+    display: flex;
+  }
+}
+
+/* Language Modal */
+.language-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  margin: 15% auto;
+}
+
+.language-options button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #006600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.language-options button:hover {
+  background: #00cc00;
+}
+
+/* Hero Section */
+header {
+  position: relative;
+  background: url('hero-bg.jpg') no-repeat center center/cover;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.digital-clock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.hero-subheading {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.prayer-times-hero {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prayer-item {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.prayer-name {
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #00cc00;
+}
+
+/* Section Styles */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #006600;
+}
+
+/* Announcement Section */
+#announcements {
+  padding: 2rem;
+  background: #fff;
+}
+
+.announcement-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 30s linear infinite; /* Slower marquee */
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 2rem;
+}
+
+.announcement-item {
+  font-weight: 600;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Prayer Times Section */
+#prayer-times {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+.prayer-times-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prayer-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prayer-name {
+  font-weight: 600;
+}
+
+.prayer-time {
+  color: #006600;
+}
+
+/* Ramadan Section */
+#ramadan {
+  padding: 2rem;
+  background: #fff;
+}
+
+.ramadan-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quran-aayah, .hadith-day {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quran-aayah h3, .hadith-day h3 {
+  font-size: 1.5rem;
+  color: #006600;
+  margin-bottom: 0.5rem;
+}
+
+/* About Section */
+#about {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-about {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-about:hover {
+  background: #00cc00;
+}
+
+/* Services Section */
+#services {
+  padding: 2rem;
+  background: #fff;
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+}
+
+.service-icon {
+  font-size: 2rem;
+  color: #006600;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-service {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: auto; /* Aligns buttons at bottom */
+}
+
+.btn-service:hover {
+  background: #00cc00;
+}
+
+/* Knowledge Center Section */
+#knowledge {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+.knowledge-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.knowledge-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.knowledge-item h3 {
+  font-size: 1.5rem;
+  color: #006600;
+  margin-bottom: 0.5rem;
+}
+
+.btn-knowledge {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: auto; /* Aligns buttons at bottom */
+}
+
+.btn-knowledge:hover {
+  background: #00cc00;
+}
+
+/* Events Section */
+#events {
+  padding: 2rem;
+  background: #fff;
+}
+
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event h3 {
+  font-size: 1.5rem;
+  color: #006600;
+  margin-bottom: 0.5rem;
+}
+
+.iftar-button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.iftar-button:hover {
+  background: #00cc00;
+}
+
+/* Iftar Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 5% auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-table-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.iftar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.iftar-table th, .iftar-table td {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.iftar-table th {
+  background: #006600;
+  color: #fff;
+}
+
+/* Gallery Section */
+#gallery {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+.gallery-container {
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.btn-gallery {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-gallery:hover {
+  background: #00cc00;
+}
+
+/* Community Corner Section */
+#community {
+  padding: 2rem;
+  background: #fff;
+}
+
+.community-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.community-item {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.community-item h3 {
+  font-size: 1.5rem;
+  color: #006600;
+  margin-bottom: 0.5rem;
+}
+
+.btn-community {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: auto; /* Aligns buttons at bottom */
+}
+
+.btn-community:hover {
+  background: #00cc00;
+}
+
+/* Location Section */
+#location {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+
+.location-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.location-content {
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.map-wrapper {
+  margin: 1rem 0;
+}
+
+.btn-location {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #006600;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-location:hover {
+  background: #00cc00;
+}
+
+/* Zakat Calculator Section */
+#zakat-calculator {
+  padding: 2rem;
+  background: #fff;
+}
+
+.zakat-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.zakat-form {
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.zakat-note {
+  margin-bottom: 1rem;
+}
+
+.zakat-inputs label {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.zakat-inputs input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#calculate-zakat {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: #006600;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#calculate-zakat:hover {
+  background: #00cc00;
+}
+
+.zakat-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* Donate Sidebar */
+.donate-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  z-index: 1002;
+}
+
+.donate-btn {
+  display: block;
+  background: #fff;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.donate-btn:hover {
+  background: #006600;
+  color: #fff;
+}
+
+/* Chatbot */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  z-index: 1000;
+}
+
+.chatbot {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: #006600;
+  color: #fff;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  font-size: 1.2rem;
+}
+
+.close-chat {
+  cursor: pointer;
+}
+
+.chat-messages {
+  padding: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.bot-message, .user-message {
+  margin: 0.5rem 0;
+}
+
+.user-message {
+  text-align: right;
+  color: #006600;
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 0.5rem;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+.chat-input-container button {
+  padding: 0.5rem 1rem;
+  background: #006600;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.chat-input-container button:hover {
+  background: #00cc00;
+}
+
+.chatbot-container.hidden {
+  display: none;
+}
+
+/* Footer */
+footer {
+  background: #006600;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.footer-about h3, .footer-contact h3, .footer-social h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffeb3b;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .services-container, .knowledge-container, .events-container, .community-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 60vh;
+  }
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+  .hero-subheading {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .chatbot-container {
+    width: 90%;
+    left: 5%;
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  .btn, .btn-about, .btn-service, .btn-knowledge, .btn-community, .btn-location, .btn-gallery {
+    padding: 0.6rem 1rem;
+  }
+  .digital-clock {
+    font-size: 1rem;
+  }
+}
