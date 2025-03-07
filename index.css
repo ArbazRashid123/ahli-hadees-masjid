@@ -1,0 +1,941 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f7fa;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #006600;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #006600, #00cc00);
+  z-index: 1004;
+  transition: width 0.3s ease;
+}
+
+/* Back-to-Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #006600;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  background: #00cc00;
+  transform: scale(1.1);
+}
+
+/* Language Modal */
+.language-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1003;
+}
+
+.language-modal .modal-content {
+  margin: 25vh auto;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.language-options button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-options button:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .glass {
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode nav {
+  background: rgba(30, 30, 30, 0.95);
+}
+
+body.dark-mode .grid-item,
+body.dark-mode .prayer-item,
+body.dark-mode .announcement-marquee,
+body.dark-mode .modal-content,
+body.dark-mode footer {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .uniform-btn {
+  background: #2a2a2a;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.dark-mode .uniform-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+nav .logo {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #006600;
+}
+
+nav .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.language-toggle,
+.dark-mode-toggle {
+  font-size: 1.4em;
+  cursor: pointer;
+  color: #006600;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.language-toggle:hover,
+.dark-mode-toggle:hover {
+  transform: scale(1.2);
+  color: #00cc00;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: #006600;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  font-size: 1em;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #fff;
+  background: #006600;
+  border-radius: 5px;
+}
+
+/* Donate Sidebar */
+.donate-sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 1000;
+}
+
+.donate-btn {
+  padding: 12px 25px;
+  border-radius: 5px 5px 0 0;
+  transform-origin: left;
+}
+
+/* Hero Section */
+header {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.digital-clock {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 1.4em;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 20px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h1 {
+  font-size: 2.2em;
+  font-weight: 300;
+  animation: fadeIn 1s ease-in;
+}
+
+.hero-content h2 {
+  font-size: 3.2em;
+  font-weight: 700;
+  margin: 15px 0;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.hero-subheading {
+  font-size: 1.4em;
+  font-weight: 400;
+  margin-bottom: 25px;
+  animation: fadeIn 2s ease-in;
+}
+
+.prayer-highlight {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 25px 0;
+  backdrop-filter: blur(5px);
+}
+
+.prayer-highlight p {
+  font-size: 1.2em;
+  margin: 8px 0;
+}
+
+/* Uniform Button Style */
+.uniform-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1em;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.uniform-btn:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Styling */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #006600;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background: #006600;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Announcements */
+.announcement-marquee {
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 40px;
+}
+
+.announcement-item {
+  font-size: 1.2em;
+  color: #d32f2f;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Prayer Times */
+.prayer-times-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prayer-item {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.prayer-item:hover {
+  transform: translateY(-5px);
+}
+
+.prayer-name {
+  font-weight: 600;
+  color: #006600;
+  font-size: 1.2em;
+}
+
+.prayer-time {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+/* Grid Layout for Subsections */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.grid-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item h3 {
+  font-size: 1.6em;
+  color: #006600;
+  margin-bottom: 15px;
+}
+
+.grid-item p {
+  font-size: 1em;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Hadith Section */
+.hadith-card {
+  text-align: left;
+}
+
+/* Services Section */
+.service-icon {
+  font-size: 2.8em;
+  color: #006600;
+  margin-bottom: 20px;
+}
+
+/* About Section */
+#about .content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Iftar Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1001;
+}
+
+.modal-content {
+  position: relative;
+  margin: 10vh auto;
+  width: 90%;
+  max-width: 700px;
+  padding: 25px;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #006600;
+}
+
+.modal-table-container {
+  overflow-x: auto;
+}
+
+.iftar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+}
+
+.iftar-table th, .iftar-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.iftar-table th {
+  background: #006600;
+  color: #fff;
+}
+
+.iftar-table td {
+  background: #f9f9f9;
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Location Section */
+.location-content {
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.location-content p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+.map-wrapper {
+  margin: 25px 0;
+}
+
+/* Zakat Calculator */
+.zakat-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.zakat-form {
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.zakat-note {
+  font-size: 1em;
+  margin-bottom: 25px;
+}
+
+.zakat-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.zakat-inputs label {
+  font-weight: 500;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.zakat-inputs input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.zakat-inputs input:focus {
+  border-color: #006600;
+  outline: none;
+}
+
+/* Chatbot */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.chatbot {
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: #006600;
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  font-size: 1.3em;
+}
+
+.close-chat {
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
+}
+
+.close-chat:hover {
+  transform: scale(1.2);
+}
+
+.chat-messages {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.bot-message, .user-message {
+  margin: 12px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.bot-message {
+  background: #e8f5e9;
+  text-align: left;
+}
+
+.user-message {
+  background: #006600;
+  color: #fff;
+  text-align: right;
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+#chat-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 15px;
+  font-size: 1em;
+}
+
+.chatbot-container.hidden {
+  display: none;
+}
+
+/* Footer */
+footer {
+  background: #006600;
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 25px;
+}
+
+.footer-about, .footer-contact, .footer-social {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-about h3, .footer-contact h3, .footer-social h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  font-size: 1.8em;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1em;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-content h2 {
+    font-size: 2.8em;
+  }
+
+  .section-title {
+    font-size: 2.2em;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 12px 20px;
+  }
+
+  nav .logo {
+    font-size: 1.2em;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li a {
+    font-size: 1.1em;
+    padding: 12px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8em;
+  }
+
+  .hero-content h2 {
+    font-size: 2.4em;
+  }
+
+  .hero-subheading {
+    font-size: 1.2em;
+  }
+
+  .digital-clock {
+    font-size: 1.2em;
+  }
+
+  .donate-sidebar {
+    top: auto;
+    left: auto;
+    right: 20px;
+    bottom: 70px;
+    transform: none;
+  }
+
+  .donate-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transform: none;
+  }
+
+  .section-title {
+    font-size: 2em;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-item {
+    padding: 25px;
+    min-height: 220px;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 5vh auto;
+  }
+
+  .chatbot {
+    width: 90%;
+    left: 5%;
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5em;
+  }
+
+  .hero-content h2 {
+    font-size: 2em;
+  }
+
+  .hero-subheading {
+    font-size: 1.1em;
+  }
+
+  .prayer-highlight p {
+    font-size: 1em;
+  }
+
+  .uniform-btn {
+    padding: 10px 20px;
+    font-size: 0.95em;
+  }
+
+  .section-title {
+    font-size: 1.8em;
+  }
+
+  .digital-clock {
+    top: 15px;
+    right: 15px;
+    font-size: 1em;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .grid-item {
+    padding: 20px;
+    min-height: 200px;
+  }
+
+  .grid-item h3 {
+    font-size: 1.4em;
+  }
+
+  .grid-item p {
+    font-size: 0.95em;
+  }
+
+  .prayer-times-vertical {
+    gap: 15px;
+  }
+
+  .prayer-item {
+    padding: 15px;
+  }
+
+  .prayer-name, .prayer-time {
+    font-size: 1.1em;
+  }
+}
