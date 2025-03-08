@@ -563,6 +563,7 @@ header {
 .knowledge-item p {
   font-size: 0.85em;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 /* Events Section */
