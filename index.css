@@ -709,6 +709,7 @@ header {
 .community-item p {
   font-size: 0.85em;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 #location {
