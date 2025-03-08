@@ -276,9 +276,9 @@ header {
   border: 2px solid #006600;
   color: #006600;
   padding: 8px 18px;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 0.85em;
-  font-weight: 650;
+  font-weight: 670;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
