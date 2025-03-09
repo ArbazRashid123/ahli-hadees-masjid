@@ -1,32 +1,28 @@
 /* Base Variables with Enhanced Colors */
 :root {
-  --bg-color: #f8f9fa; /* Light off-white for a clean base */
+  --bg-color: #f8f9fa; /* Light off-white base */
   --text-color: #000000; /* Black for readability in light mode */
-  --section-bg-light: #ecf0f1; /* Subtle light gray */
-  --section-bg-white: #ffffff; /* Pure white */
-  --card-bg: rgba(255, 255, 255, 0.7); /* Semi-transparent white for cards */
-  --header-bg: linear-gradient(135deg, #1e90ff, #2c3e50); /* Dynamic blue gradient */
-  --btn-bg: #3498db; /* Vibrant blue for buttons */
+  --card-bg: rgba(255, 255, 255, 0.75); /* Semi-transparent white for cards */
+  --header-bg: linear-gradient(135deg, #00c4b4, #0288d1); /* Teal to blue gradient */
+  --btn-bg: #0288d1; /* Vibrant blue for buttons */
   --btn-text: #ffffff;
-  --btn-hover-bg: #2980b9; /* Darker blue on hover */
+  --btn-hover-bg: #ff6f61; /* Coral on hover */
   --btn-hover-text: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.15);
-  --highlight-color: #e67e22; /* Warm orange for accents */
+  --highlight-color: #ffca28; /* Warm yellow for accents */
 }
 
 .dark-theme {
-  --bg-color: #2c3e50; /* Deep blue-gray */
+  --bg-color: #1a3c34; /* Deep teal base */
   --text-color: #ffffff; /* White for readability in dark mode */
-  --section-bg-light: #34495e; /* Darker gray-blue */
-  --section-bg-white: #3e5c76; /* Darker off-white */
-  --card-bg: rgba(0, 0, 0, 0.7); /* Semi-transparent black for cards */
-  --header-bg: linear-gradient(135deg, #1e3799, #0c2461); /* Darker blue gradient */
-  --btn-bg: #3498db;
+  --card-bg: rgba(0, 0, 0, 0.75); /* Semi-transparent black for cards */
+  --header-bg: linear-gradient(135deg, #1a3c34, #4a148c); /* Dark teal to purple */
+  --btn-bg: #0288d1;
   --btn-text: #ffffff;
-  --btn-hover-bg: #e67e22; /* Orange hover in dark mode */
-  --btn-hover-text: #2c3e50;
+  --btn-hover-bg: #ff6f61; /* Coral hover in dark mode */
+  --btn-hover-text: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.4);
-  --highlight-color: #f1c40f; /* Bright yellow for dark mode accents */
+  --highlight-color: #ffca28; /* Yellow for dark mode accents */
 }
 
 /* Reset & Base Styles */
@@ -41,17 +37,17 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: linear-gradient(to bottom,
-    #27ae60 0%, #27ae60 9.09%, /* Announcements */
-    #3498db 9.09%, #3498db 18.18%, /* Prayer Times */
-    #8e44ad 18.18%, #8e44ad 27.27%, /* Ramadan */
-    #f39c12 27.27%, #f39c12 36.36%, /* About */
-    #16a085 36.36%, #16a085 45.45%, /* Services */
-    #e74c3c 45.45%, #e74c3c 54.54%, /* Knowledge */
-    #8e44ad 54.54%, #8e44ad 63.63%, /* Events */
-    #f1c40f 63.63%, #f1c40f 72.72%, /* Gallery */
-    #2ecc71 72.72%, #2ecc71 81.81%, /* Community */
-    #3498db 81.81%, #3498db 90.90%, /* Location */
-    #e67e22 90.90%, #e67e22 100% /* Zakat Calculator */
+    #00c4b4 0%, /* Teal - Announcements */
+    #4dd0e1 10%, /* Light cyan - transition */
+    #0288d1 20%, /* Blue - Prayer Times */
+    #42a5f5 30%, /* Lighter blue - transition */
+    #6a1b9a 40%, /* Deep purple - Ramadan */
+    #ab47bc 50%, /* Lighter purple - transition */
+    #ffca28 60%, /* Gold - About/Services */
+    #ffb300 70%, /* Amber - transition */
+    #ff6f61 80%, /* Coral - Knowledge/Events */
+    #ef5350 90%, /* Softer red - transition */
+    #00c4b4 100% /* Teal - Community/Location */
   );
   scroll-behavior: smooth;
   font-size: 13px;
@@ -62,17 +58,17 @@ body {
 
 .dark-theme body {
   background: linear-gradient(to bottom,
-    #1b6d47 0%, #1b6d47 9.09%, /* Darker green for announcements */
-    #1e90ff 9.09%, #1e90ff 18.18%, /* Darker blue for prayer times */
-    #6c3483 18.18%, #6c3483 27.27%, /* Darker purple for ramadan */
-    #e67e22 27.27%, #e67e22 36.36%, /* Darker orange for about */
-    #0e6655 36.36%, #0e6655 45.45%, /* Darker teal for services */
-    #c0392b 45.45%, #c0392b 54.54%, /* Darker red for knowledge */
-    #6c3483 54.54%, #6c3483 63.63%, /* Darker purple for events */
-    #d35400 63.63%, #d35400 72.72%, /* Darker gold for gallery */
-    #27ae60 72.72%, #27ae60 81.81%, /* Darker green for community */
-    #21618c 81.81%, #21618c 90.90%, /* Darker blue for location */
-    #d35400 90.90%, #d35400 100% /* Darker orange for zakat */
+    #1a3c34 0%, /* Dark teal - Announcements */
+    #00695c 10%, /* Darker teal - transition */
+    #4a148c 20%, /* Deep purple - Prayer Times */
+    #6a1b9a 30%, /* Lighter purple - transition */
+    #311b92 40%, /* Indigo - Ramadan */
+    #512da8 50%, /* Softer indigo - transition */
+    #ff6f61 60%, /* Coral - About/Services */
+    #d81b60 70%, /* Pinkish red - transition */
+    #b71c1c 80%, /* Deep red - Knowledge/Events */
+    #880e4f 90%, /* Dark magenta - transition */
+    #1a3c34 100% /* Dark teal - Community/Location */
   );
 }
 
@@ -87,7 +83,7 @@ a {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, #3498db, #f1c40f); /* Dynamic blue-to-gold gradient */
+  background: linear-gradient(90deg, #0288d1, #ffca28); /* Blue-to-yellow gradient */
   z-index: 1004;
   transition: width 0.3s ease;
 }
@@ -95,7 +91,7 @@ a {
 #back-to-top {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 10px;
   background: var(--highlight-color);
   color: #fff;
   width: 40px;
@@ -118,7 +114,7 @@ a {
 }
 
 #back-to-top:hover {
-  background: #d35400; /* Darker orange hover */
+  background: #ff6f61; /* Coral hover */
   transform: scale(1.1);
 }
 
@@ -163,7 +159,7 @@ a {
 .language-options button:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Blue shadow */
+  box-shadow: 0 0 10px rgba(2, 136, 209, 0.5); /* Blue shadow */
 }
 
 nav {
@@ -216,7 +212,7 @@ nav .menu-toggle {
 nav ul {
   display: none;
   flex-direction: column;
-  background: rgba(52, 152, 219, 0.95); /* Vibrant blue */
+  background: rgba(2, 136, 209, 0.95); /* Vibrant blue */
   position: fixed;
   top: 48px;
   left: 0;
@@ -241,7 +237,7 @@ nav ul li a {
 nav ul li a:hover {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
-  color: #f1c40f; /* Gold hover */
+  color: var(--highlight-color);
 }
 
 @media (min-width: 768px) {
@@ -269,7 +265,7 @@ nav ul li a:hover {
 
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('herobg.png') no-repeat center center/cover;
-  height: 55vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,7 +280,7 @@ header {
   left: 12px;
   color: #fff;
   font-size: 0.9em;
-  background: rgba(52, 152, 219, 0.8); /* Blue glass effect */
+  background: rgba(2, 136, 209, 0.8); /* Blue glass effect */
   padding: 6px 10px;
   border-radius: 5px;
   z-index: 1000;
@@ -334,7 +330,7 @@ header {
   padding: 8px 18px;
   border-radius: 5px;
   font-size: 0.85em;
-  font-weight: 670;
+  font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -353,7 +349,7 @@ header {
 #donate-now:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Blue shadow */
+  box-shadow: 0 0 10px rgba(255, 111, 97, 0.5); /* Coral shadow */
   transform: translateY(-2px);
 }
 
@@ -368,30 +364,32 @@ header {
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  background: linear-gradient(180deg, #e67e22, #f1c40f); /* Orange-to-gold gradient */
+  background: linear-gradient(180deg, #ffca28, #ff6f61); /* Yellow-to-coral gradient */
 }
 
 /* Section Backgrounds Set to Transparent */
 #announcements, #prayer-times, #ramadan, #about, #services, #knowledge, #events, #gallery, #community, #location, #zakat-calculator {
   background: transparent;
-  padding: 15px 12px;
+  padding: 12px;
+  max-width: 100%;
 }
 
 /* Announcements Section with Single-Line Scrolling */
 .announcement-marquee {
   background: var(--card-bg);
-  border: 2px solid #f1c40f; /* Gold border */
+  border: 2px solid var(--highlight-color);
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 2px 6px var(--shadow-color);
-  white-space: nowrap; /* Ensure single line */
-  overflow: hidden; /* Hide overflow for scrolling */
+  white-space: nowrap;
+  overflow: hidden;
   position: relative;
+  max-width: 100%;
 }
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 20s linear infinite; /* Adjust speed as needed */
+  animation: marquee 15s linear infinite; /* Smooth scrolling */
 }
 
 @keyframes marquee {
@@ -403,7 +401,7 @@ header {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: #e74c3c; /* Red for urgency */
+  color: #ff6f61; /* Coral for urgency */
   font-weight: 600;
 }
 
@@ -411,7 +409,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -420,8 +418,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background: var(--card-bg); /* Semi-transparent background */
-  border-left: 4px solid #2980b9; /* Blue accent */
+  background: var(--card-bg);
+  border-left: 4px solid #0288d1; /* Blue accent */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease;
@@ -434,7 +432,7 @@ header {
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: #2980b9; /* Blue for prayer names */
+  color: #0288d1; /* Blue for prayer names */
 }
 
 .prayer-time {
@@ -447,9 +445,9 @@ header {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 12px;
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   border-radius: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -465,7 +463,7 @@ header {
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: #8e44ad; /* Purple for titles */
+  color: #6a1b9a; /* Purple for titles */
   margin-bottom: 8px;
 }
 
@@ -474,8 +472,8 @@ header {
   font-size: 0.85em;
   font-style: italic;
   padding: 8px;
-  background: var(--card-bg); /* Semi-transparent background */
-  border-left: 3px solid #9b59b6; /* Purple accent */
+  background: var(--card-bg);
+  border-left: 3px solid #ab47bc; /* Lighter purple accent */
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
@@ -507,7 +505,7 @@ header {
 #about .content p {
   font-size: 0.85em;
   margin-bottom: 15px;
-  max-width: 500px;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -516,12 +514,12 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .service-card {
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -530,18 +528,18 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 200px;
-  border: 2px solid #1abc9c; /* Teal border */
+  min-height: 180px;
+  border: 2px solid #00c4b4; /* Teal border */
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(26, 188, 156, 0.5); /* Teal shadow */
+  box-shadow: 0 0 15px rgba(0, 196, 180, 0.5); /* Teal shadow */
 }
 
 .service-icon {
   font-size: 1.8em;
-  color: #16a085; /* Teal for icons */
+  color: #00c4b4; /* Teal for icons */
   margin-bottom: 8px;
 }
 
@@ -561,12 +559,12 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .knowledge-item {
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -576,17 +574,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #e74c3c; /* Red border */
+  border: 2px solid #ff6f61; /* Coral border */
 }
 
 .knowledge-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5); /* Red shadow */
+  box-shadow: 0 0 15px rgba(255, 111, 97, 0.5); /* Coral shadow */
 }
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: #e74c3c; /* Red for titles */
+  color: #ff6f61; /* Coral for titles */
   margin-bottom: 8px;
 }
 
@@ -600,27 +598,27 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .event {
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid #9b59b6; /* Purple border */
+  border: 2px solid #6a1b9a; /* Purple border */
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(155, 89, 182, 0.5); /* Purple shadow */
+  box-shadow: 0 0 15px rgba(106, 27, 154, 0.5); /* Purple shadow */
 }
 
 .event h3 {
   font-size: 1em;
-  color: #8e44ad; /* Purple for titles */
+  color: #6a1b9a; /* Purple for titles */
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -635,7 +633,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto 15px;
 }
 
@@ -646,24 +644,23 @@ header {
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: var(--card-bg); /* Semi-transparent background */
 }
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(241, 196, 15, 0.5); /* Gold shadow */
+  box-shadow: 0 0 15px rgba(255, 202, 40, 0.5); /* Yellow shadow */
 }
 
 .community-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .community-item {
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -673,17 +670,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #2ecc71; /* Green border */
+  border: 2px solid #00c4b4; /* Teal border */
 }
 
 .community-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5); /* Green shadow */
+  box-shadow: 0 0 15px rgba(0, 196, 180, 0.5); /* Teal shadow */
 }
 
 .community-item h3 {
   font-size: 1em;
-  color: #27ae60; /* Green for titles */
+  color: #00c4b4; /* Teal for titles */
   margin-bottom: 8px;
 }
 
@@ -693,7 +690,7 @@ header {
 }
 
 .location-container {
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
   text-align: center;
 }
@@ -716,16 +713,16 @@ header {
 }
 
 .zakat-container {
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .zakat-form {
-  background: var(--card-bg); /* Semi-transparent background */
+  background: var(--card-bg);
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
-  border: 2px solid #f39c12; /* Orange border */
+  border: 2px solid #ffca28; /* Yellow border */
 }
 
 .zakat-note {
@@ -754,13 +751,13 @@ header {
 .zakat-result {
   margin-top: 15px;
   padding: 12px;
-  background: #e6f3e6; /* Light green for results */
+  background: rgba(255, 202, 40, 0.2); /* Light yellow for results */
   border-radius: 10px;
   font-size: 0.85em;
 }
 
 .dark-theme .zakat-result {
-  background: #2a4d2a; /* Darker green */
+  background: rgba(255, 111, 97, 0.2); /* Light coral in dark mode */
 }
 
 .chatbot-container {
@@ -780,7 +777,7 @@ header {
 }
 
 .chatbot-header {
-  background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient */
+  background: linear-gradient(135deg, #0288d1, #00c4b4); /* Blue-to-teal gradient */
   color: #fff;
   padding: 8px;
   border-radius: 15px 15px 0 0;
@@ -801,7 +798,7 @@ header {
 }
 
 .close-chat:hover {
-  color: #f1c40f; /* Gold hover */
+  color: var(--highlight-color);
 }
 
 .chat-messages {
@@ -812,18 +809,18 @@ header {
 }
 
 .bot-message {
-  background: #e6f3e6; /* Light green */
+  background: rgba(0, 196, 180, 0.2); /* Light teal */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
 }
 
 .dark-theme .bot-message {
-  background: #2a4d2a; /* Darker green */
+  background: rgba(255, 111, 97, 0.2); /* Light coral */
 }
 
 .user-message {
-  background: #f0f0f0;
+  background: rgba(255, 202, 40, 0.2); /* Light yellow */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
@@ -831,7 +828,7 @@ header {
 }
 
 .dark-theme .user-message {
-  background: #555;
+  background: rgba(106, 27, 154, 0.2); /* Light purple */
 }
 
 .chat-input-container {
@@ -856,7 +853,7 @@ header {
 }
 
 footer {
-  background: linear-gradient(135deg, #2c3e50, #1e90ff); /* Reverse header gradient */
+  background: linear-gradient(135deg, #0288d1, #00c4b4); /* Blue-to-teal gradient */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
@@ -866,7 +863,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -890,7 +887,7 @@ footer {
 }
 
 .social-icons a:hover {
-  color: #f1c40f; /* Gold hover */
+  color: var(--highlight-color);
   transform: scale(1.2);
 }
 
@@ -906,11 +903,6 @@ footer {
   border-radius: 10px;
 }
 
-.dark-theme .glass {
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 /* Media Queries */
 @media (max-width: 767px) {
   nav {
@@ -921,6 +913,7 @@ footer {
   }
   #prayer-info {
     top: 45px;
+    left: 10px;
   }
   header {
     height: 45vh;
@@ -945,11 +938,11 @@ footer {
   .events-container,
   .community-container,
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
   }
   .chatbot-container {
-    width: 85%;
+    width: 90%;
     left: 5%;
     bottom: 5px;
   }
@@ -995,6 +988,7 @@ footer {
   .events-container,
   .community-container,
   .gallery-grid {
+    grid-template-columns: 1fr 1fr;
     max-width: 800px;
     gap: 15px;
   }
