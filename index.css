@@ -1,28 +1,28 @@
-/* Base Variables with Soothing Colors */
+/* Base Variables with Advanced Colors */
 :root {
-  --bg-color: #f8f9fa; /* Light off-white base */
-  --text-color: #1a1a1a; /* Dark gray for better contrast in light mode */
-  --card-bg: rgba(255, 255, 255, 0.85); /* Slightly opaque white for cards */
-  --header-bg: linear-gradient(135deg, #80deea, #4dd0e1); /* Soft teal gradient */
-  --btn-bg: #4dd0e1; /* Calm teal for buttons */
-  --btn-text: #ffffff;
-  --btn-hover-bg: #ffccbc; /* Soft peach on hover */
-  --btn-hover-text: #1a1a1a;
-  --shadow-color: rgba(0, 0, 0, 0.15);
-  --highlight-color: #ffccbc; /* Soft peach for accents */
+  --bg-color: #f5f5f5; /* Light gray base for depth */
+  --text-color: #ffffff; /* White with shadow for contrast in light mode */
+  --card-bg: rgba(255, 255, 255, 0.2); /* Glassy white */
+  --header-bg: linear-gradient(135deg, #7b1fa2, #00bcd4); /* Purple to cyan */
+  --btn-bg: linear-gradient(45deg, #ff5722, #ffeb3b); /* Orange to yellow micro-gradient */
+  --btn-text: #1a1a1a;
+  --btn-hover-bg: linear-gradient(45deg, #00bcd4, #4caf50); /* Cyan to green */
+  --btn-hover-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --highlight-color: #ffeb3b; /* Radiant yellow for accents */
 }
 
 .dark-theme {
-  --bg-color: #263238; /* Deep blue-gray base */
-  --text-color: #ffffff; /* White for dark mode */
-  --card-bg: rgba(38, 50, 56, 0.85); /* Dark gray with opacity */
-  --header-bg: linear-gradient(135deg, #37474f, #455a64); /* Darker teal gradient */
-  --btn-bg: #4dd0e1;
+  --bg-color: #121212; /* Deep black base */
+  --text-color: #000000; /* Black with shadow for contrast in dark mode */
+  --card-bg: rgba(18, 18, 18, 0.2); /* Glassy dark */
+  --header-bg: linear-gradient(135deg, #311b92, #006064); /* Indigo to teal */
+  --btn-bg: linear-gradient(45deg, #d81b60, #ffca28); /* Magenta to gold */
   --btn-text: #ffffff;
-  --btn-hover-bg: #ffccbc;
-  --btn-hover-text: #263238;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --highlight-color: #ffccbc;
+  --btn-hover-bg: linear-gradient(45deg, #006064, #1b5e20); /* Teal to forest green */
+  --btn-hover-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --highlight-color: #ffca28; /* Gold for dark mode */
 }
 
 /* Reset & Base Styles */
@@ -36,14 +36,16 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background: linear-gradient(to bottom,
-    #80deea 0%, /* Soft teal - Announcements */
-    #b0bec5 20%, /* Light gray-blue - transition */
-    #ce93d8 40%, /* Soft lavender - Prayer Times/Ramadan */
-    #f8bbd0 60%, /* Pale pink - About/Services */
-    #ffccbc 80%, /* Soft peach - Knowledge/Events */
-    #b2ebf2 100% /* Light cyan - Community/Location */
-  );
+  background: radial-gradient(circle at center, rgba(123, 31, 162, 0.2), rgba(0, 188, 212, 0.2) 30%, transparent 60%),
+              linear-gradient(to bottom,
+                #7b1fa2 0%, /* Cosmic purple */
+                #ab47bc 20%, /* Lighter purple transition */
+                #00bcd4 40%, /* Electric cyan */
+                #4dd0e1 50%, /* Softer cyan */
+                #ffeb3b 70%, /* Radiant yellow */
+                #ff5722 85%, /* Vibrant orange */
+                #4caf50 100% /* Lush green */
+              );
   scroll-behavior: smooth;
   font-size: 13px;
   overflow-x: hidden;
@@ -52,14 +54,21 @@ body {
 }
 
 .dark-theme body {
-  background: linear-gradient(to bottom,
-    #37474f 0%, /* Dark teal - Announcements */
-    #455a64 20%, /* Darker gray-blue - transition */
-    #4a148c 40%, /* Deep purple - Prayer Times/Ramadan */
-    #6a1b9a 60%, /* Softer purple - About/Services */
-    #880e4f 80%, /* Dark magenta - Knowledge/Events */
-    #263238 100% /* Deep blue-gray - Community/Location */
-  );
+  background: radial-gradient(circle at center, rgba(49, 27, 146, 0.3), rgba(0, 96, 100, 0.3) 30%, transparent 60%),
+              linear-gradient(to bottom,
+                #311b92 0%, /* Deep indigo */
+                #512da8 20%, /* Softer indigo transition */
+                #006064 40%, /* Deep teal */
+                #0288d1 50%, /* Brighter teal */
+                #ffca28 70%, /* Cosmic gold */
+                #d81b60 85%, /* Vivid magenta */
+                #1b5e20 100% /* Forest green */
+              );
+}
+
+/* Text Shadow for Visibility */
+h1, h2, h3, .section-title {
+  text-shadow: 0 2px 4px var(--shadow-color);
 }
 
 a {
@@ -73,7 +82,7 @@ a {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, #4dd0e1, #ffccbc); /* Teal-to-peach gradient */
+  background: linear-gradient(90deg, #00bcd4, #ffeb3b); /* Cyan-to-yellow */
   z-index: 1004;
   transition: width 0.3s ease;
 }
@@ -91,7 +100,7 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
-  box-shadow: 0 2px 6px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -104,7 +113,7 @@ a {
 }
 
 #back-to-top:hover {
-  background: #ff8a65; /* Deeper peach hover */
+  background: #ff5722; /* Vibrant orange hover */
   transform: scale(1.1);
 }
 
@@ -115,7 +124,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1003;
 }
 
@@ -127,6 +136,7 @@ a {
   padding: 20px;
   border-radius: 20px;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px var(--shadow-color);
   color: var(--text-color);
 }
@@ -137,7 +147,7 @@ a {
   margin: 8px 0;
   padding: 10px;
   background: var(--btn-bg);
-  border: 2px solid var(--highlight-color);
+  border: none;
   color: var(--btn-text);
   border-radius: 30px;
   font-size: 0.9em;
@@ -149,7 +159,7 @@ a {
 .language-options button:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(77, 208, 225, 0.5); /* Teal shadow */
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
 }
 
 nav {
@@ -162,7 +172,7 @@ nav {
   width: 100%;
   top: 0;
   z-index: 1001;
-  box-shadow: 0 2px 10px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 nav .logo {
@@ -202,7 +212,7 @@ nav .menu-toggle {
 nav ul {
   display: none;
   flex-direction: column;
-  background: rgba(77, 208, 225, 0.95); /* Soft teal */
+  background: rgba(0, 188, 212, 0.95); /* Cyan */
   position: fixed;
   top: 48px;
   left: 0;
@@ -270,7 +280,7 @@ header {
   left: 12px;
   color: #fff;
   font-size: 0.9em;
-  background: rgba(77, 208, 225, 0.8); /* Teal glass effect */
+  background: rgba(0, 188, 212, 0.8); /* Cyan glass */
   padding: 6px 10px;
   border-radius: 5px;
   z-index: 1000;
@@ -315,7 +325,7 @@ header {
 #donate-now {
   display: inline-block;
   background: var(--btn-bg);
-  border: 2px solid var(--highlight-color);
+  border: none;
   color: var(--btn-text);
   padding: 8px 18px;
   border-radius: 5px;
@@ -325,6 +335,7 @@ header {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 12px;
+  box-shadow: 0 2px 6px var(--shadow-color);
 }
 
 .btn:hover,
@@ -339,7 +350,7 @@ header {
 #donate-now:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(255, 204, 188, 0.5); /* Peach shadow */
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow */
   transform: translateY(-2px);
 }
 
@@ -354,7 +365,7 @@ header {
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  background: linear-gradient(180deg, #ffccbc, #ff8a65); /* Peach gradient */
+  background: linear-gradient(180deg, #ffeb3b, #ff5722); /* Yellow-to-orange */
 }
 
 /* Section Backgrounds Set to Transparent */
@@ -364,13 +375,14 @@ header {
   max-width: 100%;
 }
 
-/* Announcements Section with Slower Scrolling */
+/* Announcements Section */
 .announcement-marquee {
   background: var(--card-bg);
   border: 2px solid var(--highlight-color);
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   white-space: nowrap;
   overflow: hidden;
   position: relative;
@@ -379,7 +391,7 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 25s linear infinite; /* Slower, soothing scroll */
+  animation: marquee 25s linear infinite; /* Slower scroll */
 }
 
 @keyframes marquee {
@@ -391,8 +403,9 @@ header {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: #ff8a65; /* Softer peach for urgency */
+  color: #ff5722; /* Vibrant orange */
   font-weight: 600;
+  text-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .prayer-times-vertical {
@@ -409,20 +422,22 @@ header {
   align-items: center;
   padding: 10px;
   background: var(--card-bg);
-  border-left: 4px solid #4dd0e1; /* Teal accent */
+  border-left: 4px solid #00bcd4; /* Cyan accent */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease;
 }
 
 .prayer-item:hover {
   transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
 }
 
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: #4dd0e1; /* Teal for prayer names */
+  color: #00bcd4; /* Cyan */
 }
 
 .prayer-time {
@@ -432,13 +447,14 @@ header {
 
 .ramadan-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 12px;
   background: var(--card-bg);
   border-radius: 10px;
   max-width: 90%;
   margin: 0 auto;
+  backdrop-filter: blur(10px);
 }
 
 .ramadan-times,
@@ -448,12 +464,13 @@ header {
   background: var(--card-bg);
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
 }
 
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: #ce93d8; /* Lavender for titles */
+  color: #7b1fa2; /* Cosmic purple */
   margin-bottom: 8px;
 }
 
@@ -463,7 +480,7 @@ header {
   font-style: italic;
   padding: 8px;
   background: var(--card-bg);
-  border-left: 3px solid #f8bbd0; /* Pale pink accent */
+  border-left: 3px solid #ffeb3b; /* Yellow accent */
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
@@ -478,7 +495,7 @@ header {
   font-weight: 600;
   text-transform: uppercase;
   position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Enhance visibility */
+  text-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .section-title::after {
@@ -503,7 +520,7 @@ header {
 
 .services-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -515,22 +532,23 @@ header {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #ffccbc; /* Peach border */
+  border: 2px solid #4caf50; /* Lush green */
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255, 204, 188, 0.5); /* Peach shadow */
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow */
 }
 
 .service-icon {
   font-size: 1.8em;
-  color: #ffccbc; /* Peach for icons */
+  color: #4caf50; /* Green */
   margin-bottom: 8px;
 }
 
@@ -548,7 +566,7 @@ header {
 
 .knowledge-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -560,22 +578,23 @@ header {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #ff8a65; /* Deeper peach border */
+  border: 2px solid #ff5722; /* Vibrant orange */
 }
 
 .knowledge-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255, 138, 101, 0.5); /* Deeper peach shadow */
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.5); /* Orange glow */
 }
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: #ff8a65; /* Deeper peach for titles */
+  color: #ff5722; /* Orange */
   margin-bottom: 8px;
 }
 
@@ -587,7 +606,7 @@ header {
 
 .events-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -598,18 +617,19 @@ header {
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid #ce93d8; /* Lavender border */
+  border: 2px solid #7b1fa2; /* Cosmic purple */
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(206, 147, 216, 0.5); /* Lavender shadow */
+  box-shadow: 0 0 15px rgba(123, 31, 162, 0.5); /* Purple glow */
 }
 
 .event h3 {
   font-size: 1em;
-  color: #ce93d8; /* Lavender for titles */
+  color: #7b1fa2; /* Purple */
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -622,7 +642,7 @@ header {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
   margin: 0 auto 15px;
@@ -639,12 +659,12 @@ header {
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 204, 188, 0.5); /* Peach shadow */
+  box-shadow: 0 0 15px rgba(255, 235, 59, 0.5); /* Yellow glow */
 }
 
 .community-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Restored original grid */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -656,22 +676,23 @@ header {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #b2ebf2; /* Light cyan border */
+  border: 2px solid #00bcd4; /* Cyan */
 }
 
 .community-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(178, 235, 242, 0.5); /* Light cyan shadow */
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
 }
 
 .community-item h3 {
   font-size: 1em;
-  color: #b2ebf2; /* Light cyan for titles */
+  color: #00bcd4; /* Cyan */
   margin-bottom: 8px;
 }
 
@@ -713,7 +734,8 @@ header {
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
-  border: 2px solid #ffccbc; /* Peach border */
+  backdrop-filter: blur(10px);
+  border: 2px solid #ffeb3b; /* Yellow */
 }
 
 .zakat-note {
@@ -732,7 +754,7 @@ header {
 .zakat-inputs input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   font-size: 0.85em;
   background: var(--card-bg);
@@ -742,13 +764,13 @@ header {
 .zakat-result {
   margin-top: 15px;
   padding: 12px;
-  background: rgba(255, 204, 188, 0.2); /* Light peach for results */
+  background: rgba(255, 235, 59, 0.2); /* Light yellow */
   border-radius: 10px;
   font-size: 0.85em;
 }
 
 .dark-theme .zakat-result {
-  background: rgba(255, 138, 101, 0.2); /* Deeper peach in dark mode */
+  background: rgba(255, 202, 40, 0.2); /* Light gold */
 }
 
 .chatbot-container {
@@ -759,6 +781,7 @@ header {
   background: var(--card-bg);
   border-radius: 15px;
   box-shadow: 0 4px 12px var(--shadow-color);
+  backdrop-filter: blur(10px);
   z-index: 1000;
   transition: transform 0.3s ease;
 }
@@ -768,7 +791,7 @@ header {
 }
 
 .chatbot-header {
-  background: linear-gradient(135deg, #4dd0e1, #80deea); /* Teal gradient */
+  background: linear-gradient(135deg, #00bcd4, #4caf50); /* Cyan-to-green */
   color: #fff;
   padding: 8px;
   border-radius: 15px 15px 0 0;
@@ -800,18 +823,18 @@ header {
 }
 
 .bot-message {
-  background: rgba(77, 208, 225, 0.2); /* Light teal */
+  background: rgba(0, 188, 212, 0.2); /* Light cyan */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
 }
 
 .dark-theme .bot-message {
-  background: rgba(255, 138, 101, 0.2); /* Light peach */
+  background: rgba(255, 202, 40, 0.2); /* Light gold */
 }
 
 .user-message {
-  background: rgba(255, 204, 188, 0.2); /* Light peach */
+  background: rgba(255, 87, 34, 0.2); /* Light orange */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
@@ -819,19 +842,19 @@ header {
 }
 
 .dark-theme .user-message {
-  background: rgba(69, 90, 100, 0.2); /* Dark gray-blue */
+  background: rgba(216, 27, 96, 0.2); /* Light magenta */
 }
 
 .chat-input-container {
   display: flex;
   padding: 8px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .chat-input-container input {
   flex: 1;
   padding: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px 0 0 5px;
   font-size: 0.8em;
   background: var(--card-bg);
@@ -844,7 +867,7 @@ header {
 }
 
 footer {
-  background: linear-gradient(135deg, #263238, #4dd0e1); /* Blue-gray to teal */
+  background: linear-gradient(135deg, #7b1fa2, #4caf50); /* Purple-to-green */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
@@ -852,7 +875,7 @@ footer {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr; /* Single column for mobile */
+  grid-template-columns: 1fr;
   gap: 15px;
   max-width: 90%;
   margin: 0 auto;
@@ -931,7 +954,7 @@ footer {
   .events-container,
   .community-container,
   .gallery-grid {
-    grid-template-columns: 1fr; /* Single column for mobile */
+    grid-template-columns: 1fr;
     gap: 8px;
   }
   .chatbot-container {
@@ -981,7 +1004,7 @@ footer {
   .events-container,
   .community-container,
   .gallery-grid {
-    grid-template-columns: 1fr 1fr; /* Restored original grid */
+    grid-template-columns: 1fr 1fr;
     max-width: 800px;
     gap: 15px;
   }
