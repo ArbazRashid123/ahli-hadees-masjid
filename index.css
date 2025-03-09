@@ -4,7 +4,7 @@
   --text-color: #000000; /* Black for readability in light mode */
   --section-bg-light: #ecf0f1; /* Subtle light gray */
   --section-bg-white: #ffffff; /* Pure white */
-  --card-bg: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.7); /* Semi-transparent white for cards */
   --header-bg: linear-gradient(135deg, #1e90ff, #2c3e50); /* Dynamic blue gradient */
   --btn-bg: #3498db; /* Vibrant blue for buttons */
   --btn-text: #ffffff;
@@ -19,7 +19,7 @@
   --text-color: #ffffff; /* White for readability in dark mode */
   --section-bg-light: #34495e; /* Darker gray-blue */
   --section-bg-white: #3e5c76; /* Darker off-white */
-  --card-bg: #3e5c76;
+  --card-bg: rgba(0, 0, 0, 0.7); /* Semi-transparent black for cards */
   --header-bg: linear-gradient(135deg, #1e3799, #0c2461); /* Darker blue gradient */
   --btn-bg: #3498db;
   --btn-text: #ffffff;
@@ -40,12 +40,40 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background: var(--bg-color);
+  background: linear-gradient(to bottom,
+    #27ae60 0%, #27ae60 9.09%, /* Announcements */
+    #3498db 9.09%, #3498db 18.18%, /* Prayer Times */
+    #8e44ad 18.18%, #8e44ad 27.27%, /* Ramadan */
+    #f39c12 27.27%, #f39c12 36.36%, /* About */
+    #16a085 36.36%, #16a085 45.45%, /* Services */
+    #e74c3c 45.45%, #e74c3c 54.54%, /* Knowledge */
+    #8e44ad 54.54%, #8e44ad 63.63%, /* Events */
+    #f1c40f 63.63%, #f1c40f 72.72%, /* Gallery */
+    #2ecc71 72.72%, #2ecc71 81.81%, /* Community */
+    #3498db 81.81%, #3498db 90.90%, /* Location */
+    #e67e22 90.90%, #e67e22 100% /* Zakat Calculator */
+  );
   scroll-behavior: smooth;
   font-size: 13px;
   overflow-x: hidden;
   max-width: 100vw;
   position: relative;
+}
+
+.dark-theme body {
+  background: linear-gradient(to bottom,
+    #1b6d47 0%, #1b6d47 9.09%, /* Darker green for announcements */
+    #1e90ff 9.09%, #1e90ff 18.18%, /* Darker blue for prayer times */
+    #6c3483 18.18%, #6c3483 27.27%, /* Darker purple for ramadan */
+    #e67e22 27.27%, #e67e22 36.36%, /* Darker orange for about */
+    #0e6655 36.36%, #0e6655 45.45%, /* Darker teal for services */
+    #c0392b 45.45%, #c0392b 54.54%, /* Darker red for knowledge */
+    #6c3483 54.54%, #6c3483 63.63%, /* Darker purple for events */
+    #d35400 63.63%, #d35400 72.72%, /* Darker gold for gallery */
+    #27ae60 72.72%, #27ae60 81.81%, /* Darker green for community */
+    #21618c 81.81%, #21618c 90.90%, /* Darker blue for location */
+    #d35400 90.90%, #d35400 100% /* Darker orange for zakat */
+  );
 }
 
 a {
@@ -343,21 +371,15 @@ header {
   background: linear-gradient(180deg, #e67e22, #f1c40f); /* Orange-to-gold gradient */
 }
 
+/* Section Backgrounds Set to Transparent */
+#announcements, #prayer-times, #ramadan, #about, #services, #knowledge, #events, #gallery, #community, #location, #zakat-calculator {
+  background: transparent;
+  padding: 15px 12px;
+}
+
 /* Announcements Section with Single-Line Scrolling */
-#announcements {
-  padding: 12px;
-  background: linear-gradient(120deg, #27ae60, #2ecc71); /* Vibrant green gradient */
-  color: #000; /* Black text for contrast */
-  overflow: hidden;
-}
-
-.dark-theme #announcements {
-  background: linear-gradient(120deg, #1b6d47, #145730); /* Darker green gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .announcement-marquee {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg);
   border: 2px solid #f1c40f; /* Gold border */
   padding: 8px;
   border-radius: 8px;
@@ -365,10 +387,6 @@ header {
   white-space: nowrap; /* Ensure single line */
   overflow: hidden; /* Hide overflow for scrolling */
   position: relative;
-}
-
-.dark-theme .announcement-marquee {
-  background: rgba(46, 204, 113, 0.2); /* Green-tinted glass */
 }
 
 .marquee-track {
@@ -389,17 +407,6 @@ header {
   font-weight: 600;
 }
 
-#prayer-times {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #3498db, #5dade2); /* Soothing blue gradient */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #prayer-times {
-  background: linear-gradient(135deg, #1e90ff, #21618c); /* Darker blue gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .prayer-times-vertical {
   display: flex;
   flex-direction: column;
@@ -413,15 +420,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg); /* Semi-transparent background */
   border-left: 4px solid #2980b9; /* Blue accent */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease;
-}
-
-.dark-theme .prayer-item {
-  background: rgba(52, 152, 219, 0.2);
 }
 
 .prayer-item:hover {
@@ -439,30 +442,15 @@ header {
   color: var(--text-color);
 }
 
-#ramadan {
-  padding: 15px 12px;
-  background: linear-gradient(150deg, #8e44ad, #d7bde2); /* Purple gradient for spirituality */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #ramadan {
-  background: linear-gradient(150deg, #6c3483, #9b59b6); /* Darker purple gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .ramadan-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg); /* Semi-transparent background */
   border-radius: 10px;
   max-width: 600px;
   margin: 0 auto;
-}
-
-.dark-theme .ramadan-container {
-  background: rgba(142, 68, 173, 0.2); /* Purple-tinted glass */
 }
 
 .ramadan-times,
@@ -486,17 +474,12 @@ header {
   font-size: 0.85em;
   font-style: italic;
   padding: 8px;
-  background: #f5f6fa; /* Light gray */
+  background: var(--card-bg); /* Semi-transparent background */
   border-left: 3px solid #9b59b6; /* Purple accent */
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
   overflow-y: auto;
-}
-
-.dark-theme #hadith-text,
-.dark-theme #quran-aayah-text {
-  background: rgba(155, 89, 182, 0.3);
 }
 
 .section-title {
@@ -521,34 +504,12 @@ header {
   border-radius: 2px;
 }
 
-#about {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #f39c12, #f1c40f); /* Warm gold gradient */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #about {
-  background: linear-gradient(135deg, #e67e22, #d35400); /* Darker orange gradient */
-  color: #fff; /* White text for contrast */
-}
-
 #about .content p {
   font-size: 0.85em;
   margin-bottom: 15px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-}
-
-#services {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #16a085, #1abc9c); /* Teal gradient */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #services {
-  background: linear-gradient(135deg, #0e6655, #148f77); /* Darker teal gradient */
-  color: #fff; /* White text for contrast */
 }
 
 .services-container {
@@ -560,7 +521,7 @@ header {
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg); /* Semi-transparent background */
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -571,10 +532,6 @@ header {
   justify-content: space-between;
   min-height: 200px;
   border: 2px solid #1abc9c; /* Teal border */
-}
-
-.dark-theme .service-card {
-  background: rgba(26, 188, 156, 0.2);
 }
 
 .service-card:hover {
@@ -600,17 +557,6 @@ header {
   font-weight: 600;
 }
 
-#knowledge {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #e74c3c, #ff6b6b); /* Red gradient for knowledge */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #knowledge {
-  background: linear-gradient(135deg, #c0392b, #e74c3c); /* Darker red gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .knowledge-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -620,7 +566,7 @@ header {
 }
 
 .knowledge-item {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg); /* Semi-transparent background */
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -631,10 +577,6 @@ header {
   justify-content: space-between;
   min-height: 180px;
   border: 2px solid #e74c3c; /* Red border */
-}
-
-.dark-theme .knowledge-item {
-  background: rgba(231, 76, 60, 0.2);
 }
 
 .knowledge-item:hover {
@@ -654,17 +596,6 @@ header {
   font-weight: 600;
 }
 
-#events {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #8e44ad, #9b59b6); /* Purple gradient for events */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #events {
-  background: linear-gradient(135deg, #6c3483, #8e44ad); /* Darker purple gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .events-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -674,16 +605,12 @@ header {
 }
 
 .event {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg); /* Semi-transparent background */
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid #9b59b6; /* Purple border */
-}
-
-.dark-theme .event {
-  background: rgba(155, 89, 182, 0.2);
 }
 
 .event:hover {
@@ -704,22 +631,6 @@ header {
   font-weight: 600;
 }
 
-#gallery {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #f1c40f, #f39c12); /* Gold gradient for gallery */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #gallery {
-  background: linear-gradient(135deg, #d35400, #e67e22); /* Darker gold gradient */
-  color: #fff; /* White text for contrast */
-}
-
-.gallery-container p {
-  font-size: 0.85em;
-  margin-bottom: 15px;
-}
-
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -735,22 +646,12 @@ header {
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--card-bg); /* Semi-transparent background */
 }
 
 .gallery-grid img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(241, 196, 15, 0.5); /* Gold shadow */
-}
-
-#community {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #2ecc71, #27ae60); /* Green gradient for community */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #community {
-  background: linear-gradient(135deg, #27ae60, #219653); /* Darker green gradient */
-  color: #fff; /* White text for contrast */
 }
 
 .community-container {
@@ -762,7 +663,7 @@ header {
 }
 
 .community-item {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg); /* Semi-transparent background */
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -773,10 +674,6 @@ header {
   justify-content: space-between;
   min-height: 180px;
   border: 2px solid #2ecc71; /* Green border */
-}
-
-.dark-theme .community-item {
-  background: rgba(46, 204, 113, 0.2);
 }
 
 .community-item:hover {
@@ -793,17 +690,6 @@ header {
 .community-item p {
   font-size: 0.85em;
   margin-bottom: 10px;
-}
-
-#location {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient for location */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #location {
-  background: linear-gradient(135deg, #21618c, #1e90ff); /* Darker blue gradient */
-  color: #fff; /* White text for contrast */
 }
 
 .location-container {
@@ -829,32 +715,17 @@ header {
   box-shadow: 0 2px 6px var(--shadow-color);
 }
 
-#zakat-calculator {
-  padding: 15px 12px;
-  background: linear-gradient(135deg, #e67e22, #f39c12); /* Orange gradient for zakat */
-  color: #000; /* Black text for contrast */
-}
-
-.dark-theme #zakat-calculator {
-  background: linear-gradient(135deg, #d35400, #e67e22); /* Darker orange gradient */
-  color: #fff; /* White text for contrast */
-}
-
 .zakat-container {
   max-width: 600px;
   margin: 0 auto;
 }
 
 .zakat-form {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg); /* Semi-transparent background */
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
   border: 2px solid #f39c12; /* Orange border */
-}
-
-.dark-theme .zakat-form {
-  background: rgba(243, 156, 18, 0.2);
 }
 
 .zakat-note {
@@ -1029,14 +900,14 @@ footer {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 
 .dark-theme .glass {
-  background: rgba(59, 74, 107, 0.95);
+  background: var(--card-bg);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
