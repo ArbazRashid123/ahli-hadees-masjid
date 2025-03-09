@@ -334,13 +334,13 @@ header {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 120px;
+  width: 35px;
+  height: 130px;
   padding: 10px;
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 #announcements {
