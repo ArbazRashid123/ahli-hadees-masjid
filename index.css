@@ -1,7 +1,7 @@
 /* Base Variables with Enhanced Colors */
 :root {
   --bg-color: #f8f9fa; /* Light off-white for a clean base */
-  --text-color: #2c3e50; /* Deep blue-gray for readability */
+  --text-color: #000000; /* Black for readability in light mode */
   --section-bg-light: #ecf0f1; /* Subtle light gray */
   --section-bg-white: #ffffff; /* Pure white */
   --card-bg: #ffffff;
@@ -16,7 +16,7 @@
 
 .dark-theme {
   --bg-color: #2c3e50; /* Deep blue-gray */
-  --text-color: #ecf0f1; /* Light gray for contrast */
+  --text-color: #ffffff; /* White for readability in dark mode */
   --section-bg-light: #34495e; /* Darker gray-blue */
   --section-bg-white: #3e5c76; /* Darker off-white */
   --card-bg: #3e5c76;
@@ -343,14 +343,17 @@ header {
   background: linear-gradient(180deg, #e67e22, #f1c40f); /* Orange-to-gold gradient */
 }
 
+/* Announcements Section with Single-Line Scrolling */
 #announcements {
   padding: 12px;
   background: linear-gradient(120deg, #27ae60, #2ecc71); /* Vibrant green gradient */
-  color: #fff;
+  color: #000; /* Black text for contrast */
+  overflow: hidden;
 }
 
 .dark-theme #announcements {
-  background: linear-gradient(120deg, #219653, #27ae60); /* Darker green gradient */
+  background: linear-gradient(120deg, #1b6d47, #145730); /* Darker green gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .announcement-marquee {
@@ -359,6 +362,9 @@ header {
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  white-space: nowrap; /* Ensure single line */
+  overflow: hidden; /* Hide overflow for scrolling */
+  position: relative;
 }
 
 .dark-theme .announcement-marquee {
@@ -367,7 +373,12 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 60s linear infinite running;
+  animation: marquee 20s linear infinite; /* Adjust speed as needed */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
 .marquee-content span {
@@ -378,18 +389,15 @@ header {
   font-weight: 600;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
 #prayer-times {
   padding: 15px 12px;
   background: linear-gradient(135deg, #3498db, #5dade2); /* Soothing blue gradient */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #prayer-times {
   background: linear-gradient(135deg, #1e90ff, #21618c); /* Darker blue gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .prayer-times-vertical {
@@ -434,10 +442,12 @@ header {
 #ramadan {
   padding: 15px 12px;
   background: linear-gradient(150deg, #8e44ad, #d7bde2); /* Purple gradient for spirituality */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #ramadan {
   background: linear-gradient(150deg, #6c3483, #9b59b6); /* Darker purple gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .ramadan-container {
@@ -514,10 +524,12 @@ header {
 #about {
   padding: 15px 12px;
   background: linear-gradient(135deg, #f39c12, #f1c40f); /* Warm gold gradient */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #about {
   background: linear-gradient(135deg, #e67e22, #d35400); /* Darker orange gradient */
+  color: #fff; /* White text for contrast */
 }
 
 #about .content p {
@@ -526,16 +538,17 @@ header {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  color: #fff; /* White text for contrast */
 }
 
 #services {
   padding: 15px 12px;
   background: linear-gradient(135deg, #16a085, #1abc9c); /* Teal gradient */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #services {
   background: linear-gradient(135deg, #0e6655, #148f77); /* Darker teal gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .services-container {
@@ -590,10 +603,12 @@ header {
 #knowledge {
   padding: 15px 12px;
   background: linear-gradient(135deg, #e74c3c, #ff6b6b); /* Red gradient for knowledge */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #knowledge {
   background: linear-gradient(135deg, #c0392b, #e74c3c); /* Darker red gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .knowledge-container {
@@ -642,10 +657,12 @@ header {
 #events {
   padding: 15px 12px;
   background: linear-gradient(135deg, #8e44ad, #9b59b6); /* Purple gradient for events */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #events {
   background: linear-gradient(135deg, #6c3483, #8e44ad); /* Darker purple gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .events-container {
@@ -690,16 +707,17 @@ header {
 #gallery {
   padding: 15px 12px;
   background: linear-gradient(135deg, #f1c40f, #f39c12); /* Gold gradient for gallery */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #gallery {
   background: linear-gradient(135deg, #d35400, #e67e22); /* Darker gold gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .gallery-container p {
   font-size: 0.85em;
   margin-bottom: 15px;
-  color: #fff; /* White text for contrast */
 }
 
 .gallery-grid {
@@ -727,10 +745,12 @@ header {
 #community {
   padding: 15px 12px;
   background: linear-gradient(135deg, #2ecc71, #27ae60); /* Green gradient for community */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #community {
   background: linear-gradient(135deg, #27ae60, #219653); /* Darker green gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .community-container {
@@ -778,10 +798,12 @@ header {
 #location {
   padding: 15px 12px;
   background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient for location */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #location {
   background: linear-gradient(135deg, #21618c, #1e90ff); /* Darker blue gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .location-container {
@@ -793,7 +815,6 @@ header {
 .location-content p {
   font-size: 0.85em;
   margin-bottom: 15px;
-  color: #fff; /* White text for contrast */
 }
 
 .map-wrapper {
@@ -811,10 +832,12 @@ header {
 #zakat-calculator {
   padding: 15px 12px;
   background: linear-gradient(135deg, #e67e22, #f39c12); /* Orange gradient for zakat */
+  color: #000; /* Black text for contrast */
 }
 
 .dark-theme #zakat-calculator {
   background: linear-gradient(135deg, #d35400, #e67e22); /* Darker orange gradient */
+  color: #fff; /* White text for contrast */
 }
 
 .zakat-container {
