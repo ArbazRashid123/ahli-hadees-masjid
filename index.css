@@ -1,28 +1,28 @@
-/* Base Variables with Advanced Colors */
+/* Base Variables with Updated Colors */
 :root {
-  --bg-color: #f5f5f5; /* Light gray base for depth */
-  --text-color: #ffffff; /* White with shadow for contrast in light mode */
-  --card-bg: rgba(255, 255, 255, 0.2); /* Glassy white */
-  --header-bg: linear-gradient(135deg, #7b1fa2, #00bcd4); /* Purple to cyan */
-  --btn-bg: linear-gradient(45deg, #ff5722, #ffeb3b); /* Orange to yellow micro-gradient */
-  --btn-text: #1a1a1a;
-  --btn-hover-bg: linear-gradient(45deg, #00bcd4, #4caf50); /* Cyan to green */
+  --bg-color: #e0e0e0; /* Soft gray base */
+  --text-color: #333333; /* Dark gray for readability */
+  --card-bg: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  --header-bg: linear-gradient(135deg, #9575cd, #4fc3f7); /* Muted purple to light blue */
+  --btn-bg: #4caf50; /* Solid green */
+  --btn-text: #ffffff;
+  --btn-hover-bg: #388e3c; /* Darker green */
   --btn-hover-text: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.25);
-  --highlight-color: #ffeb3b; /* Radiant yellow for accents */
+  --shadow-color: rgba(0, 0, 0, 0.15); /* Softer shadow */
+  --highlight-color: #fff176; /* Light yellow for accents */
 }
 
 .dark-theme {
-  --bg-color: #121212; /* Deep black base */
-  --text-color: #000000; /* Black with shadow for contrast in dark mode */
-  --card-bg: rgba(18, 18, 18, 0.2); /* Glassy dark */
-  --header-bg: linear-gradient(135deg, #311b92, #006064); /* Indigo to teal */
-  --btn-bg: linear-gradient(45deg, #d81b60, #ffca28); /* Magenta to gold */
+  --bg-color: #1e1e1e; /* Dark gray base */
+  --text-color: #e0e0e0; /* Light gray for readability */
+  --card-bg: rgba(40, 40, 40, 0.5); /* Semi-transparent dark */
+  --header-bg: linear-gradient(135deg, #4527a0, #0277bd); /* Deep purple to muted teal */
+  --btn-bg: #0288d1; /* Solid teal */
   --btn-text: #ffffff;
-  --btn-hover-bg: linear-gradient(45deg, #006064, #1b5e20); /* Teal to forest green */
+  --btn-hover-bg: #0277bd; /* Darker teal */
   --btn-hover-text: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --highlight-color: #ffca28; /* Gold for dark mode */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --highlight-color: #ffcc80; /* Soft gold for dark mode */
 }
 
 /* Reset & Base Styles */
@@ -36,16 +36,7 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background: radial-gradient(circle at center, rgba(123, 31, 162, 0.2), rgba(0, 188, 212, 0.2) 30%, transparent 60%),
-              linear-gradient(to bottom,
-                #7b1fa2 0%, /* Cosmic purple */
-                #ab47bc 20%, /* Lighter purple transition */
-                #00bcd4 40%, /* Electric cyan */
-                #4dd0e1 50%, /* Softer cyan */
-                #ffeb3b 70%, /* Radiant yellow */
-                #ff5722 85%, /* Vibrant orange */
-                #4caf50 100% /* Lush green */
-              );
+  background: radial-gradient(circle at center, rgba(200, 200, 200, 0.3), transparent 60%), var(--bg-color);
   scroll-behavior: smooth;
   font-size: 13px;
   overflow-x: hidden;
@@ -54,21 +45,12 @@ body {
 }
 
 .dark-theme body {
-  background: radial-gradient(circle at center, rgba(49, 27, 146, 0.3), rgba(0, 96, 100, 0.3) 30%, transparent 60%),
-              linear-gradient(to bottom,
-                #311b92 0%, /* Deep indigo */
-                #512da8 20%, /* Softer indigo transition */
-                #006064 40%, /* Deep teal */
-                #0288d1 50%, /* Brighter teal */
-                #ffca28 70%, /* Cosmic gold */
-                #d81b60 85%, /* Vivid magenta */
-                #1b5e20 100% /* Forest green */
-              );
+  background: radial-gradient(circle at center, rgba(50, 50, 50, 0.3), transparent 60%), var(--bg-color);
 }
 
 /* Text Shadow for Visibility */
 h1, h2, h3, .section-title {
-  text-shadow: 0 2px 4px var(--shadow-color);
+  text-shadow: 0 1px 2px var(--shadow-color); /* Subtle shadow */
 }
 
 a {
@@ -82,7 +64,7 @@ a {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, #00bcd4, #ffeb3b); /* Cyan-to-yellow */
+  background: var(--btn-bg); /* Matches button color */
   z-index: 1004;
   transition: width 0.3s ease;
 }
@@ -100,7 +82,7 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
-  box-shadow: 0 4px 12px var(--shadow-color);
+  box-shadow: 0 2px 6px var(--shadow-color);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -113,7 +95,7 @@ a {
 }
 
 #back-to-top:hover {
-  background: #ff5722; /* Vibrant orange hover */
+  background: var(--btn-hover-bg);
   transform: scale(1.1);
 }
 
@@ -159,7 +141,7 @@ a {
 .language-options button:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
+  box-shadow: 0 2px 6px var(--shadow-color); /* Subtle shadow instead of glow */
 }
 
 nav {
@@ -212,7 +194,7 @@ nav .menu-toggle {
 nav ul {
   display: none;
   flex-direction: column;
-  background: rgba(0, 188, 212, 0.95); /* Cyan */
+  background: rgba(76, 175, 80, 0.95); /* Matches light theme button color */
   position: fixed;
   top: 48px;
   left: 0;
@@ -220,6 +202,10 @@ nav ul {
   padding: 10px;
   z-index: 1001;
   list-style: none;
+}
+
+.dark-theme nav ul {
+  background: rgba(2, 136, 209, 0.95); /* Matches dark theme button color */
 }
 
 nav ul.active {
@@ -280,11 +266,15 @@ header {
   left: 12px;
   color: #fff;
   font-size: 0.9em;
-  background: rgba(0, 188, 212, 0.8); /* Cyan glass */
+  background: rgba(76, 175, 80, 0.8); /* Matches light theme button */
   padding: 6px 10px;
   border-radius: 5px;
   z-index: 1000;
   box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.dark-theme #prayer-info {
+  background: rgba(2, 136, 209, 0.8); /* Matches dark theme button */
 }
 
 .current-prayer, .upcoming-prayer {
@@ -299,13 +289,13 @@ header {
 .hero-content h1 {
   font-size: 1.5em;
   font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content h2 {
   font-size: 1.1em;
   margin: 8px 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subheading {
@@ -350,7 +340,6 @@ header {
 #donate-now:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow */
   transform: translateY(-2px);
 }
 
@@ -365,7 +354,7 @@ header {
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  background: linear-gradient(180deg, #ffeb3b, #ff5722); /* Yellow-to-orange */
+  background: var(--btn-bg);
 }
 
 /* Section Backgrounds Set to Transparent */
@@ -391,7 +380,7 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 25s linear infinite; /* Slower scroll */
+  animation: marquee 25s linear infinite;
 }
 
 @keyframes marquee {
@@ -403,7 +392,7 @@ header {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: #ff5722; /* Vibrant orange */
+  color: var(--btn-bg); /* Matches button color */
   font-weight: 600;
   text-shadow: 0 1px 2px var(--shadow-color);
 }
@@ -422,7 +411,7 @@ header {
   align-items: center;
   padding: 10px;
   background: var(--card-bg);
-  border-left: 4px solid #00bcd4; /* Cyan accent */
+  border-left: 4px solid var(--btn-bg); /* Matches button color */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
@@ -431,13 +420,13 @@ header {
 
 .prayer-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: #00bcd4; /* Cyan */
+  color: var(--btn-bg);
 }
 
 .prayer-time {
@@ -470,7 +459,7 @@ header {
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: #7b1fa2; /* Cosmic purple */
+  color: var(--btn-bg); /* Matches button color */
   margin-bottom: 8px;
 }
 
@@ -480,7 +469,7 @@ header {
   font-style: italic;
   padding: 8px;
   background: var(--card-bg);
-  border-left: 3px solid #ffeb3b; /* Yellow accent */
+  border-left: 3px solid var(--highlight-color);
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
@@ -495,7 +484,7 @@ header {
   font-weight: 600;
   text-transform: uppercase;
   position: relative;
-  text-shadow: 0 2px 4px var(--shadow-color);
+  text-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .section-title::after {
@@ -538,17 +527,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #4caf50; /* Lush green */
+  border: 2px solid var(--btn-bg);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .service-icon {
   font-size: 1.8em;
-  color: #4caf50; /* Green */
+  color: var(--btn-bg);
   margin-bottom: 8px;
 }
 
@@ -584,17 +573,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #ff5722; /* Vibrant orange */
+  border: 2px solid var(--btn-bg);
 }
 
 .knowledge-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255, 87, 34, 0.5); /* Orange glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: #ff5722; /* Orange */
+  color: var(--btn-bg);
   margin-bottom: 8px;
 }
 
@@ -619,17 +608,17 @@ header {
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid #7b1fa2; /* Cosmic purple */
+  border: 2px solid var(--btn-bg);
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(123, 31, 162, 0.5); /* Purple glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .event h3 {
   font-size: 1em;
-  color: #7b1fa2; /* Purple */
+  color: var(--btn-bg);
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -659,7 +648,7 @@ header {
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 235, 59, 0.5); /* Yellow glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .community-container {
@@ -682,17 +671,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #00bcd4; /* Cyan */
+  border: 2px solid var(--btn-bg);
 }
 
 .community-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5); /* Cyan glow */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .community-item h3 {
   font-size: 1em;
-  color: #00bcd4; /* Cyan */
+  color: var(--btn-bg);
   margin-bottom: 8px;
 }
 
@@ -735,7 +724,7 @@ header {
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
-  border: 2px solid #ffeb3b; /* Yellow */
+  border: 2px solid var(--highlight-color);
 }
 
 .zakat-note {
@@ -764,13 +753,13 @@ header {
 .zakat-result {
   margin-top: 15px;
   padding: 12px;
-  background: rgba(255, 235, 59, 0.2); /* Light yellow */
+  background: rgba(255, 241, 118, 0.2); /* Light yellow tint */
   border-radius: 10px;
   font-size: 0.85em;
 }
 
 .dark-theme .zakat-result {
-  background: rgba(255, 202, 40, 0.2); /* Light gold */
+  background: rgba(255, 204, 128, 0.2); /* Soft gold tint */
 }
 
 .chatbot-container {
@@ -791,7 +780,7 @@ header {
 }
 
 .chatbot-header {
-  background: linear-gradient(135deg, #00bcd4, #4caf50); /* Cyan-to-green */
+  background: var(--btn-bg);
   color: #fff;
   padding: 8px;
   border-radius: 15px 15px 0 0;
@@ -823,18 +812,18 @@ header {
 }
 
 .bot-message {
-  background: rgba(0, 188, 212, 0.2); /* Light cyan */
+  background: rgba(76, 175, 80, 0.2); /* Light green tint */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
 }
 
 .dark-theme .bot-message {
-  background: rgba(255, 202, 40, 0.2); /* Light gold */
+  background: rgba(2, 136, 209, 0.2); /* Light teal tint */
 }
 
 .user-message {
-  background: rgba(255, 87, 34, 0.2); /* Light orange */
+  background: rgba(255, 241, 118, 0.2); /* Light yellow tint */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
@@ -842,7 +831,7 @@ header {
 }
 
 .dark-theme .user-message {
-  background: rgba(216, 27, 96, 0.2); /* Light magenta */
+  background: rgba(255, 204, 128, 0.2); /* Soft gold tint */
 }
 
 .chat-input-container {
@@ -867,7 +856,7 @@ header {
 }
 
 footer {
-  background: linear-gradient(135deg, #7b1fa2, #4caf50); /* Purple-to-green */
+  background: var(--header-bg); /* Matches header */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
