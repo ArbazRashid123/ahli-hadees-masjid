@@ -280,7 +280,7 @@ header {
 #prayer-info {
   position: absolute;
   top: 50px;
-  left: 12px;
+  left: 1px;
   color: #fff;
   font-size: 0.9em;
   background: rgba(2, 136, 209, 0.85); /* Ocean blue glass */
