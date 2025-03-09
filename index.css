@@ -1,32 +1,32 @@
-/* CSS Variables for Themes */
+/* Base Variables with Enhanced Colors */
 :root {
-  --bg-color: #f5f7fa;
-  --text-color: #333;
-  --section-bg-light: #f9f9f9;
-  --section-bg-white: #fff;
-  --card-bg: #fff;
-  --header-bg: linear-gradient(135deg, #1a3c34, #2e6b5e);
-  --btn-bg: #fff;
-  --btn-text: #006600;
-  --btn-hover-bg: #006600;
-  --btn-hover-text: #fff;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --highlight-color: #006600;
+  --bg-color: #f8f9fa; /* Light off-white for a clean base */
+  --text-color: #2c3e50; /* Deep blue-gray for readability */
+  --section-bg-light: #ecf0f1; /* Subtle light gray */
+  --section-bg-white: #ffffff; /* Pure white */
+  --card-bg: #ffffff;
+  --header-bg: linear-gradient(135deg, #1e90ff, #2c3e50); /* Dynamic blue gradient */
+  --btn-bg: #3498db; /* Vibrant blue for buttons */
+  --btn-text: #ffffff;
+  --btn-hover-bg: #2980b9; /* Darker blue on hover */
+  --btn-hover-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --highlight-color: #e67e22; /* Warm orange for accents */
 }
 
 .dark-theme {
-  --bg-color: #1e1e1e;
-  --text-color: #e0e0e0;
-  --section-bg-light: #2a2a2a;
-  --section-bg-white: #333;
-  --card-bg: #444;
-  --header-bg: linear-gradient(135deg, #0f2925, #1a4a42);
-  --btn-bg: #444;
-  --btn-text: #00cc00;
-  --btn-hover-bg: #00cc00;
-  --btn-hover-text: #fff;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --highlight-color: #00cc00;
+  --bg-color: #2c3e50; /* Deep blue-gray */
+  --text-color: #ecf0f1; /* Light gray for contrast */
+  --section-bg-light: #34495e; /* Darker gray-blue */
+  --section-bg-white: #3e5c76; /* Darker off-white */
+  --card-bg: #3e5c76;
+  --header-bg: linear-gradient(135deg, #1e3799, #0c2461); /* Darker blue gradient */
+  --btn-bg: #3498db;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #e67e22; /* Orange hover in dark mode */
+  --btn-hover-text: #2c3e50;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --highlight-color: #f1c40f; /* Bright yellow for dark mode accents */
 }
 
 /* Reset & Base Styles */
@@ -40,7 +40,7 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background: var(--bg-color);
   scroll-behavior: smooth;
   font-size: 13px;
   overflow-x: hidden;
@@ -59,7 +59,7 @@ a {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, #006600, #00cc00);
+  background: linear-gradient(90deg, #3498db, #f1c40f); /* Dynamic blue-to-gold gradient */
   z-index: 1004;
   transition: width 0.3s ease;
 }
@@ -90,7 +90,7 @@ a {
 }
 
 #back-to-top:hover {
-  background: #00cc00;
+  background: #d35400; /* Darker orange hover */
   transform: scale(1.1);
 }
 
@@ -135,7 +135,7 @@ a {
 .language-options button:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(0, 102, 0, 0.5);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Blue shadow */
 }
 
 nav {
@@ -188,7 +188,7 @@ nav .menu-toggle {
 nav ul {
   display: none;
   flex-direction: column;
-  background: rgba(30, 60, 52, 0.95);
+  background: rgba(52, 152, 219, 0.95); /* Vibrant blue */
   position: fixed;
   top: 48px;
   left: 0;
@@ -213,7 +213,7 @@ nav ul li a {
 nav ul li a:hover {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
-  color: #ffcc00;
+  color: #f1c40f; /* Gold hover */
 }
 
 @media (min-width: 768px) {
@@ -253,10 +253,10 @@ header {
 #prayer-info {
   position: absolute;
   top: 50px;
-  left: 2px;
+  left: 12px;
   color: #fff;
   font-size: 0.9em;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(52, 152, 219, 0.8); /* Blue glass effect */
   padding: 6px 10px;
   border-radius: 5px;
   z-index: 1000;
@@ -325,7 +325,7 @@ header {
 #donate-now:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(0, 102, 0, 0.5);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Blue shadow */
   transform: translateY(-2px);
 }
 
@@ -334,43 +334,48 @@ header {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 35px;
-  height: 130px;
+  width: 40px;
+  height: 120px;
   padding: 10px;
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  font-weight: 600;
+  background: linear-gradient(180deg, #e67e22, #f1c40f); /* Orange-to-gold gradient */
 }
 
 #announcements {
   padding: 12px;
-  background: #fef8e6;
+  background: linear-gradient(120deg, #27ae60, #2ecc71); /* Vibrant green gradient */
+  color: #fff;
 }
 
 .dark-theme #announcements {
-  background: #3a2e1a;
+  background: linear-gradient(120deg, #219653, #27ae60); /* Darker green gradient */
 }
 
 .announcement-marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #f1c40f; /* Gold border */
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 2px 6px var(--shadow-color);
 }
 
+.dark-theme .announcement-marquee {
+  background: rgba(46, 204, 113, 0.2); /* Green-tinted glass */
+}
+
 .marquee-track {
   display: inline-block;
-  animation: marquee 60s linear infinite;
+  animation: marquee 60s linear infinite running;
 }
 
 .marquee-content span {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: #ff0000;
+  color: #e74c3c; /* Red for urgency */
+  font-weight: 600;
 }
 
 @keyframes marquee {
@@ -380,7 +385,11 @@ header {
 
 #prayer-times {
   padding: 15px 12px;
-  background: var(--section-bg-light);
+  background: linear-gradient(135deg, #3498db, #5dade2); /* Soothing blue gradient */
+}
+
+.dark-theme #prayer-times {
+  background: linear-gradient(135deg, #1e90ff, #21618c); /* Darker blue gradient */
 }
 
 .prayer-times-vertical {
@@ -396,10 +405,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #2980b9; /* Blue accent */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease;
+}
+
+.dark-theme .prayer-item {
+  background: rgba(52, 152, 219, 0.2);
 }
 
 .prayer-item:hover {
@@ -409,7 +423,7 @@ header {
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: var(--highlight-color);
+  color: #2980b9; /* Blue for prayer names */
 }
 
 .prayer-time {
@@ -419,11 +433,11 @@ header {
 
 #ramadan {
   padding: 15px 12px;
-  background: linear-gradient(135deg, #f8e8c9, #fef8e6);
+  background: linear-gradient(150deg, #8e44ad, #d7bde2); /* Purple gradient for spirituality */
 }
 
 .dark-theme #ramadan {
-  background: linear-gradient(135deg, #3a2e1a, #4a3c22);
+  background: linear-gradient(150deg, #6c3483, #9b59b6); /* Darker purple gradient */
 }
 
 .ramadan-container {
@@ -438,7 +452,7 @@ header {
 }
 
 .dark-theme .ramadan-container {
-  background: rgba(68, 68, 68, 0.9);
+  background: rgba(142, 68, 173, 0.2); /* Purple-tinted glass */
 }
 
 .ramadan-times,
@@ -453,7 +467,7 @@ header {
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: var(--highlight-color);
+  color: #8e44ad; /* Purple for titles */
   margin-bottom: 8px;
 }
 
@@ -462,12 +476,17 @@ header {
   font-size: 0.85em;
   font-style: italic;
   padding: 8px;
-  background: var(--section-bg-light);
-  border-left: 3px solid var(--highlight-color);
+  background: #f5f6fa; /* Light gray */
+  border-left: 3px solid #9b59b6; /* Purple accent */
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
   overflow-y: auto;
+}
+
+.dark-theme #hadith-text,
+.dark-theme #quran-aayah-text {
+  background: rgba(155, 89, 182, 0.3);
 }
 
 .section-title {
@@ -494,8 +513,11 @@ header {
 
 #about {
   padding: 15px 12px;
-  background: var(--section-bg-white);
-  text-align: center;
+  background: linear-gradient(135deg, #f39c12, #f1c40f); /* Warm gold gradient */
+}
+
+.dark-theme #about {
+  background: linear-gradient(135deg, #e67e22, #d35400); /* Darker orange gradient */
 }
 
 #about .content p {
@@ -504,12 +526,16 @@ header {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  font-weight: 600;
+  color: #fff; /* White text for contrast */
 }
 
 #services {
   padding: 15px 12px;
-  background: var(--section-bg-light);
+  background: linear-gradient(135deg, #16a085, #1abc9c); /* Teal gradient */
+}
+
+.dark-theme #services {
+  background: linear-gradient(135deg, #0e6655, #148f77); /* Darker teal gradient */
 }
 
 .services-container {
@@ -521,7 +547,7 @@ header {
 }
 
 .service-card {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.95);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -531,16 +557,21 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+  border: 2px solid #1abc9c; /* Teal border */
+}
+
+.dark-theme .service-card {
+  background: rgba(26, 188, 156, 0.2);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 0 15px rgba(26, 188, 156, 0.5); /* Teal shadow */
 }
 
 .service-icon {
   font-size: 1.8em;
-  color: var(--highlight-color);
+  color: #16a085; /* Teal for icons */
   margin-bottom: 8px;
 }
 
@@ -558,7 +589,11 @@ header {
 
 #knowledge {
   padding: 15px 12px;
-  background: var(--section-bg-white);
+  background: linear-gradient(135deg, #e74c3c, #ff6b6b); /* Red gradient for knowledge */
+}
+
+.dark-theme #knowledge {
+  background: linear-gradient(135deg, #c0392b, #e74c3c); /* Darker red gradient */
 }
 
 .knowledge-container {
@@ -570,7 +605,7 @@ header {
 }
 
 .knowledge-item {
-  background: var(--section-bg-light);
+  background: rgba(255, 255, 255, 0.9);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -580,16 +615,21 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
+  border: 2px solid #e74c3c; /* Red border */
+}
+
+.dark-theme .knowledge-item {
+  background: rgba(231, 76, 60, 0.2);
 }
 
 .knowledge-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5); /* Red shadow */
 }
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: var(--highlight-color);
+  color: #e74c3c; /* Red for titles */
   margin-bottom: 8px;
 }
 
@@ -601,7 +641,11 @@ header {
 
 #events {
   padding: 15px 12px;
-  background: var(--section-bg-light);
+  background: linear-gradient(135deg, #8e44ad, #9b59b6); /* Purple gradient for events */
+}
+
+.dark-theme #events {
+  background: linear-gradient(135deg, #6c3483, #8e44ad); /* Darker purple gradient */
 }
 
 .events-container {
@@ -613,40 +657,49 @@ header {
 }
 
 .event {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.95);
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #9b59b6; /* Purple border */
+}
+
+.dark-theme .event {
+  background: rgba(155, 89, 182, 0.2);
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.5); /* Purple shadow */
 }
 
 .event h3 {
   font-size: 1em;
-  color: var(--highlight-color);
+  color: #8e44ad; /* Purple for titles */
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .event p {
-  font-size: 0.75em;
+  font-size: 0.85em;
   margin-bottom: 10px;
   font-weight: 600;
 }
 
 #gallery {
   padding: 15px 12px;
-  background: var(--section-bg-white);
-  text-align: center;
+  background: linear-gradient(135deg, #f1c40f, #f39c12); /* Gold gradient for gallery */
+}
+
+.dark-theme #gallery {
+  background: linear-gradient(135deg, #d35400, #e67e22); /* Darker gold gradient */
 }
 
 .gallery-container p {
   font-size: 0.85em;
   margin-bottom: 15px;
+  color: #fff; /* White text for contrast */
 }
 
 .gallery-grid {
@@ -668,12 +721,16 @@ header {
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 0 15px rgba(241, 196, 15, 0.5); /* Gold shadow */
 }
 
 #community {
   padding: 15px 12px;
-  background: var(--section-bg-light);
+  background: linear-gradient(135deg, #2ecc71, #27ae60); /* Green gradient for community */
+}
+
+.dark-theme #community {
+  background: linear-gradient(135deg, #27ae60, #219653); /* Darker green gradient */
 }
 
 .community-container {
@@ -685,7 +742,7 @@ header {
 }
 
 .community-item {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.95);
   padding: 12px;
   border-radius: 10px;
   text-align: center;
@@ -695,28 +752,36 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
+  border: 2px solid #2ecc71; /* Green border */
+}
+
+.dark-theme .community-item {
+  background: rgba(46, 204, 113, 0.2);
 }
 
 .community-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5); /* Green shadow */
 }
 
 .community-item h3 {
   font-size: 1em;
-  color: var(--highlight-color);
+  color: #27ae60; /* Green for titles */
   margin-bottom: 8px;
 }
 
 .community-item p {
   font-size: 0.85em;
   margin-bottom: 10px;
-  font-weight: 600;
 }
 
 #location {
   padding: 15px 12px;
-  background: var(--section-bg-white);
+  background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient for location */
+}
+
+.dark-theme #location {
+  background: linear-gradient(135deg, #21618c, #1e90ff); /* Darker blue gradient */
 }
 
 .location-container {
@@ -728,6 +793,7 @@ header {
 .location-content p {
   font-size: 0.85em;
   margin-bottom: 15px;
+  color: #fff; /* White text for contrast */
 }
 
 .map-wrapper {
@@ -744,7 +810,11 @@ header {
 
 #zakat-calculator {
   padding: 15px 12px;
-  background: var(--section-bg-light);
+  background: linear-gradient(135deg, #e67e22, #f39c12); /* Orange gradient for zakat */
+}
+
+.dark-theme #zakat-calculator {
+  background: linear-gradient(135deg, #d35400, #e67e22); /* Darker orange gradient */
 }
 
 .zakat-container {
@@ -753,10 +823,15 @@ header {
 }
 
 .zakat-form {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.95);
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  border: 2px solid #f39c12; /* Orange border */
+}
+
+.dark-theme .zakat-form {
+  background: rgba(243, 156, 18, 0.2);
 }
 
 .zakat-note {
@@ -785,13 +860,13 @@ header {
 .zakat-result {
   margin-top: 15px;
   padding: 12px;
-  background: #e6f3e6;
+  background: #e6f3e6; /* Light green for results */
   border-radius: 10px;
   font-size: 0.85em;
 }
 
 .dark-theme .zakat-result {
-  background: #2a4d2a;
+  background: #2a4d2a; /* Darker green */
 }
 
 .chatbot-container {
@@ -811,7 +886,7 @@ header {
 }
 
 .chatbot-header {
-  background: var(--highlight-color);
+  background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient */
   color: #fff;
   padding: 8px;
   border-radius: 15px 15px 0 0;
@@ -832,7 +907,7 @@ header {
 }
 
 .close-chat:hover {
-  color: #ffcc00;
+  color: #f1c40f; /* Gold hover */
 }
 
 .chat-messages {
@@ -843,14 +918,14 @@ header {
 }
 
 .bot-message {
-  background: #e6f3e6;
+  background: #e6f3e6; /* Light green */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
 }
 
 .dark-theme .bot-message {
-  background: #2a4d2a;
+  background: #2a4d2a; /* Darker green */
 }
 
 .user-message {
@@ -887,7 +962,7 @@ header {
 }
 
 footer {
-  background: var(--header-bg);
+  background: linear-gradient(135deg, #2c3e50, #1e90ff); /* Reverse header gradient */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
@@ -921,7 +996,7 @@ footer {
 }
 
 .social-icons a:hover {
-  color: #ffcc00;
+  color: #f1c40f; /* Gold hover */
   transform: scale(1.2);
 }
 
@@ -938,10 +1013,11 @@ footer {
 }
 
 .dark-theme .glass {
-  background: rgba(68, 68, 68, 0.95);
+  background: rgba(59, 74, 107, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Media Queries */
 @media (max-width: 767px) {
   nav {
     padding: 6px 10px;
@@ -1033,6 +1109,7 @@ footer {
   }
 }
 
+/* AOS Animations */
 [data-aos] {
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
