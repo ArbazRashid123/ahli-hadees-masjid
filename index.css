@@ -1,28 +1,28 @@
-/* Base Variables with Enhanced Colors */
+/* Base Variables with Soothing Colors */
 :root {
   --bg-color: #f8f9fa; /* Light off-white base */
-  --text-color: #000000; /* Black for readability in light mode */
-  --card-bg: rgba(255, 255, 255, 0.75); /* Semi-transparent white for cards */
-  --header-bg: linear-gradient(135deg, #00c4b4, #0288d1); /* Teal to blue gradient */
-  --btn-bg: #0288d1; /* Vibrant blue for buttons */
+  --text-color: #1a1a1a; /* Dark gray for better contrast in light mode */
+  --card-bg: rgba(255, 255, 255, 0.85); /* Slightly opaque white for cards */
+  --header-bg: linear-gradient(135deg, #80deea, #4dd0e1); /* Soft teal gradient */
+  --btn-bg: #4dd0e1; /* Calm teal for buttons */
   --btn-text: #ffffff;
-  --btn-hover-bg: #ff6f61; /* Coral on hover */
-  --btn-hover-text: #ffffff;
+  --btn-hover-bg: #ffccbc; /* Soft peach on hover */
+  --btn-hover-text: #1a1a1a;
   --shadow-color: rgba(0, 0, 0, 0.15);
-  --highlight-color: #ffca28; /* Warm yellow for accents */
+  --highlight-color: #ffccbc; /* Soft peach for accents */
 }
 
 .dark-theme {
-  --bg-color: #1a3c34; /* Deep teal base */
-  --text-color: #ffffff; /* White for readability in dark mode */
-  --card-bg: rgba(0, 0, 0, 0.75); /* Semi-transparent black for cards */
-  --header-bg: linear-gradient(135deg, #1a3c34, #4a148c); /* Dark teal to purple */
-  --btn-bg: #0288d1;
+  --bg-color: #263238; /* Deep blue-gray base */
+  --text-color: #ffffff; /* White for dark mode */
+  --card-bg: rgba(38, 50, 56, 0.85); /* Dark gray with opacity */
+  --header-bg: linear-gradient(135deg, #37474f, #455a64); /* Darker teal gradient */
+  --btn-bg: #4dd0e1;
   --btn-text: #ffffff;
-  --btn-hover-bg: #ff6f61; /* Coral hover in dark mode */
-  --btn-hover-text: #ffffff;
+  --btn-hover-bg: #ffccbc;
+  --btn-hover-text: #263238;
   --shadow-color: rgba(0, 0, 0, 0.4);
-  --highlight-color: #ffca28; /* Yellow for dark mode accents */
+  --highlight-color: #ffccbc;
 }
 
 /* Reset & Base Styles */
@@ -37,17 +37,12 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: linear-gradient(to bottom,
-    #00c4b4 0%, /* Teal - Announcements */
-    #4dd0e1 10%, /* Light cyan - transition */
-    #0288d1 20%, /* Blue - Prayer Times */
-    #42a5f5 30%, /* Lighter blue - transition */
-    #6a1b9a 40%, /* Deep purple - Ramadan */
-    #ab47bc 50%, /* Lighter purple - transition */
-    #ffca28 60%, /* Gold - About/Services */
-    #ffb300 70%, /* Amber - transition */
-    #ff6f61 80%, /* Coral - Knowledge/Events */
-    #ef5350 90%, /* Softer red - transition */
-    #00c4b4 100% /* Teal - Community/Location */
+    #80deea 0%, /* Soft teal - Announcements */
+    #b0bec5 20%, /* Light gray-blue - transition */
+    #ce93d8 40%, /* Soft lavender - Prayer Times/Ramadan */
+    #f8bbd0 60%, /* Pale pink - About/Services */
+    #ffccbc 80%, /* Soft peach - Knowledge/Events */
+    #b2ebf2 100% /* Light cyan - Community/Location */
   );
   scroll-behavior: smooth;
   font-size: 13px;
@@ -58,17 +53,12 @@ body {
 
 .dark-theme body {
   background: linear-gradient(to bottom,
-    #1a3c34 0%, /* Dark teal - Announcements */
-    #00695c 10%, /* Darker teal - transition */
-    #4a148c 20%, /* Deep purple - Prayer Times */
-    #6a1b9a 30%, /* Lighter purple - transition */
-    #311b92 40%, /* Indigo - Ramadan */
-    #512da8 50%, /* Softer indigo - transition */
-    #ff6f61 60%, /* Coral - About/Services */
-    #d81b60 70%, /* Pinkish red - transition */
-    #b71c1c 80%, /* Deep red - Knowledge/Events */
-    #880e4f 90%, /* Dark magenta - transition */
-    #1a3c34 100% /* Dark teal - Community/Location */
+    #37474f 0%, /* Dark teal - Announcements */
+    #455a64 20%, /* Darker gray-blue - transition */
+    #4a148c 40%, /* Deep purple - Prayer Times/Ramadan */
+    #6a1b9a 60%, /* Softer purple - About/Services */
+    #880e4f 80%, /* Dark magenta - Knowledge/Events */
+    #263238 100% /* Deep blue-gray - Community/Location */
   );
 }
 
@@ -83,7 +73,7 @@ a {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, #0288d1, #ffca28); /* Blue-to-yellow gradient */
+  background: linear-gradient(90deg, #4dd0e1, #ffccbc); /* Teal-to-peach gradient */
   z-index: 1004;
   transition: width 0.3s ease;
 }
@@ -93,7 +83,7 @@ a {
   bottom: 20px;
   right: 10px;
   background: var(--highlight-color);
-  color: #fff;
+  color: var(--btn-text);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -114,7 +104,7 @@ a {
 }
 
 #back-to-top:hover {
-  background: #ff6f61; /* Coral hover */
+  background: #ff8a65; /* Deeper peach hover */
   transform: scale(1.1);
 }
 
@@ -159,7 +149,7 @@ a {
 .language-options button:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(2, 136, 209, 0.5); /* Blue shadow */
+  box-shadow: 0 0 10px rgba(77, 208, 225, 0.5); /* Teal shadow */
 }
 
 nav {
@@ -212,7 +202,7 @@ nav .menu-toggle {
 nav ul {
   display: none;
   flex-direction: column;
-  background: rgba(2, 136, 209, 0.95); /* Vibrant blue */
+  background: rgba(77, 208, 225, 0.95); /* Soft teal */
   position: fixed;
   top: 48px;
   left: 0;
@@ -280,7 +270,7 @@ header {
   left: 12px;
   color: #fff;
   font-size: 0.9em;
-  background: rgba(2, 136, 209, 0.8); /* Blue glass effect */
+  background: rgba(77, 208, 225, 0.8); /* Teal glass effect */
   padding: 6px 10px;
   border-radius: 5px;
   z-index: 1000;
@@ -349,7 +339,7 @@ header {
 #donate-now:hover {
   background: var(--btn-hover-bg);
   color: var(--btn-hover-text);
-  box-shadow: 0 0 10px rgba(255, 111, 97, 0.5); /* Coral shadow */
+  box-shadow: 0 0 10px rgba(255, 204, 188, 0.5); /* Peach shadow */
   transform: translateY(-2px);
 }
 
@@ -364,7 +354,7 @@ header {
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
-  background: linear-gradient(180deg, #ffca28, #ff6f61); /* Yellow-to-coral gradient */
+  background: linear-gradient(180deg, #ffccbc, #ff8a65); /* Peach gradient */
 }
 
 /* Section Backgrounds Set to Transparent */
@@ -374,7 +364,7 @@ header {
   max-width: 100%;
 }
 
-/* Announcements Section with Single-Line Scrolling */
+/* Announcements Section with Slower Scrolling */
 .announcement-marquee {
   background: var(--card-bg);
   border: 2px solid var(--highlight-color);
@@ -389,7 +379,7 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 15s linear infinite; /* Smooth scrolling */
+  animation: marquee 25s linear infinite; /* Slower, soothing scroll */
 }
 
 @keyframes marquee {
@@ -401,7 +391,7 @@ header {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: #ff6f61; /* Coral for urgency */
+  color: #ff8a65; /* Softer peach for urgency */
   font-weight: 600;
 }
 
@@ -419,7 +409,7 @@ header {
   align-items: center;
   padding: 10px;
   background: var(--card-bg);
-  border-left: 4px solid #0288d1; /* Blue accent */
+  border-left: 4px solid #4dd0e1; /* Teal accent */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease;
@@ -432,7 +422,7 @@ header {
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: #0288d1; /* Blue for prayer names */
+  color: #4dd0e1; /* Teal for prayer names */
 }
 
 .prayer-time {
@@ -442,7 +432,7 @@ header {
 
 .ramadan-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 12px;
   padding: 12px;
   background: var(--card-bg);
@@ -463,7 +453,7 @@ header {
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: #6a1b9a; /* Purple for titles */
+  color: #ce93d8; /* Lavender for titles */
   margin-bottom: 8px;
 }
 
@@ -473,7 +463,7 @@ header {
   font-style: italic;
   padding: 8px;
   background: var(--card-bg);
-  border-left: 3px solid #ab47bc; /* Lighter purple accent */
+  border-left: 3px solid #f8bbd0; /* Pale pink accent */
   border-radius: 5px;
   word-wrap: break-word;
   max-height: 100px;
@@ -488,6 +478,7 @@ header {
   font-weight: 600;
   text-transform: uppercase;
   position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Enhance visibility */
 }
 
 .section-title::after {
@@ -512,7 +503,7 @@ header {
 
 .services-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -529,17 +520,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #00c4b4; /* Teal border */
+  border: 2px solid #ffccbc; /* Peach border */
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 196, 180, 0.5); /* Teal shadow */
+  box-shadow: 0 0 15px rgba(255, 204, 188, 0.5); /* Peach shadow */
 }
 
 .service-icon {
   font-size: 1.8em;
-  color: #00c4b4; /* Teal for icons */
+  color: #ffccbc; /* Peach for icons */
   margin-bottom: 8px;
 }
 
@@ -557,7 +548,7 @@ header {
 
 .knowledge-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -574,17 +565,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #ff6f61; /* Coral border */
+  border: 2px solid #ff8a65; /* Deeper peach border */
 }
 
 .knowledge-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255, 111, 97, 0.5); /* Coral shadow */
+  box-shadow: 0 0 15px rgba(255, 138, 101, 0.5); /* Deeper peach shadow */
 }
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: #ff6f61; /* Coral for titles */
+  color: #ff8a65; /* Deeper peach for titles */
   margin-bottom: 8px;
 }
 
@@ -596,7 +587,7 @@ header {
 
 .events-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -608,17 +599,17 @@ header {
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid #6a1b9a; /* Purple border */
+  border: 2px solid #ce93d8; /* Lavender border */
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(106, 27, 154, 0.5); /* Purple shadow */
+  box-shadow: 0 0 15px rgba(206, 147, 216, 0.5); /* Lavender shadow */
 }
 
 .event h3 {
   font-size: 1em;
-  color: #6a1b9a; /* Purple for titles */
+  color: #ce93d8; /* Lavender for titles */
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -631,7 +622,7 @@ header {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 10px;
   max-width: 90%;
   margin: 0 auto 15px;
@@ -648,12 +639,12 @@ header {
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 202, 40, 0.5); /* Yellow shadow */
+  box-shadow: 0 0 15px rgba(255, 204, 188, 0.5); /* Peach shadow */
 }
 
 .community-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Restored original grid */
   gap: 10px;
   max-width: 90%;
   margin: 0 auto;
@@ -670,17 +661,17 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid #00c4b4; /* Teal border */
+  border: 2px solid #b2ebf2; /* Light cyan border */
 }
 
 .community-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 196, 180, 0.5); /* Teal shadow */
+  box-shadow: 0 0 15px rgba(178, 235, 242, 0.5); /* Light cyan shadow */
 }
 
 .community-item h3 {
   font-size: 1em;
-  color: #00c4b4; /* Teal for titles */
+  color: #b2ebf2; /* Light cyan for titles */
   margin-bottom: 8px;
 }
 
@@ -722,7 +713,7 @@ header {
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 2px 6px var(--shadow-color);
-  border: 2px solid #ffca28; /* Yellow border */
+  border: 2px solid #ffccbc; /* Peach border */
 }
 
 .zakat-note {
@@ -751,13 +742,13 @@ header {
 .zakat-result {
   margin-top: 15px;
   padding: 12px;
-  background: rgba(255, 202, 40, 0.2); /* Light yellow for results */
+  background: rgba(255, 204, 188, 0.2); /* Light peach for results */
   border-radius: 10px;
   font-size: 0.85em;
 }
 
 .dark-theme .zakat-result {
-  background: rgba(255, 111, 97, 0.2); /* Light coral in dark mode */
+  background: rgba(255, 138, 101, 0.2); /* Deeper peach in dark mode */
 }
 
 .chatbot-container {
@@ -777,7 +768,7 @@ header {
 }
 
 .chatbot-header {
-  background: linear-gradient(135deg, #0288d1, #00c4b4); /* Blue-to-teal gradient */
+  background: linear-gradient(135deg, #4dd0e1, #80deea); /* Teal gradient */
   color: #fff;
   padding: 8px;
   border-radius: 15px 15px 0 0;
@@ -809,18 +800,18 @@ header {
 }
 
 .bot-message {
-  background: rgba(0, 196, 180, 0.2); /* Light teal */
+  background: rgba(77, 208, 225, 0.2); /* Light teal */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
 }
 
 .dark-theme .bot-message {
-  background: rgba(255, 111, 97, 0.2); /* Light coral */
+  background: rgba(255, 138, 101, 0.2); /* Light peach */
 }
 
 .user-message {
-  background: rgba(255, 202, 40, 0.2); /* Light yellow */
+  background: rgba(255, 204, 188, 0.2); /* Light peach */
   padding: 6px;
   border-radius: 5px;
   margin: 4px 0;
@@ -828,7 +819,7 @@ header {
 }
 
 .dark-theme .user-message {
-  background: rgba(106, 27, 154, 0.2); /* Light purple */
+  background: rgba(69, 90, 100, 0.2); /* Dark gray-blue */
 }
 
 .chat-input-container {
@@ -853,7 +844,7 @@ header {
 }
 
 footer {
-  background: linear-gradient(135deg, #0288d1, #00c4b4); /* Blue-to-teal gradient */
+  background: linear-gradient(135deg, #263238, #4dd0e1); /* Blue-gray to teal */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
@@ -861,7 +852,7 @@ footer {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Single column for mobile */
   gap: 15px;
   max-width: 90%;
   margin: 0 auto;
@@ -931,14 +922,16 @@ footer {
   .section-title {
     font-size: 1.3em;
   }
-  .prayer-times-vertical,
+  .prayer-times-vertical {
+    flex-direction: column;
+  }
   .ramadan-container,
   .services-container,
   .knowledge-container,
   .events-container,
   .community-container,
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column for mobile */
     gap: 8px;
   }
   .chatbot-container {
@@ -988,7 +981,7 @@ footer {
   .events-container,
   .community-container,
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Restored original grid */
     max-width: 800px;
     gap: 15px;
   }
