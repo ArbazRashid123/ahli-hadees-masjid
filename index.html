@@ -229,22 +229,6 @@
     </div>
   </section>
 
-  <section id="hadith-verification" data-aos="fade-up">
-  <h2 class="section-title">Hadith Chain Authentication</h2>
-  <div class="hadith-verification-container glass">
-    <p class="hadith-note">Enter a Hadith or its chain (Isnad) below, and our AI will verify its authenticity.</p>
-    <div class="hadith-inputs">
-      <label for="hadith-input">Hadith Text or Chain (Isnad):</label>
-      <textarea id="hadith-input" placeholder="Enter Hadith or Isnad (e.g., Narrated by A from B from C...)" rows="4"></textarea>
-    </div>
-    <button id="verify-hadith">Verify Hadith</button>
-    <div class="hadith-result" id="hadith-result">
-      <p>Authenticity: <span id="authenticity-rating">Awaiting input...</span></p>
-      <p>Details: <span id="authenticity-details">Enter a Hadith to see the analysis.</span></p>
-    </div>
-  </div>
-</section>
-
   <section id="zakat-calculator" data-aos="fade-up">
     <h2 class="section-title">Zakat Calculator</h2>
     <div class="zakat-container">
@@ -892,105 +876,6 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-
-
-
-    document.getElementById('verify-hadith').addEventListener('click', () => {
-  const hadithInput = document.getElementById('hadith-input').value.trim().toLowerCase();
-  const authenticityRating = document.getElementById('authenticity-rating');
-  const authenticityDetails = document.getElementById('authenticity-details');
-
-  if (!hadithInput) {
-    authenticityRating.textContent = 'Error';
-    authenticityDetails.textContent = 'Please enter a Hadith or its chain (Isnad) to verify.';
-    return;
-  }
-
-  // Simulated AI logic (rule-based for demo)
-  const verifyHadith = (input) => {
-    // Example rules (for demonstration only)
-    if (input.includes('bukhari') || input.includes('muslim')) {
-      return {
-        rating: 'Sahih',
-        details: 'This Hadith appears to be from a highly reliable source (Sahih Bukhari or Muslim).'
-      };
-    } else if (input.includes('tirmidhi') || input.includes('abu dawud')) {
-      return {
-        rating: 'Hasan',
-        details: 'This Hadith is likely Hasan (good), based on its chain and source.'
-      };
-    } else if (input.length < 20 || !input.includes('narrated')) {
-      return {
-        rating: 'Da’if',
-        details: 'This Hadith lacks sufficient chain details or is from a weak source.'
-      };
-    } else {
-      return {
-        rating: 'Unknown',
-        details: 'Unable to verify with current data. Please provide more details or check with a scholar.'
-      };
-    }
-  };
-
-  // Simulate processing delay
-  authenticityRating.textContent = 'Verifying...';
-  authenticityDetails.textContent = 'Analyzing the chain and text...';
-  setTimeout(() => {
-    const result = verifyHadith(hadithInput);
-    authenticityRating.textContent = result.rating;
-    authenticityDetails.textContent = result.details;
-  }, 1500); // 1.5-second delay to mimic AI processing
-
-  // Placeholder for real AI/database integration
-  /*
-  fetch('https://api.sunnah.com/v1/hadiths/random', {
-    headers: { 'X-API-Key': 'YOUR_API_KEY' }
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Process Hadith chain and authenticity using API data
-      const chain = data.isnad; // Hypothetical field
-      const rating = analyzeChain(chain); // Custom AI logic
-      authenticityRating.textContent = rating;
-      authenticityDetails.textContent = `Based on analysis of chain: ${chain}`;
-    })
-    .catch(() => {
-      authenticityRating.textContent = 'Error';
-      authenticityDetails.textContent = 'Could not connect to Hadith database.';
-    });
-  */
-});
-
-// Update navigation to include Hadith Verification
-const navUl = document.querySelector('nav ul');
-navUl.innerHTML += '<li><a href="#hadith-verification">Hadith Verification</a></li>';
-
-// Update translations object to include Hadith Verification
-translations.en.nav.push('Hadith Verification');
-translations.ur.nav.push('حدیث کی تصدیق');
-translations.ar.nav.push('التحقق من الحديث');
-
-// Update language change function to include section title
-function changeLanguage(lang) {
-  // Existing code...
-  document.querySelector('#hadith-verification .section-title').textContent = 
-    lang === 'en' ? 'Hadith Chain Authentication' :
-    lang === 'ur' ? 'حدیث کی سلسلہ تصدیق' :
-    'التحقق من سلسلة الحديث';
-  document.querySelector('.hadith-note').textContent = 
-    lang === 'en' ? 'Enter a Hadith or its chain (Isnad) below, and our AI will verify its authenticity.' :
-    lang === 'ur' ? 'نیچے حدیث یا اس کی سلسلہ (اسناد) درج کریں، اور ہمارا AI اس کی صداقت کی تصدیق کرے گا۔' :
-    'أدخل حديثًا أو سلسلته (الإسناد) أدناه، وسيقوم الذكاء الاصطناعي بالتحقق من صحته.';
-  document.querySelector('label[for="hadith-input"]').textContent = 
-    lang === 'en' ? 'Hadith Text or Chain (Isnad):' :
-    lang === 'ur' ? 'حدیث کا متن یا سلسلہ (اسناد):' :
-    'نص الحديث أو سلسلته (الإسناد):';
-  document.getElementById('verify-hadith').textContent = 
-    lang === 'en' ? 'Verify Hadith' :
-    lang === 'ur' ? 'حدیث کی تصدیق کریں' :
-    'تحقق من الحديث';
-}
   </script>
 </body>
 </html>
