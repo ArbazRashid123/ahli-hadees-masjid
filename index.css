@@ -39,13 +39,12 @@ body {
   background: radial-gradient(circle at 50% 30%, rgba(109, 76, 65, 0.15), rgba(2, 136, 209, 0.15) 20%, rgba(255, 138, 101, 0.15) 40%, transparent 70%),
               linear-gradient(to bottom,
                 #6d4c41 0%, /* Warm brown */
-                #8d6e63 15%, /* Softer brown */
+                #8d6e63 15%, /* Softer brown transition */
                 #0288d1 30%, /* Ocean blue */
                 #4fc3f7 45%, /* Lighter blue */
                 #ff8a65 60%, /* Soft coral */
-                #fff3e0 70%, /* Pale peach for Gallery */
-                #a5d6a7 80%, /* Mint green for Community */
-                #e0f7fa 90%, /* Light cyan for Location */
+                #ffccbc 75%, /* Pale coral transition */
+                #a5d6a7 85%, /* Mint green */
                 #e1bee7 100% /* Lavender glow */
               );
   scroll-behavior: smooth;
@@ -63,16 +62,15 @@ body {
                 #00695c 30%, /* Teal dusk */
                 #00897b 45%, /* Brighter teal */
                 #d81b60 60%, /* Twilight magenta */
-                #37474f 70%, /* Dark gray for Gallery */
-                #455a64 80%, /* Gray-blue for Community */
-                #263238 90%, /* Charcoal blue for Location */
-                #4a148c 100% /* Royal purple */
+                #ad1457 75%, /* Softer magenta */
+                #4a148c 85%, /* Royal purple */
+                #263238 100% /* Charcoal blue */
               );
 }
 
 /* Enhanced Text Visibility */
 h1, h2, h3, .section-title {
-  text-shadow: 0 3px 8px var(--shadow-color), 0 0 1px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+  text-shadow: 0 2px 6px var(--shadow-color), 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -374,41 +372,11 @@ header {
   background: linear-gradient(180deg, #ff8a65, #a5d6a7); /* Coral-to-mint */
 }
 
-/* Section Backgrounds with Adjustments */
-#announcements, #prayer-times, #ramadan, #about, #services, #knowledge, #events, #zakat-calculator {
+/* Section Backgrounds Set to Transparent */
+#announcements, #prayer-times, #ramadan, #about, #services, #knowledge, #events, #gallery, #community, #location, #zakat-calculator {
   background: transparent;
   padding: 12px;
   max-width: 100%;
-}
-
-#gallery {
-  background: rgba(255, 243, 224, 0.3); /* Pale peach overlay for Gallery */
-  padding: 12px;
-  max-width: 100%;
-}
-
-.dark-theme #gallery {
-  background: rgba(55, 71, 79, 0.3); /* Dark gray overlay for Gallery */
-}
-
-#community {
-  background: rgba(165, 214, 167, 0.3); /* Mint green overlay for Community */
-  padding: 12px;
-  max-width: 100%;
-}
-
-.dark-theme #community {
-  background: rgba(69, 90, 100, 0.3); /* Gray-blue overlay for Community */
-}
-
-#location {
-  background: rgba(224, 247, 250, 0.3); /* Light cyan overlay for Location */
-  padding: 12px;
-  max-width: 100%;
-}
-
-.dark-theme #location {
-  background: rgba(38, 50, 56, 0.3); /* Charcoal overlay for Location */
 }
 
 /* Announcements Section */
@@ -531,7 +499,7 @@ header {
   font-weight: 600;
   text-transform: uppercase;
   position: relative;
-  text-shadow: 0 3px 8px var(--shadow-color); /* Enhanced shadow */
+  text-shadow: 0 2px 6px var(--shadow-color);
 }
 
 .section-title::after {
