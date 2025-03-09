@@ -340,6 +340,7 @@ header {
   text-align: center;
   writing-mode: vertical-rl;
   z-index: 1000;
+  font-weight: 600;
 }
 
 #announcements {
