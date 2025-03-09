@@ -1031,3 +1031,91 @@ footer {
 [data-aos="zoom-in"] {
   transform: scale(0.9);
 }
+
+
+
+
+
+
+
+
+.hadith-verification-container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 15px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(10px);
+  border: 2px solid #ff5722; /* Vibrant orange border */
+}
+
+.hadith-note {
+  font-size: 0.85em;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.hadith-inputs label {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 12px 0 4px;
+  color: #ff5722; /* Orange label */
+}
+
+.hadith-inputs textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 0.85em;
+  background: var(--card-bg);
+  color: var(--text-color);
+  resize: vertical;
+  min-height: 100px;
+}
+
+#verify-hadith {
+  display: inline-block;
+  background: var(--btn-bg);
+  border: none;
+  color: var(--btn-text);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+#verify-hadith:hover {
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow */
+  transform: translateY(-2px);
+}
+
+.hadith-result {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(255, 87, 34, 0.2); /* Light orange */
+  border-radius: 10px;
+  font-size: 0.85em;
+}
+
+.dark-theme .hadith-result {
+  background: rgba(255, 202, 40, 0.2); /* Light gold */
+}
+
+#authenticity-rating {
+  font-weight: 600;
+  color: #ffeb3b; /* Yellow for rating */
+}
+
+#authenticity-details {
+  color: var(--text-color);
+}
