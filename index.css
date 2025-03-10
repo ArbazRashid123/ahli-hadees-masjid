@@ -1,21 +1,23 @@
 /* Base Variables with Updated Colors */
 :root {
-  --bg-color: #e0e0e0; /* Soft gray base */
+  --bg-color: #f4f4f4; /* Light gray base */
   --text-color: #333333; /* Dark gray for readability */
-  --card-bg: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-  --header-bg: linear-gradient(135deg, #9575cd, #4fc3f7); /* Muted purple to light blue */
+  --card-bg: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  --header-bg: linear-gradient(135deg, #6a1b9a, #1565c0); /* Rich purple to deep blue */
   --btn-bg: #4caf50; /* Solid green */
   --btn-text: #ffffff;
   --btn-hover-bg: #388e3c; /* Darker green */
   --btn-hover-text: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.15); /* Softer shadow */
-  --highlight-color: #fff176; /* Light yellow for accents */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Softer shadow */
+  --highlight-color: #ffeb3b; /* Bright yellow for accents */
+  --section-title-color: #6a1b9a; /* Rich purple for section titles */
+  --border-color: rgba(106, 27, 154, 0.2); /* Light purple for borders */
 }
 
 .dark-theme {
-  --bg-color: #1e1e1e; /* Dark gray base */
+  --bg-color: #121212; /* Dark gray base */
   --text-color: #e0e0e0; /* Light gray for readability */
-  --card-bg: rgba(40, 40, 40, 0.5); /* Semi-transparent dark */
+  --card-bg: rgba(30, 30, 30, 0.8); /* Semi-transparent dark */
   --header-bg: linear-gradient(135deg, #4527a0, #0277bd); /* Deep purple to muted teal */
   --btn-bg: #0288d1; /* Solid teal */
   --btn-text: #ffffff;
@@ -23,6 +25,8 @@
   --btn-hover-text: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.3);
   --highlight-color: #ffcc80; /* Soft gold for dark mode */
+  --section-title-color: #bb86fc; /* Light purple for section titles */
+  --border-color: rgba(187, 134, 252, 0.2); /* Light purple for borders */
 }
 
 /* Reset & Base Styles */
@@ -36,7 +40,7 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background: radial-gradient(circle at center, rgba(200, 200, 200, 0.3), transparent 60%), var(--bg-color);
+  background: radial-gradient(circle at center, rgba(200, 200, 200, 0.3), var(--bg-color));
   scroll-behavior: smooth;
   font-size: 13px;
   overflow-x: hidden;
@@ -45,7 +49,7 @@ body {
 }
 
 .dark-theme body {
-  background: radial-gradient(circle at center, rgba(50, 50, 50, 0.3), transparent 60%), var(--bg-color);
+  background: radial-gradient(circle at center, rgba(50, 50, 50, 0.3), var(--bg-color));
 }
 
 /* Text Shadow for Visibility */
@@ -326,6 +330,7 @@ header {
   transition: all 0.3s ease;
   margin-top: 12px;
   box-shadow: 0 2px 6px var(--shadow-color);
+  text-align: center; /* Center button text */
 }
 
 .btn:hover,
@@ -392,7 +397,7 @@ header {
   display: inline-block;
   padding: 0 20px;
   font-size: 0.85em;
-  color: var(--btn-bg); /* Matches button color */
+  color: var(--section-title-color); /* Use section title color for better visibility */
   font-weight: 600;
   text-shadow: 0 1px 2px var(--shadow-color);
 }
@@ -411,7 +416,7 @@ header {
   align-items: center;
   padding: 10px;
   background: var(--card-bg);
-  border-left: 4px solid var(--btn-bg); /* Matches button color */
+  border-left: 4px solid var(--section-title-color); /* Use section title color for border */
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
@@ -426,7 +431,7 @@ header {
 .prayer-name {
   font-size: 0.9em;
   font-weight: 600;
-  color: var(--btn-bg);
+  color: var(--section-title-color); /* Use section title color for prayer names */
 }
 
 .prayer-time {
@@ -459,7 +464,7 @@ header {
 .ramadan-times h3,
 .quran-aayah h3 {
   font-size: 1.1em;
-  color: var(--btn-bg); /* Matches button color */
+  color: var(--section-title-color); /* Use section title color for headings */
   margin-bottom: 8px;
 }
 
@@ -471,14 +476,15 @@ header {
   background: var(--card-bg);
   border-left: 3px solid var(--highlight-color);
   border-radius: 5px;
-  word-wrap: break-word;
-  max-height: 100px;
-  overflow-y: auto;
+  word-wrap: break-word; /* Ensure long text wraps to the next line */
+  white-space: normal; /* Allow text to wrap */
+  overflow: visible; /* Ensure no overflow is hidden */
+  max-height: none; /* Remove max-height restriction */
 }
 
 .section-title {
   font-size: 1.5em;
-  color: var(--highlight-color);
+  color: var(--section-title-color); /* Use section title color */
   text-align: center;
   margin-bottom: 15px;
   font-weight: 600;
@@ -491,7 +497,7 @@ header {
   content: '';
   width: 50px;
   height: 3px;
-  background: var(--highlight-color);
+  background: var(--section-title-color); /* Use section title color */
   position: absolute;
   bottom: -5px;
   left: 50%;
@@ -527,7 +533,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid var(--btn-bg);
+  border: 2px solid var(--section-title-color); /* Use section title color for border */
 }
 
 .service-card:hover {
@@ -537,7 +543,7 @@ header {
 
 .service-icon {
   font-size: 1.8em;
-  color: var(--btn-bg);
+  color: var(--section-title-color); /* Use section title color for icons */
   margin-bottom: 8px;
 }
 
@@ -573,7 +579,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid var(--btn-bg);
+  border: 2px solid var(--section-title-color); /* Use section title color for border */
 }
 
 .knowledge-item:hover {
@@ -583,7 +589,7 @@ header {
 
 .knowledge-item h3 {
   font-size: 1em;
-  color: var(--btn-bg);
+  color: var(--section-title-color); /* Use section title color for headings */
   margin-bottom: 8px;
 }
 
@@ -608,7 +614,7 @@ header {
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid var(--btn-bg);
+  border: 2px solid var(--section-title-color); /* Use section title color for border */
 }
 
 .event:hover {
@@ -618,7 +624,7 @@ header {
 
 .event h3 {
   font-size: 1em;
-  color: var(--btn-bg);
+  color: var(--section-title-color); /* Use section title color for headings */
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -649,6 +655,7 @@ header {
 .gallery-grid img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px var(--shadow-color);
+  border: 2px solid var(--section-title-color); /* Use section title color for border on hover */
 }
 
 .community-container {
@@ -671,7 +678,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   min-height: 180px;
-  border: 2px solid var(--btn-bg);
+  border: 2px solid var(--section-title-color); /* Use section title color for border */
 }
 
 .community-item:hover {
@@ -681,7 +688,7 @@ header {
 
 .community-item h3 {
   font-size: 1em;
-  color: var(--btn-bg);
+  color: var(--section-title-color); /* Use section title color for headings */
   margin-bottom: 8px;
 }
 
@@ -743,7 +750,7 @@ header {
 .zakat-inputs input {
   width: 100%;
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color); /* Use border color */
   border-radius: 5px;
   font-size: 0.85em;
   background: var(--card-bg);
@@ -837,13 +844,13 @@ header {
 .chat-input-container {
   display: flex;
   padding: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--border-color); /* Use border color */
 }
 
 .chat-input-container input {
   flex: 1;
   padding: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color); /* Use border color */
   border-radius: 5px 0 0 5px;
   font-size: 0.8em;
   background: var(--card-bg);
@@ -856,7 +863,7 @@ header {
 }
 
 footer {
-  background: var(--header-bg); /* Matches header */
+  background: var(--header-bg); /* Match header background */
   color: #fff;
   padding: 10px 12px;
   text-align: center;
@@ -875,6 +882,7 @@ footer {
 .footer-social h3 {
   font-size: 1em;
   margin-bottom: 8px;
+  color: var(--highlight-color); /* Use highlight color for footer headings */
 }
 
 .footer-about p,
@@ -890,7 +898,7 @@ footer {
 }
 
 .social-icons a:hover {
-  color: var(--highlight-color);
+  color: var(--highlight-color); /* Use highlight color for social icons on hover */
   transform: scale(1.2);
 }
 
@@ -902,7 +910,7 @@ footer {
 .glass {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color); /* Use border color */
   border-radius: 10px;
 }
 
