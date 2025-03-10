@@ -263,7 +263,7 @@ header {
 #prayer-info {
   position: absolute;
   top: 50px;
-  left: 12px;
+  left: 2px;
   color: #fff;
   font-size: 0.9em;
   background: rgba(76, 175, 80, 0.8); /* Matches light theme button */
@@ -380,7 +380,7 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 25s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 @keyframes marquee {
@@ -408,7 +408,7 @@ header {
 .prayer-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;-
   padding: 10px;
   background: var(--card-bg);
   border-left: 4px solid var(--btn-bg); /* Matches button color */
