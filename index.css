@@ -330,7 +330,6 @@ header {
   transition: all 0.3s ease;
   margin-top: 12px;
   box-shadow: 0 2px 6px var(--shadow-color);
-  text-align: center; /* Center button text */
 }
 
 .btn:hover,
@@ -476,10 +475,9 @@ header {
   background: var(--card-bg);
   border-left: 3px solid var(--highlight-color);
   border-radius: 5px;
-  word-wrap: break-word; /* Ensure long text wraps to the next line */
-  white-space: normal; /* Allow text to wrap */
-  overflow: visible; /* Ensure no overflow is hidden */
-  max-height: none; /* Remove max-height restriction */
+  word-wrap: break-word;
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 .section-title {
