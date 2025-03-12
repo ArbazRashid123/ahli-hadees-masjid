@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darasgah Salafia Cherwan Kangan - Services</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f6;
+      color: #1a3c34;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Custom Colors */
+    :root {
+      --primary-green: #2e7d32; /* Rich green */
+      --gold-accent: #f9a825; /* Vibrant gold */
+      --light-bg: #ffffff; /* White background */
+      --hover-teal: #26a69a; /* Teal for interactivity */
+      --shadow-color: rgba(0, 0, 0, 0.15);
+    }
+
+    /* Navbar with Hamburger */
+    .navbar {
+      background: var(--primary-green) !important;
+      padding: 1rem;
+      box-shadow: 0 3px 10px var(--shadow-color);
+    }
+    .navbar-brand {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold-accent) !important;
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: var(--gold-accent);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(249, 168, 37, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    .nav-link {
+      color: white !important;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold-accent) !important;
+    }
+    .navbar-collapse {
+      background: var(--primary-green);
+    }
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        padding: 1rem;
+      }
+      .nav-link {
+        text-align: center;
+      }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 70vh;
+      background: url('https://via.placeholder.com/1920x1080?text=Quran+Learning') no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(46, 125, 50, 0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-section h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      animation: fadeInDown 1.2s ease;
+    }
+    .hero-section p {
+      font-size: 1.5rem;
+      animation: fadeInUp 1.5s ease;
+    }
+    @media (max-width: 768px) {
+      .hero-section h1 { font-size: 2.5rem; }
+      .hero-section p { font-size: 1.2rem; }
+      .hero-section { height: 50vh; }
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary-green);
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 60px;
+      height: 3px;
+      background: var(--gold-accent);
+      transform: translateX(-50%);
+    }
+
+    /* Introduction Section */
+    .intro-section {
+      padding: 4rem 0;
+      background: var(--light-bg);
+    }
+    .intro-section p {
+      font-size: 1.2rem;
+      color: #555;
+      animation: fadeIn 1.5s ease;
+    }
+    @media (max-width: 576px) {
+      .intro-section { padding: 2rem 0; }
+      .intro-section p { font-size: 1rem; }
+    }
+
+    /* Mission Section */
+    .mission-section {
+      padding: 4rem 0;
+      background: #f4f7f6;
+    }
+    .mission-card {
+      background: var(--light-bg);
+      border: none;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px var(--shadow-color);
+      transition: transform 0.3s ease;
+    }
+    .mission-card:hover {
+      transform: translateY(-10px);
+    }
+    .mission-card i {
+      color: var(--primary-green);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .mission-card p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+    @media (max-width: 576px) {
+      .mission-section { padding: 2rem 0; }
+      .mission-card { margin-bottom: 1rem; }
+    }
+
+    /* Hufaaz Section */
+    .hufaaz-section {
+      padding: 4rem 0;
+      background: var(--light-bg);
+    }
+    .hafiz-card {
+      background: white;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px var(--shadow-color);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .hafiz-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+    }
+    .hafiz-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--primary-green);
+    }
+    .hafiz-card .card-body {
+      padding: 1rem;
+    }
+    .hafiz-card h5 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary-green);
+      margin-bottom: 0.75rem;
+    }
+    .hafiz-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    .hafiz-card p strong {
+      color: var(--hover-teal);
+    }
+    .btn-enroll {
+      background: var(--primary-green);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .btn-enroll:hover {
+      background: var(--hover-teal);
+      transform: scale(1.1);
+    }
+    @media (max-width: 768px) {
+      .hafiz-card img { height: 150px; }
+      .hafiz-card h5 { font-size: 1.3rem; }
+      .hafiz-card p { font-size: 0.9rem; }
+    }
+    @media (max-width: 576px) {
+      .hufaaz-section { padding: 2rem 0; }
+      .hafiz-card { margin-bottom: 1rem; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-green);
+      color: white;
+      padding: 2rem 0;
+    }
+    .social-icons a {
+      color: var(--gold-accent);
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+    @media (max-width: 576px) {
+      footer { padding: 1.5rem 0; }
+      .social-icons a { font-size: 1.3rem; }
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar with Hamburger -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Darasgah Salafia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="darasgah-services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-content container">
+      <h1>Darasgah Salafia Cherwan Kangan</h1>
+      <p>Empowering Young Minds with the Quran</p>
+    </div>
+  </header>
+
+  <!-- Introduction Section -->
+  <section class="intro-section">
+    <div class="container text-center">
+      <h2 class="section-title">About Us</h2>
+      <p class="mx-auto" style="max-width: 700px;">
+        Situated in the serene Cherwan Kangan valley, Darasgah Salafia is a haven of Islamic education. We are committed to nurturing the next generation of Huffaz, blending traditional teachings with a supportive environment to help every child excel in their Quranic journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission-section">
+    <div class="container">
+      <h2 class="section-title">Our Mission</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-12">
+          <div class="card mission-card text-center">
+            <div class="card-body">
+              <i class="fas fa-book-quran"></i>
+              <p>Promote Quran memorization and understanding.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="card mission-card text-center">
+            <div class="card-body">
+              <i class="fas fa-heart"></i>
+              <p>Instill Islamic values and discipline.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="card mission-card text-center">
+            <div class="card-body">
+              <i class="fas fa-graduation-cap"></i>
+              <p>Educate leaders of faith and knowledge.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="card mission-card text-center">
+            <div class="card-body">
+              <i class="fas fa-mosque"></i>
+              <p>Create a legacy of Huffaz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hufaaz Section -->
+  <section class="hufaaz-section">
+    <div class="container">
+      <h2 class="section-title">Our Hufaaz</h2>
+      <p class="text-center mb-4" style="max-width: 700px; margin: 0 auto;">
+        Meet our talented Huffaz who have mastered the Quran, inspiring others to follow in their footsteps.
+      </p>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Hafiz 1 -->
+        <div class="col">
+          <div class="card hafiz-card">
+            <img src="https://via.placeholder.com/300x180?text=Mohammad+Yusuf" class="card-img-top" alt="Mohammad Yusuf">
+            <div class="card-body text-center">
+              <h5 class="card-title">Mohammad Yusuf</h5>
+              <p class="card-text">
+                <strong>Son of:</strong> Abdul Rahman<br>
+                <strong>Completed Hifz In:</strong> 2 Years<br>
+                <strong>Parahs Memorized:</strong> 30<br>
+                <strong>Year of Completion:</strong> 2020
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Hafiz 2 -->
+        <div class="col">
+          <div class="card hafiz-card">
+            <img src="https://via.placeholder.com/300x180?text=Ahmed+Bilal" class="card-img-top" alt="Ahmed Bilal">
+            <div class="card-body text-center">
+              <h5 class="card-title">Ahmed Bilal</h5>
+              <p class="card-text">
+                <strong>Son of:</strong> Khalid Ahmed<br>
+                <strong>Completed Hifz In:</strong> 3 Years<br>
+                <strong>Parahs Memorized:</strong> 30<br>
+                <strong>Year of Completion:</strong> 2021
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Hafiz 3 -->
+        <div class="col">
+          <div class="card hafiz-card">
+            <img src="https://via.placeholder.com/300x180?text=Zainab+Fatima" class="card-img-top" alt="Zainab Fatima">
+            <div class="card-body text-center">
+              <h5 class="card-title">Zainab Fatima</h5>
+              <p class="card-text">
+                <strong>Daughter of:</strong> Ibrahim Khan<br>
+                <strong>Completed Hifz In:</strong> 2.5 Years<br>
+                <strong>Parahs Memorized:</strong> 30<br>
+                <strong>Year of Completion:</strong> 2022
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Hafiz 4 -->
+        <div class="col">
+          <div class="card hafiz-card">
+            <img src="https://via.placeholder.com/300x180?text=Omar+Farooq" class="card-img-top" alt="Omar Farooq">
+            <div class="card-body text-center">
+              <h5 class="card-title">Omar Farooq</h5>
+              <p class="card-text">
+                <strong>Son of:</strong> Saeed Farooq<br>
+                <strong>Completed Hifz In:</strong> 2 Years<br>
+                <strong>Parahs Memorized:</strong> 30<br>
+                <strong>Year of Completion:</strong> 2023
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Hafiz 5 -->
+        <div class="col">
+          <div class="card hafiz-card">
+            <img src="https://via.placeholder.com/300x180?text=Aisha+Noor" class="card-img-top" alt="Aisha Noor">
+            <div class="card-body text-center">
+              <h5 class="card-title">Aisha Noor</h5>
+              <p class="card-text">
+                <strong>Daughter of:</strong> Hassan Ali<br>
+                <strong>Completed Hifz In:</strong> 3 Years<br>
+                <strong>Parahs Memorized:</strong> 30<br>
+                <strong>Year of Completion:</strong> 2024
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-enroll">Enroll Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-2">© 2025 Darasgah Salafia Cherwan Kangan. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
