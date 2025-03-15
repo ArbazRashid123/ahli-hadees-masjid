@@ -385,7 +385,7 @@ header {
 
 .marquee-track {
   display: inline-block;
-  animation: marquee 25s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 @keyframes marquee {
