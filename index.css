@@ -13,152 +13,151 @@
 
 /* Body Styles */
 body {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #f0f4f8; /* Softer background for better contrast */
+  color: #2d3748; /* Darker text for readability */
   font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
+  font-size: 14px; /* Reduced base font size */
+  line-height: 1.5; /* Slightly tighter line height */
   scroll-behavior: smooth;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Theme for Body */
 body.dark-theme {
-  background-color: #1a1a1a;
-  color: #e0e0e0;
+  background-color: #1f2526;
+  color: #d1d5db;
 }
 
 /* Announcement Item */
 .announcement-item {
   color: #fff;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reduced font size */
   margin-right: 20px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Announcement Marquee */
 .announcement-marquee {
-  background-color: #ff4444;
-  border-radius: 5px;
+  background: linear-gradient(90deg, #ff5555, #ff7777); /* Gradient background */
+  border-radius: 8px;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 95%;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 8px 0;
   width: 100%;
 }
 
 /* Back to Top Button */
 #back-to-top {
-  background-color: #2c3e50;
+  background: linear-gradient(135deg, #4a5568, #2d3748);
   border: none;
   border-radius: 50%;
   bottom: 20px;
   color: #fff;
   cursor: pointer;
   display: none;
-  font-size: 1.2rem;
-  height: 50px;
+  font-size: 1rem;
+  height: 45px;
   padding: 10px;
   position: fixed;
   right: 20px;
-  transition: background-color 0.3s ease;
-  width: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 45px;
   z-index: 1000;
 }
 
 #back-to-top:hover {
-  background-color: #34495e;
+  background: linear-gradient(135deg, #5a6b8b, #3e4a5f);
+  transform: scale(1.1);
 }
 
 /* Bot Message */
 .bot-message {
-  background-color: #2c3e50;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  border-radius: 12px;
   color: #fff;
-  margin: 10px 0;
+  font-size: 0.85rem; /* Reduced font size */
+  margin: 8px 0;
   padding: 10px;
   width: fit-content;
 }
 
-/* Button Styles */
-.btn,
-.btn-about,
-.btn-community,
-.btn-gallery,
-.btn-knowledge,
-.btn-location,
-.btn-service {
-  background-color: #2c3e50;
+/* Uniform Button Styles */
+.uniform-btn {
+  background: linear-gradient(135deg, #4a90e2, #357abd); /* Gradient for buttons */
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 1rem;
-  margin-top: 10px;
-  padding: 10px 20px;
+  font-size: 0.9rem; /* Reduced font size */
+  font-weight: 500;
+  height: 40px; /* Fixed height */
+  line-height: 40px; /* Center text vertically */
+  margin: 10px 0;
+  padding: 0 20px; /* Consistent padding */
+  text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 200px; /* Fixed width for uniformity */
 }
 
-.btn-about:hover,
-.btn-community:hover,
-.btn-gallery:hover,
-.btn-knowledge:hover,
-.btn-location:hover,
-.btn-service:hover,
-.btn:hover {
-  background-color: #34495e;
-  transform: scale(1.05);
+.uniform-btn:hover {
+  background: linear-gradient(135deg, #5aa1e5, #4689c8);
+  transform: translateY(-2px);
 }
 
 /* Chat Input Container */
 .chat-input-container {
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  gap: 8px;
+  padding: 8px;
 }
 
 /* Chat Messages */
 .chat-messages {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e2e8f0;
   flex-grow: 1;
-  max-height: 300px;
+  max-height: 280px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 8px;
 }
 
 /* Chatbot */
 .chatbot {
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   display: none;
   flex-direction: column;
-  height: 400px;
+  height: 380px;
   width: 100%;
 }
 
 body.dark-theme .chatbot {
-  background-color: #2c2c2c;
+  background-color: #2d3748;
 }
 
 /* Chatbot Container */
 .chatbot-container {
-  bottom: 80px;
+  bottom: 70px;
   position: fixed;
-  right: 20px;
-  width: 300px;
+  right: 15px;
+  width: 280px;
   z-index: 1000;
 }
 
 /* Chatbot Header */
 .chatbot-header {
-  background-color: #2c3e50;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   color: #fff;
   display: flex;
+  font-size: 0.9rem;
   justify-content: space-between;
   padding: 10px;
 }
@@ -166,176 +165,219 @@ body.dark-theme .chatbot {
 /* Community Container */
 .community-container {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Community Item */
 .community-item {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-theme .community-item {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 .community-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-5px);
+}
+
+.community-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.community-item p {
+  font-size: 0.85rem;
 }
 
 /* Content */
 .content {
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
   text-align: center;
+}
+
+.content p {
+  font-size: 0.9rem;
 }
 
 /* Current Prayer */
 .current-prayer {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem; /* Reduced font size */
+  font-weight: 600;
 }
 
 /* Donate Now Button */
 #donate-now {
-  background-color: #e74c3c;
+  background: linear-gradient(135deg, #ff5555, #ff7777);
   border: none;
-  border-radius: 5px;
-  bottom: 20px;
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
-  font-size: 1rem;
-  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  height: 60px; /* Height > Width */
+  line-height: 60px;
+  padding: 0 10px;
   position: fixed;
   right: 0;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 40px; /* Width < Height */
+  writing-mode: vertical-rl; /* Text orientation */
   z-index: 1000;
 }
 
 #donate-now:hover {
-  background-color: #c0392b;
+  background: linear-gradient(135deg, #ff7777, #ff9999);
+  transform: translateY(-50%) scale(1.05);
 }
 
 /* Event */
 .event {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-theme .event {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 .event:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-5px);
+}
+
+.event h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.event p {
+  font-size: 0.85rem;
 }
 
 /* Events Container */
 .events-container {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Footer */
 footer {
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 40px 20px;
+  background: linear-gradient(135deg, #2d3748, #1f2526);
+  color: #d1d5db;
+  padding: 30px 15px;
   text-align: center;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 20px;
-  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  margin-top: 15px;
+  padding-top: 15px;
 }
 
 /* Footer Content */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1100px;
+}
+
+.footer-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.footer-content p {
+  font-size: 0.8rem;
 }
 
 /* Gallery Container */
 .gallery-container {
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
   text-align: center;
 }
 
 /* Gallery Grid */
 .gallery-grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 20px 0;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 15px 0;
 }
 
 /* Gallery Grid Images */
 .gallery-grid img {
-  border-radius: 10px;
+  border-radius: 12px;
   height: auto;
+  object-fit: cover;
   width: 100%;
 }
 
 /* Glass Effect */
 .glass {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 body.dark-theme .glass {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Hadith Text */
 .hadith-text {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
-  padding: 15px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-size: 0.85rem;
+  padding: 12px;
   text-align: center;
 }
 
 body.dark-theme .hadith-text {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 /* Header */
 header {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('header-bg.jpg');
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('header-bg.jpg');
   background-position: center;
   background-size: cover;
   color: #fff;
-  padding: 100px 20px;
+  padding: 80px 15px;
   position: relative;
   text-align: center;
 }
@@ -343,41 +385,61 @@ header {
 /* Hero Content */
 .hero-content {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.hero-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
 }
 
 /* Hero Subheading */
 .hero-subheading {
-  font-size: 1.2rem;
-  margin: 10px 0;
+  font-size: 0.95rem;
+  margin: 8px 0;
 }
 
 /* Knowledge Container */
 .knowledge-container {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Knowledge Item */
 .knowledge-item {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-theme .knowledge-item {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 .knowledge-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-5px);
+}
+
+.knowledge-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.knowledge-item p {
+  font-size: 0.85rem;
 }
 
 /* Language Modal */
@@ -388,47 +450,43 @@ body.dark-theme .knowledge-item {
 /* Language Options */
 .language-options {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-}
-
-/* Language Options Buttons */
-.language-options button {
-  background-color: #2c3e50;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease;
-}
-
-.language-options button:hover {
-  background-color: #34495e;
 }
 
 /* Location Container */
 .location-container {
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Location Content */
 .location-content {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
+}
+
+.location-content p {
+  font-size: 0.9rem;
 }
 
 /* Logo */
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
 /* Map Wrapper */
 .map-wrapper {
-  margin: 20px 0;
+  margin: 15px 0;
+}
+
+.map-wrapper iframe {
+  border-radius: 12px;
+  height: 200px;
+  width: 100%;
 }
 
 /* Marquee Content */
@@ -448,12 +506,12 @@ body.dark-theme .knowledge-item {
 .menu-toggle {
   cursor: pointer;
   display: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 /* Modal */
 .modal {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: none;
   height: 100%;
   left: 0;
@@ -466,10 +524,10 @@ body.dark-theme .knowledge-item {
 /* Modal Content */
 .modal-content {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   left: 50%;
-  max-width: 400px;
-  padding: 20px;
+  max-width: 350px;
+  padding: 15px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -477,15 +535,20 @@ body.dark-theme .knowledge-item {
 }
 
 body.dark-theme .modal-content {
-  background-color: #2c2c2c;
+  background-color: #2d3748;
+}
+
+.modal-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
 /* Nav */
 nav {
-  background-color: #2c3e50;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  padding: 15px 20px;
+  background: linear-gradient(135deg, #2d3748, #1f2526);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: #d1d5db;
+  padding: 10px 15px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -494,84 +557,87 @@ nav {
 /* Nav Links */
 nav ul {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
   list-style: none;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 nav ul li a {
-  color: #fff;
+  color: #d1d5db;
+  font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #3498db;
+  color: #4a90e2;
 }
 
 /* Nav Right */
 .nav-right {
   display: flex;
-  gap: 15px;
+  gap: 12px;
 }
 
 /* Prayer Info */
 #prayer-info {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  margin: 0 auto 20px;
-  max-width: 400px;
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  margin: 0 auto 15px;
+  max-width: 350px;
+  padding: 8px;
   text-align: center;
 }
 
 /* Prayer Item */
 .prayer-item {
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 body.dark-theme .prayer-item {
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #4a5568;
 }
 
 /* Prayer Name */
 .prayer-name {
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Prayer Time */
 .prayer-time {
-  color: #2c3e50;
+  color: #2d3748;
+  font-size: 0.9rem;
 }
 
 body.dark-theme .prayer-time {
-  color: #e0e0e0;
+  color: #d1d5db;
 }
 
 /* Prayer Times Vertical */
 .prayer-times-vertical {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
-  max-width: 400px;
-  padding: 20px;
+  max-width: 350px;
+  padding: 15px;
 }
 
 body.dark-theme .prayer-times-vertical {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 /* Progress Bar */
 #progress-bar {
-  background-color: #3498db;
-  height: 4px;
+  background: linear-gradient(90deg, #4a90e2, #357abd);
+  height: 3px;
   position: fixed;
   top: 0;
   transition: width 0.3s ease;
@@ -581,139 +647,159 @@ body.dark-theme .prayer-times-vertical {
 
 /* Quran Aayah */
 .quran-aayah {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-}
-
-body.dark-theme .quran-aayah {
-  background-color: #2c2c2c;
-}
-
-/* Quran Text */
-.quran-text {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
 }
 
+body.dark-theme .quran-aayah {
+  background: linear-gradient(145deg, #2d3748, #1f2526);
+}
+
+/* Quran Text */
+.quran-text {
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-size: 0.85rem;
+  padding: 12px;
+  text-align: center;
+}
+
 body.dark-theme .quran-text {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 /* Ramadan Container */
 .ramadan-container {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Ramadan Times */
 .ramadan-times {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   text-align: center;
 }
 
 body.dark-theme .ramadan-times {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
+}
+
+.ramadan-times h3,
+.quran-aayah h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 
 /* Section */
 section {
-  padding: 40px 20px;
+  padding: 30px 15px;
 }
 
 /* Section Title */
 .section-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.6rem; /* Reduced font size */
+  margin-bottom: 15px;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Service Card */
 .service-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e9ec);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-theme .service-card {
-  background-color: #2c2c2c;
+  background: linear-gradient(145deg, #2d3748, #1f2526);
 }
 
 .service-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-5px);
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 0.85rem;
 }
 
 /* Service Icon */
 .service-icon {
-  color: #2c3e50;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  color: #4a90e2;
+  font-size: 2rem;
+  margin-bottom: 8px;
 }
 
 body.dark-theme .service-icon {
-  color: #3498db;
+  color: #5aa1e5;
 }
 
 /* Services Container */
 .services-container {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 15px;
 }
 
 /* Social Icons */
 .social-icons {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   justify-content: center;
 }
 
 .social-icons a {
-  color: #fff;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
+  color: #d1d5db;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .social-icons a:hover {
-  color: #3498db;
+  color: #4a90e2;
+  transform: scale(1.1);
 }
 
 /* Theme Toggle */
 .theme-toggle {
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 /* Upcoming Prayer */
 .upcoming-prayer {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 /* User Message */
 .user-message {
-  background-color: #3498db;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  border-radius: 12px;
   color: #fff;
-  margin: 10px 0;
+  font-size: 0.85rem;
+  margin: 8px 0;
   margin-left: auto;
   padding: 10px;
   width: fit-content;
@@ -722,48 +808,50 @@ body.dark-theme .service-icon {
 /* Zakat Container */
 .zakat-container {
   margin: 0 auto;
-  max-width: 600px;
-  padding: 20px;
+  max-width: 550px;
+  padding: 15px;
 }
 
 /* Zakat Form */
 .zakat-form {
-  padding: 20px;
+  padding: 15px;
 }
 
 /* Zakat Inputs */
 .zakat-inputs {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 /* Zakat Inputs Labels and Inputs */
 .zakat-inputs label {
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .zakat-inputs input {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  padding: 8px;
   width: 100%;
 }
 
 body.dark-theme .zakat-inputs input {
-  background-color: #333;
-  border-color: #444;
-  color: #e0e0e0;
+  background-color: #4a5568;
+  border-color: #6b7280;
+  color: #d1d5db;
 }
 
 /* Zakat Note */
 .zakat-note {
-  font-size: 0.9rem;
-  margin-bottom: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
 }
 
 .zakat-note a {
-  color: #3498db;
+  color: #4a90e2;
   text-decoration: none;
 }
 
@@ -773,21 +861,22 @@ body.dark-theme .zakat-inputs input {
 
 /* Zakat Result */
 .zakat-result {
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  margin-top: 20px;
-  padding: 15px;
+  background: linear-gradient(145deg, #f7fafc, #edf2f7);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  padding: 12px;
   text-align: center;
 }
 
 body.dark-theme .zakat-result {
-  background-color: #333;
+  background: linear-gradient(145deg, #4a5568, #2d3748);
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 767px) {
   nav {
-    padding: 10px 15px;
+    padding: 8px 12px;
   }
 
   .nav-right {
@@ -799,13 +888,13 @@ body.dark-theme .zakat-result {
   }
 
   nav ul {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #2d3748, #1f2526);
     display: none;
     flex-direction: column;
     left: 0;
-    padding: 10px 0;
+    padding: 8px 0;
     position: absolute;
-    top: 60px;
+    top: 50px;
     width: 100%;
   }
 
@@ -814,16 +903,16 @@ body.dark-theme .zakat-result {
   }
 
   nav ul li {
-    margin: 10px 0;
+    margin: 8px 0;
     text-align: center;
   }
 
   .logo {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   header {
-    padding: 60px 15px;
+    padding: 50px 12px;
   }
 
   .hero-content h1 {
@@ -835,17 +924,27 @@ body.dark-theme .zakat-result {
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .chatbot-container {
     bottom: 60px;
     right: 10px;
-    width: 250px;
+    width: 260px;
   }
 
   .chatbot {
-    height: 350px;
+    height: 340px;
+  }
+
+  .uniform-btn {
+    width: 180px; /* Slightly smaller for mobile */
+  }
+
+  #donate-now {
+    height: 50px;
+    width: 35px;
+    font-size: 0.8rem;
   }
 }
 
@@ -860,10 +959,20 @@ body.dark-theme .zakat-result {
   }
 
   .prayer-times-vertical {
-    padding: 15px;
+    padding: 12px;
   }
 
   .prayer-item {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .uniform-btn {
+    width: 160px;
+  }
+
+  #donate-now {
+    height: 45px;
+    width: 30px;
+    font-size: 0.75rem;
   }
 }
