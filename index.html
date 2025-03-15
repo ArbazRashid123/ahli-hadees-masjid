@@ -744,56 +744,26 @@
 
    // Daily Quran and Hadith content
   const quranAayahs = [
-    '<p class="quran-text">In the name of Allah, the Entirely Merciful, the Especially Merciful. [All] praise is [due] to Allah, Lord of the worlds. <br><strong>(Surah Al-Fatiha 1:1-2)</strong></p>',
-    '<p class="quran-text">Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence... <br><strong>(Surah Al-Baqarah 2:255 - Ayat al-Kursi)</strong></p>',
-    '<p class="quran-text">Allah does not burden a soul beyond that it can bear... <br><strong>(Surah Al-Baqarah 2:286)</strong></p>',
-    '<p class="quran-text">Indeed, in the creation of the heavens and the earth and the alternation of the night and day are signs for those of understanding. <br><strong>(Surah Aal-E-Imran 3:190)</strong></p>',
-    '<p class="quran-text">O mankind, fear your Lord, who created you from one soul... <br><strong>(Surah An-Nisa 4:1)</strong></p>',
-    '<p class="quran-text">...Whoever saves one [life] - it is as if he had saved mankind entirely. <br><strong>(Surah Al-Ma’idah 5:32)</strong></p>',
-    '<p class="quran-text">And with Him are the keys of the unseen; none knows them except Him... <br><strong>(Surah Al-An’am 6:59)</strong></p>',
-    '<p class="quran-text">And cause not corruption upon the earth after its reformation... <br><strong>(Surah Al-A’raf 7:56)</strong></p>',
-    '<p class="quran-text">Say, “He is Allah, [who is] One, Allah, the Eternal Refuge.” <br><strong>(Surah Al-Ikhlas 112:1-2)</strong></p>',
-    '<p class="quran-text">And We have certainly made the Quran easy for remembrance, so is there any who will remember? <br><strong>(Surah Al-Qamar 54:17)</strong></p>',
-    '<p class="quran-text">Indeed, those who have believed and done righteous deeds - the Most Merciful will appoint for them affection. <br><strong>(Surah Maryam 19:96)</strong></p>',
-    '<p class="quran-text">So be patient. Indeed, the promise of Allah is truth... <br><strong>(Surah Ar-Rum 30:60)</strong></p>',
-    '<p class="quran-text">And whoever puts their trust in Allah - then He will suffice him... <br><strong>(Surah At-Talaq 65:3)</strong></p>',
-    '<p class="quran-text">Indeed, with hardship [will be] ease. <br><strong>(Surah Ash-Sharh 94:6)</strong></p>',
-    '<p class="quran-text">And your Lord is the Forgiving, Full of Mercy... <br><strong>(Surah Al-Kahf 18:58)</strong></p>',
-    '<p class="quran-text">And We have not sent you, [O Muhammad], except as a mercy to the worlds. <br><strong>(Surah Al-Anbiya 21:107)</strong></p>',
-    '<p class="quran-text">Indeed, the mercy of Allah is near to the doers of good. <br><strong>(Surah Al-A’raf 7:56)</strong></p>',
-    '<p class="quran-text">Say, “Call upon Allah or call upon the Most Merciful...” <br><strong>(Surah Al-Isra 17:110)</strong></p>',
-    '<p class="quran-text">And the heaven We constructed with strength, and indeed, We are [its] expander. <br><strong>(Surah Adh-Dhariyat 51:47)</strong></p>',
-    '<p class="quran-text">Every soul will taste death... <br><strong>(Surah Aal-E-Imran 3:185)</strong></p>',
-    '<p class="quran-text">And whoever is guided is only guided for [the benefit of] himself... <br><strong>(Surah An-Naml 27:92)</strong></p>',
-    '<p class="quran-text">Indeed, Allah is with the patient. <br><strong>(Surah Al-Baqarah 2:153)</strong></p>',
-    '<p class="quran-text">And We have sent down to you the Book as clarification for all things... <br><strong>(Surah An-Nahl 16:89)</strong></p>',
-    '<p class="quran-text">So remember Me; I will remember you... <br><strong>(Surah Al-Baqarah 2:152)</strong></p>',
-    '<p class="quran-text">Indeed, prayer prohibits immorality and wrongdoing... <br><strong>(Surah Al-Ankabut 29:45)</strong></p>',
-    '<p class="quran-text">And seek help through patience and prayer... <br><strong>(Surah Al-Baqarah 2:45)</strong></p>',
-    '<p class="quran-text">And whatever you have of favor - it is from Allah... <br><strong>(Surah An-Nahl 16:53)</strong></p>',
-    '<p class="quran-text">Indeed, the Hereafter is better for you than the first [life]. <br><strong>(Surah Ad-Duha 93:4)</strong></p>',
-    '<p class="quran-text">And the earth We have spread out, and excellent is the preparer. <br><strong>(Surah Adh-Dhariyat 51:48)</strong></p>',
-    '<p class="quran-text">Do they not see the birds above them with wings outspread and [sometimes] folded in? <br><strong>(Surah Al-Mulk 67:19)</strong></p>',
-    '<p class="quran-text">Indeed, Allah loves those who are constantly repentant... <br><strong>(Surah Al-Baqarah 2:222)</strong></p>',
-    '<p class="quran-text">Say, “My Lord has only forbidden immoralities - what is apparent of them and what is concealed...” <br><strong>(Surah Al-A’raf 7:33)</strong></p>',
-    '<p class="quran-text">And We will surely test you with something of fear and hunger... <br><strong>(Surah Al-Baqarah 2:155)</strong></p>',
-    '<p class="quran-text">Indeed, those who have believed and done righteous deeds - their Lord will guide them because of their faith... <br><strong>(Surah Yunus 10:9)</strong></p>',
-    '<p class="quran-text">And Allah is the best of providers. <br><strong>(Surah Al-Jumu’ah 62:11)</strong></p>',
-    '<p class="quran-text">Indeed, in the remembrance of Allah do hearts find rest. <br><strong>(Surah Ar-Ra’d 13:28)</strong></p>',
-    '<p class="quran-text">And We created you in pairs. <br><strong>(Surah An-Naba 78:8)</strong></p>',
-    '<p class="quran-text">And whoever fears Allah - He will make for him a way out. <br><strong>(Surah At-Talaq 65:2)</strong></p>',
-    '<p class="quran-text">Indeed, Allah does not do injustice, [even] as much as an atom’s weight... <br><strong>(Surah An-Nisa 4:40)</strong></p>',
-    '<p class="quran-text">And He found you lost and guided [you]. <br><strong>(Surah Ad-Duha 93:7)</strong></p>',
-    '<p class="quran-text">And the Day when We will fold the heaven like the folding of a [written] sheet... <br><strong>(Surah Al-Anbiya 21:104)</strong></p>',
-    '<p class="quran-text">Indeed, the righteous will be in pleasure... <br><strong>(Surah Al-Mutaffifin 83:22)</strong></p>',
-    '<p class="quran-text">And say, “The truth is from your Lord, so whoever wills - let him believe...” <br><strong>(Surah Al-Kahf 18:29)</strong></p>',
-    '<p class="quran-text">Indeed, Allah is with those who fear Him and those who are doers of good. <br><strong>(Surah An-Nahl 16:128)</strong></p>',
-    '<p class="quran-text">And whoever turns away from My remembrance - indeed, he will have a depressed life... <br><strong>(Surah Ta-Ha 20:124)</strong></p>',
-    '<p class="quran-text">And He it is who causes laughter and weeping. <br><strong>(Surah An-Najm 53:43)</strong></p>',
-    '<p class="quran-text">Indeed, Allah is the Exalted in Might, the Forgiving. <br><strong>(Surah Fatir 35:28)</strong></p>',
-    '<p class="quran-text">And the sun runs [on course] toward its stopping point... <br><strong>(Surah Ya-Sin 36:38)</strong></p>',
-    '<p class="quran-text">So exalt the name of your Lord, the Most Great. <br><strong>(Surah Al-Waqi’ah 56:96)</strong></p>',
-    '<p class="quran-text">Indeed, this is a reminder, so whoever wills may take to his Lord a way. <br><strong>(Surah Al-Insan 76:29)</strong></p>'
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful." - Surah Al-Fatiha (1:1)
+"[All] praise is [due] to Allah, Lord of the worlds." - Surah Al-Fatiha (1:2)
+"Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence..." - Surah Al-Baqarah (2:255)
+"Allah does not burden a soul beyond that it can bear..." - Surah Al-Baqarah (2:286)
+"Indeed, in the creation of the heavens and the earth..." - Surah Aal-E-Imran (3:190)
+"O mankind, fear your Lord, who created you from one soul..." - Surah An-Nisa (4:1)
+"...Whoever kills a soul unless for a soul or for corruption..." - Surah Al-Ma’idah (5:32)
+"And with Him are the keys of the unseen..." - Surah Al-An’am (6:59)
+"And [mention] when your Lord took from the children of Adam..." - Surah Al-A’raf (7:172)
+"Say, 'He is Allah, [who is] One...'" - Surah Al-Ikhlas (112:1)
+"And We have certainly created man from an extract of clay." - Surah Al-Mu’minun (23:12)
+"So which of the favors of your Lord would you deny?" - Surah Ar-Rahman (55:13)
+"Indeed, Allah is with the patient." - Surah Al-Baqarah (2:153)
+"And We have certainly made the Qur'an easy for remembrance..." - Surah Al-Qamar (54:17)
+"He created the heavens and earth in truth..." - Surah Az-Zumar (39:5)
+"Indeed, to Allah belongs the dominion of the heavens and the earth..." - Surah An-Nur (24:42)
+"Say, 'Travel through the land and observe how He began creation...'" - Surah Al-Ankabut (29:20)
+"Indeed, those who have believed and done righteous deeds..." - Surah Al-Kahf (18:107)
+"And whoever puts his trust in Allah, then He will suffice him..." - Surah At-Talaq (65:3)
+"Indeed, your Lord is Allah, who created the heavens and the earth in six days..." - Surah Al-A’raf (7:54)
   ];
   const hadiths = [
    '<p class="hadith-text">The best among you are those who learn the Quran and teach it. <br><strong>(Sahih Bukhari, Book 66, Hadith 5027)</strong></p>',
