@@ -640,7 +640,7 @@ header {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   max-width: 90%;
-  margin: 0 auto 15px;
+  margin: 15px auto 15px;
 }
 
 .gallery-grid img {
