@@ -474,13 +474,17 @@
       <h2>Generate Receipt</h2>
       <label for="donor-name">Donor Name:</label>
       <input type="text" id="donor-name" required />
+      <label for="son-daughter-of">Son of/Daughter of:</label>
+      <input type="text" id="son-daughter-of" placeholder="Enter father's name" required />
       <label for="amount">Amount (in Rupees):</label>
       <input type="number" id="amount" min="0" step="0.01" required />
       <label for="purpose">Purpose:</label>
       <select id="purpose" required>
         <option value="Zakatul Fitr">Zakatul Fitr</option>
         <option value="Nazr-o-Niyaz">Nazr-o-Niyaz</option>
-        <option value="Sadaqah">Sadaqah</option>
+        <option value="Sadaqat">Sadaqat</option>
+        <option value="Ushur">Ushur</option>
+        <option value="Zakat">Zakat</option>
         <option value="Khairaat">Khairaat</option>
         <option value="Other">Other</option>
       </select>
@@ -619,7 +623,9 @@
     const receiptCounters = {
       'Zakatul Fitr': localStorage.getItem('Zakatul Fitr') ? parseInt(localStorage.getItem('Zakatul Fitr')) : 0,
       'Nazr-o-Niyaz': localStorage.getItem('Nazr-o-Niyaz') ? parseInt(localStorage.getItem('Nazr-o-Niyaz')) : 0,
-      'Sadaqah': localStorage.getItem('Sadaqah') ? parseInt(localStorage.getItem('Sadaqah')) : 0,
+      'Sadaqat': localStorage.getItem('Sadaqat') ? parseInt(localStorage.getItem('Sadaqat')) : 0,
+      'Ushur': localStorage.getItem('Ushur') ? parseInt(localStorage.getItem('Ushur')) : 0,
+      'Zakat': localStorage.getItem('Zakat') ? parseInt(localStorage.getItem('Zakat')) : 0,
       'Khairaat': localStorage.getItem('Khairaat') ? parseInt(localStorage.getItem('Khairaat')) : 0,
       'Other': localStorage.getItem('Other') ? parseInt(localStorage.getItem('Other')) : 0,
     };
@@ -645,11 +651,12 @@
 
     generateReceipt.addEventListener('click', () => {
       const donorName = document.getElementById('donor-name').value;
+      const sonDaughterOf = document.getElementById('son-daughter-of').value;
       const amount = document.getElementById('amount').value;
       const purpose = document.getElementById('purpose').value;
       const paymentMethod = document.getElementById('payment-method').value;
 
-      if (donorName && amount && purpose && paymentMethod) {
+      if (donorName && sonDaughterOf && amount && purpose && paymentMethod) {
         // Increment receipt number based on purpose
         receiptCounters[purpose]++;
         localStorage.setItem(purpose, receiptCounters[purpose]);
@@ -664,8 +671,14 @@
           case 'Nazr-o-Niyaz':
             receiptNumber = `NON${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
             break;
-          case 'Sadaqah':
-            receiptNumber = `SQDH${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+          case 'Sadaqat':
+            receiptNumber = `SQDT${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          case 'Ushur':
+            receiptNumber = `USH${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          case 'Zakat':
+            receiptNumber = `ZAK${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
             break;
           case 'Khairaat':
             receiptNumber = `KHR${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
@@ -687,6 +700,7 @@
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
               <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong style="color: #007bff;">Son of/Daughter of:</strong> <span>${sonDaughterOf}</span></p>
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
               <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
