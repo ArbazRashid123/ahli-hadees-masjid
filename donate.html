@@ -308,8 +308,11 @@
       min-height: 283mm; /* A4 height (297mm) - 2 * 7mm margins */
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+      text-align: center; /* Center text */
     }
+
     .receipt-header {
       text-align: center;
       border-bottom: 2px solid #ff4d4d;
@@ -317,6 +320,7 @@
       margin-bottom: 2rem;
       width: 100%;
     }
+
     .receipt-logo {
       position: absolute;
       top: 15mm;
@@ -324,6 +328,7 @@
       opacity: 0.1;
       font-size: 3rem;
     }
+
     .receipt-details {
       background: rgba(0, 123, 255, 0.05);
       padding: 2rem;
@@ -332,16 +337,20 @@
       line-height: 2.2;
       width: 100%;
       flex-grow: 1;
+      text-align: left; /* Align text to the left within the details section */
     }
+
     .receipt-details p {
       margin: 1rem 0;
       font-size: 1.3rem;
       display: flex;
       justify-content: space-between;
     }
+
     .receipt-details strong {
       flex-basis: 40%;
     }
+
     .receipt-footer {
       text-align: center;
       border-top: 1px dashed #007bff;
@@ -600,10 +609,8 @@
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     
-    // Start receipt number from 0 (first will be 0001)
-    let receiptNumber = 0;
-    localStorage.setItem('receiptCounter', '0');
-    let tempReceiptNumber = receiptNumber + 1;
+    // Start receipt number from 1
+    let receiptNumber = localStorage.getItem('receiptCounter') ? parseInt(localStorage.getItem('receiptCounter')) : 0;
 
     document.querySelectorAll('.get-receipt').forEach(button => {
       button.addEventListener('click', () => {
@@ -631,12 +638,15 @@
       const paymentMethod = document.getElementById('payment-method').value;
 
       if (donorName && amount && purpose && paymentMethod) {
+        receiptNumber++; // Increment receipt number
+        localStorage.setItem('receiptCounter', receiptNumber);
+
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
               <h2 style="color: #007bff; font-size: 2.5rem;">Darul Mawasaat Cherwan</h2>
               <p style="color: #ff4d4d; font-size: 1.5rem;">Official Donation Receipt</p>
-              <p style="color: #333; font-size: 1.2rem;">Receipt No: ZKF-${tempReceiptNumber.toString().padStart(4, '0')}</p>
+              <p style="color: #333; font-size: 1.2rem;">Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')}</p>
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
@@ -694,11 +704,6 @@
             const x = margin;
             const y = margin;
 
-            // Increment receipt number only on download
-            receiptNumber++;
-            localStorage.setItem('receiptCounter', receiptNumber);
-            tempReceiptNumber = receiptNumber + 1;
-            
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
             
             const pdfBlob = pdf.output('blob');
