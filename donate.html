@@ -4,24 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
-  <!-- Include html2canvas and jsPDF for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    /* Reset & Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff; /* White background */
-      color: #333333; /* Darker text for contrast */
+      background: #ffffff;
+      color: #333333;
       line-height: 1.6;
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Scroll Progress Bar */
     #progress-bar {
       position: fixed;
       top: 0;
@@ -33,9 +29,8 @@
       transition: width 0.1s ease;
     }
 
-    /* Navigation */
     nav {
-      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0); /* Light gradient */
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0);
       color: #333333;
       padding: 1rem;
       position: sticky;
@@ -83,7 +78,6 @@
       .nav-links.active { display: flex; }
     }
 
-    /* Hero Section with Constellation Animation */
     header {
       height: 60vh;
       position: relative;
@@ -117,18 +111,16 @@
     }
     @media (max-width: 768px) { header h1 { font-size: 2rem; } }
 
-    /* Container */
     .container {
       width: 95%;
       max-width: 1200px;
       margin: 2rem auto;
       padding: 2rem;
-      background: #f9f9f9; /* Slightly off-white for contrast */
+      background: #f9f9f9;
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
 
-    /* Section Title */
     .section-title {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -156,7 +148,6 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Donation Card */
     .donation-card {
       display: flex;
       flex-wrap: wrap;
@@ -192,14 +183,13 @@
     }
     .donation-details strong {
       color: #007bff;
-      margin-right: 1rem; /* Space between label and value */
+      margin-right: 1rem;
     }
     .donation-details .copyable {
       flex-grow: 1;
       text-align: right;
     }
 
-    /* Copyable Text & Buttons */
     .copyable {
       position: relative;
       cursor: pointer;
@@ -237,7 +227,6 @@
     }
     .copyable.copied .tooltip { opacity: 1; }
 
-    /* Buttons */
     .show-scanner, .get-receipt {
       background: linear-gradient(90deg, #007bff, #ff4d4d);
       color: #ffffff;
@@ -255,7 +244,6 @@
       box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
-    /* Scanner Placeholder */
     .scanner-placeholder {
       display: none;
       align-items: center;
@@ -276,7 +264,6 @@
     }
     .scanner-placeholder img { max-width: 100%; height: auto; }
 
-    /* Receipt Section */
     .receipt-section {
       margin-top: 2rem;
       padding: 2rem;
@@ -307,79 +294,48 @@
     }
     .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
-    /* Enhanced Receipt Preview */
-    #receipt-preview {
-      margin-top: 1.5rem;
-      background: #f0f0f0;
-      padding: 1rem;
-      border-radius: 5px;
-      text-align: center;
-    }
     .receipt-content {
-      max-width: 400px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 2rem;
-      background: #ffffff;
-      border: 3px solid transparent;
-      border-image: linear-gradient(90deg, #007bff, #ff4d4d) 1;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #ffffff, #f9f9f9);
+      border: 5px double #007bff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      color: #333333;
+      position: relative;
+      min-height: 400px;
+    }
+    .receipt-header {
+      text-align: center;
+      border-bottom: 2px solid #ff4d4d;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .receipt-logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      opacity: 0.1;
+      font-size: 2rem;
+    }
+    .receipt-details {
+      background: rgba(0, 123, 255, 0.05);
+      padding: 1rem;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      color: #333333;
-      font-family: 'Poppins', sans-serif;
-    }
-    .receipt-content h2 {
-      font-size: 1.8rem;
-      color: #007bff;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .receipt-content h3 {
-      font-size: 1.2rem;
-      color: #ff4d4d;
-      margin-bottom: 1rem;
-      border-bottom: 1px dashed #007bff;
-      padding-bottom: 0.5rem;
-    }
-    .receipt-content p {
-      font-size: 1rem;
-      margin: 0.5rem 0;
-      color: #333333;
-    }
-    .receipt-content hr {
-      border: 0;
-      border-top: 1px dashed #ff4d4d;
       margin: 1rem 0;
     }
-    .receipt-content .signature-line {
-      border-bottom: 1px solid #007bff;
-      width: 150px;
-      margin: 1.5rem auto 0.5rem;
+    .receipt-details p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
     }
-    .receipt-content .quote {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #007bff;
-      margin-top: 1rem;
-      border-left: 3px solid #ff4d4d;
-      padding-left: 0.5rem;
-    }
-    .receipt-content .thank-you {
-      font-size: 1rem;
-      color: #ff4d4d;
-      font-weight: bold;
-      margin-top: 0.5rem;
-    }
-    .receipt-actions {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-    }
-    .receipt-actions button {
-      width: auto;
-      padding: 0.5rem 1rem;
+    .receipt-footer {
+      margin-top: 2rem;
+      text-align: center;
+      border-top: 1px dashed #007bff;
+      padding-top: 1rem;
     }
 
-    /* Footer */
     footer {
       padding: 1.5rem;
       background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
@@ -389,7 +345,6 @@
       box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Mobile Adjustments */
     @media (max-width: 500px) {
       header { height: 40vh; }
       header h1 { font-size: 1.8rem; }
@@ -424,7 +379,6 @@
   <div class="container">
     <h2 class="section-title">Support Our Mission</h2>
 
-    <!-- Donate to Masjid Section -->
     <div class="donation-card" id="donate-masjid">
       <div class="donation-details">
         <h2>Jamia Ahli Hadees Mohammadia Masjid</h2>
@@ -437,7 +391,6 @@
       <div class="scanner-placeholder"><img src="masjidscanner.jpg" alt="Masjid QR Code" /></div>
     </div>
 
-    <!-- Donate to Dar-ul-Mawasaat Welfare Foundation Section -->
     <div class="donation-card" id="donate-welfare">
       <div class="donation-details">
         <h2>Darul Mawasaat Welfare Foundation</h2>
@@ -450,7 +403,6 @@
       <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Dar-ul-Mawasaat QR Code" /></div>
     </div>
 
-    <!-- Donate to Darasgah Section -->
     <div class="donation-card" id="donate-darasgah">
       <div class="donation-details">
         <h2>Salafia Darasgah</h2>
@@ -463,7 +415,6 @@
       <div class="scanner-placeholder">QR Code Coming Soon</div>
     </div>
 
-    <!-- Donate to Zakatul Fitr Section -->
     <div class="donation-card" id="donate-zakatulfitr">
       <div class="donation-details">
         <h2>Zakatul Fitr</h2>
@@ -478,7 +429,6 @@
     </div>
   </div>
 
-  <!-- Receipt Section -->
   <div id="receipt-section" class="receipt-section" style="display: none;">
     <div id="password-prompt">
       <h2>Enter Password</h2>
@@ -506,7 +456,6 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Constellation Animation (adjusted for white background)
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -532,7 +481,7 @@
         else if (this.y < 0) this.y = canvas.height;
       }
       draw() {
-        ctx.fillStyle = '#007bff'; // Blue particles for contrast
+        ctx.fillStyle = '#007bff';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -550,11 +499,11 @@
           const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
-            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`; // Red lines
+            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y); // Fixed typo: 'patients' to 'particles'
+            ctx.lineTo(particles[b].x, particles[b].y);
             ctx.stroke();
           }
         }
@@ -577,7 +526,6 @@
       canvas.height = window.innerHeight;
     });
 
-    // Hamburger Menu Toggle and Auto-Close
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links a');
@@ -592,7 +540,6 @@
       });
     });
 
-    // Show Scanner Toggle
     document.querySelectorAll('.show-scanner').forEach(button => {
       button.addEventListener('click', () => {
         const card = button.closest('.donation-card');
@@ -601,7 +548,6 @@
       });
     });
 
-    // Copy Functionality
     document.querySelectorAll('.copy-btn').forEach(button => {
       button.addEventListener('click', () => {
         const copyable = button.parentElement;
@@ -613,13 +559,14 @@
       });
     });
 
-    // Receipt Functionality
     const receiptSection = document.getElementById('receipt-section');
     const passwordPrompt = document.getElementById('password-prompt');
     const receiptForm = document.getElementById('receipt-form');
     const receiptPreview = document.getElementById('receipt-preview');
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
+    
+    let receiptNumber = parseInt(localStorage.getItem('receiptCounter') || '0');
 
     document.querySelectorAll('.get-receipt').forEach(button => {
       button.addEventListener('click', () => {
@@ -632,7 +579,7 @@
 
     submitPassword.addEventListener('click', () => {
       const password = document.getElementById('password').value;
-      if (password === 'Donate2025!') { // Replace with your secure password
+      if (password === 'Donate2025!') {
         passwordPrompt.style.display = 'none';
         receiptForm.style.display = 'block';
       } else {
@@ -646,19 +593,34 @@
       const purpose = document.getElementById('purpose').value;
 
       if (donorName && amount && purpose) {
+        receiptNumber++;
+        localStorage.setItem('receiptCounter', receiptNumber);
+
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
-            <h2>Donation Receipt</h2>
-            <h3>Jamia Ahli Hadees Mohammadia Masjid</h3>
-            <p><strong>Donor Name:</strong> ${donorName}</p>
-            <p><strong>Amount:</strong> ₹${amount}</p>
-            <p><strong>Purpose:</strong> ${purpose}</p>
-            <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
-            <hr>
-            <p class="signature-line"></p>
-            <p>Authorized Signature</p>
-            <p class="quote">"Charity does not decrease wealth."</p>
-            <p class="thank-you">Thank You for Your Generosity!</p>
+            <div class="receipt-header">
+              <h2 style="color: #007bff; font-size: 2rem;">Darul Mawasaat Cherwan</h2>
+              <p style="color: #ff4d4d; font-size: 1.2rem;">Official Donation Receipt</p>
+              <p style="color: #333; font-size: 1rem;">Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')}</p>
+            </div>
+            <div class="receipt-logo">DM</div>
+            <div class="receipt-details">
+              <p><strong style="color: #007bff;">Donor Name:</strong> ${donorName}</p>
+              <p><strong style="color: #007bff;">Amount:</strong> ₹${parseFloat(amount).toLocaleString('en-IN')}</p>
+              <p><strong style="color: #007bff;">Purpose:</strong> ${purpose}</p>
+              <p><strong style="color: #007bff;">Date:</strong> ${new Date().toLocaleDateString('en-IN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</p>
+            </div>
+            <div class="receipt-footer">
+              <p class="signature-line"></p>
+              <p style="color: #007bff; font-weight: 600;">Shaowkat Ahmad Mir</p>
+              <p style="color: #333;">Chairman, Jamia Ahli Hadees Cherwan Kangan</p>
+              <p class="quote" style="color: #ff4d4d; margin-top: 1rem;">"Charity does not decrease wealth."</p>
+              <p class="thank-you" style="color: #007bff; font-size: 1.2rem;">Thank You for Your Generosity!</p>
+            </div>
           </div>
           <div class="receipt-actions">
             <button id="download-share-receipt">Download & Share</button>
@@ -667,36 +629,53 @@
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'block';
 
-        // Download & Share Receipt
         document.getElementById('download-share-receipt').addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
-          html2canvas(element).then(canvas => {
+          
+          html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff'
+          }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
               orientation: 'portrait',
               unit: 'mm',
               format: 'a4'
             });
-            const width = pdf.internal.pageSize.getWidth();
-            const height = (canvas.height * width) / canvas.width;
-            pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+            
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+            const margin = 10;
+            
+            const ratio = Math.min(
+              (pdfWidth - 2 * margin) / canvasWidth,
+              (pdfHeight - 2 * margin) / canvasHeight
+            );
+            const width = canvasWidth * ratio;
+            const height = canvasHeight * ratio;
+            
+            const x = (pdfWidth - width) / 2;
+            const y = (pdfHeight - height) / 2;
 
-            // Save PDF and get blob for sharing
+            pdf.addImage(imgData, 'PNG', x, y, width, height);
+            
             const pdfBlob = pdf.output('blob');
-            pdf.save(`Donation_Receipt_${donorName}.pdf`);
+            pdf.save(`Receipt_ZKF-${receiptNumber.toString().padStart(4, '0')}_${donorName}.pdf`);
 
-            // Share the PDF file
-            const file = new File([pdfBlob], `Donation_Receipt_${donorName}.pdf`, { type: 'application/pdf' });
+            const file = new File([pdfBlob], `Receipt_ZKF-${receiptNumber.toString().padStart(4, '0')}_${donorName}.pdf`, { type: 'application/pdf' });
             const shareData = {
               files: [file],
               title: 'Donation Receipt',
-              text: `Receipt for ${donorName}'s donation of ₹${amount} for ${purpose} on ${new Date().toLocaleDateString()}.`
+              text: `Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')} for ${donorName}'s donation of ₹${amount} for ${purpose}`
             };
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               navigator.share(shareData).catch(err => console.error('Error sharing:', err));
             } else {
-              alert('Sharing files is not supported on this device. The PDF has been downloaded.');
+              alert('Sharing files not supported. PDF has been downloaded.');
             }
           });
         });
@@ -704,6 +683,9 @@
         alert('Please fill in all fields');
       }
     });
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
