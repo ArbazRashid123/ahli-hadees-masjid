@@ -477,7 +477,13 @@
       <label for="amount">Amount (in Rupees):</label>
       <input type="number" id="amount" min="0" step="0.01" required />
       <label for="purpose">Purpose:</label>
-      <input type="text" id="purpose" value="Zakatul Fitr Donation" required />
+      <select id="purpose" required>
+        <option value="Zakatul Fitr">Zakatul Fitr</option>
+        <option value="Nazr-o-Niyaz">Nazr-o-Niyaz</option>
+        <option value="Sadaqah">Sadaqah</option>
+        <option value="Khairaat">Khairaat</option>
+        <option value="Other">Other</option>
+      </select>
       <label for="payment-method">Payment Method:</label>
       <select id="payment-method" required>
         <option value="Cash">Cash</option>
@@ -609,8 +615,14 @@
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     
-    // Start receipt number from 1
-    let receiptNumber = localStorage.getItem('receiptCounter') ? parseInt(localStorage.getItem('receiptCounter')) : 0;
+    // Receipt number counters for each purpose
+    const receiptCounters = {
+      'Zakatul Fitr': localStorage.getItem('Zakatul Fitr') ? parseInt(localStorage.getItem('Zakatul Fitr')) : 0,
+      'Nazr-o-Niyaz': localStorage.getItem('Nazr-o-Niyaz') ? parseInt(localStorage.getItem('Nazr-o-Niyaz')) : 0,
+      'Sadaqah': localStorage.getItem('Sadaqah') ? parseInt(localStorage.getItem('Sadaqah')) : 0,
+      'Khairaat': localStorage.getItem('Khairaat') ? parseInt(localStorage.getItem('Khairaat')) : 0,
+      'Other': localStorage.getItem('Other') ? parseInt(localStorage.getItem('Other')) : 0,
+    };
 
     document.querySelectorAll('.get-receipt').forEach(button => {
       button.addEventListener('click', () => {
@@ -638,19 +650,43 @@
       const paymentMethod = document.getElementById('payment-method').value;
 
       if (donorName && amount && purpose && paymentMethod) {
-        receiptNumber++; // Increment receipt number
-        localStorage.setItem('receiptCounter', receiptNumber);
+        // Increment receipt number based on purpose
+        receiptCounters[purpose]++;
+        localStorage.setItem(purpose, receiptCounters[purpose]);
+
+        // Generate receipt number based on purpose
+        let receiptNumber;
+        const year = new Date().getFullYear();
+        switch (purpose) {
+          case 'Zakatul Fitr':
+            receiptNumber = `ZFTR${receiptCounters[purpose].toString().padStart(3, '0')}/${year}`;
+            break;
+          case 'Nazr-o-Niyaz':
+            receiptNumber = `NON${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          case 'Sadaqah':
+            receiptNumber = `SQDH${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          case 'Khairaat':
+            receiptNumber = `KHR${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          case 'Other':
+            receiptNumber = `OTH${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+            break;
+          default:
+            receiptNumber = `OTH${receiptCounters[purpose].toString().padStart(4, '0')}/${year}`;
+        }
 
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
               <h2 style="color: #007bff; font-size: 2.5rem;">Darul Mawasaat Cherwan</h2>
               <p style="color: #ff4d4d; font-size: 1.5rem;">Official Donation Receipt</p>
-              <p style="color: #333; font-size: 1.2rem;">Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')}</p>
+              <p style="color: #333; font-size: 1.2rem;">Receipt No: ${receiptNumber}</p>
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
+              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
               <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
@@ -707,13 +743,13 @@
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
             
             const pdfBlob = pdf.output('blob');
-            pdf.save(`Receipt_ZKF-${receiptNumber.toString().padStart(4, '0')}_${donorName}.pdf`);
+            pdf.save(`Receipt_${receiptNumber}_${donorName}.pdf`);
 
-            const file = new File([pdfBlob], `Receipt_ZKF-${receiptNumber.toString().padStart(4, '0')}_${donorName}.pdf`, { type: 'application/pdf' });
+            const file = new File([pdfBlob], `Receipt_${receiptNumber}_${donorName}.pdf`, { type: 'application/pdf' });
             const shareData = {
               files: [file],
               title: 'Donation Receipt',
-              text: `Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+              text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
             };
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
