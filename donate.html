@@ -273,7 +273,7 @@
     }
     .receipt-section h2 { color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; }
     .receipt-section label { display: block; margin: 0.5rem 0; color: #007bff; }
-    .receipt-section input {
+    .receipt-section input, .receipt-section select {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
@@ -296,49 +296,51 @@
 
     .receipt-content {
       width: 100%;
-      max-width: 190mm; /* A4 width minus margins */
+      max-width: 195mm;
       margin: 0 auto;
-      padding: 20mm;
+      padding: 15mm;
       background: linear-gradient(135deg, #ffffff, #f9f9f9);
       border: 5px double #007bff;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
       color: #333333;
       position: relative;
-      min-height: 257mm; /* A4 height minus margins */
+      min-height: 267mm;
     }
     .receipt-header {
       text-align: center;
       border-bottom: 2px solid #ff4d4d;
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
     .receipt-logo {
       position: absolute;
-      top: 10mm;
-      right: 10mm;
+      top: 15mm;
+      right: 15mm;
       opacity: 0.1;
       font-size: 2rem;
     }
     .receipt-details {
       background: rgba(0, 123, 255, 0.05);
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 10px;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      line-height: 2;
     }
     .receipt-details p {
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
+      margin: 0.8rem 0;
+      font-size: 1.2rem;
     }
     .receipt-footer {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       text-align: center;
       border-top: 1px dashed #007bff;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       position: absolute;
-      bottom: 20mm;
-      left: 20mm;
-      right: 20mm;
+      bottom: 15mm;
+      left: 15mm;
+      right: 15mm;
+      line-height: 1.8;
     }
 
     footer {
@@ -360,6 +362,17 @@
       .donation-details .copyable { text-align: left; }
       .show-scanner, .get-receipt { padding: 0.5rem 1rem; font-size: 0.9rem; }
       .scanner-placeholder.visible { min-height: 180px; }
+      .receipt-content {
+        max-width: 100%;
+        padding: 10mm;
+        min-height: auto;
+        border: 3px double #007bff;
+      }
+      .receipt-header h2 { font-size: 1.5rem; }
+      .receipt-header p { font-size: 1rem; }
+      .receipt-details p { font-size: 1rem; }
+      .receipt-footer { position: static; }
+      .receipt-logo { font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -449,6 +462,15 @@
       <input type="number" id="amount" min="0" step="0.01" required />
       <label for="purpose">Purpose:</label>
       <input type="text" id="purpose" value="Zakatul Fitr Donation" required />
+      <label for="payment-method">Payment Method:</label>
+      <select id="payment-method" required>
+        <option value="Cash">Cash</option>
+        <option value="GPay">GPay</option>
+        <option value="J&K mPay">J&K mPay</option>
+        <option value="PhonePe">PhonePe</option>
+        <option value="Paytm">Paytm</option>
+        <option value="Other">Other</option>
+      </select>
       <button id="generate-receipt">Generate Receipt</button>
     </div>
     <div id="receipt-preview" style="display: none;"></div>
@@ -571,7 +593,9 @@
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     
-    let receiptNumber = parseInt(localStorage.getItem('receiptCounter') || '0');
+    // Reset receipt number to start from 0
+    let receiptNumber = 0;
+    localStorage.setItem('receiptCounter', '0');
     let tempReceiptNumber = receiptNumber + 1;
 
     document.querySelectorAll('.get-receipt').forEach(button => {
@@ -597,8 +621,9 @@
       const donorName = document.getElementById('donor-name').value;
       const amount = document.getElementById('amount').value;
       const purpose = document.getElementById('purpose').value;
+      const paymentMethod = document.getElementById('payment-method').value;
 
-      if (donorName && amount && purpose) {
+      if (donorName && amount && purpose && paymentMethod) {
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
@@ -611,6 +636,7 @@
               <p><strong style="color: #007bff;">Donor Name:</strong> ${donorName}</p>
               <p><strong style="color: #007bff;">Amount:</strong> ₹${parseFloat(amount).toLocaleString('en-IN')}</p>
               <p><strong style="color: #007bff;">Purpose:</strong> ${purpose}</p>
+              <p><strong style="color: #007bff;">Payment Method:</strong> ${paymentMethod}</p>
               <p><strong style="color: #007bff;">Date:</strong> ${new Date().toLocaleDateString('en-IN', { 
                 year: 'numeric', 
                 month: 'long', 
@@ -639,8 +665,8 @@
             scale: 2,
             useCORS: true,
             backgroundColor: '#ffffff',
-            width: element.offsetWidth,
-            height: element.offsetHeight
+            width: element.scrollWidth + 50,
+            height: element.scrollHeight + 50
           }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
@@ -654,13 +680,20 @@
             const margin = 10;
             const contentWidth = pdfWidth - 2 * margin;
             const contentHeight = pdfHeight - 2 * margin;
-            
+            const imgWidth = canvas.width / 2;
+            const imgHeight = canvas.height / 2;
+            const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
+            const finalWidth = imgWidth * ratio;
+            const finalHeight = imgHeight * ratio;
+            const x = margin;
+            const y = margin;
+
             // Increment receipt number only on download
             receiptNumber++;
             localStorage.setItem('receiptCounter', receiptNumber);
             tempReceiptNumber = receiptNumber + 1;
             
-            pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, contentHeight);
+            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
             
             const pdfBlob = pdf.output('blob');
             pdf.save(`Receipt_ZKF-${receiptNumber.toString().padStart(4, '0')}_${donorName}.pdf`);
@@ -669,7 +702,7 @@
             const shareData = {
               files: [file],
               title: 'Donation Receipt',
-              text: `Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')} for ${donorName}'s donation of ₹${amount} for ${purpose}`
+              text: `Receipt No: ZKF-${receiptNumber.toString().padStart(4, '0')} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
             };
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
