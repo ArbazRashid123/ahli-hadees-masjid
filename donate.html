@@ -296,51 +296,58 @@
 
     .receipt-content {
       width: 100%;
-      max-width: 195mm;
+      max-width: 196mm; /* A4 width (210mm) - 2 * 7mm margins */
       margin: 0 auto;
-      padding: 15mm;
+      padding: 7mm; /* Approx 20px */
       background: linear-gradient(135deg, #ffffff, #f9f9f9);
       border: 5px double #007bff;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
       color: #333333;
       position: relative;
-      min-height: 267mm;
+      min-height: 283mm; /* A4 height (297mm) - 2 * 7mm margins */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .receipt-header {
       text-align: center;
       border-bottom: 2px solid #ff4d4d;
-      padding-bottom: 1.5rem;
+      padding-bottom: 2rem;
       margin-bottom: 2rem;
+      width: 100%;
     }
     .receipt-logo {
       position: absolute;
       top: 15mm;
       right: 15mm;
       opacity: 0.1;
-      font-size: 2rem;
+      font-size: 3rem;
     }
     .receipt-details {
       background: rgba(0, 123, 255, 0.05);
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 10px;
-      margin: 1.5rem 0;
-      line-height: 2;
+      margin: 2rem 0;
+      line-height: 2.2;
+      width: 100%;
+      flex-grow: 1;
     }
     .receipt-details p {
-      margin: 0.8rem 0;
-      font-size: 1.2rem;
+      margin: 1rem 0;
+      font-size: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .receipt-details strong {
+      flex-basis: 40%;
     }
     .receipt-footer {
-      margin-top: 2.5rem;
       text-align: center;
       border-top: 1px dashed #007bff;
-      padding-top: 1.5rem;
-      position: absolute;
-      bottom: 15mm;
-      left: 15mm;
-      right: 15mm;
-      line-height: 1.8;
+      padding-top: 2rem;
+      width: 100%;
+      line-height: 2;
     }
 
     footer {
@@ -364,13 +371,13 @@
       .scanner-placeholder.visible { min-height: 180px; }
       .receipt-content {
         max-width: 100%;
-        padding: 10mm;
+        padding: 5mm;
         min-height: auto;
         border: 3px double #007bff;
       }
       .receipt-header h2 { font-size: 1.5rem; }
       .receipt-header p { font-size: 1rem; }
-      .receipt-details p { font-size: 1rem; }
+      .receipt-details p { font-size: 1rem; flex-direction: column; }
       .receipt-footer { position: static; }
       .receipt-logo { font-size: 1.5rem; }
     }
@@ -593,7 +600,7 @@
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     
-    // Reset receipt number to start from 0
+    // Start receipt number from 0 (first will be 0001)
     let receiptNumber = 0;
     localStorage.setItem('receiptCounter', '0');
     let tempReceiptNumber = receiptNumber + 1;
@@ -627,28 +634,28 @@
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
-              <h2 style="color: #007bff; font-size: 2rem;">Darul Mawasaat Cherwan</h2>
-              <p style="color: #ff4d4d; font-size: 1.2rem;">Official Donation Receipt</p>
-              <p style="color: #333; font-size: 1rem;">Receipt No: ZKF-${tempReceiptNumber.toString().padStart(4, '0')}</p>
+              <h2 style="color: #007bff; font-size: 2.5rem;">Darul Mawasaat Cherwan</h2>
+              <p style="color: #ff4d4d; font-size: 1.5rem;">Official Donation Receipt</p>
+              <p style="color: #333; font-size: 1.2rem;">Receipt No: ZKF-${tempReceiptNumber.toString().padStart(4, '0')}</p>
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> ${donorName}</p>
-              <p><strong style="color: #007bff;">Amount:</strong> ₹${parseFloat(amount).toLocaleString('en-IN')}</p>
-              <p><strong style="color: #007bff;">Purpose:</strong> ${purpose}</p>
-              <p><strong style="color: #007bff;">Payment Method:</strong> ${paymentMethod}</p>
-              <p><strong style="color: #007bff;">Date:</strong> ${new Date().toLocaleDateString('en-IN', { 
+              <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
+              <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
+              <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
+              <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
+              <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-              })}</p>
+              })}</span></p>
             </div>
             <div class="receipt-footer">
               <p class="signature-line"></p>
-              <p style="color: #007bff; font-weight: 600;">Shaowkat Ahmad Mir</p>
-              <p style="color: #333;">Chairman, Jamia Ahli Hadees Cherwan Kangan</p>
-              <p class="quote" style="color: #ff4d4d; margin-top: 1rem;">"Charity does not decrease wealth."</p>
-              <p class="thank-you" style="color: #007bff; font-size: 1.2rem;">Thank You for Your Generosity!</p>
+              <p style="color: #007bff; font-weight: 600; font-size: 1.3rem;">Shaowkat Ahmad Mir</p>
+              <p style="color: #333; font-size: 1.1rem;">Chairman, Jamia Ahli Hadees Cherwan Kangan</p>
+              <p class="quote" style="color: #ff4d4d; margin-top: 1rem; font-size: 1.2rem;">"Charity does not decrease wealth."</p>
+              <p class="thank-you" style="color: #007bff; font-size: 1.5rem;">Thank You for Your Generosity!</p>
             </div>
           </div>
           <div class="receipt-actions">
@@ -665,8 +672,8 @@
             scale: 2,
             useCORS: true,
             backgroundColor: '#ffffff',
-            width: element.scrollWidth + 50,
-            height: element.scrollHeight + 50
+            width: element.scrollWidth,
+            height: element.scrollHeight
           }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({
@@ -677,7 +684,7 @@
             
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
-            const margin = 10;
+            const margin = 7; // Approx 20px
             const contentWidth = pdfWidth - 2 * margin;
             const contentHeight = pdfHeight - 2 * margin;
             const imgWidth = canvas.width / 2;
