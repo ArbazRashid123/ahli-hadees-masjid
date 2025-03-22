@@ -452,6 +452,20 @@
       .show-scanner, .get-receipt { padding: 0.5rem 1rem; font-size: 0.9rem; }
       .scanner-placeholder.visible { min-height: 180px; }
     }
+
+    .receipt-actions button {
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+    .receipt-actions button:hover {
+      background: linear-gradient(90deg, #ff4d4d, #007bff);
+    }
   </style>
 </head>
 <body>
@@ -680,7 +694,7 @@
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     
-    // Receipt counters for each purpose, starting from 1
+    // Reset receipt counters for each purpose to start from 1
     const receiptCounters = {
       'Zakatul Fitr': 0,
       'Sadaqat': 0,
@@ -690,8 +704,10 @@
       'Others': 0
     };
     const currentYear = new Date().getFullYear();
+    
+    // Reset localStorage counters to 0 for each purpose
     Object.keys(receiptCounters).forEach(key => {
-      localStorage.setItem(`${key}Counter`, receiptCounters[key]);
+      localStorage.setItem(`${key}Counter`, '0');
     });
 
     document.querySelectorAll('.get-receipt').forEach(button => {
@@ -765,7 +781,9 @@
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'block';
 
-        document.getElementById('download-share-receipt').addEventListener('click', () => {
+        // Attach event listener to the Download & Share button
+        const downloadShareButton = document.getElementById('download-share-receipt');
+        downloadShareButton.addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
           
           // Calculate dimensions in pixels for html2canvas
@@ -824,10 +842,16 @@
             };
 
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share(shareData).catch(err => console.error('Error sharing:', err));
+              navigator.share(shareData).catch(err => {
+                console.error('Error sharing:', err);
+                alert('Error sharing the file. PDF has been downloaded.');
+              });
             } else {
-              alert('Sharing files not supported. PDF has been downloaded.');
+              alert('Sharing files not supported on this device. PDF has been downloaded.');
             }
+          }).catch(err => {
+            console.error('Error generating PDF:', err);
+            alert('Error generating PDF. Please try again.');
           });
         });
       } else {
