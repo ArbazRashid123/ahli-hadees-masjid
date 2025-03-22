@@ -743,7 +743,7 @@
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
               <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
@@ -755,7 +755,6 @@
               })}</span></p>
             </div>
             <div class="receipt-footer">
-              <p class="quote" style="color: #ff4d4d;">"Charity does not decrease wealth."</p>
               <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
             </div>
           </div>
@@ -770,13 +769,17 @@
           const element = document.getElementById('receipt-content');
           
           html2canvas(element, {
-            scale: 2,
+            scale: 4, // Increased scale for sharper text
             useCORS: true,
             backgroundColor: '#ffffff',
             width: element.scrollWidth,
-            height: element.scrollHeight
+            height: element.scrollHeight,
+            windowWidth: element.scrollWidth,
+            windowHeight: element.scrollHeight,
+            logging: false,
+            dpi: 300 // Higher DPI for better quality
           }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
+            const imgData = canvas.toDataURL('image/png', 1.0); // Quality set to maximum
             const pdf = new jsPDF({
               orientation: 'portrait',
               unit: 'mm',
@@ -788,8 +791,8 @@
             const margin = 7;
             const contentWidth = pdfWidth - 2 * margin;
             const contentHeight = pdfHeight - 2 * margin;
-            const imgWidth = canvas.width / 2;
-            const imgHeight = canvas.height / 2;
+            const imgWidth = canvas.width / 4; // Adjusted for higher scale
+            const imgHeight = canvas.height / 4; // Adjusted for higher scale
             const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
             const finalWidth = contentWidth;
             const finalHeight = contentHeight;
@@ -799,7 +802,7 @@
             // Save updated counter only on download
             localStorage.setItem(`${purpose}Counter`, counter);
             
-            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST'); // 'FAST' compression for better quality
             
             const pdfBlob = pdf.output('blob');
             pdf.save(`Receipt_${receiptNumber}_${donorName}.pdf`);
