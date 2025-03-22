@@ -828,8 +828,15 @@
 
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
             
+            // Save PDF and get blob for sharing
             const pdfBlob = pdf.output('blob');
             const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
+            pdf.save(fileName); // Download the PDF first
+
+            // Save updated counter only after download
+            localStorage.setItem(`${purpose}Counter`, counter);
+
+            // Share the PDF file
             const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
             const shareData = {
               files: [file],
@@ -837,37 +844,12 @@
               text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
             };
 
-            // Save updated counter only on download/share
-            localStorage.setItem(`${purpose}Counter`, counter);
-
-            // Function to trigger download
-            const triggerDownload = () => {
-              const url = URL.createObjectURL(pdfBlob);
-              const link = document.createElement('a');
-              link.href = url;
-              link.download = fileName;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              URL.revokeObjectURL(url);
-            };
-
-            // Check if sharing is supported
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share(shareData)
-                .then(() => {
-                  // Share successful, now trigger download
-                  triggerDownload();
-                })
-                .catch(err => {
-                  console.error('Error sharing:', err);
-                  // Even if sharing fails, trigger download
-                  triggerDownload();
-                  alert('Error sharing the file. PDF has been downloaded.');
-                });
+              navigator.share(shareData).catch(err => {
+                console.error('Error sharing:', err);
+                alert('Error sharing the file. PDF has been downloaded.');
+              });
             } else {
-              // If sharing is not supported, trigger download and inform user
-              triggerDownload();
               alert('Sharing files not supported on this device. PDF has been downloaded.');
             }
           }).catch(err => {
