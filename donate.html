@@ -364,6 +364,16 @@
       line-height: 1.5;
       margin: 0.5rem 0;
     }
+    .signature-line {
+      border-bottom: 1px dashed #333333;
+      width: 150px;
+      margin: 1rem auto 0.5rem;
+    }
+    .signature-text {
+      font-size: 1rem;
+      color: #ff4d4d;
+      font-weight: 500;
+    }
 
     /* Mobile-specific receipt styles */
     @media (max-width: 500px) {
@@ -429,6 +439,13 @@
         font-size: 1rem;
         line-height: 1.6;
         margin: 4mm 0;
+      }
+      .signature-line {
+        width: 120px;
+        margin: 0.8rem auto 0.4rem;
+      }
+      .signature-text {
+        font-size: 0.9rem;
       }
     }
 
@@ -759,7 +776,7 @@
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
               <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
@@ -772,6 +789,8 @@
             </div>
             <div class="receipt-footer">
               <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
+              <div class="signature-line"></div>
+              <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
             </div>
           </div>
           <div class="receipt-actions">
@@ -836,22 +855,40 @@
             // Save updated counter only after download
             localStorage.setItem(`${purpose}Counter`, counter);
 
-            // Share the PDF file
-            const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-            const shareData = {
-              files: [file],
-              title: 'Donation Receipt',
-              text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
-            };
+            // Share the PDF file with a slight delay to ensure download completes
+            setTimeout(() => {
+              const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+              const shareData = {
+                files: [file],
+                title: 'Donation Receipt',
+                text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+              };
 
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share(shareData).catch(err => {
-                console.error('Error sharing:', err);
-                alert('Error sharing the file. PDF has been downloaded.');
-              });
-            } else {
-              alert('Sharing files not supported on this device. PDF has been downloaded.');
-            }
+              // Log shareData for debugging
+              console.log('Share Data:', shareData);
+
+              // Check if sharing is supported
+              if (navigator.canShare) {
+                console.log('navigator.canShare is supported');
+                if (navigator.canShare({ files: [file] })) {
+                  console.log('File sharing is supported');
+                  navigator.share(shareData)
+                    .then(() => {
+                      console.log('Share successful');
+                    })
+                    .catch(err => {
+                      console.error('Error sharing:', err.message);
+                      alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
+                    });
+                } else {
+                  console.log('File sharing not supported for this file type');
+                  alert('Sharing files of this type is not supported on this device. PDF has been downloaded.');
+                }
+              } else {
+                console.log('navigator.share not supported');
+                alert('Sharing is not supported on this device. PDF has been downloaded.');
+              }
+            }, 500); // 500ms delay to ensure download completes
           }).catch(err => {
             console.error('Error generating PDF:', err);
             alert('Error generating PDF. Please try again.');
