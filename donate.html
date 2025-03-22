@@ -743,7 +743,7 @@
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
               <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
@@ -768,41 +768,50 @@
         document.getElementById('download-share-receipt').addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
           
+          // Calculate dimensions in pixels for html2canvas
+          const scale = 4; // High scale for sharp text
+          const widthInPx = 210 * 3.78; // 210mm converted to pixels (1mm ≈ 3.78px at 96dpi)
+          const heightInPx = 297 * 3.78; // 297mm converted to pixels
+          
           html2canvas(element, {
-            scale: 4, // Increased scale for sharper text
+            scale: scale,
             useCORS: true,
             backgroundColor: '#ffffff',
-            width: element.scrollWidth,
-            height: element.scrollHeight,
-            windowWidth: element.scrollWidth,
-            windowHeight: element.scrollHeight,
+            width: widthInPx,
+            height: heightInPx,
+            windowWidth: widthInPx,
+            windowHeight: heightInPx,
             logging: false,
-            dpi: 300 // Higher DPI for better quality
+            dpi: 300
           }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png', 1.0); // Quality set to maximum
+            const imgData = canvas.toDataURL('image/png', 1.0);
             const pdf = new jsPDF({
               orientation: 'portrait',
               unit: 'mm',
               format: 'a4'
             });
             
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const pdfWidth = pdf.internal.pageSize.getWidth(); // 210mm for A4
+            const pdfHeight = pdf.internal.pageSize.getHeight(); // 297mm for A4
             const margin = 7;
-            const contentWidth = pdfWidth - 2 * margin;
-            const contentHeight = pdfHeight - 2 * margin;
-            const imgWidth = canvas.width / 4; // Adjusted for higher scale
-            const imgHeight = canvas.height / 4; // Adjusted for higher scale
+            const contentWidth = pdfWidth - 2 * margin; // Width available after margins
+            const contentHeight = pdfHeight - 2 * margin; // Height available after margins
+            
+            // Calculate image dimensions
+            const imgWidth = canvas.width / scale;
+            const imgHeight = canvas.height / scale;
             const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
-            const finalWidth = contentWidth;
-            const finalHeight = contentHeight;
-            const x = margin;
-            const y = margin;
+            const finalWidth = imgWidth * ratio;
+            const finalHeight = imgHeight * ratio;
+            
+            // Center the content in the PDF
+            const x = (pdfWidth - finalWidth) / 2; // Center horizontally
+            const y = (pdfHeight - finalHeight) / 2; // Center vertically
 
             // Save updated counter only on download
             localStorage.setItem(`${purpose}Counter`, counter);
             
-            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST'); // 'FAST' compression for better quality
+            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
             
             const pdfBlob = pdf.output('blob');
             pdf.save(`Receipt_${receiptNumber}_${donorName}.pdf`);
