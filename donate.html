@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <style>
@@ -569,7 +568,7 @@
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Donations for Zakatul Fitr to support the needy during Eid.</p>
         <button class="show-scanner">Show Scanner</button>
-        <button class="get-receipt" data-org="zakatulfitr">Get Receipt</button>
+        <button class="get-receipt">Get Receipt</button>
       </div>
       <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Zakatul Fitr QR Code" /></div>
     </div>
@@ -622,23 +621,267 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Firebase configuration (replace with your Firebase project details)
-   const firebaseConfig = {
-  apiKey: "AIzaSyA432vegNGGr2GESFirFnn9fC9gpV6G-yU",
-  authDomain: "donationtracker-48d09.firebaseapp.com",
-  databaseURL: "https://donationtracker-48d09-default-rtdb.firebaseio.com",
-  projectId: "donationtracker-48d09",
-  storageBucket: "donationtracker-48d09.firebasestorage.app",
-  messagingSenderId: "822212778700",
-  appId: "1:822212778700:web:87934d145c3554b0990069",
-  measurementId: "G-PYE2S291SB"
-};
+    // Debug: Confirm script is running
+    console.log("JavaScript loaded successfully!");
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
+    // Firebase configuration (your donationtracker-48d09)
+    const firebaseConfig = {
+      apiKey: "AIzaSyA432vegNGGr2GESFirFnn9fC9gpV6G-yU",
+      authDomain: "donationtracker-48d09.firebaseapp.com",
+      databaseURL: "https://donationtracker-48d09-default-rtdb.firebaseio.com",
+      projectId: "donationtracker-48d09",
+      storageBucket: "donationtracker-48d09.firebasestorage.app",
+      messagingSenderId: "822212778700",
+      appId: "1:822212778700:web:87934d145c3554b0990069",
+      measurementId: "G-PYE2S291SB"
+    };
 
-    // Canvas animation
+    // Initialize Firebase with error handling
+    let database;
+    try {
+      firebase.initializeApp(firebaseConfig);
+      database = firebase.database();
+      console.log("Firebase initialized:", firebase.app().name);
+    } catch (error) {
+      console.error("Firebase initialization failed:", error);
+      alert("Firebase not working. Some features may be limited.");
+    }
+
+    // Hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      console.log("Hamburger clicked!");
+      navLinks.classList.toggle('active');
+    });
+
+    // Scanner toggle
+    document.querySelectorAll('.show-scanner').forEach(button => {
+      button.addEventListener('click', () => {
+        console.log("Show Scanner clicked!");
+        const card = button.closest('.donation-card');
+        const scanner = card.querySelector('.scanner-placeholder');
+        scanner.classList.toggle('visible');
+      });
+    });
+
+    // Copy functionality
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        console.log("Copy button clicked!");
+        const copyable = button.parentElement;
+        const text = copyable.getAttribute('data-text');
+        navigator.clipboard.writeText(text).then(() => {
+          copyable.classList.add('copied');
+          setTimeout(() => copyable.classList.remove('copied'), 2000);
+        }).catch(err => console.error("Copy failed:", err));
+      });
+    });
+
+    // Receipt section
+    const receiptSection = document.getElementById('receipt-section');
+    const passwordPrompt = document.getElementById('password-prompt');
+    const receiptForm = document.getElementById('receipt-form');
+    const receiptPreview = document.getElementById('receipt-preview');
+    const historySection = document.getElementById('history-section');
+    const submitPassword = document.getElementById('submit-password');
+    const generateReceipt = document.getElementById('generate-receipt');
+    const currentYear = new Date().getFullYear();
+
+    document.querySelectorAll('.get-receipt').forEach(button => {
+      button.addEventListener('click', () => {
+        console.log("Get Receipt clicked!");
+        receiptSection.style.display = 'block';
+        passwordPrompt.style.display = 'block';
+        receiptForm.style.display = 'none';
+        receiptPreview.style.display = 'none';
+        historySection.style.display = 'none';
+      });
+    });
+
+    submitPassword.addEventListener('click', () => {
+      console.log("Submit Password clicked!");
+      const password = document.getElementById('password').value;
+      if (password === 'Donate2025!') {
+        passwordPrompt.style.display = 'none';
+        receiptForm.style.display = 'block';
+        historySection.style.display = 'block';
+        renderHistoryTabs();
+      } else {
+        alert('Incorrect password');
+      }
+    });
+
+    // Receipt generation
+    generateReceipt.addEventListener('click', () => {
+      console.log("Generate Receipt clicked!");
+      const donorName = document.getElementById('donor-name').value;
+      const donorRelation = document.getElementById('donor-relation').value;
+      const amount = document.getElementById('amount').value;
+      const purpose = document.getElementById('purpose').value;
+      const paymentMethod = document.getElementById('payment-method').value;
+
+      if (!donorName || !donorRelation || !amount || !purpose || !paymentMethod) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      const prefixMap = {
+        'Zakatul Fitr': 'ZFTR',
+        'Sadaqat': 'SDQ',
+        'Nazar-o-Niyaz': 'NON',
+        'Zakat': 'ZAK',
+        'Ushur': 'USH',
+        'Others': 'OTH'
+      };
+      const prefix = prefixMap[purpose];
+
+      if (database) {
+        const counterRef = database.ref(`counters/${purpose}`);
+        counterRef.transaction(counter => (counter || 0) + 1)
+          .then(result => {
+            const counter = result.snapshot.val();
+            generateReceiptHTML(counter, prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+          })
+          .catch(err => {
+            console.error("Firebase counter error:", err);
+            fallbackReceiptGeneration(prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+          });
+      } else {
+        fallbackReceiptGeneration(prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+      }
+    });
+
+    function generateReceiptHTML(counter, prefix, donorName, donorRelation, amount, purpose, paymentMethod) {
+      const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
+      receiptPreview.innerHTML = `
+        <div class="receipt-content" id="receipt-content">
+          <div class="receipt-header">
+            <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
+            <p style="color: #ff4d4d;">Official Donation Receipt</p>
+            <p style="color: #333;">Receipt No: ${receiptNumber}</p>
+          </div>
+          <div class="receipt-details">
+            <p><strong style="color: #007bff;">Donor Name:</strong> <span>${donorName}</span></p>
+            <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
+            <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
+            <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
+            <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
+            <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN')}</span></p>
+          </div>
+          <div class="receipt-footer">
+            <p style="color: #007bff;">Thank You for Your Generosity!</p>
+            <div class="signature-line"></div>
+            <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
+          </div>
+        </div>
+        <div class="receipt-actions">
+          <button id="download-receipt">Download Receipt</button>
+        </div>
+      `;
+      receiptForm.style.display = 'none';
+      receiptPreview.style.display = 'block';
+
+      // Save to Firebase
+      if (database) {
+        database.ref(`donations/${purpose}`).push({
+          receiptNumber,
+          donorName,
+          donorRelation,
+          amount: parseFloat(amount),
+          purpose,
+          paymentMethod,
+          date: new Date().toISOString()
+        });
+      }
+
+      document.getElementById('download-receipt').addEventListener('click', () => downloadPDF(receiptNumber, donorName));
+    }
+
+    function fallbackReceiptGeneration(prefix, donorName, donorRelation, amount, purpose, paymentMethod) {
+      const counter = (parseInt(localStorage.getItem(`${purpose}Counter`) || '0') + 1);
+      localStorage.setItem(`${purpose}Counter`, counter);
+      generateReceiptHTML(counter, prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+    }
+
+    function downloadPDF(receiptNumber, donorName) {
+      const element = document.getElementById('receipt-content');
+      html2canvas(element).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const width = pdf.internal.pageSize.getWidth();
+        const height = pdf.internal.pageSize.getHeight();
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+        pdf.save(`Receipt_${receiptNumber}_${donorName}.pdf`);
+      }).catch(err => console.error("PDF generation failed:", err));
+    }
+
+    // History tabs
+    function renderHistoryTabs() {
+      const purposes = ['Zakatul Fitr', 'Sadaqat', 'Nazar-o-Niyaz', 'Zakat', 'Ushur', 'Others'];
+      const historyTabs = document.querySelector('.history-tabs');
+      historyTabs.innerHTML = '';
+      purposes.forEach(purpose => {
+        const button = document.createElement('button');
+        button.className = 'tab-btn';
+        button.textContent = purpose;
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          loadHistory(purpose);
+        });
+        historyTabs.appendChild(button);
+      });
+      // Activate first tab by default
+      historyTabs.querySelector('.tab-btn').classList.add('active');
+      loadHistory('Zakatul Fitr');
+    }
+
+    // Load donation history from Firebase
+    function loadHistory(purpose) {
+      const historyContent = document.getElementById('history-content');
+      if (database) {
+        database.ref(`donations/${purpose}`).once('value').then(snapshot => {
+          const data = snapshot.val();
+          let html = `
+            <table>
+              <tr>
+                <th>Receipt No</th>
+                <th>Donor Name</th>
+                <th>S/O or D/O</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Date</th>
+              </tr>
+          `;
+          if (data) {
+            Object.values(data).forEach(donation => {
+              html += `
+                <tr>
+                  <td>${donation.receiptNumber}</td>
+                  <td>${donation.donorName}</td>
+                  <td>${donation.donorRelation}</td>
+                  <td>₹${donation.amount.toLocaleString('en-IN')}</td>
+                  <td>${donation.paymentMethod}</td>
+                  <td>${new Date(donation.date).toLocaleDateString('en-IN')}</td>
+                </tr>
+              `;
+            });
+          } else {
+            html += '<tr><td colspan="6">No donations yet</td></tr>';
+          }
+          html += '</table>';
+          historyContent.innerHTML = html;
+        }).catch(err => {
+          console.error('Error loading history:', err);
+          historyContent.innerHTML = '<p>Error loading history. Please try again later.</p>';
+        });
+      } else {
+        historyContent.innerHTML = '<p>History unavailable due to Firebase issue.</p>';
+      }
+    }
+
+    // Canvas animation (optional, remove if not needed)
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -708,284 +951,6 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
-
-    // Navigation
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links a');
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-
-    // Scanner toggle
-    document.querySelectorAll('.show-scanner').forEach(button => {
-      button.addEventListener('click', () => {
-        const card = button.closest('.donation-card');
-        const scanner = card.querySelector('.scanner-placeholder');
-        scanner.classList.toggle('visible');
-      });
-    });
-
-    // Copy functionality
-    document.querySelectorAll('.copy-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const copyable = button.parentElement;
-        const text = copyable.getAttribute('data-text');
-        navigator.clipboard.writeText(text).then(() => {
-          copyable.classList.add('copied');
-          setTimeout(() => copyable.classList.remove('copied'), 2000);
-        });
-      });
-    });
-
-    // Receipt section
-    const receiptSection = document.getElementById('receipt-section');
-    const passwordPrompt = document.getElementById('password-prompt');
-    const receiptForm = document.getElementById('receipt-form');
-    const receiptPreview = document.getElementById('receipt-preview');
-    const historySection = document.getElementById('history-section');
-    const submitPassword = document.getElementById('submit-password');
-    const generateReceipt = document.getElementById('generate-receipt');
-    const currentYear = new Date().getFullYear();
-
-    document.querySelectorAll('.get-receipt').forEach(button => {
-      button.addEventListener('click', () => {
-        receiptSection.style.display = 'block';
-        passwordPrompt.style.display = 'block';
-        receiptForm.style.display = 'none';
-        receiptPreview.style.display = 'none';
-        historySection.style.display = 'none';
-      });
-    });
-
-    submitPassword.addEventListener('click', () => {
-      const password = document.getElementById('password').value;
-      if (password === 'Donate2025!') {
-        passwordPrompt.style.display = 'none';
-        receiptForm.style.display = 'block';
-        historySection.style.display = 'block';
-        renderHistoryTabs();
-      } else {
-        alert('Incorrect password');
-      }
-    });
-
-    // Receipt generation with Firebase
-    generateReceipt.addEventListener('click', () => {
-      const donorName = document.getElementById('donor-name').value;
-      const donorRelation = document.getElementById('donor-relation').value;
-      const amount = document.getElementById('amount').value;
-      const purpose = document.getElementById('purpose').value;
-      const paymentMethod = document.getElementById('payment-method').value;
-
-      if (donorName && donorRelation && amount && purpose && paymentMethod) {
-        const prefixMap = {
-          'Zakatul Fitr': 'ZFTR',
-          'Sadaqat': 'SDQ',
-          'Nazar-o-Niyaz': 'NON',
-          'Zakat': 'ZAK',
-          'Ushur': 'USH',
-          'Others': 'OTH'
-        };
-        const prefix = prefixMap[purpose];
-
-        // Get and increment receipt counter from Firebase
-        const counterRef = database.ref(`counters/${purpose}`);
-        counterRef.transaction(counter => {
-          return (counter || 0) + 1;
-        }).then(result => {
-          const counter = result.snapshot.val();
-          const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
-
-          // Generate receipt HTML
-          receiptPreview.innerHTML = `
-            <div class="receipt-content" id="receipt-content">
-              <div class="receipt-header">
-                <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
-                <p style="color: #ff4d4d;">Official Donation Receipt</p>
-                <p style="color: #333;">Receipt No: ${receiptNumber}</p>
-              </div>
-              <div class="receipt-logo">DM</div>
-              <div class="receipt-details">
-                <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
-                <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
-                <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
-                <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
-                <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
-                <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
-                  year: 'numeric', month: 'long', day: 'numeric' 
-                })}</span></p>
-              </div>
-              <div class="receipt-footer">
-                <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
-                <div class="signature-line"></div>
-                <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
-              </div>
-            </div>
-            <div class="receipt-actions">
-              <button id="download-share-receipt">Download & Share</button>
-            </div>
-          `;
-          receiptForm.style.display = 'none';
-          receiptPreview.style.display = 'block';
-
-          // Save to Firebase
-          const donationData = {
-            receiptNumber,
-            donorName,
-            donorRelation,
-            amount: parseFloat(amount),
-            purpose,
-            paymentMethod,
-            date: new Date().toISOString()
-          };
-          database.ref(`donations/${purpose}`).push(donationData);
-
-          // Download and share receipt
-          const downloadShareButton = document.getElementById('download-share-receipt');
-          downloadShareButton.addEventListener('click', () => {
-            const element = document.getElementById('receipt-content');
-            const scale = 4;
-            const widthInPx = 210 * 3.78;
-            const heightInPx = 297 * 3.78;
-
-            html2canvas(element, {
-              scale: scale,
-              useCORS: true,
-              backgroundColor: '#ffffff',
-              width: widthInPx,
-              height: heightInPx,
-              windowWidth: widthInPx,
-              windowHeight: heightInPx,
-              logging: false,
-              dpi: 300
-            }).then(canvas => {
-              const imgData = canvas.toDataURL('image/png', 1.0);
-              const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-              });
-
-              const pdfWidth = pdf.internal.pageSize.getWidth();
-              const pdfHeight = pdf.internal.pageSize.getHeight();
-              const margin = 7;
-              const contentWidth = pdfWidth - 2 * margin;
-              const contentHeight = pdfHeight - 2 * margin;
-              const imgWidth = canvas.width / scale;
-              const imgHeight = canvas.height / scale;
-              const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
-              const finalWidth = imgWidth * ratio;
-              const finalHeight = imgHeight * ratio;
-              const x = (pdfWidth - finalWidth) / 2;
-              const y = (pdfHeight - finalHeight) / 2;
-
-              pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-              const pdfBlob = pdf.output('blob');
-              const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
-              pdf.save(fileName);
-
-              setTimeout(() => {
-                const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-                const shareData = {
-                  files: [file],
-                  title: 'Donation Receipt',
-                  text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
-                };
-
-                if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                  navigator.share(shareData)
-                    .then(() => console.log('Share successful'))
-                    .catch(err => alert('Error sharing: ' + err.message + '. PDF downloaded.'));
-                } else {
-                  alert('Sharing not supported. PDF downloaded.');
-                }
-              }, 500);
-            }).catch(err => {
-              console.error('Error generating PDF:', err);
-              alert('Error generating PDF. Please try again.');
-            });
-          });
-        }).catch(err => {
-          console.error('Error incrementing counter:', err);
-          alert('Failed to generate receipt number. Using local fallback.');
-          const counter = parseInt(localStorage.getItem(`${purpose}Counter`) || '0') + 1;
-          localStorage.setItem(`${purpose}Counter`, counter);
-          const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
-          // Proceed with receipt generation using local counter (fallback)
-        });
-      } else {
-        alert('Please fill in all fields');
-      }
-    });
-
-    // Render history tabs
-    function renderHistoryTabs() {
-      const purposes = ['Zakatul Fitr', 'Sadaqat', 'Nazar-o-Niyaz', 'Zakat', 'Ushur', 'Others'];
-      const historyTabs = document.querySelector('.history-tabs');
-      historyTabs.innerHTML = '';
-      purposes.forEach(purpose => {
-        const button = document.createElement('button');
-        button.className = 'tab-btn';
-        button.textContent = purpose;
-        button.addEventListener('click', () => {
-          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          loadHistory(purpose);
-        });
-        historyTabs.appendChild(button);
-      });
-      // Activate first tab by default
-      historyTabs.querySelector('.tab-btn').classList.add('active');
-      loadHistory('Zakatul Fitr');
-    }
-
-    // Load donation history from Firebase
-    function loadHistory(purpose) {
-      const historyContent = document.getElementById('history-content');
-      database.ref(`donations/${purpose}`).once('value').then(snapshot => {
-        const data = snapshot.val();
-        let html = `
-          <table>
-            <tr>
-              <th>Receipt No</th>
-              <th>Donor Name</th>
-              <th>S/O or D/O</th>
-              <th>Amount</th>
-              <th>Payment Method</th>
-              <th>Date</th>
-            </tr>
-        `;
-        if (data) {
-          Object.values(data).forEach(donation => {
-            html += `
-              <tr>
-                <td>${donation.receiptNumber}</td>
-                <td>${donation.donorName}</td>
-                <td>${donation.donorRelation}</td>
-                <td>₹${donation.amount.toLocaleString('en-IN')}</td>
-                <td>${donation.paymentMethod}</td>
-                <td>${new Date(donation.date).toLocaleDateString('en-IN')}</td>
-              </tr>
-            `;
-          });
-        } else {
-          html += '<tr><td colspan="6">No donations yet</td></tr>';
-        }
-        html += '</table>';
-        historyContent.innerHTML = html;
-      }).catch(err => {
-        console.error('Error loading history:', err);
-        historyContent.innerHTML = '<p>Error loading history. Please try again later.</p>';
-      });
-    }
   </script>
 </body>
 </html>
