@@ -7,7 +7,9 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://apis.googlewickets.googleapis.com/js/api.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -485,6 +487,27 @@
     .tab-btn:hover, .tab-btn.active {
       background: #ff4d4d;
     }
+    #history-content {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    #history-content table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #history-content th, #history-content td {
+      padding: 0.5rem;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+    #history-content th {
+      background: #007bff;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -587,7 +610,11 @@
       <button id="generate-receipt">Generate Receipt</button>
     </div>
     <div id="receipt-preview" style="display: none;"></div>
-    <div id="history-section" style="display: none;"></div>
+    <div id="history-section" style="display: none;">
+      <h2>Donation History</h2>
+      <div class="history-tabs"></div>
+      <div id="history-content"></div>
+    </div>
   </div>
   <footer>
     <p>© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
@@ -595,33 +622,23 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Google Sheets API configuration
-    const CLIENT_ID = 'YOUR_CLIENT_ID_FROM_GOOGLE_CLOUD';
-    const API_KEY = 'YOUR_API_KEY_FROM_GOOGLE_CLOUD';
-    const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID';
-    const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
+    // Firebase configuration (replace with your Firebase project details)
+   const firebaseConfig = {
+  apiKey: "AIzaSyA432vegNGGr2GESFirFnn9fC9gpV6G-yU",
+  authDomain: "donationtracker-48d09.firebaseapp.com",
+  databaseURL: "https://donationtracker-48d09-default-rtdb.firebaseio.com",
+  projectId: "donationtracker-48d09",
+  storageBucket: "donationtracker-48d09.firebasestorage.app",
+  messagingSenderId: "822212778700",
+  appId: "1:822212778700:web:87934d145c3554b0990069",
+  measurementId: "G-PYE2S291SB"
+};
 
-    // Load Google API client
-    gapi.load('client:auth2', initClient);
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
 
-    function initClient() {
-      gapi.client.init({
-        apiKey: API_KEY,
-        clientId: CLIENT_ID,
-        scope: SCOPES,
-        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-      }).then(() => {
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      });
-    }
-
-    function updateSigninStatus(isSignedIn) {
-      if (!isSignedIn) {
-        gapi.auth2.getAuthInstance().signIn();
-      }
-    }
-
+    // Canvas animation
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -692,6 +709,7 @@
       canvas.height = window.innerHeight;
     });
 
+    // Navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links a');
@@ -706,6 +724,7 @@
       });
     });
 
+    // Scanner toggle
     document.querySelectorAll('.show-scanner').forEach(button => {
       button.addEventListener('click', () => {
         const card = button.closest('.donation-card');
@@ -714,6 +733,7 @@
       });
     });
 
+    // Copy functionality
     document.querySelectorAll('.copy-btn').forEach(button => {
       button.addEventListener('click', () => {
         const copyable = button.parentElement;
@@ -725,10 +745,12 @@
       });
     });
 
+    // Receipt section
     const receiptSection = document.getElementById('receipt-section');
     const passwordPrompt = document.getElementById('password-prompt');
     const receiptForm = document.getElementById('receipt-form');
     const receiptPreview = document.getElementById('receipt-preview');
+    const historySection = document.getElementById('history-section');
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
     const currentYear = new Date().getFullYear();
@@ -739,7 +761,7 @@
         passwordPrompt.style.display = 'block';
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'none';
-        document.getElementById('history-section').style.display = 'none';
+        historySection.style.display = 'none';
       });
     });
 
@@ -748,12 +770,14 @@
       if (password === 'Donate2025!') {
         passwordPrompt.style.display = 'none';
         receiptForm.style.display = 'block';
+        historySection.style.display = 'block';
         renderHistoryTabs();
       } else {
         alert('Incorrect password');
       }
     });
 
+    // Receipt generation with Firebase
     generateReceipt.addEventListener('click', () => {
       const donorName = document.getElementById('donor-name').value;
       const donorRelation = document.getElementById('donor-relation').value;
@@ -772,15 +796,15 @@
         };
         const prefix = prefixMap[purpose];
 
-        // Get current counter from Google Sheets
-        gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: SPREADSHEET_ID,
-          range: `${purpose}!A:A`,
-        }).then(response => {
-          const values = response.result.values || [];
-          const counter = values.length;
-          const receiptNumber = `${prefix}${(counter + 1).toString().padStart(4, '0')}/${currentYear}`;
+        // Get and increment receipt counter from Firebase
+        const counterRef = database.ref(`counters/${purpose}`);
+        counterRef.transaction(counter => {
+          return (counter || 0) + 1;
+        }).then(result => {
+          const counter = result.snapshot.val();
+          const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
 
+          // Generate receipt HTML
           receiptPreview.innerHTML = `
             <div class="receipt-content" id="receipt-content">
               <div class="receipt-header">
@@ -796,9 +820,7 @@
                 <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
                 <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
                 <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
+                  year: 'numeric', month: 'long', day: 'numeric' 
                 })}</span></p>
               </div>
               <div class="receipt-footer">
@@ -814,6 +836,19 @@
           receiptForm.style.display = 'none';
           receiptPreview.style.display = 'block';
 
+          // Save to Firebase
+          const donationData = {
+            receiptNumber,
+            donorName,
+            donorRelation,
+            amount: parseFloat(amount),
+            purpose,
+            paymentMethod,
+            date: new Date().toISOString()
+          };
+          database.ref(`donations/${purpose}`).push(donationData);
+
+          // Download and share receipt
           const downloadShareButton = document.getElementById('download-share-receipt');
           downloadShareButton.addEventListener('click', () => {
             const element = document.getElementById('receipt-content');
@@ -857,27 +892,6 @@
               const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
               pdf.save(fileName);
 
-              // Append to Google Sheets after download
-              gapi.client.sheets.spreadsheets.values.append({
-                spreadsheetId: SPREADSHEET_ID,
-                range: `${purpose}!A:G`,
-                valueInputOption: 'RAW',
-                insertDataOption: 'INSERT_ROWS',
-                resource: {
-                  values: [[
-                    receiptNumber,
-                    donorName,
-                    donorRelation,
-                    `₹${parseFloat(amount).toLocaleString('en-IN')}`,
-                    purpose,
-                    paymentMethod,
-                    new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })
-                  ]]
-                }
-              }).then(() => {
-                renderHistory(purpose);
-              });
-
               setTimeout(() => {
                 const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
                 const shareData = {
@@ -888,84 +902,88 @@
 
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
                   navigator.share(shareData)
-                    .catch(err => {
-                      alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
-                    });
+                    .then(() => console.log('Share successful'))
+                    .catch(err => alert('Error sharing: ' + err.message + '. PDF downloaded.'));
                 } else {
-                  alert('Sharing is not supported on this device. PDF has been downloaded.');
+                  alert('Sharing not supported. PDF downloaded.');
                 }
               }, 500);
             }).catch(err => {
+              console.error('Error generating PDF:', err);
               alert('Error generating PDF. Please try again.');
             });
           });
+        }).catch(err => {
+          console.error('Error incrementing counter:', err);
+          alert('Failed to generate receipt number. Using local fallback.');
+          const counter = parseInt(localStorage.getItem(`${purpose}Counter`) || '0') + 1;
+          localStorage.setItem(`${purpose}Counter`, counter);
+          const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
+          // Proceed with receipt generation using local counter (fallback)
         });
       } else {
         alert('Please fill in all fields');
       }
     });
 
+    // Render history tabs
     function renderHistoryTabs() {
-      const historySection = document.getElementById('history-section');
-      historySection.style.display = 'block';
-      historySection.innerHTML = `
-        <h2>Donation History</h2>
-        <div class="history-tabs">
-          <button class="tab-btn" data-purpose="Zakatul Fitr">Zakatul Fitr</button>
-          <button class="tab-btn" data-purpose="Sadaqat">Sadaqat</button>
-          <button class="tab-btn" data-purpose="Nazar-o-Niyaz">Nazar-o-Niyaz</button>
-          <button class="tab-btn" data-purpose="Zakat">Zakat</button>
-          <button class="tab-btn" data-purpose="Ushur">Ushur</button>
-          <button class="tab-btn" data-purpose="Others">Others</button>
-        </div>
-        <div id="history-content"></div>
-      `;
-
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const purpose = btn.getAttribute('data-purpose');
-          renderHistory(purpose);
+      const purposes = ['Zakatul Fitr', 'Sadaqat', 'Nazar-o-Niyaz', 'Zakat', 'Ushur', 'Others'];
+      const historyTabs = document.querySelector('.history-tabs');
+      historyTabs.innerHTML = '';
+      purposes.forEach(purpose => {
+        const button = document.createElement('button');
+        button.className = 'tab-btn';
+        button.textContent = purpose;
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          loadHistory(purpose);
         });
+        historyTabs.appendChild(button);
       });
-
-      renderHistory('Zakatul Fitr');
+      // Activate first tab by default
+      historyTabs.querySelector('.tab-btn').classList.add('active');
+      loadHistory('Zakatul Fitr');
     }
 
-    function renderHistory(purpose) {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `${purpose}!A:G`
-      }).then(response => {
-        const values = response.result.values || [];
-        const historyContent = document.getElementById('history-content');
-        historyContent.innerHTML = `
-          <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-            <thead>
-              <tr style="background: #007bff; color: #fff;">
-                <th style="padding: 0.5rem;">Receipt No</th>
-                <th style="padding: 0.5rem;">Donor Name</th>
-                <th style="padding: 0.5rem;">S/O or D/O</th>
-                <th style="padding: 0.5rem;">Amount</th>
-                <th style="padding: 0.5rem;">Purpose</th>
-                <th style="padding: 0.5rem;">Payment Method</th>
-                <th style="padding: 0.5rem;">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${values.slice(1).map(row => `
-                <tr style="border-bottom: 1px solid #e0e0e0;">
-                  <td style="padding: 0.5rem;">${row[0]}</td>
-                  <td style="padding: 0.5rem;">${row[1]}</td>
-                  <td style="padding: 0.5rem;">${row[2]}</td>
-                  <td style="padding: 0.5rem;">${row[3]}</td>
-                  <td style="padding: 0.5rem;">${row[4]}</td>
-                  <td style="padding: 0.5rem;">${row[5]}</td>
-                  <td style="padding: 0.5rem;">${row[6]}</td>
-                </tr>
-              `).join('') || '<tr><td colspan="7" style="padding: 1rem; text-align: center;">No donations yet</td></tr>'}
-            </tbody>
-          </table>
+    // Load donation history from Firebase
+    function loadHistory(purpose) {
+      const historyContent = document.getElementById('history-content');
+      database.ref(`donations/${purpose}`).once('value').then(snapshot => {
+        const data = snapshot.val();
+        let html = `
+          <table>
+            <tr>
+              <th>Receipt No</th>
+              <th>Donor Name</th>
+              <th>S/O or D/O</th>
+              <th>Amount</th>
+              <th>Payment Method</th>
+              <th>Date</th>
+            </tr>
         `;
+        if (data) {
+          Object.values(data).forEach(donation => {
+            html += `
+              <tr>
+                <td>${donation.receiptNumber}</td>
+                <td>${donation.donorName}</td>
+                <td>${donation.donorRelation}</td>
+                <td>₹${donation.amount.toLocaleString('en-IN')}</td>
+                <td>${donation.paymentMethod}</td>
+                <td>${new Date(donation.date).toLocaleDateString('en-IN')}</td>
+              </tr>
+            `;
+          });
+        } else {
+          html += '<tr><td colspan="6">No donations yet</td></tr>';
+        }
+        html += '</table>';
+        historyContent.innerHTML = html;
+      }).catch(err => {
+        console.error('Error loading history:', err);
+        historyContent.innerHTML = '<p>Error loading history. Please try again later.</p>';
       });
     }
   </script>
