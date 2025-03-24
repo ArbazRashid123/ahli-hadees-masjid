@@ -300,6 +300,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      font-weight: 500; /* Make text slightly bolder */
     }
     .receipt-header {
       text-align: center;
@@ -312,18 +313,13 @@
       font-size: 2rem;
       line-height: 1.2;
       margin-bottom: 0.5rem;
+      font-weight: 600; /* Bolder header */
     }
     .receipt-header p {
       font-size: 1.2rem;
       line-height: 1.2;
       margin: 0.3rem 0;
-    }
-    .receipt-logo {
-      position: absolute;
-      top: 15mm;
-      right: 15mm;
-      opacity: 0.1;
-      font-size: 3rem;
+      font-weight: 500;
     }
     .receipt-details {
       background: rgba(0, 123, 255, 0.05);
@@ -339,9 +335,11 @@
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
+      font-weight: 500; /* Solid text */
     }
     .receipt-details strong {
       flex-basis: 40%;
+      font-weight: 600; /* Bolder labels */
     }
     .receipt-footer {
       text-align: center;
@@ -353,6 +351,7 @@
       font-size: 1.2rem;
       line-height: 1.5;
       margin: 0.5rem 0;
+      font-weight: 500;
     }
     .signature-line {
       border-bottom: 1px dashed #333333;
@@ -362,7 +361,7 @@
     .signature-text {
       font-size: 1rem;
       color: #ff4d4d;
-      font-weight: 500;
+      font-weight: 600;
     }
     @media (max-width: 500px) {
       .receipt-content {
@@ -387,11 +386,6 @@
         font-size: 1rem;
         line-height: 1.3;
         margin: 0.3rem 0;
-      }
-      .receipt-logo {
-        top: 8mm;
-        right: 8mm;
-        font-size: 2rem;
       }
       .receipt-details {
         padding: 8mm;
@@ -636,13 +630,19 @@
     };
 
     let database;
+    let firebaseConnected = false;
     try {
       firebase.initializeApp(firebaseConfig);
       database = firebase.database();
+      // Test connectivity with a simple read
+      database.ref('.info/connected').on('value', (snapshot) => {
+        firebaseConnected = snapshot.val();
+        console.log("Firebase connection status:", firebaseConnected ? "Connected" : "Disconnected");
+      });
       console.log("Firebase initialized:", firebase.app().name);
     } catch (error) {
       console.error("Firebase initialization failed:", error);
-      // Don’t alert here; let the app continue with fallback
+      firebaseConnected = false;
     }
 
     // Hamburger menu and navigation
@@ -657,10 +657,10 @@
 
     links.forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+        e.preventDefault();
         console.log("Nav link clicked:", link.getAttribute('href'));
-        navLinks.classList.remove('active'); // Close menu
-        const targetId = link.getAttribute('href').substring(1); // Remove '#'
+        navLinks.classList.remove('active');
+        const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -709,6 +709,10 @@
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'none';
         historySection.style.display = 'none';
+        // Show Firebase status popup
+        setTimeout(() => {
+          alert(firebaseConnected ? "Firebase is connected!" : "Firebase is not connected. Using local fallback.");
+        }, 100); // Slight delay to ensure DOM updates
       });
     });
 
@@ -749,7 +753,7 @@
       };
       const prefix = prefixMap[purpose];
 
-      if (database) {
+      if (firebaseConnected && database) {
         const counterRef = database.ref(`counters/${purpose}`);
         counterRef.transaction(counter => (counter || 0) + 1)
           .then(result => {
@@ -800,7 +804,7 @@
       receiptForm.style.display = 'none';
       receiptPreview.style.display = 'block';
 
-      if (database) {
+      if (firebaseConnected && database) {
         database.ref(`donations/${purpose}`).push({
           receiptNumber,
           donorName,
@@ -823,8 +827,8 @@
 
     function downloadPDF(receiptNumber, donorName) {
       const element = document.getElementById('receipt-content');
-      html2canvas(element).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
+      html2canvas(element, { scale: 2 }).then(canvas => { // Increased scale for sharper text
+        const imgData = canvas.toDataURL('image/png', 1.0); // Higher quality
         const pdf = new jsPDF('p', 'mm', 'a4');
         const width = pdf.internal.pageSize.getWidth();
         const height = pdf.internal.pageSize.getHeight();
@@ -855,7 +859,7 @@
 
     function loadHistory(purpose) {
       const historyContent = document.getElementById('history-content');
-      if (database) {
+      if (firebaseConnected && database) {
         database.ref(`donations/${purpose}`).once('value').then(snapshot => {
           const data = snapshot.val();
           let html = `
@@ -874,7 +878,7 @@
               html += `
                 <tr>
                   <td>${donation.receiptNumber}</td>
-                  <td>${donation.donorName}</td>
+                  <td>${donorName}</td>
                   <td>${donation.donorRelation}</td>
                   <td>₹${donation.amount.toLocaleString('en-IN')}</td>
                   <td>${donation.paymentMethod}</td>
@@ -889,7 +893,7 @@
           historyContent.innerHTML = html;
         }).catch(err => {
           console.error('Error loading history:', err);
-          historyContent.innerHTML = '<p>History unavailable due to Firebase error.</p>';
+          historyContent.innerHTML = '<p>History unavailable due to Firebase error: ' + err.message + '</p>';
         });
       } else {
         historyContent.innerHTML = '<p>History unavailable (Firebase not connected).</p>';
@@ -961,6 +965,7 @@
       requestAnimationFrame(animate);
     }
     animate();
+
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
