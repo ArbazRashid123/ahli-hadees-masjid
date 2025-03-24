@@ -7,25 +7,9 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
-  <!-- Firebase Integration -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyC1_y7kwVh9v8H7fTBQoivUU_QtZCU_2uE",
-      authDomain: "donationtracker-64e57.firebaseapp.com",
-      databaseURL: "https://donationtracker-64e57-default-rtdb.firebaseio.com",
-      projectId: "donationtracker-64e57",
-      storageBucket: "donationtracker-64e57.firebasestorage.app",
-      messagingSenderId: "401813268612",
-      appId: "1:401813268612:web:112bb6a228bd13f18efad1",
-      measurementId: "G-L6XWG8LQ1X"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-  </script>
-
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -620,6 +604,22 @@
   <script>
     const { jsPDF } = window.jspdf;
 
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1_y7kwVh9v8H7fTBQoivUU_QtZCU_2uE",
+      authDomain: "donationtracker-64e57.firebaseapp.com",
+      databaseURL: "https://donationtracker-64e57-default-rtdb.firebaseio.com",
+      projectId: "donationtracker-64e57",
+      storageBucket: "donationtracker-64e57.firebasestorage.app",
+      messagingSenderId: "401813268612",
+      appId: "1:401813268612:web:112bb6a228bd13f18efad1",
+      measurementId: "G-L6XWG8LQ1X"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -751,36 +751,7 @@
       }
     });
 
-    // Updated receipt generation with Firebase
-    async function getNextReceiptNumber(purpose) {
-      const prefixMap = {
-        'Zakatul Fitr': 'ZFTR',
-        'Sadaqat': 'SDQ',
-        'Nazar-o-Niyaz': 'NON',
-        'Zakat': 'ZAK',
-        'Ushur': 'USH',
-        'Others': 'OTH'
-      };
-      const dbPath = `counters/${purpose.replace(/-/g, '_')}`;
-      
-      try {
-        const counterRef = database.ref(dbPath);
-        const result = await counterRef.transaction(current => {
-          return (current || 0) + 1;
-        });
-        
-        return `${prefixMap[purpose]}${result.snapshot.val().toString().padStart(4, '0')}/${currentYear}`;
-        
-      } catch (error) {
-        console.error("Firebase error - using local fallback", error);
-        let localCounter = parseInt(localStorage.getItem(`${purpose}Counter`) || 0);
-        localCounter++;
-        localStorage.setItem(`${purpose}Counter`, localCounter);
-        return `${prefixMap[purpose]}${localCounter.toString().padStart(4, '0')}/${currentYear}`;
-      }
-    }
-
-    generateReceipt.addEventListener('click', async () => {
+    generateReceipt.addEventListener('click', () => {
       const donorName = document.getElementById('donor-name').value;
       const donorRelation = document.getElementById('donor-relation').value;
       const amount = document.getElementById('amount').value;
@@ -788,73 +759,130 @@
       const paymentMethod = document.getElementById('payment-method').value;
 
       if (donorName && donorRelation && amount && purpose && paymentMethod) {
-        try {
-          const receiptNumber = await getNextReceiptNumber(purpose);
-          
-          receiptPreview.innerHTML = `
-            <div class="receipt-content" id="receipt-content">
-              <div class="receipt-header">
-                <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
-                <p style="color: #ff4d4d;">Official Donation Receipt</p>
-                <p style="color: #333;">Receipt No: ${receiptNumber}</p>
-              </div>
-              <div class="receipt-logo">DM</div>
-              <div class="receipt-details">
-                <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
-                <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
-                <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
-                <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
-                <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
-                <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</span></p>
-              </div>
-              <div class="receipt-footer">
-                <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
-                <div class="signature-line"></div>
-                <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
-              </div>
-            </div>
-            <div class="receipt-actions">
-              <button id="download-share-receipt">Download & Share</button>
-            </div>
-          `;
-          
-          receiptForm.style.display = 'none';
-          receiptPreview.style.display = 'block';
+        const prefixMap = {
+          'Zakatul Fitr': 'ZFTR',
+          'Sadaqat': 'SDQ',
+          'Nazar-o-Niyaz': 'NON',
+          'Zakat': 'ZAK',
+          'Ushur': 'USH',
+          'Others': 'OTH'
+        };
+        const prefix = prefixMap[purpose];
 
-          const downloadShareButton = document.getElementById('download-share-receipt');
-          downloadShareButton.addEventListener('click', () => {
-            const element = document.getElementById('receipt-content');
-            
-            html2canvas(element, {
-              scale: 4,
-              useCORS: true,
-              backgroundColor: '#ffffff',
-              logging: false,
-              dpi: 300
-            }).then(canvas => {
-              const imgData = canvas.toDataURL('image/png', 1.0);
-              const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
+        // Use Firebase transaction to atomically increment the counter
+        const counterRef = database.ref(`receiptCounters/${purpose}`);
+        counterRef.transaction((currentCounter) => {
+          return (currentCounter || 0) + 1;
+        }, (error, committed, snapshot) => {
+          if (error) {
+            console.error('Transaction failed:', error);
+            alert('Failed to generate receipt number. Please try again.');
+          } else if (committed) {
+            const counter = snapshot.val();
+            const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
+
+            receiptPreview.innerHTML = `
+              <div class="receipt-content" id="receipt-content">
+                <div class="receipt-header">
+                  <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
+                  <p style="color: #ff4d4d;">Official Donation Receipt</p>
+                  <p style="color: #333;">Receipt No: ${receiptNumber}</p>
+                </div>
+                <div class="receipt-logo">DM</div>
+                <div class="receipt-details">
+                  <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+                  <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
+                  <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
+                  <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
+                  <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
+                  <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}</span></p>
+                </div>
+                <div class="receipt-footer">
+                  <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
+                  <div class="signature-line"></div>
+                  <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
+                </div>
+              </div>
+              <div class="receipt-actions">
+                <button id="download-share-receipt">Download & Share</button>
+              </div>
+            `;
+            receiptForm.style.display = 'none';
+            receiptPreview.style.display = 'block';
+
+            const downloadShareButton = document.getElementById('download-share-receipt');
+            downloadShareButton.addEventListener('click', () => {
+              const element = document.getElementById('receipt-content');
+              const scale = 4;
+              const widthInPx = 210 * 3.78;
+              const heightInPx = 297 * 3.78;
+
+              html2canvas(element, {
+                scale: scale,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                width: widthInPx,
+                height: heightInPx,
+                windowWidth: widthInPx,
+                windowHeight: heightInPx,
+                logging: false,
+                dpi: 300
+              }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const pdf = new jsPDF({
+                  orientation: 'portrait',
+                  unit: 'mm',
+                  format: 'a4'
+                });
+
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const margin = 7;
+                const contentWidth = pdfWidth - 2 * margin;
+                const contentHeight = pdfHeight - 2 * margin;
+                const imgWidth = canvas.width / scale;
+                const imgHeight = canvas.height / scale;
+                const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
+                const finalWidth = imgWidth * ratio;
+                const finalHeight = imgHeight * ratio;
+                const x = (pdfWidth - finalWidth) / 2;
+                const y = (pdfHeight - finalHeight) / 2;
+
+                pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
+                const pdfBlob = pdf.output('blob');
+                const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
+                pdf.save(fileName);
+
+                setTimeout(() => {
+                  const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+                  const shareData = {
+                    files: [file],
+                    title: 'Donation Receipt',
+                    text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+                  };
+
+                  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    navigator.share(shareData)
+                      .then(() => console.log('Share successful'))
+                      .catch(err => {
+                        console.error('Error sharing:', err.message);
+                        alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
+                      });
+                  } else {
+                    alert('Sharing is not supported on this device. PDF has been downloaded.');
+                  }
+                }, 500);
+              }).catch(err => {
+                console.error('Error generating PDF:', err);
+                alert('Error generating PDF. Please try again.');
               });
-              
-              pdf.addImage(imgData, 'PNG', 15, 15, 180, 0);
-              const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
-              pdf.save(fileName);
-            }).catch(err => {
-              console.error('Error generating PDF:', err);
-              alert('Error generating PDF. Please try again.');
             });
-          });
-        } catch (error) {
-          console.error("Error generating receipt:", error);
-          alert("Error generating receipt. Please try again.");
-        }
+          }
+        });
       } else {
         alert('Please fill in all fields');
       }
