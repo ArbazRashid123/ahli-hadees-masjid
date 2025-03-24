@@ -621,10 +621,9 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Debug: Confirm script is running
     console.log("JavaScript loaded successfully!");
 
-    // Firebase configuration (your donationtracker-48d09)
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyA432vegNGGr2GESFirFnn9fC9gpV6G-yU",
       authDomain: "donationtracker-48d09.firebaseapp.com",
@@ -636,7 +635,6 @@
       measurementId: "G-PYE2S291SB"
     };
 
-    // Initialize Firebase with error handling
     let database;
     try {
       firebase.initializeApp(firebaseConfig);
@@ -644,15 +642,30 @@
       console.log("Firebase initialized:", firebase.app().name);
     } catch (error) {
       console.error("Firebase initialization failed:", error);
-      alert("Firebase not working. Some features may be limited.");
+      // Don’t alert here; let the app continue with fallback
     }
 
-    // Hamburger menu
+    // Hamburger menu and navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
     hamburger.addEventListener('click', () => {
       console.log("Hamburger clicked!");
       navLinks.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        console.log("Nav link clicked:", link.getAttribute('href'));
+        navLinks.classList.remove('active'); // Close menu
+        const targetId = link.getAttribute('href').substring(1); // Remove '#'
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
 
     // Scanner toggle
@@ -740,14 +753,19 @@
         const counterRef = database.ref(`counters/${purpose}`);
         counterRef.transaction(counter => (counter || 0) + 1)
           .then(result => {
-            const counter = result.snapshot.val();
-            generateReceiptHTML(counter, prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+            if (result.committed) {
+              const counter = result.snapshot.val();
+              generateReceiptHTML(counter, prefix, donorName, donorRelation, amount, purpose, paymentMethod);
+            } else {
+              throw new Error("Transaction not committed");
+            }
           })
           .catch(err => {
             console.error("Firebase counter error:", err);
             fallbackReceiptGeneration(prefix, donorName, donorRelation, amount, purpose, paymentMethod);
           });
       } else {
+        console.log("Using fallback due to Firebase unavailable");
         fallbackReceiptGeneration(prefix, donorName, donorRelation, amount, purpose, paymentMethod);
       }
     });
@@ -782,7 +800,6 @@
       receiptForm.style.display = 'none';
       receiptPreview.style.display = 'block';
 
-      // Save to Firebase
       if (database) {
         database.ref(`donations/${purpose}`).push({
           receiptNumber,
@@ -792,7 +809,7 @@
           purpose,
           paymentMethod,
           date: new Date().toISOString()
-        });
+        }).catch(err => console.error("Firebase save error:", err));
       }
 
       document.getElementById('download-receipt').addEventListener('click', () => downloadPDF(receiptNumber, donorName));
@@ -832,12 +849,10 @@
         });
         historyTabs.appendChild(button);
       });
-      // Activate first tab by default
       historyTabs.querySelector('.tab-btn').classList.add('active');
       loadHistory('Zakatul Fitr');
     }
 
-    // Load donation history from Firebase
     function loadHistory(purpose) {
       const historyContent = document.getElementById('history-content');
       if (database) {
@@ -874,14 +889,14 @@
           historyContent.innerHTML = html;
         }).catch(err => {
           console.error('Error loading history:', err);
-          historyContent.innerHTML = '<p>Error loading history. Please try again later.</p>';
+          historyContent.innerHTML = '<p>History unavailable due to Firebase error.</p>';
         });
       } else {
-        historyContent.innerHTML = '<p>History unavailable due to Firebase issue.</p>';
+        historyContent.innerHTML = '<p>History unavailable (Firebase not connected).</p>';
       }
     }
 
-    // Canvas animation (optional, remove if not needed)
+    // Canvas animation
     const canvas = document.getElementById('constellation-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -946,7 +961,6 @@
       requestAnimationFrame(animate);
     }
     animate();
-
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
