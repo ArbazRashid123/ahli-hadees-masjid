@@ -598,6 +598,7 @@
     <p>© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
   </footer>
 
+  <script src="https://apis.google.com/js/api.js"></script>
   <script>
     const { jsPDF } = window.jspdf;
 
@@ -710,22 +711,20 @@
     const receiptPreview = document.getElementById('receipt-preview');
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
-    
-    // Reset receipt counters for each purpose to start from 1
-    const receiptCounters = {
-      'Zakatul Fitr': 0,
-      'Sadaqat': 0,
-      'Nazar-o-Niyaz': 0,
-      'Zakat': 0,
-      'Ushur': 0,
-      'Others': 0
-    };
-    const currentYear = new Date().getFullYear();
-    
-    // Reset localStorage counters to 0 for each purpose
-    Object.keys(receiptCounters).forEach(key => {
-      localStorage.setItem(`${key}Counter`, '0');
-    });
+
+    // Load Google API client
+    function initClient() {
+      gapi.client.init({
+        apiKey: 'AIzaSyAJRiHrIzrYFDrQJpRovRpvnZ_pCIgwTww', // Your API key
+        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+      }).then(() => {
+        console.log('Google API ready');
+      }).catch(err => {
+        console.error('Error initializing Google API:', err);
+        alert('Error connecting to Google Sheets. Please try again later.');
+      });
+    }
+    gapi.load('client', initClient);
 
     document.querySelectorAll('.get-receipt').forEach(button => {
       button.addEventListener('click', () => {
@@ -746,7 +745,7 @@
       }
     });
 
-    generateReceipt.addEventListener('click', () => {
+    generateReceipt.addEventListener('click', async () => {
       const donorName = document.getElementById('donor-name').value;
       const donorRelation = document.getElementById('donor-relation').value;
       const amount = document.getElementById('amount').value;
@@ -763,141 +762,145 @@
           'Others': 'OTH'
         };
         const prefix = prefixMap[purpose];
-        let counter = parseInt(localStorage.getItem(`${purpose}Counter`) || '0');
-        counter++;
-        const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
-        
-        receiptPreview.innerHTML = `
-          <div class="receipt-content" id="receipt-content">
-            <div class="receipt-header">
-              <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
-              <p style="color: #ff4d4d;">Official Donation Receipt</p>
-              <p style="color: #333;">Receipt No: ${receiptNumber}</p>
+        const currentYear = new Date().getFullYear();
+
+        // Fetch and increment counter from Google Sheets
+        const sheetId = '1ryrz4_QzcDRcBiyoVTRfeSBuqvirvESbX8lOWEUQPr0'; // Your Sheet ID
+        try {
+          const response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: sheetId,
+            range: 'Sheet1!A2:B7', // Rows 2-7 for your 6 purposes
+          });
+          const rows = response.result.values;
+          let counter = 0;
+          let rowIndex = 0;
+          for (let i = 0; i < rows.length; i++) {
+            if (rows[i][0] === purpose) {
+              counter = parseInt(rows[i][1]) + 1;
+              rowIndex = i + 2; // Adjust for 1-based index and header
+              break;
+            }
+          }
+
+          // Update the counter in Google Sheets
+          await gapi.client.sheets.spreadsheets.values.update({
+            spreadsheetId: sheetId,
+            range: `Sheet1!B${rowIndex}`,
+            valueInputOption: 'RAW',
+            values: [[counter]]
+          });
+
+          const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
+
+          receiptPreview.innerHTML = `
+            <div class="receipt-content" id="receipt-content">
+              <div class="receipt-header">
+                <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
+                <p style="color: #ff4d4d;">Official Donation Receipt</p>
+                <p style="color: #333;">Receipt No: ${receiptNumber}</p>
+              </div>
+              <div class="receipt-logo">DM</div>
+              <div class="receipt-details">
+                <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+                <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
+                <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
+                <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
+                <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
+                <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
+                  year: 'numeric', month: 'long', day: 'numeric' 
+                })}</span></p>
+              </div>
+              <div class="receipt-footer">
+                <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
+                <div class="signature-line"></div>
+                <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
+              </div>
             </div>
-            <div class="receipt-logo">DM</div>
-            <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
-              <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
-              <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
-              <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
-              <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
-              <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}</span></p>
+            <div class="receipt-actions">
+              <button id="download-share-receipt">Download & Share</button>
             </div>
-            <div class="receipt-footer">
-              <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
-              <div class="signature-line"></div>
-              <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
-            </div>
-          </div>
-          <div class="receipt-actions">
-            <button id="download-share-receipt">Download & Share</button>
-          </div>
-        `;
-        receiptForm.style.display = 'none';
-        receiptPreview.style.display = 'block';
+          `;
+          receiptForm.style.display = 'none';
+          receiptPreview.style.display = 'block';
 
-        // Attach event listener to the Download & Share button
-        const downloadShareButton = document.getElementById('download-share-receipt');
-        downloadShareButton.addEventListener('click', () => {
-          const element = document.getElementById('receipt-content');
-          
-          // Calculate dimensions in pixels for html2canvas
-          const scale = 4; // High scale for sharp text
-          const widthInPx = 210 * 3.78; // 210mm converted to pixels (1mm ≈ 3.78px at 96dpi)
-          const heightInPx = 297 * 3.78; // 297mm converted to pixels
-          
-          html2canvas(element, {
-            scale: scale,
-            useCORS: true,
-            backgroundColor: '#ffffff',
-            width: widthInPx,
-            height: heightInPx,
-            windowWidth: widthInPx,
-            windowHeight: heightInPx,
-            logging: false,
-            dpi: 300
-          }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png', 1.0);
-            const pdf = new jsPDF({
-              orientation: 'portrait',
-              unit: 'mm',
-              format: 'a4'
-            });
-            
-            const pdfWidth = pdf.internal.pageSize.getWidth(); // 210mm for A4
-            const pdfHeight = pdf.internal.pageSize.getHeight(); // 297mm for A4
-            const margin = 7;
-            const contentWidth = pdfWidth - 2 * margin; // Width available after margins
-            const contentHeight = pdfHeight - 2 * margin; // Height available after margins
-            
-            // Calculate image dimensions
-            const imgWidth = canvas.width / scale;
-            const imgHeight = canvas.height / scale;
-            const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
-            const finalWidth = imgWidth * ratio;
-            const finalHeight = imgHeight * ratio;
-            
-            // Center the content in the PDF
-            const x = (pdfWidth - finalWidth) / 2; // Center horizontally
-            const y = (pdfHeight - finalHeight) / 2; // Center vertically
+          const downloadShareButton = document.getElementById('download-share-receipt');
+          downloadShareButton.addEventListener('click', () => {
+            const element = document.getElementById('receipt-content');
+            const scale = 4;
+            const widthInPx = 210 * 3.78;
+            const heightInPx = 297 * 3.78;
 
-            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-            
-            // Save PDF and get blob for sharing
-            const pdfBlob = pdf.output('blob');
-            const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
-            pdf.save(fileName); // Download the PDF first
+            html2canvas(element, {
+              scale: scale,
+              useCORS: true,
+              backgroundColor: '#ffffff',
+              width: widthInPx,
+              height: heightInPx,
+              windowWidth: widthInPx,
+              windowHeight: heightInPx,
+              logging: false,
+              dpi: 300
+            }).then(canvas => {
+              const imgData = canvas.toDataURL('image/png', 1.0);
+              const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+              });
 
-            // Save updated counter only after download
-            localStorage.setItem(`${purpose}Counter`, counter);
+              const pdfWidth = pdf.internal.pageSize.getWidth();
+              const pdfHeight = pdf.internal.pageSize.getHeight();
+              const margin = 7;
+              const contentWidth = pdfWidth - 2 * margin;
+              const contentHeight = pdfHeight - 2 * margin;
 
-            // Share the PDF file with a slight delay to ensure download completes
-            setTimeout(() => {
-              const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-              const shareData = {
-                files: [file],
-                title: 'Donation Receipt',
-                text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
-              };
+              const imgWidth = canvas.width / scale;
+              const imgHeight = canvas.height / scale;
+              const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
+              const finalWidth = imgWidth * ratio;
+              const finalHeight = imgHeight * ratio;
 
-              // Log shareData for debugging
-              console.log('Share Data:', shareData);
+              const x = (pdfWidth - finalWidth) / 2;
+              const y = (pdfHeight - finalHeight) / 2;
 
-              // Check if sharing is supported
-              if (navigator.canShare) {
-                console.log('navigator.canShare is supported');
-                if (navigator.canShare({ files: [file] })) {
-                  console.log('File sharing is supported');
+              pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
+              const pdfBlob = pdf.output('blob');
+              const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
+              pdf.save(fileName);
+
+              setTimeout(() => {
+                const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+                const shareData = {
+                  files: [file],
+                  title: 'Donation Receipt',
+                  text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+                };
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
                   navigator.share(shareData)
-                    .then(() => {
-                      console.log('Share successful');
-                    })
+                    .then(() => console.log('Share successful'))
                     .catch(err => {
                       console.error('Error sharing:', err.message);
-                      alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
+                      alert('Error sharing the file. PDF has been downloaded.');
                     });
                 } else {
-                  console.log('File sharing not supported for this file type');
-                  alert('Sharing files of this type is not supported on this device. PDF has been downloaded.');
+                  alert('Sharing not supported. PDF has been downloaded.');
                 }
-              } else {
-                console.log('navigator.share not supported');
-                alert('Sharing is not supported on this device. PDF has been downloaded.');
-              }
-            }, 500); // 500ms delay to ensure download completes
-          }).catch(err => {
-            console.error('Error generating PDF:', err);
-            alert('Error generating PDF. Please try again.');
+              }, 500);
+            }).catch(err => {
+              console.error('Error generating PDF:', err);
+              alert('Error generating PDF. Please try again.');
+            });
           });
-        });
+        } catch (err) {
+          console.error('Error with Google Sheets:', err);
+          alert('Error fetching/updating receipt number. Check your internet and try again.');
+        }
       } else {
         alert('Please fill in all fields');
       }
     });
   </script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'926003e48c677221',t:'MTc0MjkyMjU1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
