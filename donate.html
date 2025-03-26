@@ -299,138 +299,103 @@
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #1a1a2e, #16213e); /* Cosmic dark gradient */
-      border: 5px double #00d4ff; /* Neon cyan border */
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
-      color: #e0e0e0; /* Light text for contrast */
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%); /* Subtle gradient */
+      border: 3px solid #007bff; /* Bold blue border */
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 123, 255, 0.2);
+      color: #2c3e50; /* Darker text for contrast */
       position: relative;
       min-height: 283mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc8vMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDBkNGZmIiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMjAiIHI9IjMiIGZpbGw9IiNmZjRiN2YiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); /* Embedded starry SVG */
-      background-size: 200px 200px;
-      animation: starrySky 20s linear infinite;
-    }
-
-    @keyframes starrySky {
-      0% { background-position: 0 0; }
-      100% { background-position: 200px 200px; }
     }
 
     .receipt-header {
       text-align: center;
-      border-bottom: 2px solid #ff4d4d;
-      padding-bottom: 1rem;
+      padding: 1rem;
+      background: #007bff; /* Vibrant blue header */
+      color: #ffffff;
+      border-radius: 8px 8px 0 0;
       margin-bottom: 1rem;
-      width: 100%;
       position: relative;
-      overflow: hidden;
     }
-
     .receipt-header h2 {
       font-size: 2rem;
+      font-weight: 600;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
-      color: #00d4ff; /* Neon cyan */
+      margin-bottom: 0.3rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
-      animation: cosmicGlow 2s ease-in-out infinite;
     }
-
     .receipt-header p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 400;
       line-height: 1.2;
-      margin: 0.3rem 0;
-      color: #ff4d4d;
-      text-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
     }
-
-    @keyframes cosmicGlow {
-      0%, 100% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.7); }
-      50% { text-shadow: 0 0 20px rgba(0, 212, 255, 1); }
-    }
-
     .receipt-logo {
       position: absolute;
-      top: 15mm;
-      right: 15mm;
-      opacity: 0.1;
-      font-size: 5rem;
-      color: #00d4ff;
-      transform: rotate(45deg);
-      animation: spinGalaxy 15s linear infinite;
-    }
-
-    @keyframes spinGalaxy {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      top: 10mm;
+      right: 10mm;
+      font-size: 3rem;
+      color: #ff4d4d;
+      opacity: 0.2;
+      font-weight: bold;
     }
 
     .receipt-details {
-      background: rgba(0, 212, 255, 0.05); /* Subtle cyan glow */
-      padding: 1rem;
-      border-radius: 10px;
+      padding: 1.5rem;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
       margin: 1rem 0;
-      width: 100%;
       flex-grow: 1;
-      border: 1px solid rgba(255, 77, 77, 0.2);
-      box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-
     .receipt-details p {
       margin: 0.8rem 0;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
-      transition: transform 0.3s ease;
+      border-bottom: 1px dashed #e0e0e0;
+      padding-bottom: 0.5rem;
     }
-
-    .receipt-details p:hover {
-      transform: scale(1.02);
-    }
-
     .receipt-details strong {
       flex-basis: 40%;
-      color: #00d4ff;
-      text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+      color: #007bff;
+      font-weight: 600;
     }
-
     .receipt-details span {
-      font-weight: bold;
-      color: #ffffff;
+      flex-basis: 60%;
+      text-align: right;
+      font-weight: 500;
+      color: #2c3e50;
     }
 
     .receipt-footer {
       text-align: center;
-      border-top: 1px dashed #00d4ff;
-      padding-top: 1rem;
+      padding: 1rem;
+      background: #ff4d4d; /* Vibrant red footer */
+      color: #ffffff;
+      border-radius: 0 0 8px 8px;
       width: 100%;
     }
-
     .receipt-footer p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
       line-height: 1.5;
       margin: 0.5rem 0;
-      color: #00d4ff;
-      text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
     }
-
     .signature-line {
-      border-bottom: 1px dashed #e0e0e0;
+      border-bottom: 2px dashed #ffffff;
       width: 150px;
       margin: 1rem auto 0.5rem;
     }
-
     .signature-text {
       font-size: 1rem;
-      color: #ff4d4d;
-      font-weight: 500;
-      text-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+      font-weight: 600;
+      color: #ffffff;
     }
 
     @media (max-width: 500px) {
@@ -439,23 +404,17 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 3px double #00d4ff;
+        border: 2px solid #007bff;
         display: block;
       }
       .receipt-header {
-        padding: 5mm 0;
-        margin: 0;
-        border-bottom: 2px solid #ff4d4d;
+        padding: 0.8rem;
       }
       .receipt-header h2 {
         font-size: 1.6rem;
-        line-height: 1.3;
-        margin-bottom: 0.5rem;
       }
       .receipt-header p {
-        font-size: 1rem;
-        line-height: 1.3;
-        margin: 0.3rem 0;
+        font-size: 0.9rem;
       }
       .receipt-logo {
         top: 8mm;
@@ -463,21 +422,18 @@
         font-size: 2rem;
       }
       .receipt-details {
-        padding: 8mm;
-        margin: 8mm 0;
-        background: rgba(0, 212, 255, 0.1);
-        border-radius: 5mm;
+        padding: 1rem;
+        margin: 0.8rem 0;
       }
       .receipt-details p {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
         display: block;
-        margin: 6mm 0;
+        margin: 0.6rem 0;
       }
       .receipt-details strong {
         display: block;
         width: 100%;
-        margin-bottom: 2mm;
+        margin-bottom: 0.2rem;
       }
       .receipt-details span {
         display: block;
@@ -485,17 +441,14 @@
         text-align: right;
       }
       .receipt-footer {
-        padding: 8mm 0;
-        border-top: 1px dashed #00d4ff;
+        padding: 0.8rem;
         position: absolute;
         bottom: 7mm;
         left: 7mm;
         right: 7mm;
       }
       .receipt-footer p {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 4mm 0;
+        font-size: 0.9rem;
       }
       .signature-line {
         width: 120px;
@@ -652,6 +605,7 @@
         <option value="Aadil Majeed Magray">Aadil Majeed Magray</option>
         <option value="Danish Mushtaq S.G">Danish Mushtaq S.G</option>
         <option value="Showkat Ahmad Mir">Showkat Ahmad Mir</option>
+        <option value="Khursheed Ahmad Mir">Khursheed Ahmad Mir</option>
       </select>
       <button id="generate-receipt">Generate Receipt</button>
     </div>
@@ -813,7 +767,7 @@
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
               <h2>Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
-              <p>Official Cosmic Donation Receipt</p>
+              <p>Official Donation Receipt</p>
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
@@ -826,7 +780,7 @@
               <p><strong>Receipt Generator:</strong> <span>${receiptGenerator}</span></p>
             </div>
             <div class="receipt-footer">
-              <p class="thank-you">Thank You for Your Stellar Generosity!</p>
+              <p class="thank-you">Thank You for Your Generosity!</p>
               <div class="signature-line"></div>
               <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
             </div>
@@ -910,7 +864,7 @@
               const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
               const shareData = {
                 files: [file],
-                title: 'Cosmic Donation Receipt',
+                title: 'Donation Receipt',
                 text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
               };
 
