@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -294,19 +294,18 @@
     }
     .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
-    /* Enhanced Receipt Design */
+    /* ========== ENHANCED RECEIPT DESIGN ========== */
     .receipt-content {
       width: 100%;
-      max-width: 196mm;
+      max-width: 210mm;
       margin: 0 auto;
-      padding: 0;
+      padding: 15mm;
       background: white;
       border: 1px solid #e0e0e0;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      color: #333;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
       position: relative;
-      min-height: 283mm;
+      min-height: 297mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -320,69 +319,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(#007bff33 1px, transparent 1px);
+      background-image: radial-gradient(rgba(0, 123, 255, 0.1) 1px, transparent 1px);
       background-size: 15px 15px;
       opacity: 0.1;
       z-index: 0;
-    }
-
-    .receipt-header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .receipt-header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      transform: rotate(30deg);
-      z-index: -1;
-    }
-
-    .receipt-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .receipt-header p {
-      font-size: 1.1rem;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-
-    .receipt-logo {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 80px;
-      height: 80px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .receipt-logo span {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #007bff;
     }
 
     .receipt-watermark {
@@ -390,142 +330,180 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-30deg);
-      font-size: 15rem;
+      font-size: 120px;
       font-weight: bold;
-      color: rgba(0,123,255,0.05);
-      z-index: 0;
-      pointer-events: none;
+      color: rgba(0, 123, 255, 0.05);
+      font-family: 'Playfair Display', serif;
       white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .receipt-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .receipt-logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    .receipt-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+    }
+
+    .receipt-subtitle {
+      font-size: 16px;
+      color: #7f8c8d;
+      font-weight: 400;
     }
 
     .receipt-details {
-      padding: 2rem;
-      background: white;
       position: relative;
       z-index: 1;
-      flex-grow: 1;
+      margin-bottom: 30px;
     }
 
     .receipt-details::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
+      top: -10px;
+      left: 0;
+      width: 100%;
       height: 1px;
       background: linear-gradient(90deg, transparent, #007bff, transparent);
     }
 
-    .receipt-details p {
-      margin: 1.2rem 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .detail-row {
       display: flex;
       justify-content: space-between;
-      position: relative;
-      padding-bottom: 0.8rem;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed #e0e0e0;
     }
 
-    .receipt-details p::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+    .detail-row:last-child {
+      border-bottom: none;
     }
 
-    .receipt-details strong {
-      flex-basis: 40%;
-      color: #007bff;
+    .detail-label {
       font-weight: 600;
+      color: #007bff;
+      flex: 1;
     }
 
-    .receipt-details span {
-      flex-basis: 60%;
+    .detail-value {
+      flex: 1;
       text-align: right;
-      font-weight: 500;
+      color: #2c3e50;
     }
 
-    .amount-highlight {
-      font-size: 1.3rem;
-      color: #ff4d4d;
+    .amount-value {
+      font-size: 22px;
       font-weight: 700;
+      color: #e74c3c;
     }
 
     .receipt-footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background: linear-gradient(135deg, #ff4d4d, #cc0000);
-      color: white;
+      margin-top: 40px;
       position: relative;
       z-index: 1;
+      padding-top: 30px;
     }
 
     .receipt-footer::before {
       content: "";
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="5,5"><rect width="100" height="100"/></svg>');
-      opacity: 0.1;
-      z-index: -1;
-    }
-
-    .thank-you {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .thank-you::after {
-      content: "";
-      position: absolute;
-      bottom: -0.5rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
+      width: 200px;
       height: 3px;
-      background: white;
+      background: linear-gradient(90deg, #007bff, #e74c3c);
       border-radius: 3px;
     }
 
+    .thank-you {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .blessing {
+      font-size: 16px;
+      color: #7f8c8d;
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+
     .signature-line {
-      width: 200px;
-      height: 2px;
-      background: white;
-      margin: 1.5rem auto 0.5rem;
+      width: 180px;
+      height: 1px;
+      background: #bdc3c7;
+      margin: 0 auto 10px;
       position: relative;
     }
 
     .signature-line::before,
     .signature-line::after {
-      content: "✽";
+      content: "❁";
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      color: white;
-      font-size: 1rem;
+      color: #bdc3c7;
+      font-size: 14px;
     }
 
     .signature-line::before {
-      left: -15px;
+      left: -20px;
     }
 
     .signature-line::after {
-      right: -15px;
+      right: -20px;
     }
 
     .signature-text {
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 1px;
+      font-size: 14px;
+      color: #7f8c8d;
+      letter-spacing: 0.5px;
+    }
+
+    .receipt-stamp {
+      position: absolute;
+      bottom: 25mm;
+      right: 25mm;
+      width: 90px;
+      height: 90px;
+      border: 3px solid #e74c3c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e74c3c;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      transform: rotate(15deg);
+      opacity: 0.9;
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     .receipt-actions {
@@ -557,38 +535,48 @@
     }
 
     @media (max-width: 500px) {
+      .receipt-content {
+        padding: 10mm;
+        min-height: auto;
+      }
       .receipt-header h2 {
         font-size: 1.8rem;
       }
-      
       .receipt-header p {
         font-size: 1rem;
       }
-      
       .receipt-logo {
         width: 60px;
         height: 60px;
       }
-      
       .receipt-logo span {
         font-size: 2rem;
       }
-      
       .receipt-details p {
         font-size: 1rem;
       }
-      
-      .amount-highlight {
+      .amount-value {
         font-size: 1.2rem;
       }
-      
       .thank-you {
         font-size: 1.1rem;
       }
-      
       .receipt-actions {
         flex-direction: column;
         gap: 0.5rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: none;
+      }
+      .receipt-content {
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 15mm;
       }
     }
 
@@ -888,27 +876,50 @@
             <div class="receipt-watermark">DARUL MAWASAAT</div>
             
             <div class="receipt-header">
-              <h2>Darul Mawasaat Welfare Foundation</h2>
-              <p>Unit Cherwan - Official Donation Receipt</p>
-              <div class="receipt-logo"><span>DM</span></div>
+              <div class="receipt-logo">DM</div>
+              <h1 class="receipt-title">Darul Mawasaat Welfare Foundation</h1>
+              <p class="receipt-subtitle">Unit Cherwan – Official Donation Receipt</p>
             </div>
             
             <div class="receipt-details">
-              <p><strong>Donor Name:</strong> <span>${donorName}</span></p>
-              <p><strong>S/O or D/O:</strong> <span>${donorRelation}</span></p>
-              <p><strong>Amount:</strong> <span class="amount-highlight">₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
-              <p><strong>Purpose:</strong> <span>${purpose}</span></p>
-              <p><strong>Payment Method:</strong> <span>${paymentMethod}</span></p>
-              <p><strong>Date:</strong> <span>${receiptDate}</span></p>
-              <p><strong>Receipt Generator:</strong> <span>${receiptGenerator}</span></p>
+              <div class="detail-row">
+                <span class="detail-label">Donor Name:</span>
+                <span class="detail-value">${donorName}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">S/O or D/O:</span>
+                <span class="detail-value">${donorRelation}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Amount:</span>
+                <span class="detail-value amount-value">₹${parseFloat(amount).toLocaleString('en-IN')}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Purpose:</span>
+                <span class="detail-value">${purpose}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Payment Method:</span>
+                <span class="detail-value">${paymentMethod}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Date:</span>
+                <span class="detail-value">${receiptDate}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Receipt Generator:</span>
+                <span class="detail-value">${receiptGenerator}</span>
+              </div>
             </div>
             
             <div class="receipt-footer">
               <p class="thank-you">Thank You for Your Generous Donation</p>
-              <p>May Allah accept your donation and reward you abundantly</p>
+              <p class="blessing">May Allah accept your donation and reward you abundantly</p>
               <div class="signature-line"></div>
               <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
             </div>
+            
+            <div class="receipt-stamp">PAID</div>
           </div>
           
           <div class="receipt-actions">
