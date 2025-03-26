@@ -954,29 +954,36 @@
         });
 
         const downloadShareButton = document.getElementById('download-share-receipt');
-        downloadShareButton.addEventListener('click', () => {
+        downloadShareButton.addEventListener('click', async () => {
           const element = document.getElementById('receipt-content');
           const scale = 4;
           const widthInPx = 210 * 3.78;
           const heightInPx = 297 * 3.78;
+          const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
 
-          html2canvas(element, {
-            scale: scale,
-            useCORS: true,
-            backgroundColor: null,
-            width: widthInPx,
-            height: heightInPx,
-            windowWidth: widthInPx,
-            windowHeight: heightInPx,
-            logging: false,
-            dpi: 300
-          }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png', 1.0);
+          try {
+            // Generate the canvas in parallel with PDF creation
+            const canvasPromise = html2canvas(element, {
+              scale: scale,
+              useCORS: true,
+              backgroundColor: null,
+              width: widthInPx,
+              height: heightInPx,
+              windowWidth: widthInPx,
+              windowHeight: heightInPx,
+              logging: false,
+              dpi: 300
+            });
+
+            // Start the download process immediately
             const pdf = new jsPDF({
               orientation: 'portrait',
               unit: 'mm',
               format: 'a4'
             });
+
+            const canvas = await canvasPromise;
+            const imgData = canvas.toDataURL('image/png', 1.0);
 
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -994,33 +1001,32 @@
             const y = (pdfHeight - finalHeight) / 2;
 
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-            const pdfBlob = pdf.output('blob');
-            const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
+            
+            // Start download immediately
             pdf.save(fileName);
-
-            setTimeout(() => {
-              const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-              const shareData = {
-                files: [file],
-                title: 'Donation Receipt',
-                text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
-              };
-
-              if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                navigator.share(shareData)
-                  .then(() => console.log('Share successful'))
-                  .catch(err => {
-                    console.error('Error sharing:', err.message);
-                    alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
-                  });
-              } else {
-                alert('Sharing is not supported on this device. PDF has been downloaded.');
+            
+            // Prepare for sharing while download is happening
+            const pdfBlob = pdf.output('blob');
+            const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+            
+            // Try to share the file
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              try {
+                await navigator.share({
+                  files: [file],
+                  title: 'Donation Receipt',
+                  text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+                });
+              } catch (shareError) {
+                console.log('Sharing failed or was cancelled:', shareError);
               }
-            }, 500);
-          }).catch(err => {
-            console.error('Error generating PDF:', err);
+            } else {
+              console.log('Web Share API not supported with files');
+            }
+          } catch (error) {
+            console.error('Error generating PDF:', error);
             alert('Error generating PDF. Please try again.');
-          });
+          }
         });
       } else {
         alert('Please fill in all fields');
