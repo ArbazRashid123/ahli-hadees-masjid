@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Playfair+Display:400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -294,153 +294,143 @@
     }
     .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
-    /* Enhanced Receipt Design with New Coloring */
     .receipt-content {
       width: 100%;
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #F8F5E4, #FDF5E6),
-                  url('https://via.placeholder.com/210x297?text=Islamic+Pattern') no-repeat center center/cover;
-      border: 4px solid #FFD700; /* Gold border */
+      background: linear-gradient(135deg, #1a1a2e, #16213e); /* Cosmic dark gradient */
+      border: 5px double #00d4ff; /* Neon cyan border */
       border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-      color: #333333;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      color: #e0e0e0; /* Light text for contrast */
       position: relative;
       min-height: 283mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc8vMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjEiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjkwIiB5PSI5MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDBkNGZmIiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMjAiIHI9IjMiIGZpbGw9IiNmZjRiN2YiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); /* Embedded starry SVG */
+      background-size: 200px 200px;
+      animation: starrySky 20s linear infinite;
     }
-    .receipt-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://via.placeholder.com/100x100?text=DM') no-repeat center center;
-      opacity: 0.15;
-      z-index: 0;
+
+    @keyframes starrySky {
+      0% { background-position: 0 0; }
+      100% { background-position: 200px 200px; }
     }
-    .receipt-content::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 10px solid transparent;
-      border-image: url('https://via.placeholder.com/20x20?text=Pattern') 30 round;
-      z-index: 1;
-    }
+
     .receipt-header {
       text-align: center;
-      background: linear-gradient(90deg, #6A1B9A, #26A69A); /* Purple to teal gradient */
-      color: #FFD700; /* Gold text */
-      padding: 1.5rem;
-      border-radius: 10px 10px 0 0;
+      border-bottom: 2px solid #ff4d4d;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
       position: relative;
-      z-index: 2;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
     }
+
     .receipt-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
+      font-size: 2rem;
       line-height: 1.2;
       margin-bottom: 0.5rem;
+      color: #00d4ff; /* Neon cyan */
       text-transform: uppercase;
-      letter-spacing: 3px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+      animation: cosmicGlow 2s ease-in-out infinite;
     }
+
     .receipt-header p {
-      font-family: 'Poppins', sans-serif;
       font-size: 1.2rem;
-      font-weight: 400;
       line-height: 1.2;
       margin: 0.3rem 0;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      color: #ff4d4d;
+      text-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
     }
+
+    @keyframes cosmicGlow {
+      0%, 100% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.7); }
+      50% { text-shadow: 0 0 20px rgba(0, 212, 255, 1); }
+    }
+
+    .receipt-logo {
+      position: absolute;
+      top: 15mm;
+      right: 15mm;
+      opacity: 0.1;
+      font-size: 5rem;
+      color: #00d4ff;
+      transform: rotate(45deg);
+      animation: spinGalaxy 15s linear infinite;
+    }
+
+    @keyframes spinGalaxy {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .receipt-details {
-      background: rgba(248, 245, 228, 0.95); /* Semi-transparent ivory */
-      padding: 1.5rem;
+      background: rgba(0, 212, 255, 0.05); /* Subtle cyan glow */
+      padding: 1rem;
       border-radius: 10px;
       margin: 1rem 0;
-      border: 1px solid #FDF5E6;
-      box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.2); /* Gold inner shadow */
+      width: 100%;
       flex-grow: 1;
-      position: relative;
-      z-index: 2;
+      border: 1px solid rgba(255, 77, 77, 0.2);
+      box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
     }
+
     .receipt-details p {
-      margin: 1rem 0;
+      margin: 0.8rem 0;
       font-size: 1.2rem;
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      position: relative;
-      padding-bottom: 0.5rem;
+      transition: transform 0.3s ease;
     }
-    .receipt-details p::after {
-      content: '✦✦✦';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #FFD700; /* Gold divider */
-      font-size: 0.8rem;
-      opacity: 0.5;
+
+    .receipt-details p:hover {
+      transform: scale(1.02);
     }
+
     .receipt-details strong {
       flex-basis: 40%;
-      color: #6A1B9A; /* Purple labels */
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      color: #00d4ff;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
     }
-    .receipt-details strong::before {
-      content: '✧ ';
-      color: #FFD700; /* Gold icon */
-      margin-right: 0.5rem;
-    }
+
     .receipt-details span {
-      flex-basis: 60%;
-      text-align: right;
-      font-weight: 500;
-      color: #333333;
+      font-weight: bold;
+      color: #ffffff;
     }
+
     .receipt-footer {
       text-align: center;
-      background: linear-gradient(90deg, #26A69A, #6A1B9A); /* Teal to purple gradient */
-      color: #FFD700; /* Gold text */
-      padding: 1.5rem;
-      border-radius: 0 0 10px 10px;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+      border-top: 1px dashed #00d4ff;
+      padding-top: 1rem;
+      width: 100%;
     }
+
     .receipt-footer p {
-      font-family: 'Playfair Display', serif;
       font-size: 1.2rem;
       line-height: 1.5;
       margin: 0.5rem 0;
-      font-style: italic;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      color: #00d4ff;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
     }
+
     .signature-line {
-      border-bottom: 2px dashed #FFD700; /* Gold dashed line */
+      border-bottom: 1px dashed #e0e0e0;
       width: 150px;
       margin: 1rem auto 0.5rem;
     }
+
     .signature-text {
-      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
-      font-weight: 600;
-      color: #FFD700;
+      color: #ff4d4d;
+      font-weight: 500;
+      text-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
     }
 
     @media (max-width: 500px) {
@@ -449,12 +439,13 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 3px solid #FFD700;
+        border: 3px double #00d4ff;
         display: block;
       }
       .receipt-header {
-        padding: 5mm;
-        border-radius: 5mm 5mm 0 0;
+        padding: 5mm 0;
+        margin: 0;
+        border-bottom: 2px solid #ff4d4d;
       }
       .receipt-header h2 {
         font-size: 1.6rem;
@@ -466,9 +457,15 @@
         line-height: 1.3;
         margin: 0.3rem 0;
       }
+      .receipt-logo {
+        top: 8mm;
+        right: 8mm;
+        font-size: 2rem;
+      }
       .receipt-details {
         padding: 8mm;
         margin: 8mm 0;
+        background: rgba(0, 212, 255, 0.1);
         border-radius: 5mm;
       }
       .receipt-details p {
@@ -482,22 +479,14 @@
         width: 100%;
         margin-bottom: 2mm;
       }
-      .receipt-details strong::before {
-        content: '✧ ';
-      }
       .receipt-details span {
         display: block;
         width: 100%;
         text-align: right;
       }
-      .receipt-details p::after {
-        content: '✦✦✦';
-        left: 50%;
-        transform: translateX(-50%);
-      }
       .receipt-footer {
-        padding: 8mm;
-        border-radius: 0 0 5mm 5mm;
+        padding: 8mm 0;
+        border-top: 1px dashed #00d4ff;
         position: absolute;
         bottom: 7mm;
         left: 7mm;
@@ -603,7 +592,7 @@
         <h2>Salafia Darasgah</h2>
         <p><strong>Account Number:</strong> <span class="copyable" data-text="0071010250000135">0071010250000135 <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
-        <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btnI">Copy</button><span class="tooltip">Copied!</span></span></p>
+        <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Support for educational programs and community development.</p>
         <button class="show-scanner">Show Scanner</button>
       </div>
@@ -663,7 +652,6 @@
         <option value="Aadil Majeed Magray">Aadil Majeed Magray</option>
         <option value="Danish Mushtaq S.G">Danish Mushtaq S.G</option>
         <option value="Showkat Ahmad Mir">Showkat Ahmad Mir</option>
-        <option value="Khursheed Ahmad Mir">Khursheed Ahmad Mir</option>
       </select>
       <button id="generate-receipt">Generate Receipt</button>
     </div>
@@ -824,11 +812,12 @@
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
-              <h2>Darul Mawasaat Welfare Foundation</h2>
-              <p>Unit Cherwan - Official Donation Receipt</p>
+              <h2>Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
+              <p>Official Cosmic Donation Receipt</p>
             </div>
+            <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong>Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong>Donor Name:</strong> <span>${donorName}</span></p>
               <p><strong>S/O or D/O:</strong> <span>${donorRelation}</span></p>
               <p><strong>Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong>Purpose:</strong> <span>${purpose}</span></p>
@@ -837,10 +826,9 @@
               <p><strong>Receipt Generator:</strong> <span>${receiptGenerator}</span></p>
             </div>
             <div class="receipt-footer">
-              <p class="thank-you">Thank You for Your Generosity!</p>
+              <p class="thank-you">Thank You for Your Stellar Generosity!</p>
               <div class="signature-line"></div>
               <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
-              <p>Contact: +91 123-456-7890 | Email: info@darulmawasaat.org</p>
             </div>
           </div>
           <div class="receipt-actions">
@@ -851,7 +839,6 @@
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'block';
 
-        // Event listener for Add Data to Excel button
         const addToExcelButton = document.getElementById('add-to-excel');
         addToExcelButton.addEventListener('click', () => {
           const excelData = [
@@ -862,7 +849,6 @@
             receiptDate,
             receiptGenerator
           ].join('\t');
-
           navigator.clipboard.writeText(excelData).then(() => {
             const excelSheetUrl = 'https://1drv.ms/x/c/04062cc6085d9146/Eby_PGyXydFLjfLtYUnT9tYB7bjIhJCz5gtsbXnBOH0D_Q?e=O7YPSA';
             window.open(excelSheetUrl, '_blank');
@@ -875,15 +861,13 @@
           });
         });
 
-        // Event listener for Download & Share button
         const downloadShareButton = document.getElementById('download-share-receipt');
         downloadShareButton.addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
-          
           const scale = 4;
-          const widthInPx = 210 * 3.78; // 210mm in pixels (at 96 DPI)
-          const heightInPx = 297 * 3.78; // 297mm in pixels (at 96 DPI)
-          
+          const widthInPx = 210 * 3.78;
+          const heightInPx = 297 * 3.78;
+
           html2canvas(element, {
             scale: scale,
             useCORS: true,
@@ -901,24 +885,23 @@
               unit: 'mm',
               format: 'a4'
             });
-            
+
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
             const margin = 7;
             const contentWidth = pdfWidth - 2 * margin;
             const contentHeight = pdfHeight - 2 * margin;
-            
+
             const imgWidth = canvas.width / scale;
             const imgHeight = canvas.height / scale;
             const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
             const finalWidth = imgWidth * ratio;
             const finalHeight = imgHeight * ratio;
-            
+
             const x = (pdfWidth - finalWidth) / 2;
             const y = (pdfHeight - finalHeight) / 2;
 
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-            
             const pdfBlob = pdf.output('blob');
             const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
             pdf.save(fileName);
@@ -927,7 +910,7 @@
               const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
               const shareData = {
                 files: [file],
-                title: 'Donation Receipt',
+                title: 'Cosmic Donation Receipt',
                 text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
               };
 
