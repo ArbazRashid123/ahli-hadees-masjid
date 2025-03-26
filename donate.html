@@ -107,7 +107,7 @@
     }
     @keyframes glowText {
       0%, 100% { text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
-      50% { text-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
+      50% { text-shadow: 0  Fluid0 20px rgba(0, 123, 255, 0.8); }
     }
     @media (max-width: 768px) { header h1 { font-size: 2rem; } }
 
@@ -299,103 +299,140 @@
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%); /* Subtle gradient */
-      border: 3px solid #007bff; /* Bold blue border */
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 123, 255, 0.2);
-      color: #2c3e50; /* Darker text for contrast */
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #0d1b2a 100%);
+      border: 3px solid #00d4ff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      color: #e0e0e0;
       position: relative;
       min-height: 283mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC43IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIiBzdWZmZXJGb3JtPSJzbW9vdGgiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzAwMCIvPjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiBmaWx0ZXI9InVybCgjbikiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+      background-size: cover;
     }
 
     .receipt-header {
       text-align: center;
-      padding: 1rem;
-      background: #007bff; /* Vibrant blue header */
+      padding: 1.5rem;
+      background: linear-gradient(90deg, #00d4ff, #ff00ff);
       color: #ffffff;
-      border-radius: 8px 8px 0 0;
-      margin-bottom: 1rem;
+      border-radius: 12px 12px 0 0;
       position: relative;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+      animation: pulseGlow 3s ease infinite;
     }
     .receipt-header h2 {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2.2rem;
+      font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.3rem;
       text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
     .receipt-header p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 400;
-      line-height: 1.2;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
     .receipt-logo {
       position: absolute;
-      top: 10mm;
+      top: 50%;
       right: 10mm;
-      font-size: 3rem;
-      color: #ff4d4d;
-      opacity: 0.2;
+      transform: translateY(-50%);
+      font-size: 5rem;
+      color: #ff00ff;
+      opacity: 0.3;
       font-weight: bold;
+      text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+      animation: float 4s ease-in-out infinite;
     }
 
     .receipt-details {
-      padding: 1.5rem;
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      margin: 1rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 10px;
+      margin: 1.5rem 0;
       flex-grow: 1;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .receipt-details::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      animation: orbit 10s linear infinite;
     }
     .receipt-details p {
-      margin: 0.8rem 0;
-      font-size: 1.1rem;
+      margin: 1rem 0;
+      font-size: 1.2rem;
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px dashed #e0e0e0;
+      border-bottom: 1px dashed rgba(0, 212, 255, 0.5);
       padding-bottom: 0.5rem;
     }
     .receipt-details strong {
       flex-basis: 40%;
-      color: #007bff;
+      color: #00d4ff;
       font-weight: 600;
+      text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
     }
     .receipt-details span {
       flex-basis: 60%;
       text-align: right;
       font-weight: 500;
-      color: #2c3e50;
+      color: #ffffff;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
     }
 
     .receipt-footer {
       text-align: center;
-      padding: 1rem;
-      background: #ff4d4d; /* Vibrant red footer */
+      padding: 1.5rem;
+      background: linear-gradient(90deg, #ff00ff, #00d4ff);
       color: #ffffff;
-      border-radius: 0 0 8px 8px;
-      width: 100%;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
     }
     .receipt-footer p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 500;
       line-height: 1.5;
       margin: 0.5rem 0;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
     .signature-line {
       border-bottom: 2px dashed #ffffff;
       width: 150px;
       margin: 1rem auto 0.5rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
     .signature-text {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #ffffff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
+      50% { box-shadow: 0 0 25px rgba(0, 212, 255, 1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(-50%) translateY(-10px); }
+      50% { transform: translateY(-50%) translateY(10px); }
+    }
+    @keyframes orbit {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     @media (max-width: 500px) {
@@ -404,11 +441,11 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 2px solid #007bff;
+        border: 2px solid #00d4ff;
         display: block;
       }
       .receipt-header {
-        padding: 0.8rem;
+        padding: 1rem;
       }
       .receipt-header h2 {
         font-size: 1.6rem;
@@ -417,9 +454,9 @@
         font-size: 0.9rem;
       }
       .receipt-logo {
-        top: 8mm;
+        top: 50%;
         right: 8mm;
-        font-size: 2rem;
+        font-size: 3rem;
       }
       .receipt-details {
         padding: 1rem;
