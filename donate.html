@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -510,28 +511,31 @@
       display: flex;
       gap: 1rem;
       margin-top: 2rem;
+      justify-content: center;
     }
 
     .receipt-actions button {
-      flex: 1;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      padding: 0.8rem;
-      border: none;
+      flex: none;
+      width: auto;
+      padding: 0.8rem 1.5rem;
       border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .receipt-actions .download-btn {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+    }
+
+    .receipt-actions .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
     }
 
     .receipt-actions button:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-
-    .receipt-actions button:last-child {
-      background: linear-gradient(135deg, #ff4d4d, #cc0000);
     }
 
     @media (max-width: 500px) {
@@ -564,6 +568,10 @@
       .receipt-actions {
         flex-direction: column;
         gap: 0.5rem;
+      }
+      .receipt-actions button {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -855,6 +863,50 @@
       }
     });
 
+    async function generatePDF() {
+      const element = document.getElementById('receipt-content');
+      const scale = 4;
+      const widthInPx = 210 * 3.78;
+      const heightInPx = 297 * 3.78;
+      
+      const canvas = await html2canvas(element, {
+        scale: scale,
+        useCORS: true,
+        backgroundColor: null,
+        width: widthInPx,
+        height: heightInPx,
+        windowWidth: widthInPx,
+        windowHeight: heightInPx,
+        logging: false,
+        dpi: 300
+      });
+      
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const margin = 7;
+      const contentWidth = pdfWidth - 2 * margin;
+      const contentHeight = pdfHeight - 2 * margin;
+
+      const imgWidth = canvas.width / scale;
+      const imgHeight = canvas.height / scale;
+      const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
+      const finalWidth = imgWidth * ratio;
+      const finalHeight = imgHeight * ratio;
+
+      const x = (pdfWidth - finalWidth) / 2;
+      const y = (pdfHeight - finalHeight) / 2;
+
+      pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
+      return pdf;
+    }
+
     generateReceipt.addEventListener('click', () => {
       const donorName = document.getElementById('donor-name').value;
       const donorRelation = document.getElementById('donor-relation').value;
@@ -924,7 +976,12 @@
           
           <div class="receipt-actions">
             <button id="add-to-excel">Add Data to Excel</button>
-            <button id="download-share-receipt">Download & Share</button>
+            <button class="download-btn" id="download-receipt">
+              <i class="fas fa-download"></i> Download
+            </button>
+            <button class="whatsapp-btn" id="whatsapp-share">
+              <i class="fab fa-whatsapp"></i> Share
+            </button>
           </div>
         `;
         
@@ -953,79 +1010,56 @@
           });
         });
 
-        const downloadShareButton = document.getElementById('download-share-receipt');
-        downloadShareButton.addEventListener('click', async () => {
-          const element = document.getElementById('receipt-content');
-          const scale = 4;
-          const widthInPx = 210 * 3.78;
-          const heightInPx = 297 * 3.78;
-          const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
-
+        // Download button functionality
+        const downloadButton = document.getElementById('download-receipt');
+        downloadButton.addEventListener('click', async () => {
           try {
-            // Generate the canvas in parallel with PDF creation
-            const canvasPromise = html2canvas(element, {
-              scale: scale,
-              useCORS: true,
-              backgroundColor: null,
-              width: widthInPx,
-              height: heightInPx,
-              windowWidth: widthInPx,
-              windowHeight: heightInPx,
-              logging: false,
-              dpi: 300
-            });
-
-            // Start the download process immediately
-            const pdf = new jsPDF({
-              orientation: 'portrait',
-              unit: 'mm',
-              format: 'a4'
-            });
-
-            const canvas = await canvasPromise;
-            const imgData = canvas.toDataURL('image/png', 1.0);
-
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-            const margin = 7;
-            const contentWidth = pdfWidth - 2 * margin;
-            const contentHeight = pdfHeight - 2 * margin;
-
-            const imgWidth = canvas.width / scale;
-            const imgHeight = canvas.height / scale;
-            const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
-            const finalWidth = imgWidth * ratio;
-            const finalHeight = imgHeight * ratio;
-
-            const x = (pdfWidth - finalWidth) / 2;
-            const y = (pdfHeight - finalHeight) / 2;
-
-            pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
-            
-            // Start download immediately
+            const pdf = await generatePDF();
+            const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
             pdf.save(fileName);
-            
-            // Prepare for sharing while download is happening
-            const pdfBlob = pdf.output('blob');
-            const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
-            
-            // Try to share the file
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              try {
-                await navigator.share({
-                  files: [file],
-                  title: 'Donation Receipt',
-                  text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
-                });
-              } catch (shareError) {
-                console.log('Sharing failed or was cancelled:', shareError);
-              }
-            } else {
-              console.log('Web Share API not supported with files');
-            }
           } catch (error) {
             console.error('Error generating PDF:', error);
             alert('Error generating PDF. Please try again.');
+          }
+        });
+
+        // WhatsApp share functionality
+        const whatsappButton = document.getElementById('whatsapp-share');
+        whatsappButton.addEventListener('click', async () => {
+          try {
+            const pdf = await generatePDF();
+            const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
+            
+            // Convert PDF to Blob
+            const pdfBlob = pdf.output('blob');
+            
+            // Create a temporary URL for the PDF
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            
+            // Create a download link to make the file accessible
+            const tempLink = document.createElement('a');
+            tempLink.href = pdfUrl;
+            tempLink.download = fileName;
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+            
+            // WhatsApp share link
+            const text = `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            
+            // Open WhatsApp with the text (file will be downloaded in background)
+            window.open(whatsappUrl, '_blank');
+            
+            // For mobile devices, we can't directly attach the PDF to WhatsApp web URL
+            // So we inform the user to attach the downloaded file manually
+            setTimeout(() => {
+              alert('Please attach the downloaded PDF file to your WhatsApp message.');
+            }, 1000);
+            
+          } catch (error) {
+            console.error('Error sharing via WhatsApp:', error);
+            alert('Error sharing via WhatsApp. Please try downloading and sharing manually.');
           }
         });
       } else {
