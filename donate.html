@@ -11,7 +11,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #FFF8E1; /* Soft cream background for the page */
+      background: #ffffff;
       color: #333333;
       line-height: 1.6;
       overflow-x: hidden;
@@ -24,13 +24,13 @@
       left: 0;
       width: 0;
       height: 5px;
-      background: linear-gradient(90deg, #D4AF37, #2E8B57); /* Gold to emerald green */
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
       z-index: 1000;
       transition: width 0.1s ease;
     }
 
     nav {
-      background: linear-gradient(135deg, #FFF8E1, #F5E6CC, #FFF8E1); /* Cream gradient */
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0);
       color: #333333;
       padding: 1rem;
       position: sticky;
@@ -47,21 +47,21 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #D4AF37; }
+    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #007bff; }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
-      color: #2E8B57;
+      color: #007bff;
       font-size: 1rem;
       padding: 0.5rem 1rem;
       transition: all 0.3s ease;
       border-radius: 20px;
     }
     .nav-links a:hover {
-      color: #D4AF37;
+      color: #ff4d4d;
       background: rgba(0, 0, 0, 0.05);
       transform: scale(1.1);
     }
-    .hamburger { font-size: 1.8rem; cursor: pointer; color: #D4AF37; display: none; }
+    .hamburger { font-size: 1.8rem; cursor: pointer; color: #007bff; display: none; }
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links {
@@ -71,7 +71,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: #FFF8E1;
+        background: #f0f0f0;
         padding: 1rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
@@ -81,7 +81,7 @@
     header {
       height: 60vh;
       position: relative;
-      background: linear-gradient(135deg, rgba(255, 248, 225, 0.9), rgba(245, 230, 204, 0.7)),
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7)),
                   url('https://via.placeholder.com/1600x400?text=Donate+Now') no-repeat center center/cover;
       display: flex;
       align-items: center;
@@ -98,16 +98,16 @@
     }
     header h1 {
       font-size: 3rem;
-      color: #D4AF37;
+      color: #007bff;
       text-transform: uppercase;
       letter-spacing: 4px;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
       z-index: 1;
       animation: glowText 2s ease-in-out infinite;
     }
     @keyframes glowText {
-      0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-      50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); }
+      0%, 100% { text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
+      50% { text-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
     }
     @media (max-width: 768px) { header h1 { font-size: 2rem; } }
 
@@ -116,7 +116,7 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 2rem;
-      background: #FFF8E1;
+      background: #f9f9f9;
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
@@ -125,15 +125,15 @@
       text-align: center;
       margin-bottom: 2.5rem;
       font-size: 2.5rem;
-      color: #D4AF37;
-      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+      color: #007bff;
+      text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
       animation: slideInUp 1s ease-out;
     }
     .section-title::after {
       content: "";
       width: 80px;
       height: 5px;
-      background: linear-gradient(90deg, #D4AF37, #2E8B57);
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
       display: block;
       margin: 0.8rem auto;
       border-radius: 5px;
@@ -163,14 +163,14 @@
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     }
     .donation-details, .scanner-placeholder { flex: 1 1 100%; padding: 1rem; }
-    .donation-details { border-bottom: 2px dashed #F5E6CC; }
+    .donation-details { border-bottom: 2px dashed #e0e0e0; }
     @media (min-width: 768px) {
-      .donation-details { border-bottom: none; border-right: 2px dashed #F5E6CC; }
+      .donation-details { border-bottom: none; border-right: 2px dashed #e0e0e0; }
       .scanner-placeholder.visible { flex: 1 1 45%; }
     }
     .donation-details h2 {
       font-size: 1.8rem;
-      color: #2E8B57;
+      color: #ff4d4d;
       margin-bottom: 1rem;
     }
     .donation-details p {
@@ -182,7 +182,7 @@
       align-items: center;
     }
     .donation-details strong {
-      color: #D4AF37;
+      color: #007bff;
       margin-right: 1rem;
     }
     .donation-details .copyable {
@@ -194,14 +194,14 @@
       position: relative;
       cursor: pointer;
       padding: 0.2rem 0.5rem;
-      background: #F5E6CC;
+      background: #f0f0f0;
       border-radius: 4px;
       transition: background 0.3s ease;
     }
-    .copyable:hover { background: #E6D5B8; }
+    .copyable:hover { background: #e0e0e0; }
     .copy-btn {
-      background: #2E8B57;
-      color: #FFF8E1;
+      background: #ff4d4d;
+      color: #ffffff;
       border: none;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
@@ -216,8 +216,8 @@
       top: -2rem;
       left: 50%;
       transform: translateX(-50%);
-      background: #2E8B57;
-      color: #FFF8E1;
+      background: #ff4d4d;
+      color: #ffffff;
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
       font-size: 0.8rem;
@@ -228,8 +228,8 @@
     .copyable.copied .tooltip { opacity: 1; }
 
     .show-scanner, .get-receipt {
-      background: linear-gradient(90deg, #D4AF37, #2E8B57);
-      color: #FFF8E1;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       border: none;
@@ -241,16 +241,16 @@
     }
     .show-scanner:hover, .get-receipt:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
     .scanner-placeholder {
       display: none;
       align-items: center;
       justify-content: center;
-      background: #F5E6CC;
+      background: #f9f9f9;
       border-radius: 10px;
-      color: #D4AF37;
+      color: #007bff;
       font-size: 1.2rem;
       opacity: 0;
       transform: translateX(100%);
@@ -267,24 +267,24 @@
     .receipt-section {
       margin-top: 2rem;
       padding: 2rem;
-      background: #F5E6CC;
+      background: #f9f9f9;
       border-radius: 15px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
     }
-    .receipt-section h2 { color: #2E8B57; text-align: center; margin-bottom: 1.5rem; }
-    .receipt-section label { display: block; margin: 0.5rem 0; color: #D4AF37; }
+    .receipt-section h2 { color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; }
+    .receipt-section label { display: block; margin: 0.5rem 0; color: #007bff; }
     .receipt-section input, .receipt-section select {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
-      border: 1px solid #E6D5B8;
+      border: 1px solid #e0e0e0;
       border-radius: 5px;
-      background: #FFF8E1;
+      background: #ffffff;
       color: #333333;
     }
     .receipt-section button {
-      background: linear-gradient(90deg, #D4AF37, #2E8B57);
-      color: #FFF8E1;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
@@ -292,17 +292,17 @@
       margin: 0.5rem 0;
       width: 100%;
     }
-    .receipt-section button:hover { background: linear-gradient(90deg, #2E8B57, #D4AF37); }
+    .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
-    /* Enhanced Artistic Receipt Design */
+    /* Enhanced Receipt Design with New Coloring */
     .receipt-content {
       width: 100%;
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #FFF8E1, #F5E6CC),
+      background: linear-gradient(135deg, #F8F5E4, #FDF5E6),
                   url('https://via.placeholder.com/210x297?text=Islamic+Pattern') no-repeat center center/cover;
-      border: 4px solid #D4AF37;
+      border: 4px solid #FFD700; /* Gold border */
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       color: #333333;
@@ -337,8 +337,8 @@
     }
     .receipt-header {
       text-align: center;
-      background: linear-gradient(90deg, #D4AF37, #2E8B57);
-      color: #FFF8E1;
+      background: linear-gradient(90deg, #6A1B9A, #26A69A); /* Purple to teal gradient */
+      color: #FFD700; /* Gold text */
       padding: 1.5rem;
       border-radius: 10px 10px 0 0;
       position: relative;
@@ -364,12 +364,12 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
     .receipt-details {
-      background: rgba(255, 248, 225, 0.95);
+      background: rgba(248, 245, 228, 0.95); /* Semi-transparent ivory */
       padding: 1.5rem;
       border-radius: 10px;
       margin: 1rem 0;
-      border: 1px solid #E6D5B8;
-      box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
+      border: 1px solid #FDF5E6;
+      box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.2); /* Gold inner shadow */
       flex-grow: 1;
       position: relative;
       z-index: 2;
@@ -390,13 +390,13 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      color: #D4AF37;
+      color: #FFD700; /* Gold divider */
       font-size: 0.8rem;
       opacity: 0.5;
     }
     .receipt-details strong {
       flex-basis: 40%;
-      color: #2E8B57;
+      color: #6A1B9A; /* Purple labels */
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -404,7 +404,7 @@
     }
     .receipt-details strong::before {
       content: '✧ ';
-      color: #D4AF37;
+      color: #FFD700; /* Gold icon */
       margin-right: 0.5rem;
     }
     .receipt-details span {
@@ -415,8 +415,8 @@
     }
     .receipt-footer {
       text-align: center;
-      background: linear-gradient(90deg, #2E8B57, #D4AF37);
-      color: #FFF8E1;
+      background: linear-gradient(90deg, #26A69A, #6A1B9A); /* Teal to purple gradient */
+      color: #FFD700; /* Gold text */
       padding: 1.5rem;
       border-radius: 0 0 10px 10px;
       position: relative;
@@ -432,7 +432,7 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
     .signature-line {
-      border-bottom: 2px dashed #FFF8E1;
+      border-bottom: 2px dashed #FFD700; /* Gold dashed line */
       width: 150px;
       margin: 1rem auto 0.5rem;
     }
@@ -440,7 +440,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 600;
-      color: #FFF8E1;
+      color: #FFD700;
     }
 
     @media (max-width: 500px) {
@@ -449,7 +449,7 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 3px solid #D4AF37;
+        border: 3px solid #FFD700;
         display: block;
       }
       .receipt-header {
@@ -519,7 +519,7 @@
 
     footer {
       padding: 1.5rem;
-      background: linear-gradient(135deg, #FFF8E1, #F5E6CC);
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
       color: #333333;
       text-align: center;
       font-size: 1rem;
@@ -539,8 +539,8 @@
     }
 
     .receipt-actions button {
-      background: linear-gradient(90deg, #D4AF37, #2E8B57);
-      color: #FFF8E1;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
@@ -549,7 +549,7 @@
       width: 100%;
     }
     .receipt-actions button:hover {
-      background: linear-gradient(90deg, #2E8B57, #D4AF37);
+      background: linear-gradient(90deg, #ff4d4d, #007bff);
     }
   </style>
 </head>
@@ -702,7 +702,7 @@
         else if (this.y < 0) this.y = canvas.height;
       }
       draw() {
-        ctx.fillStyle = '#D4AF37';
+        ctx.fillStyle = '#007bff';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -720,7 +720,7 @@
           const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
-            ctx.strokeStyle = `rgba(46, 139, 87, ${1 - distance / 100})`;
+            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
