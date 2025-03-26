@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:400,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -294,53 +294,71 @@
     }
     .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
+    /* Enhanced Receipt Design */
     .receipt-content {
       width: 100%;
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #ffffff, #f9f9f9);
-      border: 5px double #007bff;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef),
+                  url('https://via.placeholder.com/210x297?text=Watermark') no-repeat center center/cover;
+      border: 3px double #007bff;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       color: #333333;
       position: relative;
       min-height: 283mm;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow: hidden;
+    }
+    .receipt-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://via.placeholder.com/50x50?text=DM') no-repeat center center;
+      opacity: 0.1;
+      z-index: 0;
     }
     .receipt-header {
       text-align: center;
-      border-bottom: 2px solid #ff4d4d;
-      padding-bottom: 1rem;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 10px 10px 0 0;
       margin-bottom: 1rem;
-      width: 100%;
+      position: relative;
+      z-index: 1;
     }
     .receipt-header h2 {
+      font-family: 'Roboto', sans-serif;
       font-size: 2rem;
+      font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .receipt-header p {
       font-size: 1.2rem;
+      font-weight: 400;
       line-height: 1.2;
       margin: 0.3rem 0;
     }
-    .receipt-logo {
-      position: absolute;
-      top: 15mm;
-      right: 15mm;
-      opacity: 0.1;
-      font-size: 3rem;
-    }
     .receipt-details {
-      background: rgba(0, 123, 255, 0.05);
-      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
       border-radius: 10px;
       margin: 1rem 0;
-      width: 100%;
+      border: 1px solid #e0e0e0;
+      box-shadow: inset 0 0 10px rgba(0, 123, 255, 0.1);
       flex-grow: 1;
+      position: relative;
+      z-index: 1;
     }
     .receipt-details p {
       margin: 0.8rem 0;
@@ -348,30 +366,51 @@
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed #e0e0e0;
+      padding-bottom: 0.5rem;
     }
     .receipt-details strong {
       flex-basis: 40%;
+      color: #007bff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    .receipt-details strong::before {
+      content: '★ ';
+      color: #ff4d4d;
+      margin-right: 0.3rem;
+    }
+    .receipt-details span {
+      flex-basis: 60%;
+      text-align: right;
+      font-weight: 500;
     }
     .receipt-footer {
       text-align: center;
-      border-top: 1px dashed #007bff;
-      padding-top: 1rem;
-      width: 100%;
+      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 0 0 10px 10px;
+      position: relative;
+      z-index: 1;
     }
     .receipt-footer p {
       font-size: 1.2rem;
       line-height: 1.5;
       margin: 0.5rem 0;
+      font-style: italic;
     }
     .signature-line {
-      border-bottom: 1px dashed #333333;
+      border-bottom: 2px dashed #ffffff;
       width: 150px;
       margin: 1rem auto 0.5rem;
     }
     .signature-text {
       font-size: 1rem;
-      color: #ff4d4d;
-      font-weight: 500;
+      font-weight: 600;
+      color: #ffffff;
     }
 
     @media (max-width: 500px) {
@@ -380,13 +419,12 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 3px double #007bff;
+        border: 2px double #007bff;
         display: block;
       }
       .receipt-header {
-        padding: 5mm 0;
-        margin: 0;
-        border-bottom: 2px solid #ff4d4d;
+        padding: 5mm;
+        border-radius: 5mm 5mm 0 0;
       }
       .receipt-header h2 {
         font-size: 1.6rem;
@@ -398,15 +436,9 @@
         line-height: 1.3;
         margin: 0.3rem 0;
       }
-      .receipt-logo {
-        top: 8mm;
-        right: 8mm;
-        font-size: 2rem;
-      }
       .receipt-details {
         padding: 8mm;
         margin: 8mm 0;
-        background: rgba(0, 123, 255, 0.1);
         border-radius: 5mm;
       }
       .receipt-details p {
@@ -420,14 +452,17 @@
         width: 100%;
         margin-bottom: 2mm;
       }
+      .receipt-details strong::before {
+        content: '★ ';
+      }
       .receipt-details span {
         display: block;
         width: 100%;
         text-align: right;
       }
       .receipt-footer {
-        padding: 8mm 0;
-        border-top: 1px dashed #007bff;
+        padding: 8mm;
+        border-radius: 0 0 5mm 5mm;
         position: absolute;
         bottom: 7mm;
         left: 7mm;
@@ -754,23 +789,23 @@
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
-              <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
-              <p style="color: #ff4d4d;">Official Donation Receipt</p>
+              <h2>Darul Mawasaat Welfare Foundation</h2>
+              <p>Unit Cherwan - Official Donation Receipt</p>
             </div>
-            <div class="receipt-logo">DM</div>
             <div class="receipt-details">
-              <p><strong style="color: #007bff;">Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
-              <p><strong style="color: #007bff;">S/O or D/O:</strong> <span>${donorRelation}</span></p>
-              <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
-              <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
-              <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
-              <p><strong style="color: #007bff;">Date:</strong> <span>${receiptDate}</span></p>
-              <p><strong style="color: #007bff;">Receipt Generator:</strong> <span>${receiptGenerator}</span></p>
+              <p><strong>Donor Name:</strong> <span style="font-weight: bold;">${donorName}</span></p>
+              <p><strong>S/O or D/O:</strong> <span>${donorRelation}</span></p>
+              <p><strong>Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
+              <p><strong>Purpose:</strong> <span>${purpose}</span></p>
+              <p><strong>Payment Method:</strong> <span>${paymentMethod}</span></p>
+              <p><strong>Date:</strong> <span>${receiptDate}</span></p>
+              <p><strong>Receipt Generator:</strong> <span>${receiptGenerator}</span></p>
             </div>
             <div class="receipt-footer">
-              <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
+              <p class="thank-you">Thank You for Your Generosity!</p>
               <div class="signature-line"></div>
               <p class="signature-text">Chairman - Darul Mawasaat Unit Cherwan</p>
+              <p>Contact: +91 123-456-7890 | Email: info@darulmawasaat.org</p>
             </div>
           </div>
           <div class="receipt-actions">
@@ -784,23 +819,18 @@
         // Event listener for Add Data to Excel button
         const addToExcelButton = document.getElementById('add-to-excel');
         addToExcelButton.addEventListener('click', () => {
-          // Format data for Excel columns: Donor Name, S/O or D/O, Purpose, Zakat Ul Fitr Amount, Date, Receipt Generator
-          // Excluding S No. (column A)
           const excelData = [
-            donorName, // Column B: DONOR NAME
-            donorRelation, // Column C: S/O or D/O
-            purpose, // Column D: PURPOSE
-            parseFloat(amount).toLocaleString('en-IN'), // Column E: ZAKAT UL FITR AMOUNT
-            receiptDate, // Column F: Date
-            receiptGenerator // Column G: Receipt Generator
-          ].join('\t'); // Tab-separated for Excel columns
+            donorName,
+            donorRelation,
+            purpose,
+            parseFloat(amount).toLocaleString('en-IN'),
+            receiptDate,
+            receiptGenerator
+          ].join('\t');
 
-          // Copy to clipboard
           navigator.clipboard.writeText(excelData).then(() => {
-            // Open Excel sheet in a new tab
             const excelSheetUrl = 'https://1drv.ms/x/c/04062cc6085d9146/Eby_PGyXydFLjfLtYUnT9tYB7bjIhJCz5gtsbXnBOH0D_Q?e=O7YPSA';
             window.open(excelSheetUrl, '_blank');
-            // Alert user to paste in the correct cell
             setTimeout(() => {
               alert('Data copied to clipboard! In the Excel sheet, tap on cell B2 (under "DONOR NAME") and select "Paste" to add the row.');
             }, 500);
@@ -816,13 +846,13 @@
           const element = document.getElementById('receipt-content');
           
           const scale = 4;
-          const widthInPx = 210 * 3.78;
-          const heightInPx = 297 * 3.78;
+          const widthInPx = 210 * 3.78; // 210mm in pixels (at 96 DPI)
+          const heightInPx = 297 * 3.78; // 297mm in pixels (at 96 DPI)
           
           html2canvas(element, {
             scale: scale,
             useCORS: true,
-            backgroundColor: '#ffffff',
+            backgroundColor: null,
             width: widthInPx,
             height: heightInPx,
             windowWidth: widthInPx,
