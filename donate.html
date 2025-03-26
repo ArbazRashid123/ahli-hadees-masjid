@@ -241,7 +241,9 @@
     }
     .show-scanner:hover, .get-receipt:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 15 
+   
+px rgba(0, 123, 255, 0.5);
     }
 
     .scanner-placeholder {
@@ -294,7 +296,6 @@
     }
     .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
 
-    /* Default receipt styles (for larger screens) */
     .receipt-content {
       width: 100%;
       max-width: 196mm;
@@ -375,7 +376,6 @@
       font-weight: 500;
     }
 
-    /* Mobile-specific receipt styles */
     @media (max-width: 500px) {
       .receipt-content {
         max-width: 210mm;
@@ -710,22 +710,6 @@
     const receiptPreview = document.getElementById('receipt-preview');
     const submitPassword = document.getElementById('submit-password');
     const generateReceipt = document.getElementById('generate-receipt');
-    
-    // Reset receipt counters for each purpose to start from 1
-    const receiptCounters = {
-      'Zakatul Fitr': 0,
-      'Sadaqat': 0,
-      'Nazar-o-Niyaz': 0,
-      'Zakat': 0,
-      'Ushur': 0,
-      'Others': 0
-    };
-    const currentYear = new Date().getFullYear();
-    
-    // Reset localStorage counters to 0 for each purpose
-    Object.keys(receiptCounters).forEach(key => {
-      localStorage.setItem(`${key}Counter`, '0');
-    });
 
     document.querySelectorAll('.get-receipt').forEach(button => {
       button.addEventListener('click', () => {
@@ -754,25 +738,11 @@
       const paymentMethod = document.getElementById('payment-method').value;
 
       if (donorName && donorRelation && amount && purpose && paymentMethod) {
-        const prefixMap = {
-          'Zakatul Fitr': 'ZFTR',
-          'Sadaqat': 'SDQ',
-          'Nazar-o-Niyaz': 'NON',
-          'Zakat': 'ZAK',
-          'Ushur': 'USH',
-          'Others': 'OTH'
-        };
-        const prefix = prefixMap[purpose];
-        let counter = parseInt(localStorage.getItem(`${purpose}Counter`) || '0');
-        counter++;
-        const receiptNumber = `${prefix}${counter.toString().padStart(4, '0')}/${currentYear}`;
-        
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
               <h2 style="color: #007bff;">Darul Mawasaat Welfare Foundation Unit Cherwan</h2>
               <p style="color: #ff4d4d;">Official Donation Receipt</p>
-              <p style="color: #333;">Receipt No: ${receiptNumber}</p>
             </div>
             <div class="receipt-logo">DM</div>
             <div class="receipt-details">
@@ -794,21 +764,28 @@
             </div>
           </div>
           <div class="receipt-actions">
+            <button id="add-to-excel">Add Data to Excel</button>
             <button id="download-share-receipt">Download & Share</button>
           </div>
         `;
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'block';
 
-        // Attach event listener to the Download & Share button
+        // Event listener for Add Data to Excel button
+        const addToExcelButton = document.getElementById('add-to-excel');
+        addToExcelButton.addEventListener('click', () => {
+          const excelSheetUrl = 'https://1drv.ms/x/c/04062cc6085d9146/Eby_PGyXydFLjfLtYUnT9tYB7bjIhJCz5gtsbXnBOH0D_Q?e=O7YPSA';
+          window.open(excelSheetUrl, '_blank');
+        });
+
+        // Event listener for Download & Share button
         const downloadShareButton = document.getElementById('download-share-receipt');
         downloadShareButton.addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
           
-          // Calculate dimensions in pixels for html2canvas
-          const scale = 4; // High scale for sharp text
-          const widthInPx = 210 * 3.78; // 210mm converted to pixels (1mm ≈ 3.78px at 96dpi)
-          const heightInPx = 297 * 3.78; // 297mm converted to pixels
+          const scale = 4;
+          const widthInPx = 210 * 3.78;
+          const heightInPx = 297 * 3.78;
           
           html2canvas(element, {
             scale: scale,
@@ -828,67 +805,46 @@
               format: 'a4'
             });
             
-            const pdfWidth = pdf.internal.pageSize.getWidth(); // 210mm for A4
-            const pdfHeight = pdf.internal.pageSize.getHeight(); // 297mm for A4
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
             const margin = 7;
-            const contentWidth = pdfWidth - 2 * margin; // Width available after margins
-            const contentHeight = pdfHeight - 2 * margin; // Height available after margins
+            const contentWidth = pdfWidth - 2 * margin;
+            const contentHeight = pdfHeight - 2 * margin;
             
-            // Calculate image dimensions
             const imgWidth = canvas.width / scale;
             const imgHeight = canvas.height / scale;
             const ratio = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
             const finalWidth = imgWidth * ratio;
             const finalHeight = imgHeight * ratio;
             
-            // Center the content in the PDF
-            const x = (pdfWidth - finalWidth) / 2; // Center horizontally
-            const y = (pdfHeight - finalHeight) / 2; // Center vertically
+            const x = (pdfWidth - finalWidth) / 2;
+            const y = (pdfHeight - finalHeight) / 2;
 
             pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight, '', 'FAST');
             
-            // Save PDF and get blob for sharing
             const pdfBlob = pdf.output('blob');
-            const fileName = `Receipt_${receiptNumber}_${donorName}.pdf`;
-            pdf.save(fileName); // Download the PDF first
+            const fileName = `Receipt_${donorName}_${new Date().toISOString().split('T')[0]}.pdf`;
+            pdf.save(fileName);
 
-            // Save updated counter only after download
-            localStorage.setItem(`${purpose}Counter`, counter);
-
-            // Share the PDF file with a slight delay to ensure download completes
             setTimeout(() => {
               const file = new File([pdfBlob], fileName, { type: 'application/pdf' });
               const shareData = {
                 files: [file],
                 title: 'Donation Receipt',
-                text: `Receipt No: ${receiptNumber} for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
+                text: `Receipt for ${donorName}'s donation of ₹${amount} via ${paymentMethod} for ${purpose}`
               };
 
-              // Log shareData for debugging
-              console.log('Share Data:', shareData);
-
-              // Check if sharing is supported
-              if (navigator.canShare) {
-                console.log('navigator.canShare is supported');
-                if (navigator.canShare({ files: [file] })) {
-                  console.log('File sharing is supported');
-                  navigator.share(shareData)
-                    .then(() => {
-                      console.log('Share successful');
-                    })
-                    .catch(err => {
-                      console.error('Error sharing:', err.message);
-                      alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
-                    });
-                } else {
-                  console.log('File sharing not supported for this file type');
-                  alert('Sharing files of this type is not supported on this device. PDF has been downloaded.');
-                }
+              if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                navigator.share(shareData)
+                  .then(() => console.log('Share successful'))
+                  .catch(err => {
+                    console.error('Error sharing:', err.message);
+                    alert('Error sharing the file: ' + err.message + '. PDF has been downloaded.');
+                  });
               } else {
-                console.log('navigator.share not supported');
                 alert('Sharing is not supported on this device. PDF has been downloaded.');
               }
-            }, 500); // 500ms delay to ensure download completes
+            }, 500);
           }).catch(err => {
             console.error('Error generating PDF:', err);
             alert('Error generating PDF. Please try again.');
