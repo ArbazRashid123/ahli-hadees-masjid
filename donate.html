@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate to Masjid, Dar-ul-Mawasaat, Darasgah, and Zakatul Fitr</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Playfair+Display:400,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      background: #FFF8E1; /* Soft cream background for the page */
       color: #333333;
       line-height: 1.6;
       overflow-x: hidden;
@@ -24,13 +24,13 @@
       left: 0;
       width: 0;
       height: 5px;
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      background: linear-gradient(90deg, #D4AF37, #2E8B57); /* Gold to emerald green */
       z-index: 1000;
       transition: width 0.1s ease;
     }
 
     nav {
-      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0);
+      background: linear-gradient(135deg, #FFF8E1, #F5E6CC, #FFF8E1); /* Cream gradient */
       color: #333333;
       padding: 1rem;
       position: sticky;
@@ -47,21 +47,21 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #007bff; }
+    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #D4AF37; }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links a {
-      color: #007bff;
+      color: #2E8B57;
       font-size: 1rem;
       padding: 0.5rem 1rem;
       transition: all 0.3s ease;
       border-radius: 20px;
     }
     .nav-links a:hover {
-      color: #ff4d4d;
+      color: #D4AF37;
       background: rgba(0, 0, 0, 0.05);
       transform: scale(1.1);
     }
-    .hamburger { font-size: 1.8rem; cursor: pointer; color: #007bff; display: none; }
+    .hamburger { font-size: 1.8rem; cursor: pointer; color: #D4AF37; display: none; }
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links {
@@ -71,7 +71,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: #f0f0f0;
+        background: #FFF8E1;
         padding: 1rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
@@ -81,7 +81,7 @@
     header {
       height: 60vh;
       position: relative;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7)),
+      background: linear-gradient(135deg, rgba(255, 248, 225, 0.9), rgba(245, 230, 204, 0.7)),
                   url('https://via.placeholder.com/1600x400?text=Donate+Now') no-repeat center center/cover;
       display: flex;
       align-items: center;
@@ -98,16 +98,16 @@
     }
     header h1 {
       font-size: 3rem;
-      color: #007bff;
+      color: #D4AF37;
       text-transform: uppercase;
       letter-spacing: 4px;
-      text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
       z-index: 1;
       animation: glowText 2s ease-in-out infinite;
     }
     @keyframes glowText {
-      0%, 100% { text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
-      50% { text-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
+      0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+      50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); }
     }
     @media (max-width: 768px) { header h1 { font-size: 2rem; } }
 
@@ -116,7 +116,7 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 2rem;
-      background: #f9f9f9;
+      background: #FFF8E1;
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
@@ -125,15 +125,15 @@
       text-align: center;
       margin-bottom: 2.5rem;
       font-size: 2.5rem;
-      color: #007bff;
-      text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+      color: #D4AF37;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
       animation: slideInUp 1s ease-out;
     }
     .section-title::after {
       content: "";
       width: 80px;
       height: 5px;
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
+      background: linear-gradient(90deg, #D4AF37, #2E8B57);
       display: block;
       margin: 0.8rem auto;
       border-radius: 5px;
@@ -163,14 +163,14 @@
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     }
     .donation-details, .scanner-placeholder { flex: 1 1 100%; padding: 1rem; }
-    .donation-details { border-bottom: 2px dashed #e0e0e0; }
+    .donation-details { border-bottom: 2px dashed #F5E6CC; }
     @media (min-width: 768px) {
-      .donation-details { border-bottom: none; border-right: 2px dashed #e0e0e0; }
+      .donation-details { border-bottom: none; border-right: 2px dashed #F5E6CC; }
       .scanner-placeholder.visible { flex: 1 1 45%; }
     }
     .donation-details h2 {
       font-size: 1.8rem;
-      color: #ff4d4d;
+      color: #2E8B57;
       margin-bottom: 1rem;
     }
     .donation-details p {
@@ -182,7 +182,7 @@
       align-items: center;
     }
     .donation-details strong {
-      color: #007bff;
+      color: #D4AF37;
       margin-right: 1rem;
     }
     .donation-details .copyable {
@@ -194,14 +194,14 @@
       position: relative;
       cursor: pointer;
       padding: 0.2rem 0.5rem;
-      background: #f0f0f0;
+      background: #F5E6CC;
       border-radius: 4px;
       transition: background 0.3s ease;
     }
-    .copyable:hover { background: #e0e0e0; }
+    .copyable:hover { background: #E6D5B8; }
     .copy-btn {
-      background: #ff4d4d;
-      color: #ffffff;
+      background: #2E8B57;
+      color: #FFF8E1;
       border: none;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
@@ -216,8 +216,8 @@
       top: -2rem;
       left: 50%;
       transform: translateX(-50%);
-      background: #ff4d4d;
-      color: #ffffff;
+      background: #2E8B57;
+      color: #FFF8E1;
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
       font-size: 0.8rem;
@@ -228,8 +228,8 @@
     .copyable.copied .tooltip { opacity: 1; }
 
     .show-scanner, .get-receipt {
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      color: #ffffff;
+      background: linear-gradient(90deg, #D4AF37, #2E8B57);
+      color: #FFF8E1;
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       border: none;
@@ -241,16 +241,16 @@
     }
     .show-scanner:hover, .get-receipt:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
     }
 
     .scanner-placeholder {
       display: none;
       align-items: center;
       justify-content: center;
-      background: #f9f9f9;
+      background: #F5E6CC;
       border-radius: 10px;
-      color: #007bff;
+      color: #D4AF37;
       font-size: 1.2rem;
       opacity: 0;
       transform: translateX(100%);
@@ -267,24 +267,24 @@
     .receipt-section {
       margin-top: 2rem;
       padding: 2rem;
-      background: #f9f9f9;
+      background: #F5E6CC;
       border-radius: 15px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
     }
-    .receipt-section h2 { color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; }
-    .receipt-section label { display: block; margin: 0.5rem 0; color: #007bff; }
+    .receipt-section h2 { color: #2E8B57; text-align: center; margin-bottom: 1.5rem; }
+    .receipt-section label { display: block; margin: 0.5rem 0; color: #D4AF37; }
     .receipt-section input, .receipt-section select {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
-      border: 1px solid #e0e0e0;
+      border: 1px solid #E6D5B8;
       border-radius: 5px;
-      background: #ffffff;
+      background: #FFF8E1;
       color: #333333;
     }
     .receipt-section button {
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      color: #ffffff;
+      background: linear-gradient(90deg, #D4AF37, #2E8B57);
+      color: #FFF8E1;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
@@ -292,19 +292,19 @@
       margin: 0.5rem 0;
       width: 100%;
     }
-    .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
+    .receipt-section button:hover { background: linear-gradient(90deg, #2E8B57, #D4AF37); }
 
-    /* Enhanced Receipt Design */
+    /* Enhanced Artistic Receipt Design */
     .receipt-content {
       width: 100%;
       max-width: 196mm;
       margin: 0 auto;
       padding: 7mm;
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef),
-                  url('https://via.placeholder.com/210x297?text=Watermark') no-repeat center center/cover;
-      border: 3px double #007bff;
+      background: linear-gradient(135deg, #FFF8E1, #F5E6CC),
+                  url('https://via.placeholder.com/210x297?text=Islamic+Pattern') no-repeat center center/cover;
+      border: 4px solid #D4AF37;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       color: #333333;
       position: relative;
       min-height: 283mm;
@@ -320,97 +320,127 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://via.placeholder.com/50x50?text=DM') no-repeat center center;
-      opacity: 0.1;
+      background: url('https://via.placeholder.com/100x100?text=DM') no-repeat center center;
+      opacity: 0.15;
       z-index: 0;
+    }
+    .receipt-content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 10px solid transparent;
+      border-image: url('https://via.placeholder.com/20x20?text=Pattern') 30 round;
+      z-index: 1;
     }
     .receipt-header {
       text-align: center;
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      color: #ffffff;
-      padding: 1rem;
+      background: linear-gradient(90deg, #D4AF37, #2E8B57);
+      color: #FFF8E1;
+      padding: 1.5rem;
       border-radius: 10px 10px 0 0;
-      margin-bottom: 1rem;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
     .receipt-header h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
     .receipt-header p {
+      font-family: 'Poppins', sans-serif;
       font-size: 1.2rem;
       font-weight: 400;
       line-height: 1.2;
       margin: 0.3rem 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
     .receipt-details {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 248, 225, 0.95);
       padding: 1.5rem;
       border-radius: 10px;
       margin: 1rem 0;
-      border: 1px solid #e0e0e0;
-      box-shadow: inset 0 0 10px rgba(0, 123, 255, 0.1);
+      border: 1px solid #E6D5B8;
+      box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
       flex-grow: 1;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .receipt-details p {
-      margin: 0.8rem 0;
+      margin: 1rem 0;
       font-size: 1.2rem;
       line-height: 1.5;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px dashed #e0e0e0;
+      position: relative;
       padding-bottom: 0.5rem;
+    }
+    .receipt-details p::after {
+      content: '✦✦✦';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #D4AF37;
+      font-size: 0.8rem;
+      opacity: 0.5;
     }
     .receipt-details strong {
       flex-basis: 40%;
-      color: #007bff;
+      color: #2E8B57;
       font-weight: 600;
       display: flex;
       align-items: center;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
     .receipt-details strong::before {
-      content: '★ ';
-      color: #ff4d4d;
-      margin-right: 0.3rem;
+      content: '✧ ';
+      color: #D4AF37;
+      margin-right: 0.5rem;
     }
     .receipt-details span {
       flex-basis: 60%;
       text-align: right;
       font-weight: 500;
+      color: #333333;
     }
     .receipt-footer {
       text-align: center;
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      color: #ffffff;
-      padding: 1rem;
+      background: linear-gradient(90deg, #2E8B57, #D4AF37);
+      color: #FFF8E1;
+      padding: 1.5rem;
       border-radius: 0 0 10px 10px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     }
     .receipt-footer p {
+      font-family: 'Playfair Display', serif;
       font-size: 1.2rem;
       line-height: 1.5;
       margin: 0.5rem 0;
       font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
     .signature-line {
-      border-bottom: 2px dashed #ffffff;
+      border-bottom: 2px dashed #FFF8E1;
       width: 150px;
       margin: 1rem auto 0.5rem;
     }
     .signature-text {
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
+      color: #FFF8E1;
     }
 
     @media (max-width: 500px) {
@@ -419,7 +449,7 @@
         width: 100%;
         padding: 7mm;
         min-height: 297mm;
-        border: 2px double #007bff;
+        border: 3px solid #D4AF37;
         display: block;
       }
       .receipt-header {
@@ -453,12 +483,17 @@
         margin-bottom: 2mm;
       }
       .receipt-details strong::before {
-        content: '★ ';
+        content: '✧ ';
       }
       .receipt-details span {
         display: block;
         width: 100%;
         text-align: right;
+      }
+      .receipt-details p::after {
+        content: '✦✦✦';
+        left: 50%;
+        transform: translateX(-50%);
       }
       .receipt-footer {
         padding: 8mm;
@@ -484,7 +519,7 @@
 
     footer {
       padding: 1.5rem;
-      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+      background: linear-gradient(135deg, #FFF8E1, #F5E6CC);
       color: #333333;
       text-align: center;
       font-size: 1rem;
@@ -504,8 +539,8 @@
     }
 
     .receipt-actions button {
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      color: #ffffff;
+      background: linear-gradient(90deg, #D4AF37, #2E8B57);
+      color: #FFF8E1;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
@@ -514,7 +549,7 @@
       width: 100%;
     }
     .receipt-actions button:hover {
-      background: linear-gradient(90deg, #ff4d4d, #007bff);
+      background: linear-gradient(90deg, #2E8B57, #D4AF37);
     }
   </style>
 </head>
@@ -667,7 +702,7 @@
         else if (this.y < 0) this.y = canvas.height;
       }
       draw() {
-        ctx.fillStyle = '#007bff';
+        ctx.fillStyle = '#D4AF37';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -685,7 +720,7 @@
           const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
-            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`;
+            ctx.strokeStyle = `rgba(46, 139, 87, ${1 - distance / 100})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
