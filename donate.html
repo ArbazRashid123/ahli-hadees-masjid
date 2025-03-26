@@ -241,9 +241,7 @@
     }
     .show-scanner:hover, .get-receipt:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 15 
-   
-px rgba(0, 123, 255, 0.5);
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
     .scanner-placeholder {
@@ -738,6 +736,12 @@ px rgba(0, 123, 255, 0.5);
       const paymentMethod = document.getElementById('payment-method').value;
 
       if (donorName && donorRelation && amount && purpose && paymentMethod) {
+        const receiptDate = new Date().toLocaleDateString('en-IN', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+
         receiptPreview.innerHTML = `
           <div class="receipt-content" id="receipt-content">
             <div class="receipt-header">
@@ -751,11 +755,7 @@ px rgba(0, 123, 255, 0.5);
               <p><strong style="color: #007bff;">Amount:</strong> <span>₹${parseFloat(amount).toLocaleString('en-IN')}</span></p>
               <p><strong style="color: #007bff;">Purpose:</strong> <span>${purpose}</span></p>
               <p><strong style="color: #007bff;">Payment Method:</strong> <span>${paymentMethod}</span></p>
-              <p><strong style="color: #007bff;">Date:</strong> <span>${new Date().toLocaleDateString('en-IN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}</span></p>
+              <p><strong style="color: #007bff;">Date:</strong> <span>${receiptDate}</span></p>
             </div>
             <div class="receipt-footer">
               <p class="thank-you" style="color: #007bff;">Thank You for Your Generosity!</p>
@@ -774,8 +774,30 @@ px rgba(0, 123, 255, 0.5);
         // Event listener for Add Data to Excel button
         const addToExcelButton = document.getElementById('add-to-excel');
         addToExcelButton.addEventListener('click', () => {
-          const excelSheetUrl = 'https://1drv.ms/x/c/04062cc6085d9146/Eby_PGyXydFLjfLtYUnT9tYB7bjIhJCz5gtsbXnBOH0D_Q?e=O7YPSA';
-          window.open(excelSheetUrl, '_blank');
+          // Format data for Excel columns: S No, Donor Name, S/O or D/O, Purpose, Zakat Ul Fitr Amount, Date, Receipt Generator
+          const excelData = [
+            "", // S No (left blank for manual entry)
+            donorName,
+            donorRelation,
+            purpose,
+            parseFloat(amount).toLocaleString('en-IN'),
+            receiptDate,
+            "" // Receipt Generator (left blank for manual entry)
+          ].join('\t'); // Tab-separated for Excel columns
+
+          // Copy to clipboard
+          navigator.clipboard.writeText(excelData).then(() => {
+            // Open Excel sheet in a new tab
+            const excelSheetUrl = 'https://1drv.ms/x/c/04062cc6085d9146/Eby_PGyXydFLjfLtYUnT9tYB7bjIhJCz5gtsbXnBOH0D_Q?e=O7YPSA';
+            window.open(excelSheetUrl, '_blank');
+            // Optional: Alert user to paste (since auto-paste isn't possible client-side)
+            setTimeout(() => {
+              alert('Data copied to clipboard! Tap in the Excel sheet and select "Paste" to add the row.');
+            }, 500);
+          }).catch(err => {
+            console.error('Error copying to clipboard:', err);
+            alert('Error copying data. Please try again.');
+          });
         });
 
         // Event listener for Download & Share button
