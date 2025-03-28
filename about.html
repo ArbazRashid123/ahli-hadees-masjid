@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Jamia Ahli Hadees Mohammadia Masjid Cherwan</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Playfair+Display:700&display=swap" rel="stylesheet">
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -17,15 +17,23 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #1a2a44, #2e6f5c);
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
       color: #ffffff;
-      line-height: 1.6;
+      line-height: 1.8;
       overflow-x: hidden;
       position: relative;
       font-size: 16px;
+      min-height: 100vh;
     }
-    a { text-decoration: none; color: #f5a623; transition: color 0.3s ease; }
-    a:hover { color: #ff6f61; }
+    a { 
+      text-decoration: none; 
+      color: #f59e0b; 
+      transition: all 0.3s ease; 
+    }
+    a:hover { 
+      color: #f97316; 
+      text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+    }
 
     /* Scroll Progress Bar */
     #progress-bar {
@@ -34,14 +42,15 @@
       left: 0;
       width: 0;
       height: 4px;
-      background: #f5a623;
+      background: linear-gradient(90deg, #f59e0b, #f97316, #ec4899);
       z-index: 1000;
       transition: width 0.2s ease;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.5);
     }
 
     /* Navigation */
     nav {
-      background: rgba(26, 42, 68, 0.95);
+      background: rgba(15, 23, 42, 0.98);
       padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
       position: sticky;
       top: 0;
@@ -49,12 +58,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
     }
     nav h2 {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      color: #f5a623;
-      font-weight: 600;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      background: linear-gradient(to right, #f59e0b, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
     }
     .nav-links {
       display: flex;
@@ -65,7 +81,8 @@
       font-weight: 500;
       padding: 0.5rem 0;
       position: relative;
-      color: #ffffff;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
     }
     .nav-links a::after {
       content: '';
@@ -74,15 +91,25 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #f5a623;
-      transition: width 0.3s ease;
+      background: linear-gradient(to right, #f59e0b, #ec4899);
+      transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a:hover { color: #f5a623; }
+    .nav-links a:hover::after { 
+      width: 100%; 
+    }
+    .nav-links a:hover { 
+      color: #f59e0b;
+      transform: translateY(-2px);
+    }
     .hamburger, .language-icon {
       font-size: clamp(1.5rem, 4vw, 1.8rem);
-      color: #f5a623;
+      color: #f59e0b;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .hamburger:hover, .language-icon:hover {
+      transform: scale(1.1);
+      color: #f97316;
     }
     .nav-right {
       display: flex;
@@ -92,29 +119,43 @@
     .language-dropdown {
       display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 10px);
       right: 0;
-      background: rgba(26, 42, 68, 0.95);
+      background: rgba(15, 23, 42, 0.98);
       padding: 1rem;
-      border-radius: 5px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
       z-index: 101;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .language-dropdown.active { display: block; }
     .language-dropdown button {
       display: block;
       width: 100%;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 1.2rem;
       font-size: clamp(0.9rem, 2.5vw, 1rem);
-      background: #f5a623;
-      color: #1a2a44;
+      background: linear-gradient(to right, #f59e0b, #f97316);
+      color: #0f172a;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-bottom: 0.5rem;
-      transition: background 0.3s ease;
+      margin-bottom: 0.7rem;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
     }
-    .language-dropdown button:hover { background: #ff6f61; }
+    .language-dropdown button:last-child { margin-bottom: 0; }
+    .language-dropdown button:hover { 
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+      background: linear-gradient(to right, #f97316, #ec4899);
+    }
     @media (max-width: 767px) {
       .hamburger { display: block; }
       .nav-links {
@@ -124,13 +165,26 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(26, 42, 68, 0.95);
-        padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        background: rgba(15, 23, 42, 0.98);
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        gap: 1.2rem;
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(245, 158, 11, 0.2);
+        animation: slideDown 0.4s ease-out;
+      }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
       }
       .nav-links.active { display: flex; }
-      .nav-links a { padding: 0.8rem; font-size: clamp(0.85rem, 3vw, 1rem); }
-      .language-dropdown { width: 150px; right: 1rem; }
+      .nav-links a { 
+        padding: 0.8rem; 
+        font-size: clamp(0.85rem, 3vw, 1rem); 
+        border-bottom: 1px dashed rgba(245, 158, 11, 0.2);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .language-dropdown { width: 180px; right: 1rem; }
     }
     @media (min-width: 768px) {
       .hamburger { display: none; }
@@ -139,28 +193,44 @@
 
     /* Header (Hero Section) */
     header {
-      height: 80vh;
-      background: linear-gradient(rgba(26, 42, 68, 0.7), rgba(46, 111, 92, 0.5)),
-                  url('https://via.placeholder.com/1600x900?text=Masjid+Cherwan') no-repeat center center/cover;
+      height: 90vh;
+      background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(30, 58, 138, 0.7)),
+                  url('https://images.unsplash.com/photo-1560303251-3814a2b1ef87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .hero-content {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       text-align: center;
       width: 90%;
+      max-width: 1200px;
       padding: 0 clamp(1rem, 3vw, 2rem);
       z-index: 2;
+      animation: fadeInUp 1s ease-out;
     }
     header h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 0 10px rgba(245, 166, 35, 0.7);
-      animation: fadeIn 1s ease;
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+      background: linear-gradient(to right, #f59e0b, #ffffff, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: #e2e8f0;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .hero-overlay {
       position: absolute;
@@ -168,169 +238,312 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(26, 42, 68, 0), rgba(26, 42, 68, 0.9));
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(30, 58, 138, 0.8));
       z-index: 1;
     }
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.3;
+      z-index: 0;
+    }
     @media (max-width: 767px) {
-      header { height: 60vh; }
-      header h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
-      .hero-content { top: 45%; }
+      header { height: 70vh; }
+      header h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
     }
 
     /* Main Content Grid */
     .main-content {
-      padding: clamp(1rem, 3vw, 2rem);
-      width: 90%;
-      max-width: 1200px;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+      width: 100%;
+      max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(15px, 2vw, 25px);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(20px, 3vw, 30px);
       position: relative;
       z-index: 2;
     }
 
     .container {
-      background: linear-gradient(135deg, #2e6f5c, #1a2a44);
-      padding: clamp(1rem, 2vw, 1.5rem);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(145deg, rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.9));
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       text-align: center;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
       transition: all 0.6s ease;
       animation: fadeInUp 0.6s ease forwards;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(245, 166, 35, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      backdrop-filter: blur(5px);
     }
+    .container:nth-child(1) { animation-delay: 0.1s; }
+    .container:nth-child(2) { animation-delay: 0.2s; }
+    .container:nth-child(3) { animation-delay: 0.3s; }
+    .container:nth-child(4) { animation-delay: 0.4s; }
+    .container:nth-child(5) { animation-delay: 0.5s; }
+    .container:nth-child(6) { animation-delay: 0.6s; }
+    .container:nth-child(7) { animation-delay: 0.7s; }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(245, 158, 11, 0.5);
     }
-
-    .section-icon {
-      display: block;
-      margin: 0 auto 1rem;
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: #f5a623;
-      background: linear-gradient(135deg, #f5a623, #ff6f61);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: float 4s infinite ease-in-out;
-    }
-
-    .container .section-title {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .content {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      color: #e0e0e0;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    .content strong { color: #f5a623; }
-    .content u { text-decoration: underline; color: #ff6f61; }
-    .current-chairman {
-      color: #f5a623;
-      font-style: italic;
-      font-weight: 600;
-    }
-
-    #affiliation { background: linear-gradient(135deg, #5d4037, #8d6e63); }
-    #history { background: linear-gradient(135deg, #37474f, #607d8b); }
-    #leadership { background: linear-gradient(135deg, #2e7d32, #4caf50); }
-    #youth { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
-    #investments { background: linear-gradient(135deg, #b71c1c, #e57373); }
-    #leadership-finance { background: linear-gradient(135deg, #0277bd, #4fc3f7); }
-    #community-impact { background: linear-gradient(135deg, #00695c, #26a69a); }
 
     .container::before {
       content: '';
       position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 100px;
-      background: rgba(245, 166, 35, 0.1);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #f59e0b, #ec4899);
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(245, 158, 11, 0.1);
       border-radius: 50%;
       z-index: -1;
-      animation: float 4s infinite ease-in-out;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
+    .section-icon {
+      display: block;
+      margin: 0 auto 1.5rem;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #f59e0b;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
     }
 
-    @media (max-width: 767px) {
-      .main-content { grid-template-columns: 1fr; padding: 1rem; }
-      .container { padding: 1rem; }
-      .container .section-title { font-size: clamp(1.2rem, 3.5vw, 1.8rem); }
-      .content { font-size: clamp(0.85rem, 2.8vw, 0.95rem); }
-      .container::before { width: 70px; height: 70px; }
-      .section-icon { font-size: clamp(1.8rem, 4.5vw, 2.5rem); }
+    .container .section-title {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    .container .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #f59e0b, #ec4899);
+      border-radius: 3px;
     }
 
-    @media (min-width: 768px) {
-      .main-content { grid-template-columns: repeat(2, 1fr); }
-      .container { padding: clamp(1.5rem, 2vw, 2rem); }
-      .container .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); }
-      .content { font-size: clamp(1rem, 2vw, 1.2rem); }
-      .container::before { width: 120px; height: 120px; }
+    .content {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      color: #e2e8f0;
+      line-height: 1.8;
+      text-align: left;
     }
 
-    @media (min-width: 1024px) {
-      .main-content { grid-template-columns: repeat(3, 1fr); }
-      .container { padding: clamp(2rem, 2vw, 2.5rem); }
-      .container .section-title { font-size: clamp(2rem, 2.5vw, 3rem); }
-      .content { font-size: clamp(1.1rem, 1.8vw, 1.3rem); }
+    .content strong { 
+      color: #f59e0b; 
+      font-weight: 600;
+    }
+    .content u { 
+      text-decoration: none;
+      background: linear-gradient(to right, #f59e0b, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 600;
+    }
+    .current-chairman {
+      color: #f59e0b;
+      font-style: italic;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+    }
+
+    #affiliation { 
+      background: linear-gradient(145deg, rgba(109, 40, 217, 0.7), rgba(124, 58, 237, 0.9)); 
+    }
+    #history { 
+      background: linear-gradient(145deg, rgba(29, 78, 216, 0.7), rgba(59, 130, 246, 0.9)); 
+    }
+    #leadership { 
+      background: linear-gradient(145deg, rgba(5, 150, 105, 0.7), rgba(16, 185, 129, 0.9)); 
+    }
+    #youth { 
+      background: linear-gradient(145deg, rgba(168, 85, 247, 0.7), rgba(192, 132, 252, 0.9)); 
+    }
+    #investments { 
+      background: linear-gradient(145deg, rgba(220, 38, 38, 0.7), rgba(248, 113, 113, 0.9)); 
+    }
+    #leadership-finance { 
+      background: linear-gradient(145deg, rgba(14, 165, 233, 0.7), rgba(56, 189, 248, 0.9)); 
+    }
+    #community-impact { 
+      background: linear-gradient(145deg, rgba(20, 184, 166, 0.7), rgba(45, 212, 191, 0.9)); 
     }
 
     /* Back-to-Top Button */
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #f5a623;
-      color: #1a2a44;
-      padding: clamp(0.6rem, 2vw, 0.8rem);
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #0f172a;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       cursor: pointer;
       opacity: 0;
       transition: all 0.3s ease;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      box-shadow: 0 2px 10px rgba(245, 166, 35, 0.5);
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px rgba(245, 158, 11, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      border: none;
+      transform: translateY(20px);
     }
-    .back-to-top.visible { opacity: 1; }
-    .back-to-top:hover { background: #ff6f61; transform: scale(1.1); }
+    .back-to-top.visible { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+    .back-to-top:hover { 
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.7);
+    }
 
     /* Footer */
     footer {
-      background: #1a2a44;
-      padding: clamp(1.5rem, 3vw, 2rem);
+      background: linear-gradient(to right, #0f172a, #1e3a8a);
+      padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
       text-align: center;
-      color: #e0e0e0;
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+      color: #e2e8f0;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
       position: relative;
       z-index: 2;
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
     }
-    footer p { margin: 0; }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(to right, #f59e0b, #ec4899);
+      border-radius: 3px;
+    }
+    footer p { 
+      margin: 0; 
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #e2e8f0;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+    .footer-links a:hover {
+      color: #f59e0b;
+      transform: translateY(-2px);
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .social-icons a {
+      color: #e2e8f0;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #f59e0b;
+      transform: translateY(-3px) scale(1.2);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 767px) {
+      .main-content { 
+        grid-template-columns: 1fr; 
+        padding: 1.5rem 1rem; 
+      }
+      .container { 
+        padding: 1.5rem; 
+      }
+      .container .section-title { 
+        font-size: clamp(1.4rem, 4vw, 1.8rem); 
+      }
+      .content { 
+        font-size: clamp(0.95rem, 3vw, 1.05rem); 
+      }
+      .section-icon { 
+        font-size: clamp(2.2rem, 5vw, 3rem); 
+      }
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .main-content { 
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .main-content { 
+        grid-template-columns: repeat(3, 1fr); 
+      padding: 3rem 2rem;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .main-content { 
+        grid-template-columns: repeat(3, 1fr); 
+      }
+    }
   </style>
 </head>
 <body>
@@ -364,8 +577,10 @@
 
   <!-- Header (Hero Section) -->
   <header>
+    <div class="hero-pattern"></div>
     <div class="hero-content">
       <h1 id="header-title">About Jamia Ahli Hadees Mohammadia Masjid Cherwan</h1>
+      <p>A beacon of faith, knowledge, and community service in the heart of Cherwan</p>
     </div>
     <div class="hero-overlay"></div>
   </header>
@@ -389,14 +604,14 @@
       <h2 class="section-title" id="history-title">History</h2>
       <div class="content" id="history-content">
         <p>
-          The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br>
+          The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br><br>
           <strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>
           The following individuals were instrumental in the establishment of the masjid:<br>
           1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>
           2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>
           3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>
           4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>
-          5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br>
+          5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br><br>
           <strong>First Prayer and Azan</strong><br>
           On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.
         </p>
@@ -409,7 +624,7 @@
       <h2 class="section-title" id="leadership-title">Leadership</h2>
       <div class="content" id="leadership-content">
         <p>
-          The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>
+          The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br><br>
           1. Khursheed Ahmad Mir<br>
           2. Manzoor Ahmad Magray<br>
           3. Javaid Ahmad Raina<br>
@@ -425,8 +640,8 @@
       <h2 class="section-title" id="youth-title">Youth Involvement</h2>
       <div class="content" id="youth-content">
         <p>
-          We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>
-          Volunteers, who actively contribute to its operations and welfare programs.<br>
+          We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br><br>
+          Volunteers, who actively contribute to its operations and welfare programs.<br><br>
           <strong>Youth Volunteers:</strong><br>
           1. Showkat Ahmad Mir<br>
           2. Mudasir Majeed<br>
@@ -450,8 +665,8 @@
           20. Parvaiz Ahmad Magray<br>
           21. Shahbaz Mehraj<br>
           22. Mubashir Mushtaq<br>
-          23. Shoiab Shafi<br>
-          Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.
+          23. Shoiab Shafi<br><br>
+          Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid's outreach and community programs.
         </p>
       </div>
     </div>
@@ -462,11 +677,11 @@
       <h2 class="section-title" id="investments-title">Investments & Assets</h2>
       <div class="content" id="investments-content">
         <p>
-          The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br>
+          The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br><br>
           <h3>Primary Land Donors:</h3><br>
           <strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br>
-          <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>
-          With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
+          <strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br><br>
+          With time, as the masjid's influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.
         </p>
       </div>
     </div>
@@ -474,10 +689,10 @@
     <!-- Financial Management Section -->
     <div class="container" id="leadership-finance">
       <i class="fas fa-wallet section-icon"></i>
-      <h2 class="section-title" id="finance-title">Financial Management and Accountability</h2>
+      <h2 class="section-title" id="finance-title">Financial Management</h2>
       <div class="content" id="finance-content">
         <p>
-          Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
+          Transparency and integrity are at the heart of the masjid's financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.
         </p>
       </div>
     </div>
@@ -485,10 +700,10 @@
     <!-- Social Welfare Section -->
     <div class="container" id="community-impact">
       <i class="fas fa-heart section-icon"></i>
-      <h2 class="section-title" id="welfare-title">Social Welfare and Humanitarian Services</h2>
+      <h2 class="section-title" id="welfare-title">Social Welfare Services</h2>
       <div class="content" id="welfare-content">
         <p>
-          Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br>
+          Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br><br>
           <strong>Welfare Programs:</strong><br>
           <u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br>
           <u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br>
@@ -501,11 +716,24 @@
   </div>
 
   <!-- Back-to-Top Button -->
-  <div class="back-to-top">↑</div>
+  <button class="back-to-top">↑</button>
 
   <!-- Footer -->
   <footer>
     <p id="footer-text">© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Donate</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
   </footer>
 
   <script>
@@ -571,17 +799,17 @@
         affiliationTitle: "Affiliation",
         affiliationContent: "Jamia Ahl-e-Hadees Mohammadia Masjid Sharif is proudly affiliated with Jamiat Ahl-e-Hadees Jammu & Kashmir, Barbarshah. The masjid is managed by Jamiat Ahl-e-Hadees Unit Cherwan, which oversees its religious, educational, and welfare initiatives. This affiliation ensures alignment with the broader mission of promoting Islamic knowledge and community service.",
         historyTitle: "History",
-        historyContent: "The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br><strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>The following individuals were instrumental in the establishment of the masjid:<br>1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br><strong>First Prayer and Azan</strong><br>On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.",
+        historyContent: "The vision of establishing a spiritual and educational hub in Cherwan was brought to life by a group of devoted individuals committed to faith and community service. Under the leadership of Khursheed Ahmad Mir, son of Ali Mohammad Mir and then President of Jamiat Ahl-e-Hadees Unit Cherwan, the foundation stone (Sang-e-Buniyad) of the masjid was laid. The initial development of the masjid was overseen by Manzoor Ahmad Magaray, who served as Chairman during this pivotal phase. His dedication played a crucial role in transforming the vision into reality.<br><br><strong>Members of Jamiat Ahl-e-Hadees Unit Cherwan</strong><br>The following individuals were instrumental in the establishment of the masjid:<br>1. Mohtaram Ab Ahad Magray (Son of Gh. Mohammad Magray)<br>2. Noor Mohammad Magray (Son of Mohammad Sultan Magray)<br>3. Nazir Ahmad Wani (Son of Gh. Mohammad Wani)<br>4. Mohammad Shafi Magray (Son of Gh. Mohammad Magray)<br>5. Manzoor Ahmad Magray (Son of Mohammad Sultan Magray)<br><br><strong>First Prayer and Azan</strong><br>On the historic day of April 28, 2018, the foundation stone was laid, and the first Asr Salah was offered. The first Azan (call to prayer) was given by <strong>Mohtaram Manzoor Ahmad Magray</strong>, marking a new spiritual era for the community.",
         leadershipTitle: "Leadership",
-        leadershipContent: "The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br>1. Khursheed Ahmad Mir<br>2. Manzoor Ahmad Magray<br>3. Javaid Ahmad Raina<br>4. Tariq Ahmad Magray<br>5. Showkat Ahmad Mir <span class='current-chairman'>- Current Chairman</span>",
+        leadershipContent: "The masjid has thrived under the stewardship of dedicated leaders who have guided its mission with passion and vision:<br><br>1. Khursheed Ahmad Mir<br>2. Manzoor Ahmad Magray<br>3. Javaid Ahmad Raina<br>4. Tariq Ahmad Magray<br>5. Showkat Ahmad Mir <span class='current-chairman'>- Current Chairman</span>",
         youthTitle: "Youth Involvement",
-        youthContent: "We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br>Volunteers, who actively contribute to its operations and welfare programs.<br><strong>Youth Volunteers:</strong><br>1. Showkat Ahmad Mir<br>2. Mudasir Majeed<br>3. Yaseen Ahmad Magaray<br>4. Tariq Mushtaq Sheer Gojri<br>5. Manzoor Ahmad Wani<br>6. Reyaz Ahmad Magray<br>7. Adil Ahmad Magray<br>8. Tariq Hassan Magray<br>9. Arbaz Rasheed<br>10. Umer Mumtaz<br>11. Aijaz Ahmad Magray<br>12. Irshad Ahmad Mir<br>13. Tariq Rahman Mir<br>14. Er. Saleem Ahmad Magray<br>15. Mehraj Ahmad Magray<br>16. Parvaiz Ahmad Magray<br>17. Mohammad Maqbool Magray<br>18. Adil Raheem Magray<br>19. Mohammad Yousuf Raina<br>20. Parvaiz Ahmad Magray<br>21. Shahbaz Mehraj<br>22. Mubashir Mushtaq<br>23. Shoiab Shafi<br>Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid’s outreach and community programs.",
+        youthContent: "We recognize that the future lies in the hands of our youth. At Masjid Jamia Mohammadia Cherwan, we engage young minds through educational programs, youth clubs, and community service initiatives. Our efforts empower the next generation to lead with knowledge, responsibility, and compassion.<br><br>Volunteers, who actively contribute to its operations and welfare programs.<br><br><strong>Youth Volunteers:</strong><br>1. Showkat Ahmad Mir<br>2. Mudasir Majeed<br>3. Yaseen Ahmad Magaray<br>4. Tariq Mushtaq Sheer Gojri<br>5. Manzoor Ahmad Wani<br>6. Reyaz Ahmad Magray<br>7. Adil Ahmad Magray<br>8. Tariq Hassan Magray<br>9. Arbaz Rasheed<br>10. Umer Mumtaz<br>11. Aijaz Ahmad Magray<br>12. Irshad Ahmad Mir<br>13. Tariq Rahman Mir<br>14. Er. Saleem Ahmad Magray<br>15. Mehraj Ahmad Magray<br>16. Parvaiz Ahmad Magray<br>17. Mohammad Maqbool Magray<br>18. Adil Raheem Magray<br>19. Mohammad Yousuf Raina<br>20. Parvaiz Ahmad Magray<br>21. Shahbaz Mehraj<br>22. Mubashir Mushtaq<br>23. Shoiab Shafi<br><br>Enthusiasm, hard work, and commitment have been instrumental in strengthening the masjid's outreach and community programs.",
         investmentsTitle: "Investments & Assets",
-        investmentsContent: "The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br><h3>Primary Land Donors:</h3><br><strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br><strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br>With time, as the masjid’s influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.",
-        financeTitle: "Financial Management and Accountability",
-        financeContent: "Transparency and integrity are at the heart of the masjid’s financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.",
-        welfareTitle: "Social Welfare and Humanitarian Services",
-        welfareContent: "Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br><strong>Welfare Programs:</strong><br><u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br><u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br><u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br><u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br><u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.",
+        investmentsContent: "The masjid owes its existence to the generosity of local benefactors who donated land for this noble cause. Their selflessness laid the foundation for a place that continues to serve the community.<br><br><h3>Primary Land Donors:</h3><br><strong>1. Gh. Qadir Sheer Gojri (Son of Gh. Mohammad Sheer Gojri)</strong><br><strong>2. Abdul Raheem Sheer Gojri (Son of Ab Salam Sheer Gojri)</strong><br><br>With time, as the masjid's influence and responsibilities grew, additional land was acquired, expanding the total area to approximately 19 marlas. This expansion has enabled the masjid to accommodate more worshippers and enhance its educational and social welfare programs.",
+        financeTitle: "Financial Management",
+        financeContent: "Transparency and integrity are at the heart of the masjid's financial operations. <strong>Tr. Mohammad Yousuf Mir</strong> ensures that all financial resources are managed efficiently and utilized for the betterment of the community.",
+        welfareTitle: "Social Welfare Services",
+        welfareContent: "Beyond its spiritual role, the masjid, through the efforts of Jamiat Ahl-e-Hadees Unit Cherwan, has been at the forefront of community welfare. Through Darul Mawasat Bait-ul-Maal, several welfare programs are carried out to support the needy and vulnerable.<br><br><strong>Welfare Programs:</strong><br><u>1. Marriage Assistance for Orphans</u> - Providing financial aid and logistical support for orphan girls' weddings.<br><u>2. Employment Generation Programs</u> - Creating job opportunities for the unemployed.<br><u>3. Medical Aid for Chronic Patients</u> - Offering financial assistance and medicines to those suffering from long-term illnesses.<br><u>4. Disaster Relief for Flood Victims</u> - Providing emergency assistance to those affected by floods and other natural calamities.<br><u>5. Food Assistance for Poor Families</u> - Ensuring underprivileged families receive essential food supplies.",
         footerText: "© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved."
       },
       ur: {
@@ -592,17 +820,17 @@
         affiliationTitle: "الحاق",
         affiliationContent: "جامعہ اہل حدیث محمدیہ مسجد شریف فخر سے جمیعت اہل حدیث جموں و کشمیر، باربرشاہ کے ساتھ ملحق ہے۔ یہ مسجد جمیعت اہل حدیث یونٹ چروان کے زیر انتظام ہے، جو اس کے مذہبی، تعلیمی اور فلاح و بہبود کے اقدامات کی نگرانی کرتی ہے۔ یہ الحاق اسلامی علم اور کمیونٹی سروس کو فروغ دینے کے وسیع تر مشن کے ساتھ ہم آہنگی کو یقینی بناتا ہے۔",
         historyTitle: "تاریخ",
-        historyContent: "چروان میں ایک روحانی اور تعلیمی مرکز قائم کرنے کا خواب ایمان اور کمیونٹی سروس کے لیے وقف افراد کے ایک گروپ نے حقیقت میں بدل دیا۔ خورشید احمد میر کی قیادت میں، جو علی محمد میر کے بیٹے اور اس وقت جمیعت اہل حدیث یونٹ چروان کے صدر تھے، مسجد کا بنیادی پتھر (سنگ بنیاد) رکھا گیا۔ مسجد کی ابتدائی ترقی منزور احمد مگری نے دیکھی، جو اس اہم مرحلے کے دوران چیئرمین کے طور پر خدمات انجام دیتے رہے۔ ان کی لگن نے اس خواب کو حقیقت میں بدلنے میں اہم کردار ادا کیا۔<br><strong>جمیعت اہل حدیث یونٹ چروان کے اراکین</strong><br>مندرجہ ذیل افراد مسجد کے قیام میں اہم کردار ادا کرنے والے تھے:<br>1. محترم اب احد مگری (غلام محمد مگری کے بیٹے)<br>2. نور محمد مگری (محمد سلطان مگری کے بیٹے)<br>3. نذیر احمد وانی (غلام محمد وانی کے بیٹے)<br>4. محمد شفیع مگری (غلام محمد مگری کے بیٹے)<br>5. منزور احمد مگری (محمد سلطان مگری کے بیٹے)<br><strong>پہلی نماز اور اذان</strong><br>28 اپریل 2018 کے تاریخی دن، بنیاد کا پتھر رکھا گیا اور پہلی عصر کی نماز ادا کی گئی۔ پہلی اذان (نماز کی دعوت) <strong>محترم منزور احمد مگری</strong> نے دی، جو کمیونٹی کے لیے ایک نئے روحانی دور کا آغاز تھا۔",
+        historyContent: "چروان میں ایک روحانی اور تعلیمی مرکز قائم کرنے کا خواب ایمان اور کمیونٹی سروس کے لیے وقف افراد کے ایک گروپ نے حقیقت میں بدل دیا۔ خورشید احمد میر کی قیادت میں، جو علی محمد میر کے بیٹے اور اس وقت جمیعت اہل حدیث یونٹ چروان کے صدر تھے، مسجد کا بنیادی پتھر (سنگ بنیاد) رکھا گیا۔ مسجد کی ابتدائی ترقی منزور احمد مگری نے دیکھی، جو اس اہم مرحلے کے دوران چیئرمین کے طور پر خدمات انجام دیتے رہے۔ ان کی لگن نے اس خواب کو حقیقت میں بدلنے میں اہم کردار ادا کیا۔<br><br><strong>جمیعت اہل حدیث یونٹ چروان کے اراکین</strong><br>مندرجہ ذیل افراد مسجد کے قیام میں اہم کردار ادا کرنے والے تھے:<br>1. محترم اب احد مگری (غلام محمد مگری کے بیٹے)<br>2. نور محمد مگری (محمد سلطان مگری کے بیٹے)<br>3. نذیر احمد وانی (غلام محمد وانی کے بیٹے)<br>4. محمد شفیع مگری (غلام محمد مگری کے بیٹے)<br>5. منزور احمد مگری (محمد سلطان مگری کے بیٹے)<br><br><strong>پہلی نماز اور اذان</strong><br>28 اپریل 2018 کے تاریخی دن، بنیاد کا پتھر رکھا گیا اور پہلی عصر کی نماز ادا کی گئی۔ پہلی اذان (نماز کی دعوت) <strong>محترم منزور احمد مگری</strong> نے دی، جو کمیونٹی کے لیے ایک نئے روحانی دور کا آغاز تھا۔",
         leadershipTitle: "قیادت",
-        leadershipContent: "مسجد نے ان سرشار رہنماؤں کی زیر نگرانی ترقی کی جو جذبہ اور بصیرت کے ساتھ اس کے مشن کی رہنمائی کرتے رہے:<br>1. خورشید احمد میر<br>2. منزور احمد مگری<br>3. جاوید احمد رائنا<br>4. طارق احمد مگری<br>5. شوکت احمد میر <span class='current-chairman'>- موجودہ چیئرمین</span>",
+        leadershipContent: "مسجد نے ان سرشار رہنماؤں کی زیر نگرانی ترقی کی جو جذبہ اور بصیرت کے ساتھ اس کے مشن کی رہنمائی کرتے رہے:<br><br>1. خورشید احمد میر<br>2. منزور احمد مگری<br>3. جاوید احمد رائنا<br>4. طارق احمد مگری<br>5. شوکت احمد میر <span class='current-chairman'>- موجودہ چیئرمین</span>",
         youthTitle: "نوجوانوں کی شمولیت",
-        youthContent: "ہم تسلیم کرتے ہیں کہ مستقبل ہمارے نوجوانوں کے ہاتھوں میں ہے۔ مسجد جامعہ محمدیہ چروان میں، ہم تعلیمی پروگراموں، یوتھ کلبوں اور کمیونٹی سروس اقدامات کے ذریعے جوان دماغوں کو مشغول کرتے ہیں۔ ہماری کوششیں اگلی نسل کو علم، ذمہ داری اور ہمدردی کے ساتھ رہنمائی کرنے کے لیے بااختیار بناتی ہیں۔<br>رضاکار، جو اس کے آپریشنز اور فلاح و بہبود کے پروگراموں میں فعال طور پر حصہ دیتے ہیں۔<br><strong>نوجوان رضاکار:</strong><br>1. شوکت احمد میر<br>2. مدثر مجید<br>3. یاسین احمد مگری<br>4. طارق مصطفیٰ شیر گوجری<br>5. منزور احمد وانی<br>6. ریاض احمد مگری<br>7. عادل احمد مگری<br>8. طارق حسان مگری<br>9. ارباز رشید<br>10. عمر ممتاز<br>11. اعجاز احمد مگری<br>12. ارشد احمد میر<br>13. طارق رحمن میر<br>14. انجینئر سلیم احمد مگری<br>15. مہراج احمد مگری<br>16. پرویز احمد مگری<br>17. محمد مقبول مگری<br>18. عادل رحیم مگری<br>19. محمد یوسف رائنا<br>20. پرویز احمد مگری<br>21. شہباز مہراج<br>22. مبشر مشتاق<br>23. شعیب شفیع<br>جذبہ، محنت، اور عزم نے مسجد کے رسائی اور کمیونٹی پروگراموں کو مضبوط کرنے میں اہم کردار ادا کیا ہے۔",
+        youthContent: "ہم تسلیم کرتے ہیں کہ مستقبل ہمارے نوجوانوں کے ہاتھوں میں ہے۔ مسجد جامعہ محمدیہ چروان میں، ہم تعلیمی پروگراموں، یوتھ کلبوں اور کمیونٹی سروس اقدامات کے ذریعے جوان دماغوں کو مشغول کرتے ہیں۔ ہماری کوششیں اگلی نسل کو علم، ذمہ داری اور ہمدردی کے ساتھ رہنمائی کرنے کے لیے بااختیار بناتی ہیں۔<br><br>رضاکار، جو اس کے آپریشنز اور فلاح و بہبود کے پروگراموں میں فعال طور پر حصہ دیتے ہیں۔<br><br><strong>نوجوان رضاکار:</strong><br>1. شوکت احمد میر<br>2. مدثر مجید<br>3. یاسین احمد مگری<br>4. طارق مصطفیٰ شیر گوجری<br>5. منزور احمد وانی<br>6. ریاض احمد مگری<br>7. عادل احمد مگری<br>8. طارق حسان مگری<br>9. ارباز رشید<br>10. عمر ممتاز<br>11. اعجاز احمد مگری<br>12. ارشد احمد میر<br>13. طارق رحمن میر<br>14. انجینئر سلیم احمد مگری<br>15. مہراج احمد مگری<br>16. پرویز احمد مگری<br>17. محمد مقبول مگری<br>18. عادل رحیم مگری<br>19. محمد یوسف رائنا<br>20. پرویز احمد مگری<br>21. شہباز مہراج<br>22. مبشر مشتاق<br>23. شعیب شفیع<br><br>جذبہ، محنت، اور عزم نے مسجد کے رسائی اور کمیونٹی پروگراموں کو مضبوط کرنے میں اہم کردار ادا کیا ہے۔",
         investmentsTitle: "سرمایہ کاری اور اثاثہ جات",
-        investmentsContent: "مسجد اپنے وجود کا مرہون منت مقامی خیر خواہوں کی سخاوت سے ہے جنہوں نے اس عظیم مقصد کے لیے زمین عطیہ کی۔ ان کی بے لوثی نے ایک ایسی جگہ کی بنیاد رکھی جو کمیونٹی کی خدمت جاری رکھتی ہے۔<br><h3>بنیادی زمین کے عطیہ دہندگان:</h3><br><strong>1. غلام قادر شیر گوجری (غلام محمد شیر گوجری کے بیٹے)</strong><br><strong>2. عبدالرحیم شیر گوجری (عبدالسلام شیر گوجری کے بیٹے)</strong><br>وقت کے ساتھ ساتھ، جیسے جیسے مسجد کا اثر و رسوخ اور ذمہ داریاں بڑھیں، اضافی زمین حاصل کی گئی، جس سے کل رقبہ تقریباً 19 مرلہ تک بڑھ گیا۔ اس توسیع نے مسجد کو زیادہ نمازیوں کو ایڈجسٹ کرنے اور اس کے تعلیمی اور سماجی فلاح و بہبود کے پروگراموں کو بہتر بنانے کے قابل بنایا ہے۔",
-        financeTitle: "مالیاتی انتظام اور احتساب",
+        investmentsContent: "مسجد اپنے وجود کا مرہون منت مقامی خیر خواہوں کی سخاوت سے ہے جنہوں نے اس عظیم مقصد کے لیے زمین عطیہ کی۔ ان کی بے لوثی نے ایک ایسی جگہ کی بنیاد رکھی جو کمیونٹی کی خدمت جاری رکھتی ہے۔<br><br><h3>بنیادی زمین کے عطیہ دہندگان:</h3><br><strong>1. غلام قادر شیر گوجری (غلام محمد شیر گوجری کے بیٹے)</strong><br><strong>2. عبدالرحیم شیر گوجری (عبدالسلام شیر گوجری کے بیٹے)</strong><br><br>وقت کے ساتھ ساتھ، جیسے جیسے مسجد کا اثر و رسوخ اور ذمہ داریاں بڑھیں، اضافی زمین حاصل کی گئی، جس سے کل رقبہ تقریباً 19 مرلہ تک بڑھ گیا۔ اس توسیع نے مسجد کو زیادہ نمازیوں کو ایڈجسٹ کرنے اور اس کے تعلیمی اور سماجی فلاح و بہبود کے پروگراموں کو بہتر بنانے کے قابل بنایا ہے۔",
+        financeTitle: "مالیاتی انتظام",
         financeContent: "شفافیت اور دیانتداری مسجد کے مالیاتی عملیات کے مرکز میں ہیں۔ <strong>ٹریژرر محمد یوسف میر</strong> اس بات کو یقینی بناتے ہیں کہ تمام مالی وسائل کو مؤثر طریقے سے منظم کیا جائے اور کمیونٹی کی بہتری کے لیے استعمال کیا جائے۔",
-        welfareTitle: "سماجی فلاح و بہبود اور انسانی خدمات",
-        welfareContent: "اپنے روحانی کردار سے آگے، مسجد، جمیعت اہل حدیث یونٹ چروان کی کوششوں کے ذریعے، کمیونٹی فلاح و بہبود میں سب سے آگے رہی ہے۔ دارالموسات بیت المال کے ذریعے، ضرورت مندوں اور کمزوروں کی مدد کے لیے کئی فلاح و بہبود کے پروگرام چلائے جاتے ہیں۔<br><strong>فلاح و بہبود کے پروگرام:</strong><br><u>1. یتیموں کے لیے شادی کی مدد</u> - یتیم لڑکیوں کی شادیوں کے لیے مالی امداد اور لاجسٹک مدد فراہم کرنا۔<br><u>2. روزگار پیدا کرنے کے پروگرام</u> - بے روزگاروں کے لیے ملازمت کے مواقع پیدا کرنا۔<br><u>3. دائمی مریضوں کے لیے طبی امداد</u> - طویل مدتی بیماریوں میں مبتلا افراد کے لیے مالی امداد اور ادویات فراہم کرنا۔<br><u>4. سیلاب متاثرین کے لیے آفت سے نجات</u> - سیلاب اور دیگر قدرتی آفات سے متاثرہ افراد کو ہنگامی امداد فراہم کرنا۔<br><u>5. غریب خاندانوں کے لیے خوراک کی مدد</u> - پسماندہ خاندانوں کو ضروری خوراک کی فراہمی کو یقینی بنانا۔",
+        welfareTitle: "سماجی فلاح و بہبود خدمات",
+        welfareContent: "اپنے روحانی کردار سے آگے، مسجد، جمیعت اہل حدیث یونٹ چروان کی کوششوں کے ذریعے، کمیونٹی فلاح و بہبود میں سب سے آگے رہی ہے۔ دارالموسات بیت المال کے ذریعے، ضرورت مندوں اور کمزوروں کی مدد کے لیے کئی فلاح و بہبود کے پروگرام چلائے جاتے ہیں۔<br><br><strong>فلاح و بہبود کے پروگرام:</strong><br><u>1. یتیموں کے لیے شادی کی مدد</u> - یتیم لڑکیوں کی شادیوں کے لیے مالی امداد اور لاجسٹک مدد فراہم کرنا۔<br><u>2. روزگار پیدا کرنے کے پروگرام</u> - بے روزگاروں کے لیے ملازمت کے مواقع پیدا کرنا۔<br><u>3. دائمی مریضوں کے لیے طبی امداد</u> - طویل مدتی بیماریوں میں مبتلا افراد کے لیے مالی امداد اور ادویات فراہم کرنا۔<br><u>4. سیلاب متاثرین کے لیے آفت سے نجات</u> - سیلاب اور دیگر قدرتی آفات سے متاثرہ افراد کو ہنگامی امداد فراہم کرنا۔<br><u>5. غریب خاندانوں کے لیے خوراک کی مدد</u> - پسماندہ خاندانوں کو ضروری خوراک کی فراہمی کو یقینی بنانا۔",
         footerText: "© 2025 جامعہ اہلی حدیث محمدیہ مسجد چروان۔ جملہ حقوق محفوظ ہیں۔"
       },
       ar: {
@@ -613,17 +841,17 @@
         affiliationTitle: "الانتساب",
         affiliationContent: "جامع أهل الحديث المحمدية مسجد الشريف منتسب بفخر إلى جامعة أهل الحديث جمو وكشمير، باربرشاه. يُدار المسجد بواسطة وحدة جامعة أهل الحديث تشيروان، التي تشرف على مبادراته الدينية والتعليمية والرعاية الاجتماعية. هذا الانتساب يضمن التوافق مع المهمة الأوسع لتعزيز المعرفة الإسلامية وخدمة المجتمع.",
         historyTitle: "التاريخ",
-        historyContent: "تم تحقيق رؤية إنشاء مركز روحي وتعليمي في تشيروان على يد مجموعة من الأفراد المتفانين الملتزمين بالإيمان وخدمة المجتمع. تحت قيادة خورشيد أحمد مير، ابن علي محمد مير ورئيس وحدة جامعة أهل الحديث تشيروان آنذاك، تم وضع حجر الأساس (سانغ-إي-بونياد) للمسجد. أشرف على التطوير الأولي للمسجد منزور أحمد ماجراي، الذي شغل منصب الرئيس خلال هذه المرحلة الحاسمة. لعب تفانيه دورًا حاسمًا في تحويل الرؤية إلى واقع.<br><strong>أعضاء وحدة جامعة أهل الحديث تشيروان</strong><br>كان الأفراد التاليون أساسيين في تأسيس المسجد:<br>1. المحترم أبو أحمد ماجراي (ابن غلام محمد ماجراي)<br>2. نور محمد ماجراي (ابن محمد سلطان ماجراي)<br>3. نذير أحمد واني (ابن غلام محمد واني)<br>4. محمد شفيع ماجراي (ابن غلام محمد ماجراي)<br>5. منزور أحمد ماجراي (ابن محمد سلطان ماجراي)<br><strong>الصلاة الأولى والأذان</strong><br>في اليوم التاريخي 28 أبريل 2018، تم وضع حجر الأساس وأُقيمت صلاة العصر الأولى. أُعطي الأذان الأول (نداء الصلاة) بواسطة <strong>المحترم منزور أحمد ماجراي</strong>، مما يمثل بداية عصر روحي جديد للمجتمع.",
+        historyContent: "تم تحقيق رؤية إنشاء مركز روحي وتعليمي في تشيروان على يد مجموعة من الأفراد المتفانين الملتزمين بالإيمان وخدمة المجتمع. تحت قيادة خورشيد أحمد مير، ابن علي محمد مير ورئيس وحدة جامعة أهل الحديث تشيروان آنذاك، تم وضع حجر الأساس (سانغ-إي-بونياد) للمسجد. أشرف على التطوير الأولي للمسجد منزور أحمد ماجراي، الذي شغل منصب الرئيس خلال هذه المرحلة الحاسمة. لعب تفانيه دورًا حاسمًا في تحويل الرؤية إلى واقع.<br><br><strong>أعضاء وحدة جامعة أهل الحديث تشيروان</strong><br>كان الأفراد التاليون أساسيين في تأسيس المسجد:<br>1. المحترم أبو أحمد ماجراي (ابن غلام محمد ماجراي)<br>2. نور محمد ماجراي (ابن محمد سلطان ماجراي)<br>3. نذير أحمد واني (ابن غلام محمد واني)<br>4. محمد شفيع ماجراي (ابن غلام محمد ماجراي)<br>5. منزور أحمد ماجراي (ابن محمد سلطان ماجراي)<br><br><strong>الصلاة الأولى والأذان</strong><br>في اليوم التاريخي 28 أبريل 2018، تم وضع حجر الأساس وأُقيمت صلاة العصر الأولى. أُعطي الأذان الأول (نداء الصلاة) بواسطة <strong>المحترم منزور أحمد ماجراي</strong>، مما يمثل بداية عصر روحي جديد للمجتمع.",
         leadershipTitle: "القيادة",
-        leadershipContent: "ازدهر المسجد تحت إشراف قادة متفانين قادوا مهمته بالشغف والرؤية:<br>1. خورشيد أحمد مير<br>2. منزور أحمد ماجراي<br>3. جاويد أحمد راينا<br>4. طارق أحمد ماجراي<br>5. شوكت أحمد مير <span class='current-chairman'>- الرئيس الحالي</span>",
+        leadershipContent: "ازدهر المسجد تحت إشراف قادة متفانين قادوا مهمته بالشغف والرؤية:<br><br>1. خورشيد أحمد مير<br>2. منزور أحمد ماجراي<br>3. جاويد أحمد راينا<br>4. طارق أحمد ماجراي<br>5. شوكت أحمد مير <span class='current-chairman'>- الرئيس الحالي</span>",
         youthTitle: "مشاركة الشباب",
-        youthContent: "نحن ندرك أن المستقبل يكمن في أيدي شبابنا. في مسجد جامعة المحمدية تشيروان، نشغل العقول الشابة من خلال البرامج التعليمية، ونوادي الشباب، ومبادرات خدمة المجتمع. جهودنا تمكن الجيل القادم من القيادة بالمعرفة والمسؤولية والرحمة.<br>المتطوعون، الذين يساهمون بنشاط في عملياته وبرامج الرعاية الاجتماعية.<br><strong>المتطوعون الشباب:</strong><br>1. شوكت أحمد مير<br>2. مدثر مجيد<br>3. ياسين أحمد ماجراي<br>4. طارق مصطفى شير غوجري<br>5. منزور أحمد واني<br>6. رياض أحمد ماجراي<br>7. عادل أحمد ماجراي<br>8. طارق حسان ماجراي<br>9. أرباز رشيد<br>10. عمر ممتاز<br>11. أعجاز أحمد ماجراي<br>12. إرشاد أحمد مير<br>13. طارق رحمن مير<br>14. المهندس سليم أحمد ماجراي<br>15. مہراج أحمد ماجراي<br>16. برويز أحمد ماجراي<br>17. محمد مقبول ماجراي<br>18. عادل رحيم ماجراي<br>19. محمد يوسف راينا<br>20. برويز أحمد ماجراي<br>21. شہباز مہراج<br>22. مبشر مشتاق<br>23. شعیب شفیع<br>الحماس والعمل الجاد والالتزام كانت أساسية في تعزيز برامج المسجد للتوعية والمجتمع.",
+        youthContent: "نحن ندرك أن المستقبل يكمن في أيدي شبابنا. في مسجد جامعة المحمدية تشيروان، نشغل العقول الشابة من خلال البرامج التعليمية، ونوادي الشباب، ومبادرات خدمة المجتمع. جهودنا تمكن الجيل القادم من القيادة بالمعرفة والمسؤولية والرحمة.<br><br>المتطوعون، الذين يساهمون بنشاط في عملياته وبرامج الرعاية الاجتماعية.<br><br><strong>المتطوعون الشباب:</strong><br>1. شوكت أحمد مير<br>2. مدثر مجيد<br>3. ياسين أحمد ماجراي<br>4. طارق مصطفى شير غوجري<br>5. منزور أحمد واني<br>6. رياض أحمد ماجراي<br>7. عادل أحمد ماجراي<br>8. طارق حسان ماجراي<br>9. أرباز رشيد<br>10. عمر ممتاز<br>11. أعجاز أحمد ماجراي<br>12. إرشاد أحمد مير<br>13. طارق رحمن مير<br>14. المهندس سليم أحمد ماجراي<br>15. مہراج أحمد ماجراي<br>16. برويز أحمد ماجراي<br>17. محمد مقبول ماجراي<br>18. عادل رحيم ماجراي<br>19. محمد يوسف راينا<br>20. برويز أحمد ماجراي<br>21. شہباز مہراج<br>22. مبشر مشتاق<br>23. شعیب شفیع<br><br>الحماس والعمل الجاد والالتزام كانت أساسية في تعزيز برامج المسجد للتوعية والمجتمع.",
         investmentsTitle: "الاستثمارات والأصول",
-        investmentsContent: "يعود وجود المسجد إلى كرم المتبرعين المحليين الذين تبرعوا بالأرض لهذا الهدف النبيل. لقد وضعوا بلا أنانية الأساس لمكان يستمر في خدمة المجتمع.<br><h3>المتبرعون الأساسيون بالأرض:</h3><br><strong>1. غلام قادر شير غوجري (ابن غلام محمد شير غوجري)</strong><br><strong>2. عبدالرحيم شير غوجري (ابن عبدالسلام شير غوجري)</strong><br>مع مرور الوقت، ومع نمو تأثير المسجد ومسؤولياته، تم اقتناء أرض إضافية، مما وسع المساحة الإجمالية إلى حوالي 19 مرلة. مكنت هذه التوسعة المسجد من استيعاب المزيد من المصلين وتعزيز برامجه التعليمية والرعاية الاجتماعية.",
-        financeTitle: "الإدارة المالية والمسؤولية",
+        investmentsContent: "يعود وجود المسجد إلى كرم المتبرعين المحليين الذين تبرعوا بالأرض لهذا الهدف النبيل. لقد وضعوا بلا أنانية الأساس لمكان يستمر في خدمة المجتمع.<br><br><h3>المتبرعون الأساسيون بالأرض:</h3><br><strong>1. غلام قادر شير غوجري (ابن غلام محمد شير غوجري)</strong><br><strong>2. عبدالرحيم شير غوجري (ابن عبدالسلام شير غوجري)</strong><br><br>مع مرور الوقت، ومع نمو تأثير المسجد ومسؤولياته، تم اقتناء أرض إضافية، مما وسع المساحة الإجمالية إلى حوالي 19 مرلة. مكنت هذه التوسعة المسجد من استيعاب المزيد من المصلين وتعزيز برامجه التعليمية والرعاية الاجتماعية.",
+        financeTitle: "الإدارة المالية",
         financeContent: "الشفافية والنزاهة هما جوهر العمليات المالية للمسجد. <strong>الأمين محمد يوسف مير</strong> يضمن إدارة جميع الموارد المالية بكفاءة واستخدامها لتحسين المجتمع.",
-        welfareTitle: "الرعاية الاجتماعية والخدمات الإنسانية",
-        welfareContent: "بالإضافة إلى دوره الروحي، كان المسجد، من خلال جهود وحدة جامعة أهل الحديث تشيروان، في صدارة الرعاية الاجتماعية للمجتمع. من خلال دار المواساة بيت المال، يتم تنفيذ العديد من برامج الرعاية الاجتماعية لدعم المحتاجين والضعفاء.<br><strong>برامج الرعاية الاجتماعية:</strong><br><u>1. مساعدة الزواج للأيتام</u> - تقديم المساعدة المالية والدعم اللوجستي لحفلات زفاف الفتيات الأيتام.<br><u>2. برامج توليد فرص العمل</u> - خلق فرص عمل للعاطلين عن العمل.<br><u>3. المساعدة الطبية للمرضى المزمنين</u> - تقديم المساعدة المالية والأدوية لأولئك الذين يعانون من أمراض طويلة الأمد.<br><u>4. الإغاثة من الكوارث لضحايا الفيضانات</u> - تقديم المساعدة الطارئة للمتضررين من الفيضانات وغيرها من الكوارث الطبيعية.<br><u>5. مساعدة الغذاء للعائلات الفقيرة</u> - ضمان حصول العائلات المحرومة على الإمدادات الغذائية الأساسية.",
+        welfareTitle: "خدمات الرعاية الاجتماعية",
+        welfareContent: "بالإضافة إلى دوره الروحي، كان المسجد، من خلال جهود وحدة جامعة أهل الحديث تشيروان، في صدارة الرعاية الاجتماعية للمجتمع. من خلال دار المواساة بيت المال، يتم تنفيذ العديد من برامج الرعاية الاجتماعية لدعم المحتاجين والضعفاء.<br><br><strong>برامج الرعاية الاجتماعية:</strong><br><u>1. مساعدة الزواج للأيتام</u> - تقديم المساعدة المالية والدعم اللوجستي لحفلات زفاف الفتيات الأيتام.<br><u>2. برامج توليد فرص العمل</u> - خلق فرص عمل للعاطلين عن العمل.<br><u>3. المساعدة الطبية للمرضى المزمنين</u> - تقديم المساعدة المالية والأدوية لأولئك الذين يعانون من أمراض طويلة الأمد.<br><u>4. الإغاثة من الكوارث لضحايا الفيضانات</u> - تقديم المساعدة الطارئة للمتضررين من الفيضانات وغيرها من الكوارث الطبيعية.<br><u>5. مساعدة الغذاء للعائلات الفقيرة</u> - ضمان حصول العائلات المحرومة على الإمدادات الغذائية الأساسية.",
         footerText: "© 2025 جامع أهل الحديث المحمدية مسجد تشيروان. جميع الحقوق محفوظة."
       }
     };
