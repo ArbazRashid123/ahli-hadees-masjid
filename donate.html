@@ -8,16 +8,77 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      background: #f5f5f5;
       color: #333333;
       line-height: 1.6;
-      overflow-x: hidden;
     }
-    a { text-decoration: none; color: inherit; }
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+    }
 
+    /* Circular Header */
+    .header-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: #007bff;
+      margin: 2rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+    }
+    .header-circle h1 {
+      color: white;
+      font-size: 1.8rem;
+      text-align: center;
+      padding: 0 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Navigation Circles */
+    .nav-circles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .nav-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid #007bff;
+    }
+    .nav-circle:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    }
+    .nav-circle h2 {
+      font-size: 1.2rem;
+      color: #007bff;
+      padding: 0 1rem;
+    }
+
+    /* Progress Bar */
     #progress-bar {
       position: fixed;
       top: 0;
@@ -29,176 +90,61 @@
       transition: width 0.1s ease;
     }
 
-    nav {
-      background: linear-gradient(135deg, #f0f0f0, #e0e0e0, #f0f0f0);
-      color: #333333;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      animation: flowColors 6s ease infinite;
-    }
-    @keyframes flowColors {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    nav h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #007bff; }
-    .nav-links { display: flex; gap: 1.5rem; }
-    .nav-links a {
-      color: #007bff;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      transition: all 0.3s ease;
-      border-radius: 20px;
-    }
-    .nav-links a:hover {
-      color: #ff4d4d;
-      background: rgba(0, 0, 0, 0.05);
-      transform: scale(1.1);
-    }
-    .hamburger { font-size: 1.8rem; cursor: pointer; color: #007bff; display: none; }
-    @media (max-width: 768px) {
-      .hamburger { display: block; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #f0f0f0;
-        padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      .nav-links.active { display: flex; }
-    }
-
-    header {
-      height: 60vh;
-      position: relative;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7)),
-                  url('https://via.placeholder.com/1600x400?text=Donate+Now') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    #constellation-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-    header h1 {
-      font-size: 3rem;
-      color: #007bff;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-      z-index: 1;
-      animation: glowText 2s ease-in-out infinite;
-    }
-    @keyframes glowText {
-      0%, 100% { text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
-      50% { text-shadow: 0 0 20px rgba(0, 123, 255, 0.8); }
-    }
-    @media (max-width: 768px) { header h1 { font-size: 2rem; } }
-
+    /* Donation Cards */
     .container {
-      width: 95%;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 2rem auto;
-      padding: 2rem;
-      background: #f9f9f9;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      padding: 0 1rem;
     }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      font-size: 2.5rem;
-      color: #007bff;
-      text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-      animation: slideInUp 1s ease-out;
-    }
-    .section-title::after {
-      content: "";
-      width: 80px;
-      height: 5px;
-      background: linear-gradient(90deg, #007bff, #ff4d4d);
-      display: block;
-      margin: 0.8rem auto;
-      border-radius: 5px;
-      animation: pulseGlow 2s ease infinite;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scaleX(1); opacity: 0.7; }
-      50% { transform: scaleX(1.3); opacity: 1; }
-    }
-    @keyframes slideInUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     .donation-card {
-      display: flex;
-      flex-wrap: wrap;
       margin-bottom: 2rem;
       padding: 2rem;
       background: #ffffff;
       border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e0e0e0;
+      display: none;
     }
-    .donation-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    .donation-card.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
-    .donation-details, .scanner-placeholder { flex: 1 1 100%; padding: 1rem; }
-    .donation-details { border-bottom: 2px dashed #e0e0e0; }
-    @media (min-width: 768px) {
-      .donation-details { border-bottom: none; border-right: 2px dashed #e0e0e0; }
-      .scanner-placeholder.visible { flex: 1 1 45%; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .donation-details h2 {
-      font-size: 1.8rem;
+    .donation-card h2 {
+      font-size: 1.5rem;
       color: #ff4d4d;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .donation-details p {
-      font-size: 1rem;
-      color: #333333;
-      margin-bottom: 0.8rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
     .donation-details strong {
+      font-weight: 500;
       color: #007bff;
       margin-right: 1rem;
     }
-    .donation-details .copyable {
-      flex-grow: 1;
-      text-align: right;
-    }
-
     .copyable {
       position: relative;
       cursor: pointer;
       padding: 0.2rem 0.5rem;
-      background: #f0f0f0;
+      background: #f5f5f5;
       border-radius: 4px;
       transition: background 0.3s ease;
+      flex-grow: 1;
+      text-align: right;
     }
-    .copyable:hover { background: #e0e0e0; }
+    .copyable:hover {
+      background: #e0e0e0;
+    }
     .copy-btn {
       background: #ff4d4d;
       color: #ffffff;
@@ -210,7 +156,9 @@
       margin-left: 0.5rem;
       transition: transform 0.3s ease;
     }
-    .copy-btn:hover { transform: scale(1.1); }
+    .copy-btn:hover {
+      transform: scale(1.1);
+    }
     .tooltip {
       position: absolute;
       top: -2rem;
@@ -225,8 +173,11 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    .copyable.copied .tooltip { opacity: 1; }
+    .copyable.copied .tooltip {
+      opacity: 1;
+    }
 
+    /* Buttons */
     .show-scanner, .get-receipt {
       background: linear-gradient(90deg, #007bff, #ff4d4d);
       color: #ffffff;
@@ -244,6 +195,7 @@
       box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
+    /* Scanner Placeholder */
     .scanner-placeholder {
       display: none;
       align-items: center;
@@ -255,25 +207,40 @@
       opacity: 0;
       transform: translateX(100%);
       transition: all 0.3s ease;
+      min-height: 220px;
+      margin-top: 1rem;
     }
     .scanner-placeholder.visible {
       display: flex;
       opacity: 1;
       transform: translateX(0);
-      min-height: 220px;
     }
-    .scanner-placeholder img { max-width: 100%; height: auto; }
+    .scanner-placeholder img {
+      max-width: 100%;
+      height: auto;
+    }
 
+    /* Receipt Section */
     .receipt-section {
+      display: none;
       margin-top: 2rem;
       padding: 2rem;
       background: #f9f9f9;
       border-radius: 15px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
     }
-    .receipt-section h2 { color: #ff4d4d; text-align: center; margin-bottom: 1.5rem; }
-    .receipt-section label { display: block; margin: 0.5rem 0; color: #007bff; }
-    .receipt-section input, .receipt-section select {
+    .receipt-section h2 {
+      color: #ff4d4d;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .receipt-section label {
+      display: block;
+      margin: 0.5rem 0;
+      color: #007bff;
+    }
+    .receipt-section input,
+    .receipt-section select {
       width: 100%;
       padding: 0.5rem;
       margin-bottom: 1rem;
@@ -292,9 +259,14 @@
       margin: 0.5rem 0;
       width: 100%;
     }
-    .receipt-section button:hover { background: linear-gradient(90deg, #ff4d4d, #007bff); }
+    .receipt-section button:hover {
+      background: linear-gradient(90deg, #ff4d4d, #007bff);
+    }
 
-    /* ========== ENHANCED RECEIPT DESIGN ========== */
+    /* Receipt Preview */
+    .receipt-preview {
+      display: none;
+    }
     .receipt-content {
       width: 100%;
       max-width: 210mm;
@@ -312,7 +284,6 @@
       overflow: hidden;
       font-family: 'Poppins', sans-serif;
     }
-
     .receipt-pattern {
       position: absolute;
       top: 0;
@@ -324,7 +295,6 @@
       opacity: 0.1;
       z-index: 0;
     }
-
     .receipt-watermark {
       position: absolute;
       top: 50%;
@@ -337,14 +307,12 @@
       white-space: nowrap;
       pointer-events: none;
     }
-
     .receipt-header {
       text-align: center;
       margin-bottom: 30px;
       position: relative;
       z-index: 1;
     }
-
     .receipt-logo {
       width: 80px;
       height: 80px;
@@ -360,7 +328,6 @@
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
     }
-
     .receipt-title {
       font-family: 'Playfair Display', serif;
       font-size: 28px;
@@ -368,19 +335,16 @@
       margin-bottom: 5px;
       letter-spacing: 0.5px;
     }
-
     .receipt-subtitle {
       font-size: 16px;
       color: #7f8c8d;
       font-weight: 400;
     }
-
     .receipt-details {
       position: relative;
       z-index: 1;
       margin-bottom: 30px;
     }
-
     .receipt-details::before {
       content: "";
       position: absolute;
@@ -390,7 +354,6 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, #007bff, transparent);
     }
-
     .detail-row {
       display: flex;
       justify-content: space-between;
@@ -398,29 +361,24 @@
       padding-bottom: 12px;
       border-bottom: 1px dashed #e0e0e0;
     }
-
     .detail-row:last-child {
       border-bottom: none;
     }
-
     .detail-label {
       font-weight: 600;
       color: #007bff;
       flex: 1;
     }
-
     .detail-value {
       flex: 1;
       text-align: right;
       color: #2c3e50;
     }
-
     .amount-value {
       font-size: 22px;
       font-weight: 700;
       color: #e74c3c;
     }
-
     .receipt-footer {
       text-align: center;
       margin-top: 40px;
@@ -428,7 +386,6 @@
       z-index: 1;
       padding-top: 30px;
     }
-
     .receipt-footer::before {
       content: "";
       position: absolute;
@@ -440,21 +397,18 @@
       background: linear-gradient(90deg, #007bff, #e74c3c);
       border-radius: 3px;
     }
-
     .thank-you {
       font-size: 20px;
       font-weight: 600;
       color: #2c3e50;
       margin-bottom: 10px;
     }
-
     .blessing {
       font-size: 16px;
       color: #7f8c8d;
       font-style: italic;
       margin-bottom: 25px;
     }
-
     .signature-line {
       width: 180px;
       height: 1px;
@@ -462,7 +416,6 @@
       margin: 0 auto 10px;
       position: relative;
     }
-
     .signature-line::before,
     .signature-line::after {
       content: "❁";
@@ -472,21 +425,17 @@
       color: #bdc3c7;
       font-size: 14px;
     }
-
     .signature-line::before {
       left: -20px;
     }
-
     .signature-line::after {
       right: -20px;
     }
-
     .signature-text {
       font-size: 14px;
       color: #7f8c8d;
       letter-spacing: 0.5px;
     }
-
     .receipt-stamp {
       position: absolute;
       bottom: 25mm;
@@ -505,13 +454,11 @@
       opacity: 0.9;
       background-color: rgba(255, 255, 255, 0.9);
     }
-
     .receipt-actions {
       display: flex;
       gap: 1rem;
       margin-top: 2rem;
     }
-
     .receipt-actions button {
       flex: 1;
       background: linear-gradient(135deg, #007bff, #0056b3);
@@ -524,36 +471,74 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     .receipt-actions button:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
-
     .receipt-actions button:last-child {
       background: linear-gradient(135deg, #ff4d4d, #cc0000);
     }
 
-    @media (max-width: 500px) {
+    /* Footer */
+    footer {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+      color: #333333;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-circle {
+        width: 150px;
+        height: 150px;
+      }
+      .header-circle h1 {
+        font-size: 1.4rem;
+      }
+      .nav-circles {
+        gap: 1rem;
+      }
+      .nav-circle {
+        width: 120px;
+        height: 120px;
+      }
+      .nav-circle h2 {
+        font-size: 1rem;
+      }
+      .donation-card {
+        padding: 1.5rem;
+      }
+      .donation-details p {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .donation-details strong {
+        margin-right: 0;
+        margin-bottom: 0.3rem;
+      }
+      .donation-details .copyable {
+        text-align: left;
+      }
+      .scanner-placeholder.visible {
+        min-height: 180px;
+      }
       .receipt-content {
         padding: 10mm;
         min-height: auto;
       }
-      .receipt-header h2 {
+      .receipt-title {
         font-size: 1.8rem;
       }
-      .receipt-header p {
+      .receipt-subtitle {
         font-size: 1rem;
       }
       .receipt-logo {
         width: 60px;
         height: 60px;
-      }
-      .receipt-logo span {
         font-size: 2rem;
-      }
-      .receipt-details p {
-        font-size: 1rem;
       }
       .amount-value {
         font-size: 1.2rem;
@@ -566,90 +551,64 @@
         gap: 0.5rem;
       }
     }
-
-    @media print {
-      body {
-        background: none;
-      }
-      .receipt-content {
-        box-shadow: none;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 15mm;
-      }
-    }
-
-    footer {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-      color: #333333;
-      text-align: center;
-      font-size: 1rem;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 500px) {
-      header { height: 40vh; }
-      header h1 { font-size: 1.8rem; }
-      .section-title { font-size: 2rem; }
-      .donation-details h2 { font-size: 1.5rem; }
-      .donation-details p { font-size: 0.9rem; flex-direction: column; align-items: flex-start; }
-      .donation-details strong { margin-right: 0; margin-bottom: 0.3rem; }
-      .donation-details .copyable { text-align: left; }
-      .show-scanner, .get-receipt { padding: 0.5rem 1rem; font-size: 0.9rem; }
-      .scanner-placeholder.visible { min-height: 180px; }
-    }
   </style>
 </head>
 <body>
   <div id="progress-bar"></div>
-  <nav>
-    <h2>Donation Portal</h2>
-    <div class="nav-links">
-      <a href="#donate-masjid">Masjid</a>
-      <a href="#donate-welfare">Dar ul Mawasaat</a>
-      <a href="#donate-darasgah">Darasgah</a>
-      <a href="#donate-zakatulfitr">Zakatul Fitr</a>
+
+  <!-- Circular Header -->
+  <div class="header-circle">
+    <h1>Donation Portal</h1>
+  </div>
+
+  <!-- Navigation Circles -->
+  <div class="nav-circles">
+    <div class="nav-circle" data-target="masjid">
+      <h2>Masjid</h2>
     </div>
-    <span class="hamburger">☰</span>
-  </nav>
+    <div class="nav-circle" data-target="welfare">
+      <h2>Darul Mawasaat</h2>
+    </div>
+    <div class="nav-circle" data-target="darasgah">
+      <h2>Darasgah</h2>
+    </div>
+    <div class="nav-circle" data-target="zakatulfitr">
+      <h2>Zakatul Fitr</h2>
+    </div>
+  </div>
 
-  <header>
-    <canvas id="constellation-canvas"></canvas>
-    <h1>Donate to Our Causes</h1>
-  </header>
-
+  <!-- Donation Cards Container -->
   <div class="container">
-    <h2 class="section-title">Support Our Mission</h2>
-
-    <div class="donation-card" id="donate-masjid">
+    <!-- Masjid Card -->
+    <div class="donation-card active" id="masjid-card">
+      <h2>Jamia Ahli Hadees Mohammadia Masjid</h2>
       <div class="donation-details">
-        <h2>Jamia Ahli Hadees Mohammadia Masjid</h2>
         <p><strong>Account Number:</strong> <span class="copyable" data-text="0071010250000021">0071010250000021 <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> General funds for mosque operations and maintenance.</p>
         <button class="show-scanner">Show Scanner</button>
       </div>
-      <div class="scanner-placeholder"><img src="masjidscanner.jpg" alt="Masjid QR Code" /></div>
+      <div class="scanner-placeholder"><img src="https://via.placeholder.com/200x200?text=Masjid+QR+Code" alt="Masjid QR Code" /></div>
     </div>
 
-    <div class="donation-card" id="donate-welfare">
+    <!-- Darul Mawasaat Card -->
+    <div class="donation-card" id="welfare-card">
+      <h2>Darul Mawasaat Welfare Foundation</h2>
       <div class="donation-details">
-        <h2>Darul Mawasaat Welfare Foundation</h2>
         <p><strong>Account Number:</strong> <span class="copyable" data-text="0071010250000022">0071010250000022 <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Details:</strong> Welfare and social initiatives to support the community.</p>
         <button class="show-scanner">Show Scanner</button>
       </div>
-      <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Dar-ul-Mawasaat QR Code" /></div>
+      <div class="scanner-placeholder"><img src="https://via.placeholder.com/200x200?text=Darul+Mawasaat+QR" alt="Dar-ul-Mawasaat QR Code" /></div>
     </div>
 
-    <div class="donation-card" id="donate-darasgah">
+    <!-- Darasgah Card -->
+    <div class="donation-card" id="darasgah-card">
+      <h2>Salafia Darasgah</h2>
       <div class="donation-details">
-        <h2>Salafia Darasgah</h2>
         <p><strong>Account Number:</strong> <span class="copyable" data-text="0071010250000135">0071010250000135 <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
@@ -659,9 +618,10 @@
       <div class="scanner-placeholder">QR Code Coming Soon</div>
     </div>
 
-    <div class="donation-card" id="donate-zakatulfitr">
+    <!-- Zakatul Fitr Card -->
+    <div class="donation-card" id="zakatulfitr-card">
+      <h2>Zakatul Fitr</h2>
       <div class="donation-details">
-        <h2>Zakatul Fitr</h2>
         <p><strong>Account Number:</strong> <span class="copyable" data-text="0071010250000022">0071010250000022 <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
         <p><strong>Bank Name:</strong> Jammu And Kashmir Bank</p>
         <p><strong>IFSC Code:</strong> <span class="copyable" data-text="JAKA0KANGAN">JAKA0KANGAN <button class="copy-btn">Copy</button><span class="tooltip">Copied!</span></span></p>
@@ -669,11 +629,12 @@
         <button class="show-scanner">Show Scanner</button>
         <button class="get-receipt" data-org="zakatulfitr">Get Receipt</button>
       </div>
-      <div class="scanner-placeholder"><img src="dmsscanner.jpg" alt="Zakatul Fitr QR Code" /></div>
+      <div class="scanner-placeholder"><img src="https://via.placeholder.com/200x200?text=Zakatul+Fitr+QR" alt="Zakatul Fitr QR Code" /></div>
     </div>
   </div>
 
-  <div id="receipt-section" class="receipt-section" style="display: none;">
+  <!-- Receipt Section -->
+  <div id="receipt-section" class="receipt-section">
     <div id="password-prompt">
       <h2>Enter Password</h2>
       <label for="password">Password:</label>
@@ -719,6 +680,7 @@
     <div id="receipt-preview" style="display: none;"></div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Jamia Ahli Hadees Mohammadia Masjid Cherwan. All rights reserved.</p>
   </footer>
@@ -726,90 +688,43 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    const canvas = document.getElementById('constellation-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles = [];
-    const particleCount = 100;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > canvas.width) this.x = 0;
-        else if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        else if (this.y < 0) this.y = canvas.height;
-      }
-      draw() {
-        ctx.fillStyle = '#007bff';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    function connectParticles() {
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a; b < particles.length; b++) {
-          const dx = particles[a].x - particles[b].x;
-          const dy = particles[a].y - particles[b].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 100) {
-            ctx.strokeStyle = `rgba(255, 77, 77, ${1 - distance / 100})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-      }
-      connectParticles();
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollProgress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrollProgress + '%';
     });
 
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links a');
+    // Navigation circles functionality
+    const navCircles = document.querySelectorAll('.nav-circle');
+    const donationCards = {
+      'masjid': document.getElementById('masjid-card'),
+      'welfare': document.getElementById('welfare-card'),
+      'darasgah': document.getElementById('darasgah-card'),
+      'zakatulfitr': document.getElementById('zakatulfitr-card')
+    };
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    navCircles.forEach(circle => {
+      circle.addEventListener('click', () => {
+        const target = circle.getAttribute('data-target');
+        
+        // Hide all cards
+        Object.values(donationCards).forEach(card => {
+          card.classList.remove('active');
+        });
+        
+        // Show selected card
+        donationCards[target].classList.add('active');
+        
+        // Hide all scanner placeholders
+        document.querySelectorAll('.scanner-placeholder').forEach(scanner => {
+          scanner.classList.remove('visible');
+        });
       });
     });
 
+    // Show/hide scanner
     document.querySelectorAll('.show-scanner').forEach(button => {
       button.addEventListener('click', () => {
         const card = button.closest('.donation-card');
@@ -818,6 +733,7 @@
       });
     });
 
+    // Copy functionality
     document.querySelectorAll('.copy-btn').forEach(button => {
       button.addEventListener('click', () => {
         const copyable = button.parentElement;
@@ -829,6 +745,7 @@
       });
     });
 
+    // Receipt generation
     const receiptSection = document.getElementById('receipt-section');
     const passwordPrompt = document.getElementById('password-prompt');
     const receiptForm = document.getElementById('receipt-form');
@@ -842,6 +759,10 @@
         passwordPrompt.style.display = 'block';
         receiptForm.style.display = 'none';
         receiptPreview.style.display = 'none';
+        window.scrollTo({
+          top: receiptSection.offsetTop,
+          behavior: 'smooth'
+        });
       });
     });
 
