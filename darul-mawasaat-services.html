@@ -176,7 +176,7 @@
     }
 
     header {
-      height: 100vh;
+      min-height: 100vh;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -186,6 +186,7 @@
       overflow: hidden;
       background: #e6f0e6;
       padding: 20px;
+      padding-top: 100px;
     }
 
     .header-title {
@@ -196,7 +197,6 @@
       max-width: 90%;
       line-height: 1.2;
       margin-bottom: 30px;
-      margin-top: 80px; /* Added to move title below nav bar */
       animation: fadeInUp 1.5s ease-out;
     }
 
@@ -206,9 +206,32 @@
       justify-content: center;
       gap: 20px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       z-index: 2;
+    }
+
+    .year-section {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .year-title {
+      font-size: 1.8em;
+      color: #006600;
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .year-title::after {
+      content: '';
+      width: 100px;
+      height: 4px;
+      background: #006600;
+      display: block;
+      margin: 10px auto;
+      border-radius: 2px;
     }
 
     .stat-card {
@@ -216,7 +239,7 @@
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0, 102, 0, 0.1);
-      width: 280px;
+      width: 350px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
@@ -240,7 +263,7 @@
     }
 
     .stat-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
       box-shadow: 0 15px 35px rgba(0, 102, 0, 0.2);
     }
 
@@ -251,42 +274,53 @@
       font-weight: 600;
       position: relative;
       z-index: 2;
+      text-align: center;
     }
 
     .stat-value {
-      font-size: 2.2em;
+      font-size: 2em;
       font-weight: 700;
       color: #004d00;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       position: relative;
       z-index: 2;
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
-    .stat-description {
-      font-size: 0.9em;
-      color: #555;
-      line-height: 1.5;
+    .stat-cost {
+      font-size: 1.2em;
+      color: #006600;
+      margin-bottom: 15px;
+      font-weight: 600;
       position: relative;
       z-index: 2;
+      text-align: center;
     }
 
     .chart-container {
       width: 100%;
-      height: 150px;
+      height: 200px;
       margin-top: 20px;
       position: relative;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+    }
+
+    .chart-bar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40px;
     }
 
     .chart-bar {
-      position: absolute;
-      bottom: 0;
-      width: 25px;
+      width: 30px;
       background: linear-gradient(to top, #006600, #00aa00);
       border-radius: 5px 5px 0 0;
-      transition: height 1s ease-out, transform 0.3s ease;
-      transform-origin: bottom;
-      z-index: 2;
+      transition: height 1s ease-out;
+      position: relative;
     }
 
     .chart-bar::after {
@@ -305,65 +339,13 @@
       opacity: 1;
     }
 
-    .chart-bar:hover {
-      transform: scaleY(1.05);
-    }
-
     .chart-label {
-      position: absolute;
-      bottom: -25px;
-      width: 100%;
-      text-align: center;
+      margin-top: 10px;
       font-size: 0.8em;
       color: #555;
-      z-index: 2;
-    }
-
-    .chart-value {
-      position: absolute;
-      top: -25px;
-      width: 100%;
       text-align: center;
-      font-size: 0.7em;
-      font-weight: 600;
-      color: #006600;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 2;
-    }
-
-    .chart-bar:hover + .chart-value {
-      opacity: 1;
-    }
-
-    .year-toggle {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      z-index: 2;
-    }
-
-    .year-btn {
-      background: #fff;
-      border: 2px solid #006600;
-      color: #006600;
-      padding: 8px 20px;
-      margin: 0 5px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .year-btn.active {
-      background: #006600;
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    .year-btn:hover {
-      background: #006600;
-      color: #fff;
+      width: 100%;
+      word-break: break-word;
     }
 
     .mission-statement {
@@ -376,42 +358,6 @@
       z-index: 2;
       text-align: center;
       padding: 0 20px;
-    }
-
-    .floating-particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .particle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: rgba(0, 102, 0, 0.2);
-      border-radius: 50%;
-      animation: floatParticle 15s infinite linear;
-    }
-
-    @keyframes floatParticle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
-      }
     }
 
     @keyframes fadeInUp {
@@ -427,6 +373,21 @@
       max-width: 1300px;
       box-shadow: 0 0 25px rgba(0, 102, 0, 0.1);
       overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: clamp(1.8em, 6vw, 2.5em);
+      color: #006600;
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+      position: sticky;
+      top: 80px;
+      background: white;
+      padding: 10px 0;
+      z-index: 10;
     }
 
     .assistance-list {
@@ -444,19 +405,12 @@
       text-align: center;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      animation: float 6s ease-in-out infinite;
       word-break: break-word;
       overflow: hidden;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-
     .assistance-item:hover {
-      transform: scale(1.05) translateY(-10px);
+      transform: scale(1.02);
       box-shadow: 0 0 25px rgba(0, 102, 0, 0.3);
     }
 
@@ -469,14 +423,14 @@
     .assistance-item:nth-child(7) { background: linear-gradient(135deg, #ff9966, #ff5e62); }
 
     .assistance-item h3 {
-      font-size: clamp(0.7em, 2vw, 1em);
+      font-size: clamp(0.9em, 2vw, 1.1em);
       color: #fff;
       margin-bottom: 6px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .assistance-item p {
-      font-size: clamp(0.6em, 1.8vw, 0.75em);
+      font-size: clamp(0.8em, 1.8vw, 0.9em);
       color: #fff;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       line-height: 1.3;
@@ -489,7 +443,7 @@
       padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);
       border-radius: 20px;
       font-weight: 700;
-      font-size: clamp(0.65em, 1.6vw, 0.8em);
+      font-size: clamp(0.7em, 1.6vw, 0.85em);
       text-decoration: none;
       transition: all 0.3s ease;
       display: inline-block;
@@ -500,7 +454,7 @@
 
     .assistance-button:hover {
       background: #008000;
-      transform: scale(1.15);
+      transform: scale(1.05);
       box-shadow: 0 0 15px rgba(0, 102, 0, 0.5);
     }
 
@@ -583,35 +537,17 @@
       }
       nav ul.active { display: flex; }
       .cube.active { transform: rotateY(90deg); }
-      header { height: auto; padding: 80px 20px 40px; }
-      .stats-container { flex-direction: column; align-items: center; }
-      .stat-card { width: 100%; max-width: 300px; }
-      .chart-container { height: 120px; }
-      .assistance-list { 
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 0 5px;
-        box-sizing: border-box;
-      }
-      .assistance-item {
-        padding: 6px;
+      header { padding-top: 120px; }
+      .stat-card { width: 100%; max-width: 350px; }
+      .chart-container { height: 150px; }
+      .section-title {
+        position: static;
       }
     }
 
     @media (min-width: 768px) {
       nav .cube-menu { display: none; }
       nav ul { display: flex; }
-      .assistance-list { 
-        grid-template-columns: 1fr;
-        width: 100%;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .assistance-list { 
-        grid-template-columns: 1fr;
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -635,133 +571,287 @@
 
   <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
 
-  <header data-aos="fade-up">
+  <header>
     <h1 class="header-title">Dar-ul-Mawasaat Welfare Foundation</h1>
     
-    <div class="floating-particles" id="particles"></div>
-    
-    <div class="year-toggle">
-      <button class="year-btn active" data-year="2024">2024</button>
-      <button class="year-btn" data-year="2023">2023</button>
-      <button class="year-btn" data-year="2025">2025</button>
+    <!-- 2024 Data -->
+    <div class="year-section">
+      <h2 class="year-title">2024 Contributions</h2>
+      <div class="stats-container">
+        <div class="stat-card" data-aos="fade-up">
+          <h3 class="stat-title">Marriage Assistance</h3>
+          <div class="stat-value">3 Cases</div>
+          <div class="stat-cost">₹41,558</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Case 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Case 2</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Case 3</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="stat-title">Ramzan & Eid</h3>
+          <div class="stat-value">100 Cases</div>
+          <div class="stat-cost">₹78,900</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 70%;"></div>
+              <div class="chart-label">Food Kits</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Cash Aid</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="stat-title">House Assistance</h3>
+          <div class="stat-value">3 Cases</div>
+          <div class="stat-cost">₹30,000</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Repairs</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Rent</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Construction</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up">
+          <h3 class="stat-title">Medical Assistance</h3>
+          <div class="stat-value">3 Cases</div>
+          <div class="stat-cost">₹4,950</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 50%;"></div>
+              <div class="chart-label">Case 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Case 2</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Case 3</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="stat-title">Education Assistance</h3>
+          <div class="stat-value">3 Cases</div>
+          <div class="stat-cost">₹14,760</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Fees</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Books</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Uniform</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="stat-title">Karaz e Hasanah</h3>
+          <div class="stat-value">3 Cases</div>
+          <div class="stat-cost">₹35,000</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 70%;"></div>
+              <div class="chart-label">Loan 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 90%;"></div>
+              <div class="chart-label">Loan 2</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Loan 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <div class="stats-container">
-      <!-- 2024 Data -->
-      <div class="stat-card" data-year="2024" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="stat-title">Marriage Assistance</h3>
-        <div class="stat-value">3 Cases</div>
-        <p class="stat-description">Total cost: ₹41,558</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 10%; height: 30%;" data-value="₹10,000"></div>
-          <div class="chart-bar" style="left: 40%; height: 60%;" data-value="₹15,558"></div>
-          <div class="chart-bar" style="left: 70%; height: 100%;" data-value="₹16,000"></div>
-          <div class="chart-value">₹41,558</div>
-          <div class="chart-label">Cases</div>
+    <!-- 2023 Data -->
+    <div class="year-section">
+      <h2 class="year-title">2023 Contributions</h2>
+      <div class="stats-container">
+        <div class="stat-card" data-aos="fade-up">
+          <h3 class="stat-title">Medical Assistance</h3>
+          <div class="stat-value">17 Cases</div>
+          <div class="stat-cost">₹52,630</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 40%;"></div>
+              <div class="chart-label">Jan-Mar</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Apr-Jun</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Jul-Sep</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Oct-Dec</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="stat-title">Marriage Assistance</h3>
+          <div class="stat-value">4 Cases</div>
+          <div class="stat-cost">₹17,000</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Case 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Case 2</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Case 3-4</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="stat-title">House Assistance</h3>
+          <div class="stat-value">6 Cases</div>
+          <div class="stat-cost">₹25,530</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 50%;"></div>
+              <div class="chart-label">Repairs</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Rent</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Construction</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up">
+          <h3 class="stat-title">Ramzan & Eid</h3>
+          <div class="stat-value">60 Cases</div>
+          <div class="stat-cost">₹90,220</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Food Kits</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Cash Aid</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="stat-title">Flood Victims</h3>
+          <div class="stat-value">10 Families</div>
+          <div class="stat-cost">₹6,938</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-label">Relief 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Relief 2</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="stat-title">Education Assistance</h3>
+          <div class="stat-value">2 Cases</div>
+          <div class="stat-cost">₹6,500</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 80%;"></div>
+              <div class="chart-label">Case 1</div>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 100%;"></div>
+              <div class="chart-label">Case 2</div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="stat-card" data-year="2024" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="stat-title">Ramzan & Eid</h3>
-        <div class="stat-value">100 Cases</div>
-        <p class="stat-description">Total cost: ₹78,900</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 25%; height: 70%;" data-value="₹25,000"></div>
-          <div class="chart-bar" style="left: 55%; height: 100%;" data-value="₹53,900"></div>
-          <div class="chart-value">₹78,900</div>
-          <div class="chart-label">Assistance</div>
+    </div>
+    
+    <!-- 2025 Data -->
+    <div class="year-section">
+      <h2 class="year-title">2025 Vision</h2>
+      <div class="stats-container">
+        <div class="stat-card" data-aos="fade-up">
+          <h3 class="stat-title">Marriage Assistance</h3>
+          <div class="stat-value">2 Cases</div>
+          <div class="stat-cost">₹0</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 0%;"></div>
+              <div class="chart-label">Planned</div>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <div class="stat-card" data-year="2024" data-aos="fade-up" data-aos-delay="400">
-        <h3 class="stat-title">Medical Assistance</h3>
-        <div class="stat-value">3 Cases</div>
-        <p class="stat-description">Total cost: ₹4,950</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 20%; height: 40%;" data-value="₹1,500"></div>
-          <div class="chart-bar" style="left: 50%; height: 70%;" data-value="₹1,950"></div>
-          <div class="chart-bar" style="left: 80%; height: 100%;" data-value="₹1,500"></div>
-          <div class="chart-value">₹4,950</div>
-          <div class="chart-label">Patients</div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="stat-title">Medical Facilities</h3>
+          <div class="stat-value">In Our Locality</div>
+          <div class="stat-cost">₹0</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 0%;"></div>
+              <div class="chart-label">Vision</div>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <!-- 2023 Data -->
-      <div class="stat-card" data-year="2023" data-aos="fade-up" data-aos-delay="200" style="display: none;">
-        <h3 class="stat-title">Medical Assistance</h3>
-        <div class="stat-value">17 Cases</div>
-        <p class="stat-description">Total cost: ₹52,630</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 10%; height: 30%;" data-value="₹10,000"></div>
-          <div class="chart-bar" style="left: 30%; height: 50%;" data-value="₹15,000"></div>
-          <div class="chart-bar" style="left: 50%; height: 70%;" data-value="₹15,630"></div>
-          <div class="chart-bar" style="left: 70%; height: 100%;" data-value="₹12,000"></div>
-          <div class="chart-value">₹52,630</div>
-          <div class="chart-label">Cases</div>
-        </div>
-      </div>
-      
-      <div class="stat-card" data-year="2023" data-aos="fade-up" data-aos-delay="300" style="display: none;">
-        <h3 class="stat-title">Marriage Assistance</h3>
-        <div class="stat-value">4 Cases</div>
-        <p class="stat-description">Total cost: ₹17,000</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 25%; height: 60%;" data-value="₹5,000"></div>
-          <div class="chart-bar" style="left: 55%; height: 100%;" data-value="₹12,000"></div>
-          <div class="chart-value">₹17,000</div>
-          <div class="chart-label">Assistance</div>
-        </div>
-      </div>
-      
-      <div class="stat-card" data-year="2023" data-aos="fade-up" data-aos-delay="400" style="display: none;">
-        <h3 class="stat-title">Ramzan & Eid</h3>
-        <div class="stat-value">60 Cases</div>
-        <p class="stat-description">Total cost: ₹90,220</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 20%; height: 50%;" data-value="₹30,000"></div>
-          <div class="chart-bar" style="left: 50%; height: 80%;" data-value="₹40,220"></div>
-          <div class="chart-bar" style="left: 80%; height: 100%;" data-value="₹20,000"></div>
-          <div class="chart-value">₹90,220</div>
-          <div class="chart-label">Assistance</div>
-        </div>
-      </div>
-      
-      <!-- 2025 Data (with zero values) -->
-      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="200" style="display: none;">
-        <h3 class="stat-title">Marriage Assistance</h3>
-        <div class="stat-value">0 Cases</div>
-        <p class="stat-description">Total cost: ₹0</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 10%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-bar" style="left: 40%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-bar" style="left: 70%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-value">₹0</div>
-          <div class="chart-label">Cases</div>
-        </div>
-      </div>
-      
-      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="300" style="display: none;">
-        <h3 class="stat-title">Ramzan & Eid</h3>
-        <div class="stat-value">0 Cases</div>
-        <p class="stat-description">Total cost: ₹0</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 25%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-bar" style="left: 55%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-value">₹0</div>
-          <div class="chart-label">Assistance</div>
-        </div>
-      </div>
-      
-      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="400" style="display: none;">
-        <h3 class="stat-title">Medical Assistance</h3>
-        <div class="stat-value">0 Cases</div>
-        <p class="stat-description">Total cost: ₹0</p>
-        <div class="chart-container">
-          <div class="chart-bar" style="left: 20%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-bar" style="left: 50%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-bar" style="left: 80%; height: 0%;" data-value="₹0"></div>
-          <div class="chart-value">₹0</div>
-          <div class="chart-label">Patients</div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="stat-title">Food Kits</h3>
+          <div class="stat-value">100 Families</div>
+          <div class="stat-cost">₹0</div>
+          <div class="chart-container">
+            <div class="chart-bar-container">
+              <div class="chart-bar" style="height: 0%;"></div>
+              <div class="chart-label">Target</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -772,40 +862,40 @@
     </p>
   </header>
 
-  <div class="assistance-programs" id="assistance-programs" data-aos="fade-up">
+  <div class="assistance-programs" id="assistance-programs">
     <h2 class="section-title">Assistance Programs</h2>
     <ul class="assistance-list">
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="300">
+      <li class="assistance-item">
         <h3>Marriage Assistance</h3>
         <p>Support for orphan girls' weddings.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="400">
+      <li class="assistance-item">
         <h3>Cash Assistance</h3>
         <p>Funds for needy families in crises.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="500">
+      <li class="assistance-item">
         <h3>Flood Assistance</h3>
         <p>Essentials for flood victims.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="600">
+      <li class="assistance-item">
         <h3>Medical Assistance</h3>
         <p>Medicines for chronic patients.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="700">
+      <li class="assistance-item">
         <h3>Employment Assistance</h3>
         <p>Jobs for the unemployed.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="800">
+      <li class="assistance-item">
         <h3>Disaster Relief</h3>
         <p>Aid for disaster victims.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
       </li>
-      <li class="assistance-item" data-aos="zoom-in" data-aos-delay="900">
+      <li class="assistance-item">
         <h3>Other Assistance</h3>
         <p>Support for education and shelter.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScGrsOnpgT4Wf_2wtBmm82VzzudOPZ41nvqb4hPaLLfCeYj0Q/viewform?usp=header" target="_blank" class="assistance-button">Request Assistance</a>
@@ -813,7 +903,7 @@
     </ul>
   </div>
 
-  <footer data-aos="fade-up">
+  <footer>
     <div class="footer-content">
       <div class="footer-about">
         <h3>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h3>
@@ -838,24 +928,32 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      once: true // Animations will only happen once
+    });
 
     // Navigation menu toggle
     const cubeMenu = document.querySelector('.cube-menu');
     const cube = document.querySelector('.cube');
     const navUl = document.querySelector('nav ul');
 
-    cubeMenu.addEventListener('click', () => {
-      cube.classList.toggle('active');
-      navUl.classList.toggle('active');
-    });
+    if (cubeMenu && cube && navUl) {
+      cubeMenu.addEventListener('click', () => {
+        cube.classList.toggle('active');
+        navUl.classList.toggle('active');
+      });
+    }
 
     // Scroll progress bar
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
-      document.getElementById('progress-bar').style.width = scrollPercent + '%';
+      const progressBar = document.getElementById('progress-bar');
+      
+      if (progressBar) {
+        progressBar.style.width = scrollPercent + '%';
+      }
 
       if (scrollTop > 50) {
         document.querySelector('nav').classList.add('scrolled');
@@ -864,94 +962,17 @@
       }
     });
 
-    // Year toggle functionality
-    const yearBtns = document.querySelectorAll('.year-btn');
-    yearBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const year = btn.dataset.year;
-        
-        // Update active button
-        yearBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Show/hide stats cards
-        document.querySelectorAll('.stat-card').forEach(card => {
-          if (card.dataset.year === year) {
-            card.style.display = 'block';
-            // Re-trigger animation
-            card.style.animation = 'none';
-            card.offsetHeight; // Trigger reflow
-            card.style.animation = null;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-        
-        // Animate bars when switching years
-        setTimeout(animateBars, 100);
-      });
-    });
-
-    // Animate chart bars
-    function animateBars() {
-      const bars = document.querySelectorAll('.chart-bar');
-      bars.forEach(bar => {
+    // Animate chart bars on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const chartBars = document.querySelectorAll('.chart-bar');
+      chartBars.forEach(bar => {
         const height = bar.style.height;
         bar.style.height = '0';
         setTimeout(() => {
           bar.style.height = height;
         }, 100);
       });
-    }
-
-    // Create floating particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 30;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random position
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        
-        // Random size
-        const size = Math.random() * 10 + 5;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        
-        // Random opacity
-        particle.style.opacity = Math.random() * 0.5 + 0.1;
-        
-        // Random animation duration
-        particle.style.animationDuration = Math.random() * 20 + 10 + 's';
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-
-    // Initialize particles and animate bars on load
-    window.addEventListener('load', () => {
-      createParticles();
-      animateBars();
-      
-      // Use Intersection Observer to trigger animation when charts come into view
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateBars();
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.stat-card').forEach(card => {
-        observer.observe(card);
-      });
     });
   </script>
-  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c3a03c9e7a69e2',t:'MTc0MTI4MjY5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
