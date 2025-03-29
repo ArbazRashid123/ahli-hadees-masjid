@@ -185,46 +185,87 @@
       text-align: center;
       overflow: hidden;
       background: #e6f0e6;
+      padding: 20px;
     }
 
-    .hero-animation {
-      position: absolute;
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
       width: 100%;
-      height: 100%;
-      z-index: 1;
-      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+      z-index: 2;
     }
 
-    .charity-symbol {
+    .stat-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 102, 0, 0.1);
+      width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 102, 0, 0.2);
+    }
+
+    .stat-title {
+      font-size: 1.2em;
+      color: #006600;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #004d00;
+      margin-bottom: 10px;
+    }
+
+    .stat-description {
+      font-size: 0.9em;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 200px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .chart-bar {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23006600"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>') center/contain no-repeat;
-      animation: orbit 10s infinite linear, pulse 2s infinite ease-in-out;
+      bottom: 0;
+      width: 30px;
+      background: linear-gradient(to top, #006600, #00aa00);
+      border-radius: 5px 5px 0 0;
+      transition: height 1s ease-out;
     }
 
-    .charity-symbol:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
-    .charity-symbol:nth-child(2) { top: 40%; left: 70%; animation-delay: 2s; }
-    .charity-symbol:nth-child(3) { top: 70%; left: 30%; animation-delay: 4s; }
-
-    @keyframes orbit {
-      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+    .chart-label {
+      position: absolute;
+      bottom: -25px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8em;
+      color: #555;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.6; }
-    }
-
-    header h1 {
+    .header-title {
       font-size: clamp(1.8em, 5vw, 3.2em);
       color: #004d00;
       text-shadow: 0 2px 10px rgba(0, 102, 0, 0.3);
       z-index: 2;
       max-width: 90%;
       line-height: 1.2;
+      margin-bottom: 30px;
       animation: fadeInUp 1.5s ease-out;
     }
 
@@ -332,23 +373,23 @@
     }
 
     .assistance-button {
-      background: #006600; /* Changed to solid green for better visibility */
-      color: #fff; /* White text for contrast */
-      padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px); /* Slightly increased padding */
+      background: #006600;
+      color: #fff;
+      padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);
       border-radius: 20px;
-      font-weight: 700; /* Bolder text */
-      font-size: clamp(0.65em, 1.6vw, 0.8em); /* Slightly larger font size */
+      font-weight: 700;
+      font-size: clamp(0.65em, 1.6vw, 0.8em);
       text-decoration: none;
       transition: all 0.3s ease;
       display: inline-block;
       margin-top: 6px;
-      border: 2px solid #fff; /* White border to stand out */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+      border: 2px solid #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .assistance-button:hover {
-      background: #008000; /* Brighter green on hover */
-      transform: scale(1.15); /* Slightly larger scale on hover */
+      background: #008000;
+      transform: scale(1.15);
       box-shadow: 0 0 15px rgba(0, 102, 0, 0.5);
     }
 
@@ -431,7 +472,9 @@
       }
       nav ul.active { display: flex; }
       .cube.active { transform: rotateY(90deg); }
-      header { height: 80vh; }
+      header { height: auto; padding: 80px 20px 40px; }
+      .stats-container { flex-direction: column; align-items: center; }
+      .stat-card { width: 100%; max-width: 300px; }
       .assistance-list { 
         grid-template-columns: 1fr;
         width: 100%;
@@ -441,7 +484,6 @@
       .assistance-item {
         padding: 6px;
       }
-      .charity-symbol { width: 40px; height: 40px; }
     }
 
     @media (min-width: 768px) {
@@ -483,12 +525,43 @@
   <a href="donate.html#donate-welfare" class="donate-sidebar">Donate Now</a>
 
   <header data-aos="fade-up">
-    <div class="hero-animation">
-      <div class="charity-symbol"></div>
-      <div class="charity-symbol"></div>
-      <div class="charity-symbol"></div>
+    <h1 class="header-title">Dar-ul-Mawasaat Welfare Foundation</h1>
+    <div class="stats-container">
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="stat-title">Total Families Helped</h3>
+        <div class="stat-value">500+</div>
+        <p class="stat-description">Families supported through our various welfare programs</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 10%; height: 60%;"></div>
+          <div class="chart-bar" style="left: 40%; height: 80%;"></div>
+          <div class="chart-bar" style="left: 70%; height: 100%;"></div>
+          <div class="chart-label">2019-2025</div>
+        </div>
+      </div>
+      
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="stat-title">Marriage Assistance</h3>
+        <div class="stat-value">15+</div>
+        <p class="stat-description">Orphan girls supported for marriage</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 25%; height: 70%;"></div>
+          <div class="chart-bar" style="left: 55%; height: 100%;"></div>
+          <div class="chart-label">Last 3 Years</div>
+        </div>
+      </div>
+      
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="stat-title">Medical Assistance</h3>
+        <div class="stat-value">200+</div>
+        <p class="stat-description">Patients provided with medical support</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 20%; height: 50%;"></div>
+          <div class="chart-bar" style="left: 50%; height: 80%;"></div>
+          <div class="chart-bar" style="left: 80%; height: 100%;"></div>
+          <div class="chart-label">Yearly Growth</div>
+        </div>
+      </div>
     </div>
-    <h1>Dar-ul-Mawasaat Welfare Foundation</h1>
   </header>
 
   <div class="container" id="welfare-efforts" data-aos="fade-up">
@@ -549,7 +622,7 @@
       </div>
       <div class="footer-contact">
         <h3>Contact Us</h3>
-        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c0343021f0a">[email protected]</a></p>
+        <p>Phone: 6006254589, 9622000919 | Email: <a href="/cdn-cgi/l/email-protection#6d04030b022d000c1e0704090e05081f1a0c43421f0a">[email protected]</a></p>
       </div>
       <div class="footer-social">
         <h3>Follow Us</h3>
@@ -588,6 +661,32 @@
       } else {
         document.querySelector('nav').classList.remove('scrolled');
       }
+    });
+
+    // Animate chart bars on scroll
+    const animateBars = () => {
+      const bars = document.querySelectorAll('.chart-bar');
+      bars.forEach(bar => {
+        const height = bar.style.height;
+        bar.style.height = '0';
+        setTimeout(() => {
+          bar.style.height = height;
+        }, 100);
+      });
+    };
+
+    // Use Intersection Observer to trigger animation when charts come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateBars();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.stat-card').forEach(card => {
+      observer.observe(card);
     });
   </script>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c3a03c9e7a69e2',t:'MTc0MTI4MjY5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
