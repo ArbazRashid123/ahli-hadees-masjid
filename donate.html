@@ -19,179 +19,98 @@
       background: linear-gradient(135deg, #f8f9fa, #e9ecef);
       color: #2d3748;
       line-height: 1.6;
+      padding: 0.5rem;
     }
     a { 
       text-decoration: none; 
       color: inherit; 
     }
 
-    /* Impact Visualization Section */
+    /* Impact Visualization Section - Mobile First */
     .impact-section {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .impact-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(67, 97, 238, 0.03) 0%, rgba(247, 37, 133, 0.03) 100%);
-      z-index: 0;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
+    
     .impact-title {
       text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 1.5rem;
     }
+    
     .impact-title h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 1.5rem;
       background: linear-gradient(135deg, #4361ee, #f72585);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 0.5rem;
     }
+    
     .impact-title p {
       color: #6c757d;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
-    .impact-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, #4361ee, #f72585);
-      margin: 1rem auto 0;
-      border-radius: 2px;
-    }
+    
     .chart-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-bottom: 2rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
     }
+    
     .chart-wrapper {
-      flex: 1;
-      min-width: 300px;
-      max-width: 500px;
       background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      width: 100%;
     }
-    .chart-wrapper:hover {
-      transform: translateY(-5px);
-    }
+    
     .chart-wrapper h3 {
       text-align: center;
       margin-bottom: 1rem;
       color: #4361ee;
+      font-size: 1.2rem;
       font-weight: 600;
-      position: relative;
     }
-    .chart-wrapper h3::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, #4361ee, #f72585);
-      border-radius: 3px;
-    }
-    canvas {
+    
+    .chart-container canvas {
       width: 100% !important;
-      height: auto !important;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .stat-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    }
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, #4361ee, #f72585);
-    }
-    .stat-card h4 {
-      color: #7209b7;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #4361ee, #f72585);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    .stat-desc {
-      color: #6c757d;
-      font-size: 0.9rem;
+      height: 300px !important;
     }
 
     /* Circular Header */
     .header-circle {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       background: linear-gradient(135deg, #4361ee, #3a0ca3);
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
-      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       animation: pulse 4s infinite alternate;
     }
+    
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4); }
-      100% { transform: scale(1.03); box-shadow: 0 15px 30px rgba(67, 97, 238, 0.6); }
+      0% { transform: scale(1); box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3); }
+      100% { transform: scale(1.03); box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4); }
     }
+    
     .header-circle h1 {
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.3rem;
       text-align: center;
       padding: 0 1rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1px;
     }
 
     /* Navigation Circles */
@@ -199,74 +118,35 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem auto;
-      max-width: 800px;
+      gap: 1rem;
+      margin: 1.5rem auto;
+      max-width: 100%;
     }
+    
     .nav-circle {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       background: linear-gradient(145deg, #ffffff, #f0f0f0);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       cursor: pointer;
-      border: 3px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      overflow: hidden;
+      border: 2px solid transparent;
     }
-    .nav-circle::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 25%,
-        rgba(255, 255, 255, 0.1) 25%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 50%,
-        transparent 75%,
-        rgba(255, 255, 255, 0.1) 75%,
-        rgba(255, 255, 255, 0.1)
-      );
-      background-size: 50px 50px;
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .nav-circle:hover::before {
-      opacity: 1;
-      animation: shine 3s infinite linear;
-    }
-    @keyframes shine {
-      0% { background-position: 0 0; }
-      100% { background-position: 50px 50px; }
-    }
-    .nav-circle:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    }
+    
     .nav-circle h2 {
-      font-size: 1.2rem;
+      font-size: 1rem;
       background: linear-gradient(135deg, #4361ee, #7209b7);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      padding: 0 1rem;
+      padding: 0 0.5rem;
       font-weight: 600;
     }
-    .nav-circle:nth-child(1) { border-color: #4361ee; }
-    .nav-circle:nth-child(2) { border-color: #7209b7; }
-    .nav-circle:nth-child(3) { border-color: #f72585; }
-    .nav-circle:nth-child(4) { border-color: #4cc9f0; }
 
     /* Progress Bar */
     #progress-bar {
@@ -274,176 +154,162 @@
       top: 0;
       left: 0;
       width: 0;
-      height: 5px;
+      height: 3px;
       background: linear-gradient(90deg, #4361ee, #f72585, #4cc9f0);
       z-index: 1000;
       transition: width 0.1s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     /* Donation Cards */
     .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 0.5rem;
     }
+    
     .donation-card {
-      margin-bottom: 2rem;
-      padding: 2rem;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
       background: linear-gradient(145deg, #ffffff, #f8f9fa);
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.05);
       display: none;
       position: relative;
       overflow: hidden;
     }
+    
     .donation-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 5px;
+      width: 4px;
       height: 100%;
       background: linear-gradient(to bottom, #4361ee, #7209b7);
     }
+    
     .donation-card.active {
       display: block;
       animation: fadeIn 0.5s ease;
     }
+    
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     .donation-card h2 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       background: linear-gradient(135deg, #f72585, #7209b7);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       font-weight: 700;
       position: relative;
       display: inline-block;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
+    
     .donation-card h2::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
+      width: 60px;
+      height: 2px;
       background: linear-gradient(90deg, #4361ee, #f72585);
-      border-radius: 3px;
+      border-radius: 2px;
     }
+    
     .donation-details p {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       margin-bottom: 1rem;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
+    
     .donation-details strong {
       font-weight: 600;
       background: linear-gradient(135deg, #4361ee, #3a0ca3);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-right: 1rem;
+      margin-bottom: 0.3rem;
     }
+    
     .copyable {
       position: relative;
       cursor: pointer;
-      padding: 0.5rem 0.8rem;
+      padding: 0.5rem;
       background: rgba(67, 97, 238, 0.1);
-      border-radius: 8px;
+      border-radius: 6px;
       transition: all 0.3s ease;
-      flex-grow: 1;
-      text-align: right;
+      text-align: left;
       border: 1px dashed rgba(67, 97, 238, 0.3);
       font-family: 'Courier New', monospace;
+      word-break: break-all;
     }
+    
     .copyable:hover {
       background: rgba(67, 97, 238, 0.2);
-      transform: translateY(-2px);
     }
+    
     .copy-btn {
       background: linear-gradient(135deg, #f72585, #b5179e);
       color: #ffffff;
       border: none;
-      padding: 0.3rem 0.8rem;
-      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
       cursor: pointer;
       font-size: 0.8rem;
-      margin-left: 0.5rem;
+      margin-top: 0.5rem;
       transition: all 0.3s ease;
       font-weight: 600;
       box-shadow: 0 2px 5px rgba(247, 37, 133, 0.3);
     }
-    .copy-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(247, 37, 133, 0.4);
-    }
+    
     .tooltip {
       position: absolute;
-      top: -2rem;
+      top: -1.8rem;
       left: 50%;
       transform: translateX(-50%);
       background: #f72585;
       color: #ffffff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.7rem;
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       font-weight: 500;
     }
+    
     .copyable.copied .tooltip {
       opacity: 1;
-      top: -2.5rem;
+      top: -2.2rem;
     }
 
     /* Buttons */
     .show-scanner, .get-receipt {
       background: linear-gradient(135deg, #4361ee, #f72585);
       color: #ffffff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 30px;
+      padding: 0.7rem 1.2rem;
+      border-radius: 25px;
       border: none;
       cursor: pointer;
       font-weight: 600;
       margin-top: 0.5rem;
       margin-right: 0.5rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .show-scanner::before, .get-receipt::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #f72585, #4361ee);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-    }
-    .show-scanner:hover, .get-receipt:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
-    }
-    .show-scanner:hover::before, .get-receipt:hover::before {
-      opacity: 1;
+      box-shadow: 0 3px 10px rgba(67, 97, 238, 0.2);
+      font-size: 0.9rem;
     }
 
     /* Scanner Placeholder */
@@ -452,419 +318,139 @@
       align-items: center;
       justify-content: center;
       background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
+      border-radius: 10px;
       color: #4361ee;
-      font-size: 1.2rem;
+      font-size: 1rem;
       opacity: 0;
-      transform: translateX(100%);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      min-height: 220px;
+      min-height: 180px;
       margin-top: 1rem;
       border: 2px dashed rgba(67, 97, 238, 0.3);
-      position: relative;
-      overflow: hidden;
     }
-    .scanner-placeholder::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(67, 97, 238, 0.05) 45%,
-        rgba(67, 97, 238, 0.05) 55%,
-        transparent 55%
-      );
-      background-size: 10px 10px;
-      opacity: 0.5;
-    }
+    
     .scanner-placeholder.visible {
       display: flex;
       opacity: 1;
-      transform: translateX(0);
-    }
-    .scanner-placeholder img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     /* Receipt Section */
     .receipt-section {
       display: none;
-      margin-top: 2rem;
-      padding: 2rem;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
       background: linear-gradient(145deg, #ffffff, #f8f9fa);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
+    
     .receipt-section h2 {
-      background: linear-gradient(135deg, #7209b7, #3a0ca3);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-      padding-bottom: 10px;
-      position: relative;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
     }
-    .receipt-section h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, #4361ee, #f72585);
-      border-radius: 3px;
-    }
+    
     .receipt-section label {
-      display: block;
-      margin: 0.5rem 0;
-      color: #4361ee;
-      font-weight: 500;
+      font-size: 0.9rem;
     }
+    
     .receipt-section input,
     .receipt-section select {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(67, 97, 238, 0.3);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      color: #2d3748;
-      font-family: 'Poppins', sans-serif;
-      transition: all 0.3s ease;
-    }
-    .receipt-section input:focus,
-    .receipt-section select:focus {
-      outline: none;
-      border-color: #4361ee;
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-    }
-    .receipt-section button {
-      background: linear-gradient(135deg, #4361ee, #f72585);
-      color: #ffffff;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 0.5rem 0;
-      width: 100%;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-    }
-    .receipt-section button:hover {
-      background: linear-gradient(135deg, #f72585, #4361ee);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+      font-size: 0.9rem;
+      padding: 0.7rem;
     }
 
-    /* Receipt Preview */
-    .receipt-preview {
-      display: none;
-    }
-    .receipt-content {
-      width: 100%;
-      max-width: 210mm;
-      margin: 0 auto;
-      padding: 15mm;
-      background: white;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      position: relative;
-      min-height: 297mm;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      font-family: 'Poppins', sans-serif;
-    }
-    .receipt-pattern {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(rgba(67, 97, 238, 0.1) 1px, transparent 1px);
-      background-size: 15px 15px;
-      opacity: 0.1;
-      z-index: 0;
-    }
-    .receipt-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-30deg);
-      font-size: 120px;
-      font-weight: bold;
-      color: rgba(67, 97, 238, 0.05);
-      font-family: 'Playfair Display', serif;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .receipt-header {
-      text-align: center;
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 1;
-    }
-    .receipt-logo {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #4361ee, #3a0ca3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 15px;
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: bold;
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
-    }
-    .receipt-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      color: #2c3e50;
-      margin-bottom: 5px;
-      letter-spacing: 0.5px;
-    }
-    .receipt-subtitle {
-      font-size: 16px;
-      color: #7f8c8d;
-      font-weight: 400;
-    }
-    .receipt-details {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 30px;
-    }
-    .receipt-details::before {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #4361ee, transparent);
-    }
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px dashed rgba(67, 97, 238, 0.3);
-    }
-    .detail-row:last-child {
-      border-bottom: none;
-    }
-    .detail-label {
-      font-weight: 600;
-      color: #4361ee;
-      flex: 1;
-    }
-    .detail-value {
-      flex: 1;
-      text-align: right;
-      color: #2c3e50;
-    }
-    .amount-value {
-      font-size: 22px;
-      font-weight: 700;
-      color: #f72585;
-    }
-    .receipt-footer {
-      text-align: center;
-      margin-top: 40px;
-      position: relative;
-      z-index: 1;
-      padding-top: 30px;
-    }
-    .receipt-footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 3px;
-      background: linear-gradient(90deg, #4361ee, #f72585);
-      border-radius: 3px;
-    }
-    .thank-you {
-      font-size: 20px;
-      font-weight: 600;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    .blessing {
-      font-size: 16px;
-      color: #7f8c8d;
-      font-style: italic;
-      margin-bottom: 25px;
-    }
-    .signature-line {
-      width: 180px;
-      height: 1px;
-      background: #bdc3c7;
-      margin: 0 auto 10px;
-      position: relative;
-    }
-    .signature-line::before,
-    .signature-line::after {
-      content: "❁";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #bdc3c7;
-      font-size: 14px;
-    }
-    .signature-line::before {
-      left: -20px;
-    }
-    .signature-line::after {
-      right: -20px;
-    }
-    .signature-text {
-      font-size: 14px;
-      color: #7f8c8d;
-      letter-spacing: 0.5px;
-    }
-    .receipt-stamp {
-      position: absolute;
-      bottom: 25mm;
-      right: 25mm;
-      width: 90px;
-      height: 90px;
-      border: 3px solid #f72585;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f72585;
-      font-family: 'Playfair Display', serif;
-      font-weight: bold;
-      transform: rotate(15deg);
-      opacity: 0.9;
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .receipt-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .receipt-actions button {
-      flex: 1;
-      background: linear-gradient(135deg, #4361ee, #3a0ca3);
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-    }
-    .receipt-actions button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
-    }
-    .receipt-actions button:last-child {
-      background: linear-gradient(135deg, #f72585, #b5179e);
-    }
-
-    /* Footer */
-    footer {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, #2d3748, #1a202c);
-      color: #ffffff;
-      text-align: center;
-      font-size: 1rem;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
+    /* Responsive adjustments for larger screens */
+    @media (min-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .impact-section {
+        max-width: 1000px;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      
       .impact-title h2 {
+        font-size: 2rem;
+      }
+      
+      .impact-title p {
+        font-size: 1.1rem;
+      }
+      
+      .chart-container canvas {
+        height: 350px !important;
+      }
+      
+      .header-circle {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .header-circle h1 {
+        font-size: 1.6rem;
+      }
+      
+      .nav-circle {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .nav-circle h2 {
+        font-size: 1.1rem;
+      }
+      
+      .container {
+        max-width: 900px;
+        padding: 0 1rem;
+      }
+      
+      .donation-card {
+        padding: 2rem;
+      }
+      
+      .donation-details p {
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .donation-details strong {
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+      }
+      
+      .copyable {
+        text-align: right;
+      }
+      
+      .copy-btn {
+        margin-top: 0;
+        margin-left: 0.5rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .chart-container canvas {
+        height: 400px !important;
+      }
+      
+      .header-circle {
+        width: 200px;
+        height: 200px;
+      }
+      
+      .header-circle h1 {
         font-size: 1.8rem;
       }
-      .chart-wrapper {
-        min-width: 100%;
-      }
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-      .header-circle {
+      
+      .nav-circle {
         width: 150px;
         height: 150px;
       }
-      .header-circle h1 {
-        font-size: 1.4rem;
-      }
-      .nav-circles {
-        gap: 1rem;
-      }
-      .nav-circle {
-        width: 120px;
-        height: 120px;
-      }
+      
       .nav-circle h2 {
-        font-size: 1rem;
-      }
-      .donation-card {
-        padding: 1.5rem;
-      }
-      .donation-details p {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .donation-details strong {
-        margin-right: 0;
-        margin-bottom: 0.3rem;
-      }
-      .donation-details .copyable {
-        text-align: left;
-      }
-      .scanner-placeholder.visible {
-        min-height: 180px;
-      }
-      .receipt-content {
-        padding: 10mm;
-        min-height: auto;
-      }
-      .receipt-title {
-        font-size: 1.8rem;
-      }
-      .receipt-subtitle {
-        font-size: 1rem;
-      }
-      .receipt-logo {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-      }
-      .amount-value {
         font-size: 1.2rem;
-      }
-      .thank-you {
-        font-size: 1.1rem;
-      }
-      .receipt-actions {
-        flex-direction: column;
-        gap: 0.5rem;
       }
     }
   </style>
@@ -881,39 +467,18 @@
     
     <div class="chart-container">
       <div class="chart-wrapper">
+        <h3>Year 2023 Impact</h3>
+        <canvas id="impactChart2023"></canvas>
+      </div>
+      
+      <div class="chart-wrapper">
         <h3>Year 2024 Impact</h3>
         <canvas id="impactChart2024"></canvas>
       </div>
       
       <div class="chart-wrapper">
-        <h3>Year 2023 Impact</h3>
-        <canvas id="impactChart2023"></canvas>
-      </div>
-    </div>
-    
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h4>Total Families Supported</h4>
-        <div class="stat-value" id="familiesStat">0</div>
-        <p class="stat-desc">Across all our programs in 2023-2024</p>
-      </div>
-      
-      <div class="stat-card">
-        <h4>Total Amount Utilized</h4>
-        <div class="stat-value" id="amountStat">₹0</div>
-        <p class="stat-desc">For humanitarian causes</p>
-      </div>
-      
-      <div class="stat-card">
-        <h4>Marriage Assistance</h4>
-        <div class="stat-value" id="marriageStat">0 Cases</div>
-        <p class="stat-desc">Helping families celebrate happily</p>
-      </div>
-      
-      <div class="stat-card">
-        <h4>Ramzan & Eid Support</h4>
-        <div class="stat-value" id="ramzanStat">0 Families</div>
-        <p class="stat-desc">Providing joy during holy months</p>
+        <h3>Year 2025 Vision</h3>
+        <canvas id="impactChart2025"></canvas>
       </div>
     </div>
   </section>
@@ -1058,134 +623,190 @@
       document.getElementById('progress-bar').style.width = scrollProgress + '%';
     });
 
-    // Impact Data Visualization
+    // Impact Data Visualization - Optimized for Mobile
     document.addEventListener('DOMContentLoaded', function() {
-      // Data from your poster
-      const impactData2024 = {
-        labels: ['Marriage Assistance', 'Ramzan & Eid', 'House Assistance', 'Medical', 'Education', 'Karaz-e-Hasanah'],
-        datasets: [{
-          label: 'Cases',
-          data: [1, 100, 3, 3, 3, 3],
-          backgroundColor: [
-            'rgba(67, 97, 238, 0.7)',
-            'rgba(114, 9, 183, 0.7)',
-            'rgba(247, 37, 133, 0.7)',
-            'rgba(76, 201, 240, 0.7)',
-            'rgba(58, 12, 163, 0.7)',
-            'rgba(181, 23, 158, 0.7)'
-          ],
-          borderColor: [
-            'rgba(67, 97, 238, 1)',
-            'rgba(114, 9, 183, 1)',
-            'rgba(247, 37, 133, 1)',
-            'rgba(76, 201, 240, 1)',
-            'rgba(58, 12, 163, 1)',
-            'rgba(181, 23, 158, 1)'
-          ],
-          borderWidth: 2
-        }]
+      // Data from your poster - organized by year
+      const years = {
+        2023: {
+          labels: ['Medical', 'Marriage', 'House', 'Ramzan & Eid', 'Flood', 'Education'],
+          cases: [17, 4, 6, 60, 10, 2],
+          amounts: [52630, 17000, 25530, 90220, 6938, 6500]
+        },
+        2024: {
+          labels: ['Marriage', 'Ramzan & Eid', 'House', 'Medical', 'Education', 'Karaz-e-Hasanah'],
+          cases: [1, 100, 3, 3, 3, 3],
+          amounts: [41558, 78900, 30000, 4950, 14760, 35000]
+        },
+        2025: {
+          labels: ['Marriage', 'Ramzan & Eid', 'House', 'Medical', 'Education', 'Karaz-e-Hasanah'],
+          cases: [0, 0, 0, 0, 0, 0],
+          amounts: [0, 0, 0, 0, 0, 0]
+        }
       };
 
-      const impactData2023 = {
-        labels: ['Medical', 'Marriage', 'House', 'Ramzan & Eid', 'Flood', 'Education'],
-        datasets: [{
-          label: 'Cases',
-          data: [17, 4, 6, 60, 10, 2],
-          backgroundColor: [
-            'rgba(67, 97, 238, 0.7)',
-            'rgba(114, 9, 183, 0.7)',
-            'rgba(247, 37, 133, 0.7)',
-            'rgba(76, 201, 240, 0.7)',
-            'rgba(58, 12, 163, 0.7)',
-            'rgba(181, 23, 158, 0.7)'
-          ],
-          borderColor: [
-            'rgba(67, 97, 238, 1)',
-            'rgba(114, 9, 183, 1)',
-            'rgba(247, 37, 133, 1)',
-            'rgba(76, 201, 240, 1)',
-            'rgba(58, 12, 163, 1)',
-            'rgba(181, 23, 158, 1)'
-          ],
-          borderWidth: 2
-        }]
-      };
-
-      // Chart configurations
+      // Chart configuration with mobile optimizations
       const chartConfig = {
         type: 'bar',
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
-              display: false
+              position: 'top',
+              labels: {
+                boxWidth: 12,
+                padding: 10,
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
+              }
             },
             tooltip: {
               callbacks: {
                 label: function(context) {
-                  return `${context.dataset.label}: ${context.raw}`;
+                  let label = context.dataset.label || '';
+                  if (label.includes('Amount')) {
+                    return `${label}: ₹${context.raw.toLocaleString('en-IN')}`;
+                  }
+                  return `${label}: ${context.raw}`;
                 }
               }
             }
           },
           scales: {
-            y: {
-              beginAtZero: true,
+            x: {
+              grid: {
+                display: false
+              },
               ticks: {
+                maxRotation: 45,
+                minRotation: 45,
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
+              }
+            },
+            cases: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              title: {
+                display: true,
+                text: 'Cases',
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
+              },
+              ticks: {
+                precision: 0,
                 callback: function(value) {
                   return Number.isInteger(value) ? value : '';
                 },
-                stepSize: 1
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
+              }
+            },
+            amounts: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              title: {
+                display: true,
+                text: 'Amount (₹)',
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
+              },
+              grid: {
+                drawOnChartArea: false
+              },
+              ticks: {
+                callback: function(value) {
+                  return '₹' + value.toLocaleString('en-IN');
+                },
+                font: {
+                  size: window.innerWidth < 768 ? 10 : 12
+                }
               }
             }
           },
           animation: {
-            duration: 2000,
-            easing: 'easeOutQuart',
-            onComplete: () => {
-              // Animation complete callback
-            }
+            duration: 1500,
+            easing: 'easeOutQuart'
           }
         }
       };
 
-      // Create charts
-      const ctx2024 = document.getElementById('impactChart2024').getContext('2d');
-      const ctx2023 = document.getElementById('impactChart2023').getContext('2d');
-      
-      const impactChart2024 = new Chart(ctx2024, {
-        ...chartConfig,
-        data: impactData2024
-      });
-
-      const impactChart2023 = new Chart(ctx2023, {
-        ...chartConfig,
-        data: impactData2023
-      });
-
-      // Animate stats counters
-      const animateValue = (id, start, end, duration, prefix = '') => {
-        const obj = document.getElementById(id);
-        let startTimestamp = null;
-        const step = (timestamp) => {
-          if (!startTimestamp) startTimestamp = timestamp;
-          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-          const value = Math.floor(progress * (end - start) + start);
-          obj.innerHTML = prefix + value.toLocaleString();
-          if (progress < 1) {
-            window.requestAnimationFrame(step);
+      // Create all three charts
+      const createChart = (ctx, yearData, year) => {
+        return new Chart(ctx, {
+          ...chartConfig,
+          data: {
+            labels: yearData.labels,
+            datasets: [
+              {
+                label: 'Cases',
+                data: yearData.cases,
+                backgroundColor: 'rgba(67, 97, 238, 0.7)',
+                borderColor: 'rgba(67, 97, 238, 1)',
+                borderWidth: 2,
+                yAxisID: 'cases'
+              },
+              {
+                label: 'Amount (₹)',
+                data: yearData.amounts,
+                backgroundColor: 'rgba(247, 37, 133, 0.7)',
+                borderColor: 'rgba(247, 37, 133, 1)',
+                borderWidth: 2,
+                yAxisID: 'amounts'
+              }
+            ]
           }
-        };
-        window.requestAnimationFrame(step);
+        });
       };
 
-      // Start animations with slight delay
-      setTimeout(() => {
-        animateValue('familiesStat', 0, 200, 1500);
-        animateValue('amountStat', 0, 380000, 2000, '₹');
-        animateValue('marriageStat', 0, 5, 1200, '', ' Cases');
-        animateValue('ramzanStat', 0, 160, 1800, '', ' Families');
-      }, 500);
+      // Initialize charts
+      createChart(
+        document.getElementById('impactChart2023').getContext('2d'),
+        years[2023],
+        2023
+      );
+      
+      createChart(
+        document.getElementById('impactChart2024').getContext('2d'),
+        years[2024],
+        2024
+      );
+      
+      createChart(
+        document.getElementById('impactChart2025').getContext('2d'),
+        years[2025],
+        2025
+      );
+
+      // Handle window resize for chart responsiveness
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const charts = [
+            Chart.getChart('impactChart2023'),
+            Chart.getChart('impactChart2024'),
+            Chart.getChart('impactChart2025')
+          ];
+          
+          charts.forEach(chart => {
+            if (chart) {
+              chart.options.plugins.legend.labels.font.size = window.innerWidth < 768 ? 10 : 12;
+              chart.options.scales.x.ticks.font.size = window.innerWidth < 768 ? 10 : 12;
+              chart.options.scales.cases.ticks.font.size = window.innerWidth < 768 ? 10 : 12;
+              chart.options.scales.amounts.ticks.font.size = window.innerWidth < 768 ? 10 : 12;
+              chart.update();
+            }
+          });
+        }, 200);
+      });
     });
 
     // Navigation circles functionality
@@ -1369,7 +990,7 @@
         const downloadShareButton = document.getElementById('download-share-receipt');
         downloadShareButton.addEventListener('click', () => {
           const element = document.getElementById('receipt-content');
-          const scale = 4;
+          const scale = window.innerWidth < 768 ? 2 : 3;
           const widthInPx = 210 * 3.78;
           const heightInPx = 297 * 3.78;
 
