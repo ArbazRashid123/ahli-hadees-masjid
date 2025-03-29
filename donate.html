@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     * { 
       margin: 0; 
@@ -22,6 +23,147 @@
     a { 
       text-decoration: none; 
       color: inherit; 
+    }
+
+    /* Impact Visualization Section */
+    .impact-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .impact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.03) 0%, rgba(247, 37, 133, 0.03) 100%);
+      z-index: 0;
+    }
+    .impact-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .impact-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #4361ee, #f72585);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .impact-title p {
+      color: #6c757d;
+      font-size: 1.1rem;
+    }
+    .impact-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #4361ee, #f72585);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .chart-wrapper {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .chart-wrapper:hover {
+      transform: translateY(-5px);
+    }
+    .chart-wrapper h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #4361ee;
+      font-weight: 600;
+      position: relative;
+    }
+    .chart-wrapper h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4361ee, #f72585);
+      border-radius: 3px;
+    }
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #4361ee, #f72585);
+    }
+    .stat-card h4 {
+      color: #7209b7;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #4361ee, #f72585);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .stat-desc {
+      color: #6c757d;
+      font-size: 0.9rem;
     }
 
     /* Circular Header */
@@ -656,6 +798,15 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .impact-title h2 {
+        font-size: 1.8rem;
+      }
+      .chart-wrapper {
+        min-width: 100%;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
       .header-circle {
         width: 150px;
         height: 150px;
@@ -720,6 +871,52 @@
 </head>
 <body>
   <div id="progress-bar"></div>
+
+  <!-- Impact Visualization Section -->
+  <section class="impact-section">
+    <div class="impact-title">
+      <h2>Our Impact in Service of Humanity</h2>
+      <p>Transforming Lives Through Your Generous Donations</p>
+    </div>
+    
+    <div class="chart-container">
+      <div class="chart-wrapper">
+        <h3>Year 2024 Impact</h3>
+        <canvas id="impactChart2024"></canvas>
+      </div>
+      
+      <div class="chart-wrapper">
+        <h3>Year 2023 Impact</h3>
+        <canvas id="impactChart2023"></canvas>
+      </div>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4>Total Families Supported</h4>
+        <div class="stat-value" id="familiesStat">0</div>
+        <p class="stat-desc">Across all our programs in 2023-2024</p>
+      </div>
+      
+      <div class="stat-card">
+        <h4>Total Amount Utilized</h4>
+        <div class="stat-value" id="amountStat">₹0</div>
+        <p class="stat-desc">For humanitarian causes</p>
+      </div>
+      
+      <div class="stat-card">
+        <h4>Marriage Assistance</h4>
+        <div class="stat-value" id="marriageStat">0 Cases</div>
+        <p class="stat-desc">Helping families celebrate happily</p>
+      </div>
+      
+      <div class="stat-card">
+        <h4>Ramzan & Eid Support</h4>
+        <div class="stat-value" id="ramzanStat">0 Families</div>
+        <p class="stat-desc">Providing joy during holy months</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Circular Header -->
   <div class="header-circle">
@@ -859,6 +1056,136 @@
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollProgress = (scrollTop / scrollHeight) * 100;
       document.getElementById('progress-bar').style.width = scrollProgress + '%';
+    });
+
+    // Impact Data Visualization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Data from your poster
+      const impactData2024 = {
+        labels: ['Marriage Assistance', 'Ramzan & Eid', 'House Assistance', 'Medical', 'Education', 'Karaz-e-Hasanah'],
+        datasets: [{
+          label: 'Cases',
+          data: [1, 100, 3, 3, 3, 3],
+          backgroundColor: [
+            'rgba(67, 97, 238, 0.7)',
+            'rgba(114, 9, 183, 0.7)',
+            'rgba(247, 37, 133, 0.7)',
+            'rgba(76, 201, 240, 0.7)',
+            'rgba(58, 12, 163, 0.7)',
+            'rgba(181, 23, 158, 0.7)'
+          ],
+          borderColor: [
+            'rgba(67, 97, 238, 1)',
+            'rgba(114, 9, 183, 1)',
+            'rgba(247, 37, 133, 1)',
+            'rgba(76, 201, 240, 1)',
+            'rgba(58, 12, 163, 1)',
+            'rgba(181, 23, 158, 1)'
+          ],
+          borderWidth: 2
+        }]
+      };
+
+      const impactData2023 = {
+        labels: ['Medical', 'Marriage', 'House', 'Ramzan & Eid', 'Flood', 'Education'],
+        datasets: [{
+          label: 'Cases',
+          data: [17, 4, 6, 60, 10, 2],
+          backgroundColor: [
+            'rgba(67, 97, 238, 0.7)',
+            'rgba(114, 9, 183, 0.7)',
+            'rgba(247, 37, 133, 0.7)',
+            'rgba(76, 201, 240, 0.7)',
+            'rgba(58, 12, 163, 0.7)',
+            'rgba(181, 23, 158, 0.7)'
+          ],
+          borderColor: [
+            'rgba(67, 97, 238, 1)',
+            'rgba(114, 9, 183, 1)',
+            'rgba(247, 37, 133, 1)',
+            'rgba(76, 201, 240, 1)',
+            'rgba(58, 12, 163, 1)',
+            'rgba(181, 23, 158, 1)'
+          ],
+          borderWidth: 2
+        }]
+      };
+
+      // Chart configurations
+      const chartConfig = {
+        type: 'bar',
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.dataset.label}: ${context.raw}`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return Number.isInteger(value) ? value : '';
+                },
+                stepSize: 1
+              }
+            }
+          },
+          animation: {
+            duration: 2000,
+            easing: 'easeOutQuart',
+            onComplete: () => {
+              // Animation complete callback
+            }
+          }
+        }
+      };
+
+      // Create charts
+      const ctx2024 = document.getElementById('impactChart2024').getContext('2d');
+      const ctx2023 = document.getElementById('impactChart2023').getContext('2d');
+      
+      const impactChart2024 = new Chart(ctx2024, {
+        ...chartConfig,
+        data: impactData2024
+      });
+
+      const impactChart2023 = new Chart(ctx2023, {
+        ...chartConfig,
+        data: impactData2023
+      });
+
+      // Animate stats counters
+      const animateValue = (id, start, end, duration, prefix = '') => {
+        const obj = document.getElementById(id);
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const value = Math.floor(progress * (end - start) + start);
+          obj.innerHTML = prefix + value.toLocaleString();
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      };
+
+      // Start animations with slight delay
+      setTimeout(() => {
+        animateValue('familiesStat', 0, 200, 1500);
+        animateValue('amountStat', 0, 380000, 2000, '₹');
+        animateValue('marriageStat', 0, 5, 1200, '', ' Cases');
+        animateValue('ramzanStat', 0, 160, 1800, '', ' Families');
+      }, 500);
     });
 
     // Navigation circles functionality
