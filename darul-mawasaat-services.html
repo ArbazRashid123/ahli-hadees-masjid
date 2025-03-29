@@ -196,6 +196,7 @@
       max-width: 90%;
       line-height: 1.2;
       margin-bottom: 30px;
+      margin-top: 80px; /* Added to move title below nav bar */
       animation: fadeInUp 1.5s ease-out;
     }
 
@@ -418,40 +419,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .container {
-      padding: clamp(20px, 5vw, 40px);
-      background: #fff;
-      border-radius: 25px;
-      margin: clamp(20px, 5vw, 40px) auto;
-      max-width: 1300px;
-      box-shadow: 0 0 25px rgba(0, 102, 0, 0.1);
-    }
-
-    .section-title {
-      font-size: clamp(1.8em, 6vw, 2.5em);
-      color: #006600;
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      width: clamp(60px, 10vw, 100px);
-      height: 5px;
-      background: #006600;
-      display: block;
-      margin: 10px auto;
-      border-radius: 5px;
-    }
-
-    .content p {
-      font-size: clamp(0.9em, 2.5vw, 1.1em);
-      color: #2c3e50;
-      line-height: 1.6;
-      text-align: center;
-    }
-
     .assistance-programs {
       padding: clamp(20px, 5vw, 40px);
       background: #fff;
@@ -662,7 +629,6 @@
       </div>
     </div>
     <ul>
-      <li><a href="#welfare-efforts">Our Welfare Efforts</a></li>
       <li><a href="#assistance-programs">Assistance Programs</a></li>
     </ul>
   </nav>
@@ -677,6 +643,7 @@
     <div class="year-toggle">
       <button class="year-btn active" data-year="2024">2024</button>
       <button class="year-btn" data-year="2023">2023</button>
+      <button class="year-btn" data-year="2025">2025</button>
     </div>
     
     <div class="stats-container">
@@ -758,6 +725,45 @@
           <div class="chart-label">Assistance</div>
         </div>
       </div>
+      
+      <!-- 2025 Data (with zero values) -->
+      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="200" style="display: none;">
+        <h3 class="stat-title">Marriage Assistance</h3>
+        <div class="stat-value">0 Cases</div>
+        <p class="stat-description">Total cost: ₹0</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 10%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-bar" style="left: 40%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-bar" style="left: 70%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-value">₹0</div>
+          <div class="chart-label">Cases</div>
+        </div>
+      </div>
+      
+      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="300" style="display: none;">
+        <h3 class="stat-title">Ramzan & Eid</h3>
+        <div class="stat-value">0 Cases</div>
+        <p class="stat-description">Total cost: ₹0</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 25%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-bar" style="left: 55%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-value">₹0</div>
+          <div class="chart-label">Assistance</div>
+        </div>
+      </div>
+      
+      <div class="stat-card" data-year="2025" data-aos="fade-up" data-aos-delay="400" style="display: none;">
+        <h3 class="stat-title">Medical Assistance</h3>
+        <div class="stat-value">0 Cases</div>
+        <p class="stat-description">Total cost: ₹0</p>
+        <div class="chart-container">
+          <div class="chart-bar" style="left: 20%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-bar" style="left: 50%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-bar" style="left: 80%; height: 0%;" data-value="₹0"></div>
+          <div class="chart-value">₹0</div>
+          <div class="chart-label">Patients</div>
+        </div>
+      </div>
     </div>
     
     <p class="mission-statement">
@@ -765,15 +771,6 @@
       Together we can bring smiles to many faces."
     </p>
   </header>
-
-  <div class="container" id="welfare-efforts" data-aos="fade-up">
-    <div class="content">
-      <h2 class="section-title">Our Welfare Efforts</h2>
-      <p>
-        Dar-ul-Mawasaat Welfare Foundation under Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to supporting the community through charity, welfare, and community support programs. Our efforts provide assistance for the needy, including marriage aid, food assistance, cash assistance, flood assistance, medical assistance, employment assistance, and disaster relief.
-      </p>
-    </div>
-  </div>
 
   <div class="assistance-programs" id="assistance-programs" data-aos="fade-up">
     <h2 class="section-title">Assistance Programs</h2>
