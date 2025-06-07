@@ -613,7 +613,6 @@ header {
   color: var(--text-color);
 }
 
-/* Updated Events Styles (replace lines 529–554) */
 .events-container {
   display: flex;
   overflow-x: auto;
@@ -622,12 +621,12 @@ header {
   max-width: 90%;
   margin: 0 auto;
   padding: 10px 0;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: var(--section-title-color) var(--card-bg); /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--section-title-color) var(--card-bg);
 }
 
 .events-container::-webkit-scrollbar {
-  height: 8px; /* Webkit browsers */
+  height: 8px;
 }
 
 .events-container::-webkit-scrollbar-track {
@@ -640,9 +639,9 @@ header {
 }
 
 .event {
-  flex: 0 0 100%; /* Full width for one event at a time */
-  min-width: 280px; /* Minimum width for readability */
-  max-width: 400px; /* Cap width for larger screens */
+  flex: 0 0 100%;
+  min-width: 280px;
+  max-width: 400px;
   background: var(--card-bg);
   padding: 15px;
   border-radius: 10px;
