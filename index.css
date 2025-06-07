@@ -513,27 +513,52 @@ header {
   margin-right: auto;
 }
 
+/* Updated Services Styles (replace lines 436–489) */
 .services-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
   max-width: 90%;
   margin: 0 auto;
+  padding: 10px 0;
+  height: 220px; /* Fixed height to accommodate content */
+  flex-wrap: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--section-title-color) var(--card-bg);
+}
+
+.services-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.services-container::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+.services-container::-webkit-scrollbar-thumb {
+  background: var(--section-title-color);
+  border-radius: 4px;
 }
 
 .service-card {
+  flex: 0 0 100%;
+  min-width: 280px;
+  max-width: 400px;
   background: var(--card-bg);
-  padding: 12px;
+  padding: 15px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 6px var(--shadow-color);
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid var(--section-title-color);
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 180px;
-  border: 2px solid var(--section-title-color); /* Use section title color for border */
+  overflow: hidden;
 }
 
 .service-card:hover {
@@ -543,7 +568,7 @@ header {
 
 .service-icon {
   font-size: 1.8em;
-  color: var(--section-title-color); /* Use section title color for icons */
+  color: var(--section-title-color);
   margin-bottom: 8px;
 }
 
@@ -557,8 +582,53 @@ header {
   font-size: 0.85em;
   margin-bottom: 10px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
+.btn-service {
+  display: inline-block;
+  background: var(--btn-bg);
+  border: none;
+  color: var(--btn-text);
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  text-align: center;
+}
+
+/* Updated Media Query for Mobile (replace lines 697–704) */
+@media (max-width: 767px) {
+  .ramadan-container,
+  .services-container,
+  .knowledge-container,
+  .events-container,
+  .community-container,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .gallery-grid {
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  .events-container {
+    height: 120px;
+  }
+  .services-container {
+    max-width: 100%;
+    padding: 0 5px;
+    height: 200px;
+  }
+}
 .knowledge-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
