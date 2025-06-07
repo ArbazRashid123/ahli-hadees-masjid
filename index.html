@@ -107,34 +107,34 @@
     </div>
   </section>
 
-  <section id="services" data-aos="fade-up">
-    <h2 class="section-title">Our Services</h2>
-    <div class="services-container">
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-        <i class="fas fa-mosque service-icon"></i>
-        <h3>Masjid Services</h3>
-        <p>Daily prayers, Friday sermons, and spiritual guidance for all.</p>
-        <a href="masjid-services.html" class="btn-service" target="_blank">Explore Masjid Services</a>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-        <i class="fas fa-heart service-icon"></i>
-        <h3>Dar-ul-Mawasaat Services</h3>
-        <p>Charity, welfare initiatives, and community support programs.</p>
-        <a href="darul-mawasaat-services.html" class="btn-service" target="_blank">Explore Welfare Services</a>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-        <i class="fas fa-book service-icon"></i>
-        <h3>Darasgah Services</h3>
-        <p>Educational programs, Quranic studies, and youth development.</p>
-        <a href="darasgah-services.html" class="btn-service" target="_blank">Explore Darasgah Services</a>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
-        <i class="fas fa-hands-helping service-icon"></i>
-        <h3>Other Community Services</h3>
-        <p>Cultural events, outreach, and additional community support.</p>
-        <a href="other-services.html" class="btn-service" target="_blank">Explore Other Services</a>
-      </div>
+<section id="services" data-aos="fade-up">
+  <h2 class="section-title">Our Services</h2>
+  <div class="services-container">
+    <div class="service-card glass">
+      <span class="service-icon"><i class="fas fa-mosque"></i></span>
+      <h3>Masjid Services</h3>
+      <p>Daily prayers, Friday sermons, and spiritual guidance for all.</p>
+      <button class="btn-service">Explore Masjid Services</button>
     </div>
+    <div class="service-card glass">
+      <span class="service-icon"><i class="fas fa-hand-holding-heart"></i></span>
+      <h3>Dar-ul-Mawasaat Services</h3>
+      <p>Charity, welfare initiatives, and community support programs.</p>
+      <button class="btn-service">Explore Welfare Services</button>
+    </div>
+    <div class="service-card glass">
+      <span class="service-icon"><i class="fas fa-book-open"></i></span>
+      <h3>Darasgah Services</h3>
+      <p>Educational programs, Quranic studies, and youth development.</p>
+      <button class="btn-service">Explore Darasgah Services</button>
+    </div>
+    <div class="service-card glass">
+      <span class="service-icon"><i class="fas fa-users"></i></span>
+      <h3>Other Community Services</h3>
+      <p>Cultural events, outreach, and additional community support.</p>
+      <button class="btn-service">Explore Other Services</button>
+    </div>
+  </div>
   </section>
 
   <section id="knowledge" data-aos="fade-up">
@@ -965,6 +965,22 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+    
+
+    const servicesContainer = document.querySelector('#services .services-container');
+    let currentIndex = 0;
+    const cards = servicesContainer.children;
+    const totalCards = cards.length;
+
+    function slideNext() {
+      currentIndex = (currentIndex + 1) % totalCards;
+      servicesContainer.scrollTo({
+        left: cards[currentIndex].offsetLeft - (servicesContainer.offsetWidth - cards[currentIndex].offsetWidth) / 2,
+        behavior: 'smooth'
+      });
+    }
+
+    setInterval(slideNext, 5000); // Slide every 5 seconds
   </script>
 </body>
 </html>
