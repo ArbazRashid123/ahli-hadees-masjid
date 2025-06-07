@@ -873,8 +873,8 @@
     }
 
     // Set content and ensure visibility
-    hadithElement.textContent = dailyHadith;
-    quranElement.textContent = dailyAayah;
+    hadithElement.innerHTML = dailyHadith;
+    quranElement.innerHTML = dailyAayah;
     hadithElement.style.display = 'block';
     quranElement.style.display = 'block';
   }
