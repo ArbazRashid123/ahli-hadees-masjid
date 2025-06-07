@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamia Ahli-hadees Mohammadia Masjid Cherwan</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <div id="language-modal" class="modal language-modal">
+    <div class="modal-content glass">
+      <h3>Select Language</h3>
+      <div class="language-options">
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ur')">اردو (Urdu)</button>
+        <button onclick="changeLanguage('ar')">العربية (Arabic)</button>
+      </div>
+    </div>
+  </div>
+
+  <nav data-aos="fade-down">
+    <div class="logo"><span id="masjid-name">Jamia Ahli Hadees Mohammadia Masjid Cherwan</span></div>
+    <div class="nav-right">
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </div>
+      <div class="language-toggle" onclick="document.getElementById('language-modal').style.display='block'">
+        <i class="fas fa-globe"></i>
+      </div>
+      <div class="menu-toggle">☰</div>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#knowledge">Knowledge Center</a></li>
+      <li><a href="#ramadan">Ramadan</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <div id="prayer-info">
+      <div class="current-prayer">Current: <span id="current-prayer-name"></span> - <span id="current-prayer-time"></span></div>
+      <div class="upcoming-prayer">Upcoming: <span id="upcoming-prayer-name"></span> - <span id="upcoming-prayer-time"></span></div>
+    </div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to:</h1>
+      <h2>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h2>
+      <p class="hero-subheading">Connecting our community through faith, knowledge, and unity.</p>
+      <a href="#prayer-times" class="btn">View Prayer Times</a>
+    </div>
+  </header>
+
+  <section id="announcements" data-aos="fade-up">
+    <h2 class="section-title">Important Announcements</h2>
+    <div class="announcement-marquee">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED. YOU CAN CHECK IT IN 'UPCOMMING EVENTS' SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED. YOU CAN CHECK IT IN 'UPCOMMING EVENTS' SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED. YOU CAN CHECK IT IN 'UPCOMMING EVENTS' SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+          <span class="announcement-item">THE IFTAR PARTY LIST HAS BEEN UPLOADED. YOU CAN CHECK IT IN 'UPCOMMING EVENTS' SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prayer-times" data-aos="fade-up">
+    <h2 class="section-title">Prayer Times</h2>
+    <div class="prayer-times-vertical">
+      <div class="prayer-item"><span class="prayer-name">Fajr</span><span class="prayer-time">05:00 AM</span></div>
+      <div class="prayer-item"><span class="prayer-name">Sunrise</span><span class="prayer-time">06:15 AM</span></div>
+      <div class="prayer-item"><span class="prayer-name">Dhuhr</span><span class="prayer-time">12:30 PM</span></div>
+      <div class="prayer-item"><span class="prayer-name">Asr</span><span class="prayer-time">03:45 PM</span></div>
+      <div class="prayer-item"><span class="prayer-name">Maghrib</span><span class="prayer-time">06:30 PM</span></div>
+      <div class="prayer-item"><span class="prayer-name">Isha</span><span class="prayer-time">07:45 PM</span></div>
+    </div>
+  </section>
+
+  <section id="ramadan" data-aos="fade-up">
+    <h2 class="section-title">Ramadan 2025</h2>
+    <div class="ramadan-container">
+      <div class="ramadan-times" data-aos="fade-up" data-aos-delay="100">
+        <h3>Hadith of the Day</h3>
+        <p id="hadith-text"></p>
+      </div>
+      <div class="quran-aayah" data-aos="fade-up" data-aos-delay="200">
+        <h3>Quran Aayah of the Day</h3>
+        <p id="quran-aayah-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Us</h2>
+    <div class="content">
+      <p>Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to serving our community with a rich history and visionary leadership.</p>
+      <a href="about.html" class="btn-about" target="_blank">Know More About Us</a>
+    </div>
+  </section>
+
+  <section id="services" data-aos="fade-up">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-container">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-mosque service-icon"></i>
+        <h3>Masjid Services</h3>
+        <p>Daily prayers, Friday sermons, and spiritual guidance for all.</p>
+        <a href="masjid-services.html" class="btn-service" target="_blank">Explore Masjid Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-heart service-icon"></i>
+        <h3>Dar-ul-Mawasaat Services</h3>
+        <p>Charity, welfare initiatives, and community support programs.</p>
+        <a href="darul-mawasaat-services.html" class="btn-service" target="_blank">Explore Welfare Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-book service-icon"></i>
+        <h3>Darasgah Services</h3>
+        <p>Educational programs, Quranic studies, and youth development.</p>
+        <a href="darasgah-services.html" class="btn-service" target="_blank">Explore Darasgah Services</a>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-hands-helping service-icon"></i>
+        <h3>Other Community Services</h3>
+        <p>Cultural events, outreach, and additional community support.</p>
+        <a href="other-services.html" class="btn-service" target="_blank">Explore Other Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="knowledge" data-aos="fade-up">
+    <h2 class="section-title">Knowledge Center</h2>
+    <div class="knowledge-container">
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Quranic Studies</h3>
+        <p>Access resources and videos for deepening your understanding of the Quran.</p>
+        <a href="https://quran.com" class="btn-knowledge">Learn More</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Hadith Library</h3>
+        <p>Explore authentic Hadith collections and their explanations.</p>
+        <a href="https://sunnah.com" class="btn-knowledge">Explore</a>
+      </div>
+      <div class="knowledge-item" data-aos="fade-up" data-aos-delay="300">
+        <h3>Islamic Lectures</h3>
+        <p>Watch recorded lectures by renowned Ahl al-Hadith scholars.</p>
+        <a href="https://youtube.com/@salafiserver" class="btn-knowledge">Watch Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" data-aos="fade-up">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="events-container">
+      <div class="event" data-aos="fade-up" data-aos-delay="100">
+        <h3>Friday Khutbah</h3>
+        <p>Join us every Friday for our weekly sermon and congregational prayer.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="200">
+        <h3>Quran Recitation</h3>
+        <p>Experience the beauty of the Quran during our weekly recitation sessions.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="300">
+        <h3>Community Iftar</h3>
+        <p>Break your fast with our community during Ramadan with special iftar gatherings.</p>
+      </div>
+      <div class="event" data-aos="fade-up" data-aos-delay="400">
+        <h3>Charity Drive</h3>
+        <p>Support our local community through our ongoing charity initiatives.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" data-aos="fade-up">
+    <div class="gallery-container">
+      <h2 class="section-title">Gallery</h2>
+      <p><strong>Explore our journey and commitment</strong></p>
+      <div class="gallery-grid">
+        <img src="gallery1.jpg" alt="Gallery Image 1">
+        <img src="gallery2.jpg" alt="Gallery Image 2">
+      </div>
+      <a href="gallery.html" class="btn-gallery">Go To Masjid Gallery</a>
+    </div>
+  </section>
+
+  <section id="community" data-aos="fade-up">
+    <h2 class="section-title">Community Corner</h2>
+    <div class="community-container">
+      <div class="community-item" data-aos="fade-up" data-aos-delay="100">
+        <h3>Volunteer Opportunities</h3>
+        <p>Join us in serving the community through various volunteer roles.</p>
+        <a href="#" class="btn-community">Sign Up</a>
+      </div>
+      <div class="community-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>Youth Programs</h3>
+        <p>Engage our youth in activities that build faith and character.</p>
+        <a href="#" class="btn-community">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" data-aos="fade-up">
+    <h2 class="section-title">Our Location</h2>
+    <div class="location-container">
+      <div class="location-content glass">
+        <p>Visit us at Jamia Ahli Hadees Mohammadia Masjid Cherwan, Cherwan Kangan, 191202.</p>
+        <div class="map-wrapper">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.5663918967237!2d74.9064552!3d34.2587258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1f6b6b8e8e8e7%3A0x7b8e8e8e8e8e8e8e!2sJamia%20Ahli%20Hadees%20Mohammadia%20Masjid%20Cherwan!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
+            width="100%" 
+            height="250" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a href="https://maps.app.goo.gl/GaEAktdQkCu6euRa7" target="_blank" class="btn-location">Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="zakat-calculator" data-aos="fade-up">
+    <h2 class="section-title">Zakat Calculator</h2>
+    <div class="zakat-container">
+      <div class="zakat-form glass">
+        <p class="zakat-note">Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions. <a href="https://wa.me/916005317824" target="_blank">Click Here</a></p>
+        <div class="zakat-inputs">
+          <label for="gold-silver-input">Value of Gold & Silver you have (in Rupees):</label>
+          <input type="number" id="gold-silver-input" placeholder="Enter value" min="0" step="0.01" value="2000">
+          <label for="cash-home-input">Cash at Home (in Rupees):</label>
+          <input type="number" id="cash-home-input" placeholder="Enter amount" min="0" step="0.01" value="30000">
+          <label for="cash-bank-input">Cash at Bank Account (in Rupees):</label>
+          <input type="number" id="cash-bank-input" placeholder="Enter amount" min="0" step="0.01" value="0">
+          <label for="investments-input">Any Investments & Share Value (in Rupees):</label>
+          <input type="number" id="investments-input" placeholder="Enter value" min="0" step="0.01" value="1000">
+          <label for="business-input">Value of goods & properties for business (in Rupees):</label>
+          <input type="number" id="business-input" placeholder="Enter value" min="0" step="0.01" value="0">
+          <label for="liabilities-input">Total repayable Loan/Debts you have (in Rupees):</label>
+          <input type="number" id="liabilities-input" placeholder="Enter value" min="0" step="0.01" value="0">
+        </div>
+        <button id="calculate-zakat">Calculate Zakat</button>
+        <div class="zakat-result" id="zakat-result">
+          <p>Your Calculated Net Value: <span id="net-value">Rs.33,000</span></p>
+          <p>Your Zakat: <span id="zakat-amount">No Zakat - Total value is below Nisab</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chatbot-container glass" id="chatbot-container">
+    <div class="chatbot" id="chatbot">
+      <div class="chatbot-header">
+        <h3>Chat with Us <i class="fas fa-robot"></i></h3>
+        <i class="fas fa-times close-chat" onclick="toggleChatbot()"></i>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <p class="bot-message">Hello! Ask me anything about the masjid webpage.</p>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Ask a question...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer" data-aos="fade-up">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Jamia Ahli Hadees Mohammadia Masjid Cherwan</h3>
+        <p>Cherwan Kangan, 191202<br>A sacred place to unite, learn, and ponder.</p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>Phone: 6006254589, 9622000919<br>Email: <a href="mailto:jamiacherwan@gmail.com">jamiacherwan@gmail.com</a></p>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/19ofrYye8Y/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@salafiserver"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Technical support: Arbaz Rashid.</p>
+      <p>© 2025 Masjid Mohammadia Cherwan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button id="donate-now" onclick="window.location.href='donate.html'">Donate Now</button>
+  <button id="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    menuToggle.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+      navUl.style.display = navUl.classList.contains('active') ? 'flex' : 'none';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navUl.classList.remove('active');
+        navUl.style.display = 'none';
+      });
+    });
+
+    const translations = {
+      en: {
+        title: "Jamia Ahli-hadees Mohammadia Masjid Cherwan",
+        nav: ["Home", "About", "Services", "Knowledge Center", "Ramadan", "Gallery", "Announcements", "Community", "Contact"],
+        masjidName: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+        welcome: "Welcome to:",
+        heroTitle: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+        heroSub: "Connecting our community through faith, knowledge, and unity.",
+        prayerBtn: "View Prayer Times",
+        chatbotTitle: "Chat with Us",
+        chatbotMessage: "Hello! Ask me anything about the masjid webpage.",
+        chatbotPlaceholder: "Ask a question...",
+        send: "Send",
+        announcementsTitle: "Important Announcements",
+        announcementText: "THE IFTAR PARTY LIST HAS BEEN UPLOADED. YOU CAN CHECK IT IN 'UPCOMMING EVENTS' SECTION--DANISH MUSHTAQ S.G / MUDASIR MAJEED",
+        ramadanTitle: "Ramadan 2025",
+        hadithTitle: "Hadith of the Day",
+        quranAayahTitle: "Quran Aayah of the Day",
+        aboutTitle: "About Us",
+        aboutText: "Jamia Ahli Hadees Mohammadia Masjid Cherwan is dedicated to serving our community with a rich history and visionary leadership.",
+        aboutBtn: "Know More About Us",
+        servicesTitle: "Our Services",
+        masjidServiceTitle: "Masjid Services",
+        masjidServiceText: "Daily prayers, Friday sermons, and spiritual guidance for all.",
+        masjidServiceBtn: "Explore Masjid Services",
+        darulServiceTitle: "Dar-ul-Mawasaat Services",
+        darulServiceText: "Charity, welfare initiatives, and community support programs.",
+        darulServiceBtn: "Explore Welfare Services",
+        darasgahServiceTitle: "Darasgah Services",
+        darasgahServiceText: "Educational programs, Quranic studies, and youth development.",
+        darasgahServiceBtn: "Explore Darasgah Services",
+        otherServiceTitle: "Other Community Services",
+        otherServiceText: "Cultural events, outreach, and additional community support.",
+        otherServiceBtn: "Explore Other Services",
+        prayerTimesTitle: "Prayer Times",
+        fajr: "Fajr", sunrise: "Sunrise", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha",
+        knowledgeTitle: "Knowledge Center",
+        quranTitle: "Quranic Studies",
+        quranText: "Access resources and videos for deepening your understanding of the Quran.",
+        quranBtn: "Learn More",
+        hadithTitle: "Hadith Library",
+        hadithText: "Explore authentic Hadith collections and their explanations.",
+        hadithBtn: "Explore",
+        lecturesTitle: "Islamic Lectures",
+        lecturesText: "Watch recorded lectures by renowned Ahl al-Hadith scholars.",
+        lecturesBtn: "Watch Now",
+        eventsTitle: "Upcoming Events",
+        fridayTitle: "Friday Khutbah",
+        fridayText: "Join us every Friday for our weekly sermon and congregational prayer.",
+        quranRecitationTitle: "Quran Recitation",
+        quranRecitationText: "Experience the beauty of the Quran during our weekly recitation sessions.",
+        communityIftarTitle: "Community Iftar",
+        communityIftarText: "Break your fast with our community during Ramadan with special iftar gatherings.",
+        charityDriveTitle: "Charity Drive",
+        charityDriveText: "Support our local community through our ongoing charity initiatives.",
+        galleryTitle: "Gallery",
+        galleryText: "Explore our journey and commitment",
+        galleryBtn: "Go To Masjid Gallery",
+        communityTitle: "Community Corner",
+        volunteerTitle: "Volunteer Opportunities",
+        volunteerText: "Join us in serving the community through various volunteer roles.",
+        volunteerBtn: "Sign Up",
+        youthTitle: "Youth Programs",
+        youthText: "Engage our youth in activities that build faith and character.",
+        youthBtn: "Learn More",
+        footerAboutTitle: "Jamia Ahli Hadees Mohammadia Masjid Cherwan",
+        footerAboutText: "Cherwan Kangan, 191202\nA sacred place to unite, learn, and ponder.",
+        footerContactTitle: "Contact Us",
+        footerContactText: "Phone: 6006254589, 9622000919\nEmail: ",
+        footerSocialTitle: "Follow Us",
+        footerTech: "Technical support: Arbaz Rashid.",
+        footerRights: "© 2025 Masjid Mohammadia Cherwan. All rights reserved.",
+        zakatTitle: "Zakat Calculator",
+        zakatNote: "Enter all assets that have been in your possession over a year. WhatsApp us if you have any questions.",
+        zakatNoteLink: "Click Here",
+        goldSilverLabel: "Value of Gold & Silver you have (in Rupees):",
+        cashHomeLabel: "Cash at Home (in Rupees):",
+        cashBankLabel: "Cash at Bank Account (in Rupees):",
+        investmentsLabel: "Any Investments & Share Value (in Rupees):",
+        businessLabel: "Value of goods & properties for business (in Rupees):",
+        liabilitiesLabel: "Total repayable Loan/Debts you have (in Rupees):",
+        calculateButton: "Calculate Zakat",
+        netValueLabel: "Your Calculated Net Value:",
+        zakatResultLabel: "Your Zakat:",
+        donateBtn: "Donate Now"
+      },
+      ur: {
+        title: "جامعہ اہلی حدیث محمدیہ مسجد چیروان",
+        nav: ["ہوم", "ہمارے بارے میں", "خدمات", "علم کا مرکز", "رمضان", "گیلری", "اعلانات", "کمیونٹی", "رابطہ"],
+        masjidName: "جامعہ اہلی حدیث محمدیہ مسجد چیروان",
+        welcome: "خوش آمدید:",
+        heroTitle: "جامعہ اہلی حدیث محمدیہ مسجد چیروان",
+        heroSub: "ہماری کمیونٹی کو ایمان، علم اور اتحاد کے ذریعے جوڑنا۔",
+        prayerBtn: "نماز کے اوقات دیکھیں",
+        chatbotTitle: "ہم سے بات کریں",
+        chatbotMessage: "ہیلو! مجھ سے مسجد کے ویب پیج کے بارے میں کچھ بھی پوچھیں۔",
+        chatbotPlaceholder: "ایک سوال پوچھیں...",
+        send: "بھیجیں",
+        announcementsTitle: "اہم اعلانات",
+        announcementText: "افطار پارٹی کی فہرست اپ لوڈ کر دی گئی ہے۔ آپ اسے 'آنے والے ایونٹس' سیکشن میں چیک کر سکتے ہیں--دانش مشتاق ایس جی / مدثر مجید",
+        ramadanTitle: "رمضان 2025",
+        hadithTitle: "دن کی حدیث",
+        quranAayahTitle: "دن کی قرآنی آیت",
+        aboutTitle: "ہمارے بارے میں",
+        aboutText: "جامعہ اہلی حدیث محمدیہ مسجد چیروان اپنی کمیونٹی کی خدمت کے لیے وقف ہے جس کی بھرپور تاریخ اور بصیرت افروز قیادت ہے۔",
+        aboutBtn: "ہمارے بارے میں مزید جانیں",
+        servicesTitle: "ہماری خدمات",
+        masjidServiceTitle: "مسجد کی خدمات",
+        masjidServiceText: "روزانہ کی نمازیں، جمعہ کے خطبے، اور سب کے لیے روحانی رہنمائی۔",
+        masjidServiceBtn: "مسجد کی خدمات دریافت کریں",
+        darulServiceTitle: "دار المواسات خدمات",
+        darulServiceText: "خیرات، بہبود کے اقدامات، اور کمیونٹی سپورٹ پروگرامز۔",
+        darulServiceBtn: "بہبود کی خدمات دریافت کریں",
+        darasgahServiceTitle: "درسگاہ خدمات",
+        darasgahServiceText: "تعلیمی پروگرامز، قرآنی تعلیمات، اور نوجوانوں کی ترقی۔",
+        darasgahServiceBtn: "درسگاہ خدمات دریافت کریں",
+        otherServiceTitle: "دیگر کمیونٹی خدمات",
+        otherServiceText: "ثقافتی پروگرامز، آؤٹ ریچ، اور اضافی کمیونٹی سپورٹ۔",
+        otherServiceBtn: "دیگر خدمات دریافت کریں",
+        prayerTimesTitle: "نماز کے اوقات",
+        fajr: "فجر", sunrise: "طلوع آفتاب", dhuhr: "ظہر", asr: "عصر", maghrib: "مغرب", isha: "عشاء",
+        knowledgeTitle: "علم کا مرکز",
+        quranTitle: "قرآنی تعلیمات",
+        quranText: "قرآن کی گہری سمجھ کے لیے وسائل اور ویڈیوز تک رسائی حاصل کریں۔",
+        quranBtn: "مزید جانیں",
+        hadithTitle: "حدیث لائبریری",
+        hadithText: "معتبر حدیث مجموعوں اور ان کی تشریحات کو دریافت کریں۔",
+        hadithBtn: "دریافت کریں",
+        lecturesTitle: "اسلامی لیکچرز",
+        lecturesText: "اہل حدیث کے مشہور علماء کے ریکارڈ شدہ لیکچرز دیکھیں۔",
+        lecturesBtn: "اب دیکھیں",
+        eventsTitle: "آنے والے ایونٹس",
+        fridayTitle: "جمعہ کا خطبہ",
+        fridayText: "ہر جمعہ کو ہمارے ہفتہ وار خطبہ اور اجتماعی نماز میں شامل ہوں۔",
+        quranRecitationTitle: "قرآن کی تلاوت",
+        quranRecitationText: "ہمارے ہفتہ وار تلاوت سیشنز کے دوران قرآن کی خوبصورتی کا تجربہ کریں۔",
+        communityIftarTitle: "کمیونٹی افطار",
+        communityIftarText: "رمضان کے دوران ہماری کمیونٹی کے ساتھ خصوصی افطار اجتماعات میں روزہ افطار کریں۔",
+        charityDriveTitle: "خیراتی مہم",
+        charityDriveText: "ہماری جاری خیراتی اقدامات کے ذریعے مقامی کمیونٹی کی مدد کریں۔",
+        galleryTitle: "گیلری",
+        galleryText: "ہمارے سفر اور عزم کو دریافت کریں",
+        galleryBtn: "مسجد گیلری پر جائیں",
+        communityTitle: "کمیونٹی کونسل",
+        volunteerTitle: "رضاکارانہ مواقع",
+        volunteerText: "مختلف رضاکارانہ کرداروں کے ذریعے کمیونٹی کی خدمت میں ہمارے ساتھ شامل ہوں۔",
+        volunteerBtn: "سائن اپ کریں",
+        youthTitle: "نوجوانوں کے پروگرامز",
+        youthText: "نوجوانوں کو ایمان اور کردار بنانے والی سرگرمیوں میں مشغول کریں۔",
+        youthCULBtn: "مزید جانیں",
+        footerAboutTitle: "جامعہ اہلی حدیث محمدیہ مسجد چیروان",
+        footerAboutText: "چیروان کنگن، 191202\nایک مقدس جگہ جو متحد ہونے، سیکھنے اور غور کرنے کے لیے ہے۔",
+        footerContactTitle: "ہم سے رابطہ کریں",
+        footerContactText: "فون: 6006254589، 9622000919\nای میل: ",
+        footerSocialTitle: "ہمیں فالو کریں",
+        footerTech: "تکنیکی معاونت: ارباز رشید۔",
+        footerRights: "© 2025 مسجد محمدیہ چیروان۔ جملہ حقوق محفوظ ہیں۔",
+        zakatTitle: "زکوٰۃ کیلکولیٹر",
+        zakatNote: "ایک سال سے زیادہ عرصے سے آپ کے قبضے میں موجود تمام اثاثوں کو درج کریں۔ اگر آپ کے کوئی سوالات ہیں تو ہمیں واٹس ایپ کریں۔",
+        zakatNoteLink: "یہاں کلک کریں",
+        goldSilverLabel: "سونے اور چاندی کی قیمت جو آپ کے پاس ہے (روپوں میں):",
+        cashHomeLabel: "گھر میں نقدی (روپوں میں):",
+        cashBankLabel: "بینک اکاؤنٹ میں نقدی (روپوں میں):",
+        investmentsLabel: "کوئی سرمایہ کاری اور شیئر کی قیمت (روپوں میں):",
+        businessLabel: "کاروبار کے لیے سامان اور جائیداد کی قیمت (روپوں میں):",
+        liabilitiesLabel: "واپس کرنے والا کل قرض/واجبات جو آپ کے پاس ہیں (روپوں میں):",
+        calculateButton: "زکوٰۃ کا حساب لگائیں",
+        netValueLabel: "آپ کی حساب شدہ خالص قیمت:",
+        zakatResultLabel: "آپ کی زکوٰۃ:",
+        donateBtn: "اب عطیہ کریں"
+      },
+      ar: {
+        title: "جامع أهل الحديث المحمدية مسجد شيروان",
+        nav: ["الرئيسية", "عنّا", "الخدمات", "مركز المعرفة", "رمضان", "المعرض", "الإعلانات", "المجتمع", "اتصل بنا"],
+        masjidName: "جامع أهل الحديث المحمدية مسجد شيروان",
+        welcome: "مرحبًا بكم في:",
+        heroTitle: "جامع أهل الحديث المحمدية مسجد شيروان",
+        heroSub: "ربط مجتمعنا بالإيمان والمعرفة والوحدة.",
+        prayerBtn: "عرض مواقيت الصلاة",
+        chatbotTitle: "تحدث معنا",
+        chatbotMessage: "مرحبًا! اسألني أي شيء عن صفحة المسجد.",
+        chatbotPlaceholder: "اسأل سؤالاً...",
+        send: "إرسال",
+        announcementsTitle: "إعلانات مهمة",
+        announcementText: "تم رفع قائمة حفلة الإفطار. يمكنك التحقق منها في قسم 'الأحداث القادمة'--دانش مشتاق س.ج / مدثر مجيد",
+        ramadanTitle: "رمضان 2025",
+        hadithTitle: "حديث اليوم",
+        quranAayahTitle: "آية القرآن اليومية",
+        aboutTitle: "عنّا",
+        aboutText: "جامع أهل الحديث المحمدية مسجد شيروان مكرس لخدمة مجتمعنا بتاريخ غني وقيادة ذات رؤية.",
+        aboutBtn: "اعرف المزيد عنا",
+        servicesTitle: "خدماتنا",
+        masjidServiceTitle: "خدمات المسجد",
+        masjidServiceText: "الصلوات اليومية، خطب الجمعة، والإرشاد الروحي للجميع.",
+        masjidServiceBtn: "استكشف خدمات المسجد",
+        darulServiceTitle: "خدمات دار المواساة",
+        darulServiceText: "الصدقات، مبادرات الرفاهية، وبرامج دعم المجتمع.",
+        darulServiceBtn: "استكشف خدمات الرفاهية",
+        darasgahServiceTitle: "خدمات الدراسة",
+        darasgahServiceText: "البرامج التعليمية، دراسات القرآن، وتنمية الشباب.",
+        darasgahServiceBtn: "استكشف خدمات الدراسة",
+        otherServiceTitle: "خدمات المجتمع الأخرى",
+        otherServiceText: "الفعاليات الثقافية، التوعية، ودعم المجتمع الإضافي.",
+        otherServiceBtn: "استكشف خدمات أخرى",
+        prayerTimesTitle: "مواقيت الصلاة",
+        fajr: "الفجر", sunrise: "الشروق", dhuhr: "الظهر", asr: "العصر", maghrib: "المغرب", isha: "العشاء",
+        knowledgeTitle: "مركز المعرفة",
+        quranTitle: "دراسات القرآن",
+        quranText: "الوصول إلى الموارد والفيديوهات لتعميق فهمك للقرآن.",
+        quranBtn: "اعرف المزيد",
+        hadithTitle: "مكتبة الحديث",
+        hadithText: "استكشف مجموعات الحديث الصحيحة وتفسيراتها.",
+        hadithBtn: "استكشف",
+        lecturesTitle: "محاضرات إسلامية",
+        lecturesText: "شاهد محاضرات مسجلة من علماء أهل الحديث المشهورين.",
+        lecturesBtn: "شاهد الآن",
+        eventsTitle: "الأحداث القادمة",
+        fridayTitle: "خطبة الجمعة",
+        fridayText: "انضم إلينا كل يوم جمعة لخطبتنا الأسبوعية والصلاة الجماعية.",
+        quranRecitationTitle: "تلاوة القرآن",
+        quranRecitationText: "استمتع بجمال القرآن خلال جلسات التلاوة الأسبوعية.",
+        communityIftarTitle: "إفطار المجتمع",
+        communityIftarText: "افطر مع مجتمعنا خلال رمضان في تجمعات إفطار خاصة.",
+        charityDriveTitle: "حملة خيرية",
+        charityDriveText: "ادعم مجتمعنا المحلي من خلال مبادراتنا الخيرية المستمرة.",
+        galleryTitle: "المعرض",
+        galleryText: "استكشف رحلتنا والتزامنا",
+        galleryBtn: "اذهب إلى معرض المسجد",
+        communityTitle: "ركن المجتمع",
+        volunteerTitle: "فرص التطوع",
+        volunteerText: "انضم إلينا في خدمة المجتمع من خلال أدوار تطوعية متنوعة.",
+        volunteerBtn: "سجل",
+        youthTitle: "برامج الشباب",
+        youthText: "إشراك شبابنا في أنشطة تبني الإيمان والشخصية.",
+        youthBtn: "اعرف المزيد",
+        footerAboutTitle: "جامع أهل الحديث المحمدية مسجد شيروان",
+        footerAboutText: "شيروان كانجان، 191202\nمكان مقدس للتوحد، التعلم، والتأمل.",
+        footerContactTitle: "اتصل بنا",
+        footerContactText: "الهاتف: 600625458",
+        footerSocialTitle: "تابعنا",
+        footerTech: "الدعم الفني: أرباز رشيد.",
+        footerRights: "© 2025 مسجد المحمدية شيروان. جميع الحقوق محفوظة.",
+        zakatTitle: "حاسبة الزكاة",
+        zakatNote: "أدخل جميع الأصول التي كانت في حوزتك لأكثر من عام. راسلنا على واتساب إذا كانت لديك أسئلة.",
+        zakatNoteLink: "اضغط هنا",
+        goldSilverLabel: "قيمة الذهب والفضة التي لديك (بالروبية):",
+        cashHomeLabel: "النقود في المنزل (بالروبية):",
+        cashBankLabel: "النقود في الحساب البنكي (بالروبية):",
+        investmentsLabel: "أي استثمارات وقيمة الأسهم (بالروبية):",
+        businessLabel: "قيمة البضائع والممتلكات للأعمال (بالروبية):",
+        liabilitiesLabel: "إجمالي القروض/الديون القابلة للسداد التي لديك (بالروبية):",
+        calculateButton: "احسب الزكاة",
+        netValueLabel: "القيمة الصافية المحسوبة لك:",
+        zakatResultLabel: "زكاتك:",
+        donateBtn: "تبرع الآن"
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.title = translations[lang].title;
+      const navItems = document.querySelectorAll('nav ul li a');
+      navItems.forEach((item, index) => item.textContent = translations[lang].nav[index]);
+      document.getElementById('masjid-name').textContent = translations[lang].masjidName;
+      document.querySelector('.hero-content h1').textContent = translations[lang].welcome;
+      document.querySelector('.hero-content h2').textContent = translations[lang].heroTitle;
+      document.querySelector('.hero-subheading').textContent = translations[lang].heroSub;
+      document.querySelector('.hero-content .btn').textContent = translations[lang].prayerBtn;
+      document.querySelector('.chatbot-header h3').innerHTML = `${translations[lang].chatbotTitle} <i class="fas fa-robot"></i>`;
+      document.querySelector('.bot-message').textContent = translations[lang].chatbotMessage;
+      document.querySelector('#chat-input').placeholder = translations[lang].chatbotPlaceholder;
+      document.querySelector('.chat-input-container button').textContent = translations[lang].send;
+      document.querySelector('#announcements .section-title').textContent = translations[lang].announcementsTitle;
+      document.querySelectorAll('.announcement-item').forEach(item => item.textContent = translations[lang].announcementText);
+      document.querySelector('#ramadan .section-title').textContent = translations[lang].ramadanTitle;
+      document.querySelector('.ramadan-times h3').textContent = translations[lang].hadithTitle;
+      document.querySelector('.quran-aayah h3').textContent = translations[lang].quranAayahTitle;
+      document.querySelector('#about .section-title').textContent = translations[lang].aboutTitle;
+      document.querySelector('#about .content p').textContent = translations[lang].aboutText;
+      document.querySelector('.btn-about').textContent = translations[lang].aboutBtn;
+      document.querySelector('#services .section-title').textContent = translations[lang].servicesTitle;
+      document.querySelectorAll('.service-card h3')[0].textContent = translations[lang].masjidServiceTitle;
+      document.querySelectorAll('.service-card p')[0].textContent = translations[lang].masjidServiceText;
+      document.querySelectorAll('.btn-service')[0].textContent = translations[lang].masjidServiceBtn;
+      document.querySelectorAll('.service-card h3')[1].textContent = translations[lang].darulServiceTitle;
+      document.querySelectorAll('.service-card p')[1].textContent = translations[lang].darulServiceText;
+      document.querySelectorAll('.btn-service')[1].textContent = translations[lang].darulServiceBtn;
+      document.querySelectorAll('.service-card h3')[2].textContent = translations[lang].darasgahServiceTitle;
+      document.querySelectorAll('.service-card p')[2].textContent = translations[lang].darasgahServiceText;
+      document.querySelectorAll('.btn-service')[2].textContent = translations[lang].darasgahServiceBtn;
+      document.querySelectorAll('.service-card h3')[3].textContent = translations[lang].otherServiceTitle;
+      document.querySelectorAll('.service-card p')[3].textContent = translations[lang].otherServiceText;
+      document.querySelectorAll('.btn-service')[3].textContent = translations[lang].otherServiceBtn;
+      document.querySelector('#prayer-times .section-title').textContent = translations[lang].prayerTimesTitle;
+      document.querySelectorAll('.prayer-name')[0].textContent = translations[lang].fajr;
+      document.querySelectorAll('.prayer-name')[1].textContent = translations[lang].sunrise;
+      document.querySelectorAll('.prayer-name')[2].textContent = translations[lang].dhuhr;
+      document.querySelectorAll('.prayer-name')[3].textContent = translations[lang].asr;
+      document.querySelectorAll('.prayer-name')[4].textContent = translations[lang].maghrib;
+      document.querySelectorAll('.prayer-name')[5].textContent = translations[lang].isha;
+      document.querySelector('#knowledge .section-title').textContent = translations[lang].knowledgeTitle;
+      document.querySelectorAll('.knowledge-item h3')[0].textContent = translations[lang].quranTitle;
+      document.querySelectorAll('.knowledge-item p')[0].textContent = translations[lang].quranText;
+      document.querySelectorAll('.btn-knowledge')[0].textContent = translations[lang].quranBtn;
+      document.querySelectorAll('.knowledge-item h3')[1].textContent = translations[lang].hadithTitle;
+      document.querySelectorAll('.knowledge-item p')[1].textContent = translations[lang].hadithText;
+      document.querySelectorAll('.btn-knowledge')[1].textContent = translations[lang].hadithBtn;
+      document.querySelectorAll('.knowledge-item h3')[2].textContent = translations[lang].lecturesTitle;
+      document.querySelectorAll('.knowledge-item p')[2].textContent = translations[lang].lecturesText;
+      document.querySelectorAll('.btn-knowledge')[2].textContent = translations[lang].lecturesBtn;
+      document.querySelector('#events .section-title').textContent = translations[lang].eventsTitle;
+      document.querySelectorAll('.event h3')[0].textContent = translations[lang].fridayTitle;
+      document.querySelectorAll('.event p')[0].textContent = translations[lang].fridayText;
+      document.querySelectorAll('.event h3')[1].textContent = translations[lang].quranRecitationTitle;
+      document.querySelectorAll('.event p')[1].textContent = translations[lang].quranRecitationText;
+      document.querySelectorAll('.event h3')[2].textContent = translations[lang].communityIftarTitle;
+      document.querySelectorAll('.event p')[2].textContent = translations[lang].communityIftarText;
+      document.querySelectorAll('.event h3')[3].textContent = translations[lang].charityDriveTitle;
+      document.querySelectorAll('.event p')[3].textContent = translations[lang].charityDriveText;
+      document.querySelector('#gallery .section-title').textContent = translations[lang].galleryTitle;
+      document.querySelector('#gallery p strong').textContent = translations[lang].galleryText;
+      document.querySelector('.btn-gallery').textContent = translations[lang].galleryBtn;
+      document.querySelector('#community .section-title').textContent = translations[lang].communityTitle;
+      document.querySelectorAll('.community-item h3')[0].textContent = translations[lang].volunteerTitle;
+      document.querySelectorAll('.community-item p')[0].textContent = translations[lang].volunteerText;
+      document.querySelectorAll('.btn-community')[0].textContent = translations[lang].volunteerBtn;
+      document.querySelectorAll('.community-item h3')[1].textContent = translations[lang].youthTitle;
+      document.querySelectorAll('.community-item p')[1].textContent = translations[lang].youthText;
+      document.querySelectorAll('.btn-community')[1].textContent = translations[lang].youthBtn;
+      document.querySelector('.footer-about h3').textContent = translations[lang].footerAboutTitle;
+      document.querySelector('.footer-about p').textContent = translations[lang].footerAboutText;
+      document.querySelector('.footer-contact h3').textContent = translations[lang].footerContactTitle;
+      document.querySelector('.footer-contact p').innerHTML = translations[lang].footerContactText + '<a href="mailto:jamiacherwan@gmail.com">jamiacherwan@gmail.com</a>';
+      document.querySelector('.footer-social h3').textContent = translations[lang].footerSocialTitle;
+      document.querySelectorAll('.footer-bottom p')[0].textContent = translations[lang].footerTech;
+      document.querySelectorAll('.footer-bottom p')[1].textContent = translations[lang].footerRights;
+      document.querySelector('#zakat-calculator .section-title').textContent = translations[lang].zakatTitle;
+      document.querySelector('.zakat-note').innerHTML = `${translations[lang].zakatNote} <a href="https://wa.me/916005317824" target="_blank">${translations[lang].zakatNoteLink}</a>`;
+      document.querySelector('label[for="gold-silver-input"]').textContent = translations[lang].goldSilverLabel;
+      document.querySelector('label[for="cash-home-input"]').textContent = translations[lang].cashHomeLabel;
+      document.querySelector('label[for="cash-bank-input"]').textContent = translations[lang].cashBankLabel;
+      document.querySelector('label[for="investments-input"]').textContent = translations[lang].investmentsLabel;
+      document.querySelector('label[for="business-input"]').textContent = translations[lang].businessLabel;
+      document.querySelector('label[for="liabilities-input"]').textContent = translations[lang].liabilitiesLabel;
+      document.querySelector('#calculate-zakat').textContent = translations[lang].calculateButton;
+      document.querySelector('#zakat-result p:nth-child(1)').innerHTML = `${translations[lang].netValueLabel} <span id="net-value">Rs.33,000</span>`;
+      document.querySelector('#zakat-result p:nth-child(2)').innerHTML = `${translations[lang].zakatResultLabel} <span id="zakat-amount">No Zakat - Total value is below Nisab</span>`;
+      document.querySelector('#donate-now').textContent = translations[lang].donateBtn;
+
+      document.getElementById('language-modal').style.display = 'none';
+      if (lang === 'ur' || lang === 'ar') {
+        document.body.style.direction = 'rtl';
+        document.body.style.textAlign = 'right';
+        document.querySelectorAll('.prayer-item').forEach(item => item.style.flexDirection = 'row-reverse');
+        document.getElementById('donate-now').style.right = 'auto';
+        document.getElementById('donate-now').style.left = '0';
+      } else {
+        document.body.style.direction = 'ltr';
+        document.body.style.textAlign = 'left';
+        document.querySelectorAll('.prayer-item').forEach(item => item.style.flexDirection = 'row');
+        document.getElementById('donate-now').style.left = 'auto';
+        document.getElementById('donate-now').style.right = '0';
+      }
+    }
+
+    document.getElementById('calculate-zakat').addEventListener('click', () => {
+      const goldSilver = parseFloat(document.getElementById('gold-silver-input').value) || 0;
+      const cashHome = parseFloat(document.getElementById('cash-home-input').value) || 0;
+      const cashBank = parseFloat(document.getElementById('cash-bank-input').value) || 0;
+      const investments = parseFloat(document.getElementById('investments-input').value) || 0;
+      const business = parseFloat(document.getElementById('business-input').value) || 0;
+      const liabilities = parseFloat(document.getElementById('liabilities-input').value) || 0;
+
+      const totalAssets = goldSilver + cashHome + cashBank + investments + business;
+      const netValue = totalAssets - liabilities;
+      const zakatRate = 0.025;
+      const nisabThreshold = 75000;
+
+      document.getElementById('net-value').textContent = `Rs.${netValue.toFixed(2)}`;
+      if (netValue >= nisabThreshold) {
+        const zakatAmount = netValue * zakatRate;
+        document.getElementById('zakat-amount').textContent = `Rs.${zakatAmount.toFixed(2)}`;
+      } else {
+        document.getElementById('zakat-amount').textContent = "No Zakat - Total value is below Nisab";
+      }
+    });
+
+    window.onload = () => {
+      changeLanguage('en');
+      updatePrayerInfo(new Date());
+      updateDailyContent();
+    };
+
+    function updatePrayerInfo(now) {
+      const prayerTimes = {
+        Fajr: "05:00 AM", Sunrise: "06:15 AM", Dhuhr: "12:30 PM", Asr: "03:45 PM", Maghrib: "06:30 PM", Isha: "07:45 PM"
+      };
+      const timeToMinutes = (timeStr) => {
+        const [time, period] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        return hours * 60 + minutes;
+      };
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const prayers = Object.entries(prayerTimes).map(([name, time]) => ({ name, time, minutes: timeToMinutes(time) }));
+      let currentPrayer = prayers[prayers.length - 1];
+      let upcomingPrayer = prayers[0];
+      for (let i = 0; i < prayers.length; i++) {
+        if (currentMinutes < prayers[i].minutes) {
+          currentPrayer = prayers[i - 1] || prayers[prayers.length - 1];
+          upcomingPrayer = prayers[i];
+          break;
+        }
+      }
+      document.getElementById('current-prayer-name').textContent = currentPrayer.name;
+      document.getElementById('current-prayer-time').textContent = currentPrayer.time;
+      document.getElementById('upcoming-prayer-name').textContent = upcomingPrayer.name;
+      document.getElementById('upcoming-prayer-time').textContent = upcomingPrayer.time;
+    }
+    setInterval(() => updatePrayerInfo(new Date()), 60000); // Update every minute
+
+   // Daily Quran and Hadith content
+  const quranAayahs = [
+    '<p class="quran-text">In the name of Allah, the Entirely Merciful, the Especially Merciful. [All] praise is [due] to Allah, Lord of the worlds. <br><strong>(Surah Al-Fatiha 1:1-2)</strong></p>',
+    '<p class="quran-text">Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence... <br><strong>(Surah Al-Baqarah 2:255 - Ayat al-Kursi)</strong></p>',
+    '<p class="quran-text">Allah does not burden a soul beyond that it can bear... <br><strong>(Surah Al-Baqarah 2:286)</strong></p>',
+    '<p class="quran-text">Indeed, in the creation of the heavens and the earth and the alternation of the night and day are signs for those of understanding. <br><strong>(Surah Aal-E-Imran 3:190)</strong></p>',
+    '<p class="quran-text">O mankind, fear your Lord, who created you from one soul... <br><strong>(Surah An-Nisa 4:1)</strong></p>',
+    '<p class="quran-text">...Whoever saves one [life] - it is as if he had saved mankind entirely. <br><strong>(Surah Al-Ma’idah 5:32)</strong></p>',
+    '<p class="quran-text">And with Him are the keys of the unseen; none knows them except Him... <br><strong>(Surah Al-An’am 6:59)</strong></p>',
+    '<p class="quran-text">And cause not corruption upon the earth after its reformation... <br><strong>(Surah Al-A’raf 7:56)</strong></p>',
+    '<p class="quran-text">Say, “He is Allah, [who is] One, Allah, the Eternal Refuge.” <br><strong>(Surah Al-Ikhlas 112:1-2)</strong></p>',
+    '<p class="quran-text">And We have certainly made the Quran easy for remembrance, so is there any who will remember? <br><strong>(Surah Al-Qamar 54:17)</strong></p>',
+    '<p class="quran-text">Indeed, those who have believed and done righteous deeds - the Most Merciful will appoint for them affection. <br><strong>(Surah Maryam 19:96)</strong></p>',
+    '<p class="quran-text">So be patient. Indeed, the promise of Allah is truth... <br><strong>(Surah Ar-Rum 30:60)</strong></p>',
+    '<p class="quran-text">And whoever puts their trust in Allah - then He will suffice him... <br><strong>(Surah At-Talaq 65:3)</strong></p>',
+    '<p class="quran-text">Indeed, with hardship [will be] ease. <br><strong>(Surah Ash-Sharh 94:6)</strong></p>',
+    '<p class="quran-text">And your Lord is the Forgiving, Full of Mercy... <br><strong>(Surah Al-Kahf 18:58)</strong></p>',
+    '<p class="quran-text">And We have not sent you, [O Muhammad], except as a mercy to the worlds. <br><strong>(Surah Al-Anbiya 21:107)</strong></p>',
+    '<p class="quran-text">Indeed, the mercy of Allah is near to the doers of good. <br><strong>(Surah Al-A’raf 7:56)</strong></p>',
+    '<p class="quran-text">Say, “Call upon Allah or call upon the Most Merciful...” <br><strong>(Surah Al-Isra 17:110)</strong></p>',
+    '<p class="quran-text">And the heaven We constructed with strength, and indeed, We are [its] expander. <br><strong>(Surah Adh-Dhariyat 51:47)</strong></p>',
+    '<p class="quran-text">Every soul will taste death... <br><strong>(Surah Aal-E-Imran 3:185)</strong></p>',
+    '<p class="quran-text">And whoever is guided is only guided for [the benefit of] himself... <br><strong>(Surah An-Naml 27:92)</strong></p>',
+    '<p class="quran-text">Indeed, Allah is with the patient. <br><strong>(Surah Al-Baqarah 2:153)</strong></p>',
+    '<p class="quran-text">And We have sent down to you the Book as clarification for all things... <br><strong>(Surah An-Nahl 16:89)</strong></p>',
+    '<p class="quran-text">So remember Me; I will remember you... <br><strong>(Surah Al-Baqarah 2:152)</strong></p>',
+    '<p class="quran-text">Indeed, prayer prohibits immorality and wrongdoing... <br><strong>(Surah Al-Ankabut 29:45)</strong></p>',
+    '<p class="quran-text">And seek help through patience and prayer... <br><strong>(Surah Al-Baqarah 2:45)</strong></p>',
+    '<p class="quran-text">And whatever you have of favor - it is from Allah... <br><strong>(Surah An-Nahl 16:53)</strong></p>',
+    '<p class="quran-text">Indeed, the Hereafter is better for you than the first [life]. <br><strong>(Surah Ad-Duha 93:4)</strong></p>',
+    '<p class="quran-text">And the earth We have spread out, and excellent is the preparer. <br><strong>(Surah Adh-Dhariyat 51:48)</strong></p>',
+    '<p class="quran-text">Do they not see the birds above them with wings outspread and [sometimes] folded in? <br><strong>(Surah Al-Mulk 67:19)</strong></p>',
+    '<p class="quran-text">Indeed, Allah loves those who are constantly repentant... <br><strong>(Surah Al-Baqarah 2:222)</strong></p>',
+    '<p class="quran-text">Say, “My Lord has only forbidden immoralities - what is apparent of them and what is concealed...” <br><strong>(Surah Al-A’raf 7:33)</strong></p>',
+    '<p class="quran-text">And We will surely test you with something of fear and hunger... <br><strong>(Surah Al-Baqarah 2:155)</strong></p>',
+    '<p class="quran-text">Indeed, those who have believed and done righteous deeds - their Lord will guide them because of their faith... <br><strong>(Surah Yunus 10:9)</strong></p>',
+    '<p class="quran-text">And Allah is the best of providers. <br><strong>(Surah Al-Jumu’ah 62:11)</strong></p>',
+    '<p class="quran-text">Indeed, in the remembrance of Allah do hearts find rest. <br><strong>(Surah Ar-Ra’d 13:28)</strong></p>',
+    '<p class="quran-text">And We created you in pairs. <br><strong>(Surah An-Naba 78:8)</strong></p>',
+    '<p class="quran-text">And whoever fears Allah - He will make for him a way out. <br><strong>(Surah At-Talaq 65:2)</strong></p>',
+    '<p class="quran-text">Indeed, Allah does not do injustice, [even] as much as an atom’s weight... <br><strong>(Surah An-Nisa 4:40)</strong></p>',
+    '<p class="quran-text">And He found you lost and guided [you]. <br><strong>(Surah Ad-Duha 93:7)</strong></p>',
+    '<p class="quran-text">And the Day when We will fold the heaven like the folding of a [written] sheet... <br><strong>(Surah Al-Anbiya 21:104)</strong></p>',
+    '<p class="quran-text">Indeed, the righteous will be in pleasure... <br><strong>(Surah Al-Mutaffifin 83:22)</strong></p>',
+    '<p class="quran-text">And say, “The truth is from your Lord, so whoever wills - let him believe...” <br><strong>(Surah Al-Kahf 18:29)</strong></p>',
+    '<p class="quran-text">Indeed, Allah is with those who fear Him and those who are doers of good. <br><strong>(Surah An-Nahl 16:128)</strong></p>',
+    '<p class="quran-text">And whoever turns away from My remembrance - indeed, he will have a depressed life... <br><strong>(Surah Ta-Ha 20:124)</strong></p>',
+    '<p class="quran-text">And He it is who causes laughter and weeping. <br><strong>(Surah An-Najm 53:43)</strong></p>',
+    '<p class="quran-text">Indeed, Allah is the Exalted in Might, the Forgiving. <br><strong>(Surah Fatir 35:28)</strong></p>',
+    '<p class="quran-text">And the sun runs [on course] toward its stopping point... <br><strong>(Surah Ya-Sin 36:38)</strong></p>',
+    '<p class="quran-text">So exalt the name of your Lord, the Most Great. <br><strong>(Surah Al-Waqi’ah 56:96)</strong></p>',
+    '<p class="quran-text">Indeed, this is a reminder, so whoever wills may take to his Lord a way. <br><strong>(Surah Al-Insan 76:29)</strong></p>'
+  ];
+  const hadiths = [
+   '<p class="hadith-text">The best among you are those who learn the Quran and teach it. <br><strong>(Sahih Bukhari, Book 66, Hadith 5027)</strong></p>',
+    '<p class="hadith-text">None of you truly believes until he loves for his brother what he loves for himself. <br><strong>(Sahih Bukhari, Book 2, Hadith 12)</strong></p>',
+    '<p class="hadith-text">The most beloved deeds to Allah are the most regular and constant, even if they are few. <br><strong>(Sahih Bukhari, Book 76, Hadith 6465)</strong></p>',
+    '<p class="hadith-text">Whoever feeds a fasting person will have a reward like that of the fasting person... <br><strong>(Sunan Tirmidhi, Book 8, Hadith 807)</strong></p>',
+    '<p class="hadith-text">He who believes in Allah and the Last Day should speak good or remain silent. <br><strong>(Sahih Bukhari, Book 78, Hadith 6110)</strong></p>',
+    '<p class="hadith-text">The strong man is not the one who overcomes others by strength, but the one who controls himself while in anger. <br><strong>(Sahih Bukhari, Book 78, Hadith 6114)</strong></p>',
+    '<p class="hadith-text">Charity does not decrease wealth... <br><strong>(Sahih Muslim, Book 45, Hadith 2588)</strong></p>',
+    '<p class="hadith-text">The best charity is that given when you are self-sufficient... <br><strong>(Sahih Bukhari, Book 24, Hadith 1426)</strong></p>',
+    '<p class="hadith-text">Smiling in the face of your brother is charity. <br><strong>(Sunan Tirmidhi, Book 27, Hadith 1956)</strong></p>',
+    '<p class="hadith-text">Whoever says “SubhanAllah wa bihamdihi” 100 times a day, his sins will be forgiven... <br><strong>(Sahih Bukhari, Book 75, Hadith 6323)</strong></p>',
+    '<p class="hadith-text">The best of you are those who are best to their wives. <br><strong>(Sunan Tirmidhi, Book 11, Hadith 1162)</strong></p>',
+    '<p class="hadith-text">Seek knowledge from the cradle to the grave. <br><strong>(Sunan Ibn Majah, Book 1, Hadith 223)</strong></p>',
+    '<p class="hadith-text">The ink of the scholar is more sacred than the blood of the martyr. <br><strong>(Sahih Bukhari, Book 4, Hadith 55 - Variant)</strong></p>',
+    '<p class="hadith-text">Whoever follows a path to seek knowledge, Allah will make easy for him a path to Paradise. <br><strong>(Sahih Muslim, Book 44, Hadith 2699)</strong></p>',
+    '<p class="hadith-text">Leave what makes you doubt for what does not make you doubt. <br><strong>(Sunan Tirmidhi, Book 37, Hadith 2518)</strong></p>',
+    '<p class="hadith-text">The best Jihad is to speak a word of truth to an unjust ruler. <br><strong>(Sunan Abu Dawud, Book 40, Hadith 4344)</strong></p>',
+    '<p class="hadith-text">A kind word is a form of charity. <br><strong>(Sahih Bukhari, Book 56, Hadith 6023)</strong></p>',
+    '<p class="hadith-text">The believer’s shade on the Day of Resurrection will be his charity. <br><strong>(Sunan Tirmidhi, Book 9, Hadith 2418)</strong></p>',
+    '<p class="hadith-text">Allah is with His servant as long as the servant is with his brother. <br><strong>(Sahih Muslim, Book 45, Hadith 2557)</strong></p>',
+    '<p class="hadith-text">Whoever performs wudu’ well, his sins will come out from his body... <br><strong>(Sunan Tirmidhi, Book 2, Hadith 2)</strong></p>',
+    '<p class="hadith-text">The best prayer after the obligatory prayers is the night prayer. <br><strong>(Sahih Muslim, Book 6, Hadith 1163)</strong></p>',
+    '<p class="hadith-text">Whoever prays twelve rak’ahs in a grunt day and night, a house will be built for him in Paradise. <br><strong>(Sahih Muslim, Book 4, Hadith 728)</strong></p>',
+    '<p class="hadith-text">The example of the five prayers is like a river running at your door... <br><strong>(Sahih Bukhari, Book 10, Hadith 528)</strong></p>',
+    '<p class="hadith-text">Whoever says “La ilaha illallah” sincerely will enter Paradise. <br><strong>(Musnad Ahmad, Hadith 22292)</strong></p>',
+    '<p class="hadith-text">Patience is at the first strike of calamity. <br><strong>(Sahih Bukhari, Book 23, Hadith 1302)</strong></p>',
+    '<p class="hadith-text">The best fasting after Ramadan is in the month of Muharram. <br><strong>(Sahih Muslim, Book 13, Hadith 1163)</strong></p>',
+    '<p class="hadith-text">Whoever fasts one day for the sake of Allah, Allah will keep his face away from the Fire... <br><strong>(Sahih Bukhari, Book 56, Hadith 2840)</strong></p>',
+    '<p class="hadith-text">The supplication of a Muslim for his brother in his absence is answered. <br><strong>(Sahih Muslim, Book 45, Hadith 2733)</strong></p>',
+    '<p class="hadith-text">The dua made between the Adhan and Iqamah is not rejected. <br><strong>(Sunan Abu Dawud, Book 2, Hadith 521)</strong></p>',
+    '<p class="hadith-text">The most beloved words to Allah are four: SubhanAllah, Alhamdulillah, La ilaha illallah, Allahu Akbar. <br><strong>(Sahih Muslim, Book 39, Hadith 2137)</strong></p>',
+    '<p class="hadith-text">Whoever recites the last two verses of Surah Al-Baqarah at night, they will suffice him. <br><strong>(Sahih Bukhari, Book 66, Hadith 5009)</strong></p>',
+    '<p class="hadith-text">The best day on which the sun rises is Friday... <br><strong>(Sahih Muslim, Book 7, Hadith 854)</strong></p>',
+    '<p class="hadith-text">Whoever loves to meet Allah, Allah loves to meet him. <br><strong>(Sahih Bukhari, Book 81, Hadith 6507)</strong></p>',
+    '<p class="hadith-text">The best of people are those who are most beneficial to others. <br><strong>(Sunan Ibn Majah, Book 1, Hadith 234)</strong></p>',
+    '<p class="hadith-text">Modesty is a branch of faith. <br><strong>(Sahih Bukhari, Book 2, Hadith 8)</strong></p>',
+    '<p class="hadith-text">Whoever guards his tongue, Allah will cover his faults. <br><strong>(Sunan Ibn Majah, Book 36, Hadith 3974)</strong></p>',
+    '<p class="hadith-text">The merciful are shown mercy by the Most Merciful... <br><strong>(Sunan Tirmidhi, Book 27, Hadith 1924)</strong></p>',
+    '<p class="hadith-text">Allah does not look at your appearance or wealth, but at your hearts and deeds. <br><strong>(Sahih Muslim, Book 45, Hadith 2564)</strong></p>',
+    '<p class="hadith-text">The best wealth is the wealth of the soul. <br><strong>(Sahih Bukhari, Book 81, Hadith 6446)</strong></p>',
+    '<p class="hadith-text">Whoever controls his anger when he has the means to act, Allah will fill his heart with faith. <br><strong>(Sunan Abu Dawud, Book 41, Hadith 4777)</strong></p>',
+    '<p class="hadith-text">The reward of deeds depends upon the intentions... <br><strong>(Sahih Bukhari, Book 1, Hadith 1)</strong></p>',
+    '<p class="hadith-text">A believer does not taunt, curse, abuse, or talk indecently. <br><strong>(Sunan Tirmidhi, Book 27, Hadith 1977)</strong></p>',
+    '<p class="hadith-text">The nearest a servant comes to his Lord is when he is prostrating... <br><strong>(Sahih Muslim, Book 4, Hadith 482)</strong></p>',
+    '<p class="hadith-text">Whoever builds a mosque for Allah, Allah will build for him a house in Paradise. <br><strong>(Sahih Bukhari, Book 8, Hadith 441)</strong></p>',
+    '<p class="hadith-text">The world is a prison for the believer and a paradise for the disbeliever. <br><strong>(Sahih Muslim, Book 42, Hadith 2956)</strong></p>',
+    '<p class="hadith-text">Allah has ninety-nine names, and whoever memorizes them will enter Paradise. <br><strong>(Sahih Bukhari, Book 75, Hadith 6410)</strong></p>',
+    '<p class="hadith-text">The example of the believer is like a fresh plant... <br><strong>(Sahih Bukhari, Book 56, Hadith 2639)</strong></p>',
+    '<p class="hadith-text">Whoever visits the sick or his brother for Allah’s sake, an angel calls out: “Blessed be you...” <br><strong>(Sunan Tirmidhi, Book 11, Hadith 2008)</strong></p>',
+    '<p class="hadith-text">The best of you are those who, when seen, remind others of Allah. <br><strong>(Musnad Ahmad, Hadith 16542)</strong></p>',
+    '<p class="hadith-text">Whoever says after every prayer “SubhanAllah” 33 times, “Alhamdulillah” 33 times, and “Allahu Akbar” 34 times, his sins will be forgiven... <br><strong>(Sahih Muslim, Book 5, Hadith 597)</strong></p>'
+  ];
+
+  function updateDailyContent() {
+    const hadithElement = document.getElementById('hadith-text');
+    const quranElement = document.getElementById('quran-aayah-text');
+
+    // Check if elements exist
+    if (!hadithElement || !quranElement) {
+      console.error("Error: Hadith or Quran elements not found in DOM");
+      return;
+    }
+
+    const today = new Date().toDateString();
+    const storedDate = localStorage.getItem('lastContentDate');
+    let dailyHadith = localStorage.getItem('dailyHadith');
+    let dailyAayah = localStorage.getItem('dailyAayah');
+
+    // Update content if it's a new day or no content is stored
+    if (storedDate !== today || !dailyHadith || !dailyAayah) {
+      dailyHadith = hadiths[Math.floor(Math.random() * hadiths.length)];
+      dailyAayah = quranAayahs[Math.floor(Math.random() * quranAayahs.length)];
+      localStorage.setItem('dailyHadith', dailyHadith);
+      localStorage.setItem('dailyAayah', dailyAayah);
+      localStorage.setItem('lastContentDate', today);
+    }
+
+    // Set content and ensure visibility
+    hadithElement.textContent = dailyHadith;
+    quranElement.textContent = dailyAayah;
+    hadithElement.style.display = 'block';
+    quranElement.style.display = 'block';
+  }
+
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim().toLowerCase();
+      if (message) {
+        const messages = document.getElementById('chat-messages');
+        messages.innerHTML += `<p class="user-message">You: ${input.value}</p>`;
+        let response = analyzeAndRespond(message);
+        setTimeout(() => {
+          messages.innerHTML += `<p class="bot-message">Bot: ${response}</p>`;
+          messages.scrollTop = messages.scrollHeight;
+        }, 1000);
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+      }
+    }
+
+    function analyzeAndRespond(message) {
+      const content = {
+        general: {
+          name: 'Jamia Ahli Hadees Mohammadia Masjid Cherwan',
+          location: 'Cherwan Kangan, 191202',
+          purpose: 'Unites the community through faith, knowledge, and unity',
+          services: 'Religious services (prayers, sermons), charity, education, youth programs, community events',
+          events: 'Friday Khutbah, Quran Recitation, Community Iftar, Charity Drive',
+          prayerTimes: {
+            fajr: '5:00 AM', sunrise: '6:15 AM', dhuhr: '12:30 PM', asr: '3:45 PM', maghrib: '6:30 PM', isha: '7:45 PM'
+          },
+          ramadan: 'Sacred month with daily Quran Aayahs and Hadiths',
+          knowledge: 'Quranic Studies, Hadith Library, Islamic Lectures',
+          gallery: 'Photos of masjid, events, and community activities',
+          donation: 'Supports programs, charity, and community initiatives via Donate Now button',
+          community: 'Volunteer opportunities, youth programs, welfare initiatives',
+          contact: 'Phone: 6006254589, 9622000919; Email: jamiacherwan@gmail.com',
+          social: 'Facebook and YouTube for updates'
+        }
+      };
+      if (message.includes('prayer times')) return `Prayer times: Fajr ${content.general.prayerTimes.fajr}, Dhuhr ${content.general.prayerTimes.dhuhr}, Asr ${content.general.prayerTimes.asr}, Maghrib ${content.general.prayerTimes.maghrib}, Isha ${content.general.prayerTimes.isha}.`;
+      if (message.includes('ramadan')) return content.general.ramadan;
+      if (message.includes('services')) return content.general.services;
+      if (message.includes('contact')) return content.general.contact;
+      return "I'm here to help! Please ask about prayer times, Ramadan, services, or contact details.";
+    }
+
+    function toggleChatbot() {
+      const chatbotContainer = document.getElementById('chatbot-container');
+      chatbotContainer.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.add('dark-theme');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      document.getElementById('theme-icon').classList.remove('fa-moon');
+      document.getElementById('theme-icon').classList.add('fa-sun');
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = `${scrollPercentage}%`;
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
