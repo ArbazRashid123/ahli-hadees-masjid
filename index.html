@@ -986,6 +986,71 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+
+    // Slider functionality for Blog & Events section
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slider-dot');
+const track = document.querySelector('.slider-track');
+
+// Create navigation dots
+function createDots() {
+  const sliderNav = document.createElement('div');
+  sliderNav.className = 'slider-nav';
+  
+  slides.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+    dot.addEventListener('click', () => goToSlide(index));
+    sliderNav.appendChild(dot);
+  });
+  
+  document.querySelector('#blog-events').appendChild(sliderNav);
+}
+
+// Go to specific slide
+function goToSlide(slideIndex) {
+  currentSlide = slideIndex;
+  updateSlider();
+}
+
+// Update slider position
+function updateSlider() {
+  const slideWidth = slides[0].getBoundingClientRect().width;
+  const gap = window.innerWidth >= 768 ? 30 : 20;
+  const newPosition = -(currentSlide * (slideWidth + gap));
+  
+  track.style.transform = `translateX(${newPosition}px)`;
+  
+  // Update active dot
+  document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
+}
+
+// Initialize slider
+function initSlider() {
+  createDots();
+  
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+  }, 5000);
+}
+
+// Update slider on window resize
+window.addEventListener('resize', updateSlider);
+
+// Initialize slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  initSlider();
+  
+  // You can add your links later like this:
+  // document.getElementById('blog-link').href = "your-blog-link.html";
+  // document.getElementById('events-link').href = "your-events-link.html";
+});
   </script>
 </body>
 </html>
