@@ -1098,21 +1098,28 @@ footer {
 }
 
 .slider-container {
-  max-width: 90%;
+  max-width: 100%; /* Changed from 90% to 100% */
   margin: 0 auto;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
 .slider-track {
   display: flex;
+  justify-content: center; /* Centers the slides */
+  align-items: center;
   gap: 20px;
   transition: transform 0.5s ease;
   padding: 10px 0;
 }
 
 .slide {
-  min-width: calc(100% - 20px);
+  min-width: auto; /* Allows auto width */
+  width: 100%;
+  max-width: 400px; /* Optional: limits max width */
+  margin: 0 auto;
   padding: 20px;
   text-align: center;
   border-radius: 12px;
@@ -1189,11 +1196,10 @@ footer {
 /* Tablet and Desktop View */
 @media (min-width: 768px) {
   .slide {
-    min-width: calc(50% - 20px);
+    min-width: calc(50% - 20px); /* If using multiple slides */
   }
-  
+
   .slider-track {
     gap: 30px;
   }
 }
-
